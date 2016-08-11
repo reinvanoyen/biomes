@@ -1,0 +1,21 @@
+{
+  "name": "biomes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "alea": "0.0.9",
+    "simplex-noise": "^2.2.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "gulp": "^3.9.1",
+    "gulp-watch": "^4.3.9",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
