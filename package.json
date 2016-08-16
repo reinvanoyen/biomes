@@ -10,10 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "alea": "0.0.9",
+    "fast-simplex-noise": "^2.2.0",
+    "pixi.js": "^4.0.0-rc3",
     "simplex-noise": "^2.2.0"
   },
   "devDependencies": {
+    "babelify": "^7.3.0",
     "browserify": "^13.1.0",
+    "browserify-versionify": "^1.0.6",
     "gulp": "^3.9.1",
     "gulp-watch": "^4.3.9",
     "vinyl-source-stream": "^1.1.0"

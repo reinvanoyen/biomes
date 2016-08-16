@@ -1,7 +1,5 @@
 "use strict";
 
-var RedNoise = require('./rednoise');
-var Line = require('./line');
+var App = require('./src/app')
 
-RedNoise.create( 15, 'example01' );
-Line.create( 15, 'example02' );
+var app = new App();

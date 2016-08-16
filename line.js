@@ -11,6 +11,7 @@ var Line = {
 		o.gen = new SimplexNoise(new Alea(seed));
 		o.canvas = document.getElementById(id);
 		o.ctx = o.canvas.getContext('2d');
+
 		o.width = o.canvas.width;
 		o.height = o.canvas.height;
 
@@ -33,7 +34,7 @@ var Line = {
 	},
 	noise03: function( x, y ) {
 
-		return Math.pow( this.noise02( x, y ), 1 );
+		return Math.pow( this.noise02( x, y ), 5 );
 	},
 	start: function() {
 
@@ -48,18 +49,16 @@ var Line = {
 	},
 	render: function() {
 
-		this.posX++;
+		this.posX = this.posX + .2;
 
 		this.ctx.clearRect( 0, 0, this.width, this.height );
-
 		this.ctx.beginPath();
 
 		for( var x = 0; x < this.width; x++ )
 		{
 			var r = this.noise03( x + this.posX, 1 );
 
-			this.ctx.lineTo( x, r * 150 );
-			this.ctx.lineTo( x, this.height );
+			this.ctx.lineTo( ( x * 80 ), this.height - ( r * 80 ) );
 		}
 
 		this.ctx.stroke();
