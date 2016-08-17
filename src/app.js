@@ -51,8 +51,8 @@ class App {
 		] );
 
 		player.updateComponent( 'pos', {
-			x: math.randBetween(0,800),
-			y: math.randBetween(0,600)
+			x: 0,
+			y: 0
 		} );
 
 		this.ecs.addEntity(player);

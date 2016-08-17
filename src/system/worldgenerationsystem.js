@@ -2,20 +2,16 @@
 
 var ECS = require('yagl-ecs'),
 	PIXI = require('pixi.js'),
-	FastSimplexNoise = require('fast-simplex-noise')
+	noise = require('../util/noise')
 ;
 
 class WorldGenerationSystem extends ECS.System {
 
 	constructor(stage) {
+
 		super();
+
 		this.stage = stage;
-		this.noise = new FastSimplexNoise( {
-			frequency: 0.2,
-			max: 50,
-			min: 0,
-			octaves: 8
-		} );
 		this.terrain = new PIXI.Graphics();
 		this.points = [];
 		this.stage.addChild( this.terrain );
@@ -30,24 +26,33 @@ class WorldGenerationSystem extends ECS.System {
 
 		let {pos} = entity.components;
 
-		let tileWidth = 10;
-		let gridSize = 80;
+		let stageWidth = 800;
+		let stageHeight = 600;
+
+		let gridSize = 100;
+		let tileWidth = stageWidth / ( gridSize - 1 );
+		let offset = Math.floor( pos.x / tileWidth );
+
+		let maxHeight = 200;
 
 		this.points = [
-			0, 600 // bottom left
+			0, stageHeight // bottom left
 		];
 
-		for( var i = 0; i < gridSize; i++ )
+		for( var i = 0; i <= gridSize; i++ )
 		{
-			this.points.push( ( i * tileWidth ) ); // x
-			//this.points.push( i );
-			this.points.push( this.noise.in2D( i + pos.x, 1 ) ); // y
+			let x = i * tileWidth;
+			let y = stageHeight - noise.terrain( i + offset, 1 ) * maxHeight;
+
+			this.points.push( x );
+			this.points.push( y );
 		}
 
-		this.points.push( tileWidth * gridSize - tileWidth ); // bottom right
-		this.points.push( 600 );
+		this.points.push( tileWidth * gridSize ); // bottom right
+		this.points.push( stageHeight );
 
-		this.terrain.position.x = pos.x - 400;
+		// keep the terrain in view (fixed)
+		this.terrain.position.x = ( offset * tileWidth - ( stageWidth / 2 ) );
 
 		this.terrain
 			.clear()

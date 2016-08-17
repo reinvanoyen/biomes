@@ -13,26 +13,27 @@ class MovementSystem extends ECS.System {
 
 	update(entity) {
 
+		let speed = 10;
 		let {pos} = entity.components;
 
 		if( input.isDown( input.RIGHT ) ) {
 
-			pos.x += 3;
+			pos.x += speed;
 		}
 
 		if( input.isDown( input.LEFT ) ) {
 
-			pos.x -= 3;
+			pos.x -= speed;
 		}
 
 		if( input.isDown( input.UP ) ) {
 
-			pos.y -= 3;
+			pos.y -= speed;
 		}
 
 		if( input.isDown( input.DOWN ) ) {
 
-			pos.y += 3;
+			pos.y += speed;
 		}
 	}
 

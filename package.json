@@ -12,6 +12,7 @@
     "alea": "0.0.9",
     "fast-simplex-noise": "^2.2.0",
     "pixi.js": "^4.0.0-rc3",
+    "seedrandom": "^2.4.2",
     "simplex-noise": "^2.2.0",
     "yagl-ecs": "^1.1.0"
   },
