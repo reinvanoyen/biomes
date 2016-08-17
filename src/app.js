@@ -1,15 +1,13 @@
 "use strict";
 
 var PIXI = require('pixi.js'),
-	RenderingSystem = require('./system/renderingsystem'),
-	WorldSystem = require('./system/worldsystem'),
 	ECS = require('yagl-ecs'),
+	RenderingSystem = require('./system/renderingsystem'),
+	WorldGenerationSystem = require('./system/worldgenerationsystem'),
 	Position = require('./component/position'),
 	Sprite = require('./component/sprite'),
 	Camera = require('./component/camera'),
-	World = require('./component/world'),
-	math = require('./util/math'),
-	FastSimplexNoise = require('fast-simplex-noise')
+	math = require('./util/math')
 ;
 
 class App {
@@ -33,21 +31,11 @@ class App {
 		// install ECS
 		this.ecs = new ECS();
 		this.ecs.addSystem(new RenderingSystem(this.stage));
-		this.ecs.addSystem(new WorldSystem(this.stage));
+		this.ecs.addSystem(new WorldGenerationSystem(this.stage));
 
 		this.populateWithEntities(10);
-		this.buildWorld();
 		this.spawnPlayer();
 		this.start();
-	}
-
-	buildWorld() {
-
-		let world = new ECS.Entity( 'world', [
-			World
-		] );
-
-		this.ecs.addEntity(world);
 	}
 
 	spawnPlayer() {
