@@ -38225,9 +38225,11 @@ var PIXI = require('pixi.js'),
     ECS = require('yagl-ecs'),
     RenderingSystem = require('./system/renderingsystem'),
     WorldGenerationSystem = require('./system/worldgenerationsystem'),
+    MovementSystem = require('./system/movementsystem'),
     Position = require('./component/position'),
     Sprite = require('./component/sprite'),
     Camera = require('./component/camera'),
+    PlayerControllable = require('./component/playercontrollable'),
     math = require('./util/math');
 
 var App = function () {
@@ -38252,6 +38254,7 @@ var App = function () {
 		this.ecs = new ECS();
 		this.ecs.addSystem(new RenderingSystem(this.stage));
 		this.ecs.addSystem(new WorldGenerationSystem(this.stage));
+		this.ecs.addSystem(new MovementSystem());
 
 		this.populateWithEntities(10);
 		this.spawnPlayer();
@@ -38262,7 +38265,7 @@ var App = function () {
 		key: 'spawnPlayer',
 		value: function spawnPlayer() {
 
-			var player = new ECS.Entity('player', [Sprite, Position, Camera]);
+			var player = new ECS.Entity('player', [Sprite, Position, Camera, PlayerControllable]);
 
 			player.updateComponent('pos', {
 				x: math.randBetween(0, 800),
@@ -38306,7 +38309,7 @@ var App = function () {
 
 module.exports = App;
 
-},{"./component/camera":179,"./component/position":180,"./component/sprite":181,"./system/renderingsystem":182,"./system/worldgenerationsystem":183,"./util/math":184,"pixi.js":130,"yagl-ecs":172}],179:[function(require,module,exports){
+},{"./component/camera":179,"./component/playercontrollable":180,"./component/position":181,"./component/sprite":182,"./system/movementsystem":184,"./system/renderingsystem":185,"./system/worldgenerationsystem":186,"./util/math":187,"pixi.js":130,"yagl-ecs":172}],179:[function(require,module,exports){
 "use strict";
 
 var Camera = {
@@ -38319,6 +38322,16 @@ module.exports = Camera;
 },{}],180:[function(require,module,exports){
 "use strict";
 
+var PlayerControllable = {
+	name: 'playerctrl',
+	defaults: {}
+};
+
+module.exports = PlayerControllable;
+
+},{}],181:[function(require,module,exports){
+"use strict";
+
 var Position = {
 	name: 'pos',
 	defaults: {
@@ -38329,7 +38342,7 @@ var Position = {
 
 module.exports = Position;
 
-},{}],181:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 "use strict";
 
 var Sprite = {
@@ -38342,7 +38355,106 @@ var Sprite = {
 
 module.exports = Sprite;
 
-},{}],182:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
+"use strict";
+
+var input = {
+
+	_pressed: {},
+
+	LEFT: 37,
+	UP: 38,
+	RIGHT: 39,
+	DOWN: 40,
+
+	isDown: function isDown(keyCode) {
+		return this._pressed[keyCode];
+	},
+
+	onKeydown: function onKeydown(event) {
+		this._pressed[event.keyCode] = true;
+	},
+
+	onKeyup: function onKeyup(event) {
+		delete this._pressed[event.keyCode];
+	}
+};
+
+window.addEventListener('keyup', function (event) {
+	input.onKeyup(event);
+}, false);
+window.addEventListener('keydown', function (event) {
+	input.onKeydown(event);
+}, false);
+
+module.exports = input;
+
+},{}],184:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ECS = require('yagl-ecs'),
+    input = require('../input');
+
+var MovementSystem = function (_ECS$System) {
+	_inherits(MovementSystem, _ECS$System);
+
+	function MovementSystem() {
+		_classCallCheck(this, MovementSystem);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(MovementSystem).apply(this, arguments));
+	}
+
+	_createClass(MovementSystem, [{
+		key: 'test',
+		value: function test(entity) {
+
+			return entity.components.playerctrl && entity.components.pos;
+		}
+	}, {
+		key: 'update',
+		value: function update(entity) {
+			var pos = entity.components.pos;
+
+
+			if (input.isDown(input.RIGHT)) {
+
+				pos.x += 3;
+			}
+
+			if (input.isDown(input.LEFT)) {
+
+				pos.x -= 3;
+			}
+
+			if (input.isDown(input.UP)) {
+
+				pos.y -= 3;
+			}
+
+			if (input.isDown(input.DOWN)) {
+
+				pos.y += 3;
+			}
+		}
+	}, {
+		key: 'exit',
+		value: function exit(entity) {}
+	}]);
+
+	return MovementSystem;
+}(ECS.System);
+
+module.exports = MovementSystem;
+
+},{"../input":183,"yagl-ecs":172}],185:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -38412,7 +38524,7 @@ var RenderingSystem = function (_ECS$System) {
 
 module.exports = RenderingSystem;
 
-},{"pixi.js":130,"yagl-ecs":172}],183:[function(require,module,exports){
+},{"pixi.js":130,"yagl-ecs":172}],186:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -38436,10 +38548,14 @@ var WorldGenerationSystem = function (_ECS$System) {
 		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(WorldGenerationSystem).call(this));
 
 		_this.stage = stage;
-		_this.noise = new FastSimplexNoise();
+		_this.noise = new FastSimplexNoise({
+			frequency: 0.2,
+			max: 50,
+			min: 0,
+			octaves: 8
+		});
 		_this.terrain = new PIXI.Graphics();
 		_this.points = [];
-
 		_this.stage.addChild(_this.terrain);
 		return _this;
 	}
@@ -38456,14 +38572,22 @@ var WorldGenerationSystem = function (_ECS$System) {
 			var pos = entity.components.pos;
 
 
-			this.points = [0, 600];
+			var tileWidth = 10;
+			var gridSize = 80;
 
-			for (var i = 0; i < 50; i++) {
-				this.points.push(i * 50); // x
+			this.points = [0, 600 // bottom left
+			];
+
+			for (var i = 0; i < gridSize; i++) {
+				this.points.push(i * tileWidth); // x
+				//this.points.push( i );
 				this.points.push(this.noise.in2D(i + pos.x, 1)); // y
 			}
 
-			this.points.push(800, 600);
+			this.points.push(tileWidth * gridSize - tileWidth); // bottom right
+			this.points.push(600);
+
+			this.terrain.position.x = pos.x - 400;
 
 			this.terrain.clear().beginFill(0x49AB84).drawPolygon(this.points).endFill();
 		}
@@ -38477,7 +38601,7 @@ var WorldGenerationSystem = function (_ECS$System) {
 
 module.exports = WorldGenerationSystem;
 
-},{"fast-simplex-noise":6,"pixi.js":130,"yagl-ecs":172}],184:[function(require,module,exports){
+},{"fast-simplex-noise":6,"pixi.js":130,"yagl-ecs":172}],187:[function(require,module,exports){
 "use strict";
 
 var math = {

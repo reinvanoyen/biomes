@@ -4,9 +4,11 @@ var PIXI = require('pixi.js'),
 	ECS = require('yagl-ecs'),
 	RenderingSystem = require('./system/renderingsystem'),
 	WorldGenerationSystem = require('./system/worldgenerationsystem'),
+	MovementSystem = require('./system/movementsystem'),
 	Position = require('./component/position'),
 	Sprite = require('./component/sprite'),
 	Camera = require('./component/camera'),
+	PlayerControllable = require('./component/playercontrollable'),
 	math = require('./util/math')
 ;
 
@@ -30,8 +32,9 @@ class App {
 
 		// install ECS
 		this.ecs = new ECS();
-		this.ecs.addSystem(new RenderingSystem(this.stage));
-		this.ecs.addSystem(new WorldGenerationSystem(this.stage));
+		this.ecs.addSystem( new RenderingSystem( this.stage ) );
+		this.ecs.addSystem( new WorldGenerationSystem( this.stage ) );
+		this.ecs.addSystem( new MovementSystem() );
 
 		this.populateWithEntities(10);
 		this.spawnPlayer();
@@ -43,7 +46,8 @@ class App {
 		let player = new ECS.Entity( 'player', [
 			Sprite,
 			Position,
-			Camera
+			Camera,
+			PlayerControllable
 		] );
 
 		player.updateComponent( 'pos', {
