@@ -20,10 +20,10 @@ var noise = {
 
 		this.maxHeightGenerator = new FastSimplexNoise( {
 			random: this.rng2,
-			frequency: 0.05,
+			frequency: 0.07,
 			max: 1,
 			min: 0,
-			octaves: 8
+			octaves: 5
 		} );
 
 		this.moistureGenerator = new FastSimplexNoise( {

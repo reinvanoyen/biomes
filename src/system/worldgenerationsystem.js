@@ -34,7 +34,7 @@ class WorldGenerationSystem extends ECS.System {
 		this.stage.addChild( this.terrain );
 		this.stage.addChild( this.texture );
 		this.stage.addChild( this.vegetation );
-		this.stage.addChild( this.devLayer );
+		//this.stage.addChild( this.devLayer );
 	}
 
 	test(entity) {
@@ -49,11 +49,11 @@ class WorldGenerationSystem extends ECS.System {
 		let stageWidth = 800;
 		let stageHeight = 600;
 
-		let gridSize = 5;
+		let gridSize = 1000; // 20
+		let maxHeight = 1000; // 2000
+
 		let tileWidth = stageWidth / ( gridSize - 1 );
 		let offset = Math.floor( pos.x / tileWidth );
-
-		let maxHeight = 2000;
 
 		this.terrain.clear();
 		this.water.clear();

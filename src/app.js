@@ -34,7 +34,7 @@ class App {
 		// install ECS
 		this.ecs = new ECS();
 		this.ecs.addSystem( new RenderingSystem( this.stage ) );
-		this.ecs.addSystem( new WorldGenerationSystem( this.stage, '21s54' ) );
+		this.ecs.addSystem( new WorldGenerationSystem( this.stage, 'klhjj' ) );
 		this.ecs.addSystem( new MovementSystem() );
 
 		this.populateWithEntities(10);
