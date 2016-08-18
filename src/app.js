@@ -9,7 +9,8 @@ var PIXI = require('pixi.js'),
 	Sprite = require('./component/sprite'),
 	Camera = require('./component/camera'),
 	PlayerControllable = require('./component/playercontrollable'),
-	math = require('./util/math')
+	math = require('./util/math'),
+	noise = require('./util/noise')
 ;
 
 class App {
@@ -18,7 +19,7 @@ class App {
 
 		// install renderer
 		this.renderer = new PIXI.WebGLRenderer( 800, 600 );
-		this.renderer.backgroundColor = 0x10453E;
+		this.renderer.backgroundColor = 0x7BCAF2;
 		document.body.appendChild( this.renderer.view );
 
 		// install stage
@@ -33,7 +34,7 @@ class App {
 		// install ECS
 		this.ecs = new ECS();
 		this.ecs.addSystem( new RenderingSystem( this.stage ) );
-		this.ecs.addSystem( new WorldGenerationSystem( this.stage ) );
+		this.ecs.addSystem( new WorldGenerationSystem( this.stage, '21s54' ) );
 		this.ecs.addSystem( new MovementSystem() );
 
 		this.populateWithEntities(10);
@@ -52,7 +53,7 @@ class App {
 
 		player.updateComponent( 'pos', {
 			x: 0,
-			y: 0
+			y: 300
 		} );
 
 		this.ecs.addEntity(player);
