@@ -1,6 +1,7 @@
 var FastSimplexNoise = require('fast-simplex-noise'),
 	seedrandom = require('seedrandom'),
-	curve = require('./curve')
+	curve = require('./curve'),
+	biomes = require('../data/biomes.json')
 ;
 
 var noise = {
@@ -20,7 +21,7 @@ var noise = {
 
 		this.maxHeightGenerator = new FastSimplexNoise( {
 			random: this.rng2,
-			frequency: 0.07,
+			frequency: 0.005,
 			max: 1,
 			min: 0,
 			octaves: 5
@@ -28,7 +29,7 @@ var noise = {
 
 		this.moistureGenerator = new FastSimplexNoise( {
 			random: this.rng3,
-			frequency: .005,
+			frequency: .002,
 			max: 1,
 			min: 0,
 			octaves: 1
@@ -44,14 +45,15 @@ var noise = {
 	},
 	getElevation: function( x, y ) {
 
-		let maxHeight = this.maxHeightGenerator.in2D( x, y ) + .75;
+		let maxHeight = this.maxHeightGenerator.in2D( x, y ) + 0.75;
 		let e = Math.pow( this.elevationGenerator.in2D( x, y ), 3 );
+		//let e = this.elevationGenerator.in2D( x, y );
 
 		return e * maxHeight;
 	},
 	getMoisture: function( x, y ) {
 
-		return Math.pow( this.moistureGenerator.in2D( x, y ), 2 );
+		return Math.pow( this.moistureGenerator.in2D( x, y ), 1 );
 	},
 	getBiome: function( x, y ) {
 
@@ -59,11 +61,17 @@ var noise = {
 		let m = this.getMoisture( x, y );
 
 		if( e < 0.1 ) {
-			return false;
+
+			return 'water';
 		}
 
 		if( e < 0.12 ) {
 			return 'beach';
+		}
+
+		if( e > 0.9 ) {
+			//console.log( 'snow' );
+			return 'snow';
 		}
 
 		if( e > 0.8 ) {
@@ -141,34 +149,9 @@ var noise = {
 
 		return 'tropical_rain_forest';
 	},
-	getBiomeColor: function( biome ) {
+	getBiomeData: function( biome ) {
 
-		let colors = {
-			'ocean': 0x0031D1,
-			'beach': 0xFFFBC0,
-			'scorched': 0xF14000,
-			'bare': 0xBCBFA9,
-			'tundra': 0xB6CA81,
-			'snow': 0xFFFFFF,
-			'temperate_desert': 0xD1D487,
-			'shrubland': 0x707367,
-			'taiga': 0x929070,
-			'grassland': 0xA4C662,
-			'temperate_deciduous_forest': 0x749632,
-			'temperate_rain_forest': 0x589323,
-			'subtropical_desert': 0xF9C740,
-			'tropical_seasonal_forest': 0x59A70C,
-			'tropical_rain_forest': 0x25C700
-		};
-
-		let color = colors[ biome ];
-
-		if( ! color ) {
-
-			console.log( 'no color?' );
-		}
-
-		return colors[ biome ];
+		return biomes[ biome ];
 	},
 	getPoi: function( x, y ) {
 

@@ -7,6 +7,7 @@ var ECS = require('yagl-ecs'),
 class RenderingSystem extends ECS.System {
 
 	constructor(stage) {
+
 		super();
 		this.stage = stage;
 	}
@@ -22,6 +23,18 @@ class RenderingSystem extends ECS.System {
 		let sprite = new PIXI.Sprite( PIXI.Texture.fromImage( src ) );
 
 		entity.sprite = sprite;
+
+		if( entity.components.debug ) {
+
+			entity.debugText = new PIXI.Text( '', {
+				fontSize: '11px',
+				fontFamily: 'Monospace',
+				fill : 0xff1010,
+				align : 'left'
+			} );
+
+			this.stage.addChild( entity.debugText );
+		}
 
 		this.stage.addChild( sprite );
 	}
@@ -39,6 +52,14 @@ class RenderingSystem extends ECS.System {
 
 			this.stage.position.x = -pos.x + ( 800 / 2 );
 			this.stage.position.y = -pos.y + ( 600 / 2 );
+		}
+
+		if( entity.components.debug ) {
+
+			entity.debugText.text = pos.x + ', ' + pos.y;
+
+			entity.debugText.position.x = pos.x;
+			entity.debugText.position.y = pos.y;
 		}
 	}
 

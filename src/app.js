@@ -8,6 +8,7 @@ var PIXI = require('pixi.js'),
 	Position = require('./component/position'),
 	Sprite = require('./component/sprite'),
 	Camera = require('./component/camera'),
+	Debug = require('./component/debug'),
 	PlayerControllable = require('./component/playercontrollable'),
 	math = require('./util/math'),
 	noise = require('./util/noise')
@@ -34,10 +35,9 @@ class App {
 		// install ECS
 		this.ecs = new ECS();
 		this.ecs.addSystem( new RenderingSystem( this.stage ) );
-		this.ecs.addSystem( new WorldGenerationSystem( this.stage, 'klhjj' ) );
+		this.ecs.addSystem( new WorldGenerationSystem( this.stage, '5ds45ds4' ) );
 		this.ecs.addSystem( new MovementSystem() );
 
-		this.populateWithEntities(10);
 		this.spawnPlayer();
 		this.start();
 	}
@@ -48,33 +48,25 @@ class App {
 			Sprite,
 			Position,
 			Camera,
-			PlayerControllable
+			PlayerControllable,
+			Debug
 		] );
 
 		player.updateComponent( 'pos', {
-			x: 0,
+			x: math.randBetween( 0, 1000000 ),
 			y: 300
 		} );
 
-		this.ecs.addEntity(player);
-	}
+		/*
+		setInterval( () => {
 
-	populateWithEntities( n ) {
-		
-		for( var i = 0; i < n; i++ )
-		{
-			let entity = new ECS.Entity( 'e' + i, [
-				Sprite,
-				Position
-			] );
-
-			entity.updateComponent( 'pos', {
-				x: math.randBetween(0,800),
-				y: math.randBetween(0,600)
+			player.updateComponent( 'pos', {
+				x: math.randBetween( 0, 1000000 )
 			} );
+		}, 50 );
+		*/
 
-			this.ecs.addEntity(entity);
-		}
+		this.ecs.addEntity(player);
 	}
 
 	start() {

@@ -1,0 +1,47 @@
+{
+  "water": {
+    "color": "0x0c78bb"
+  },
+  "beach": {
+    "color": "0xf3e7a5"
+  },
+  "snow": {
+    "color": "0xf0f0f0"
+  },
+  "scorched": {
+    "color": "0xc1b294"
+  },
+  "bare": {
+    "color": "0x988d72"
+  },
+  "tundra": {
+    "color": "0xa56734"
+  },
+  "temperate_desert": {
+    "color": "0xde7a29"
+  },
+  "shrubland": {
+    "color": "0xb1ae5c"
+  },
+  "taiga": {
+    "color": "0xa5a931"
+  },
+  "grassland": {
+    "color": "0x98d000"
+  },
+  "temperate_deciduous_forest": {
+    "color": "0x62b805"
+  },
+  "temperate_rain_forest": {
+    "color": "0x009804"
+  },
+  "subtropical_desert": {
+    "color": "0xffd200"
+  },
+  "tropical_seasonal_forest": {
+    "color": "0x87bf00"
+  },
+  "tropical_rain_forest": {
+    "color": "0x00bf0d"
+  }
+}
