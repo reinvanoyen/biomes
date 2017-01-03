@@ -1,15 +1,27 @@
 "use strict";
 
-var PIXI = require('pixi.js'),
+const PIXI = require('pixi.js'),
 	ECS = require('yagl-ecs'),
-	RenderingSystem = require('./system/renderingsystem'),
-	WorldGenerationSystem = require('./system/worldgenerationsystem'),
-	MovementSystem = require('./system/movementsystem'),
-	Position = require('./component/position'),
+
+	// Systems
+	Rendering = require('./system/rendering'),
+	WorldGeneration = require('./system/worldgeneration'),
+	Gravity = require('./system/gravity'),
+	CollisionDetection = require('./system/collisiondetection'),
+	Physics = require('./system/physics'),
+	Control = require('./system/control'),
+
+	// Components
 	Sprite = require('./component/sprite'),
+	Position = require('./component/position'),
+	Velocity = require('./component/velocity'),
+	Collision = require('./component/collision'),
 	Camera = require('./component/camera'),
+	Input = require('./component/input'),
+	Stats = require('./component/stats'),
 	Debug = require('./component/debug'),
-	PlayerControllable = require('./component/playercontrollable'),
+
+	// Util
 	math = require('./util/math'),
 	noise = require('./util/noise')
 ;
@@ -19,9 +31,9 @@ class App {
 	constructor() {
 
 		// install renderer
-		this.renderer = new PIXI.WebGLRenderer( 800, 600 );
+		this.renderer = new PIXI.WebGLRenderer(800, 600);
 		this.renderer.backgroundColor = 0x7BCAF2;
-		document.body.appendChild( this.renderer.view );
+		document.body.appendChild(this.renderer.view);
 
 		// install stage
 		this.stage = new PIXI.Container();
@@ -34,37 +46,31 @@ class App {
 
 		// install ECS
 		this.ecs = new ECS();
-		this.ecs.addSystem( new RenderingSystem( this.stage ) );
-		this.ecs.addSystem( new WorldGenerationSystem( this.stage, '5ds45ds4' ) );
-		this.ecs.addSystem( new MovementSystem() );
+		this.ecs.addSystem(new Rendering(this.stage));
+		this.ecs.addSystem(new Control());
+		this.ecs.addSystem(new WorldGeneration(this.stage, '5ds45ds4'));
+		this.ecs.addSystem(new Physics());
+		this.ecs.addSystem(new Gravity());
+		this.ecs.addSystem(new CollisionDetection());
 
-		this.spawnPlayer();
+		this.spawnPlayer(math.randBetween(0, 1000000), -20);
 		this.start();
 	}
 
-	spawnPlayer() {
+	spawnPlayer(x=0, y=0) {
 
-		let player = new ECS.Entity( 'player', [
+		let player = new ECS.Entity('player', [
 			Sprite,
 			Position,
+			Velocity,
+			Collision,
+			Input,
+			Stats,
 			Camera,
-			PlayerControllable,
 			Debug
-		] );
+		]);
 
-		player.updateComponent( 'pos', {
-			x: math.randBetween( 0, 1000000 ),
-			y: 300
-		} );
-
-		/*
-		setInterval( () => {
-
-			player.updateComponent( 'pos', {
-				x: math.randBetween( 0, 1000000 )
-			} );
-		}, 50 );
-		*/
+		player.updateComponent('position', { x: x, y: y });
 
 		this.ecs.addEntity(player);
 	}
@@ -73,10 +79,10 @@ class App {
 
 		this.ticker.start();
 
-		this.ticker.add( ( time ) => {
+		this.ticker.add(time => {
 
 			this.ecs.update();
-			this.renderer.render( this.stage );
+			this.renderer.render(this.stage);
 		} );
 	}
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 const Position = {
-	name: 'pos',
+	name: 'position',
 	defaults: {
 		x: 0,
 		y: 0

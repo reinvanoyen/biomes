@@ -1,6 +1,6 @@
 "use strict";
 
-var curve = {
+const curve = {
 	// no easing, no acceleration
 	linear: function (t) { return t },
 	// accelerating from zero velocity
@@ -28,7 +28,7 @@ var curve = {
 	// acceleration until halfway, then deceleration
 	easeInOutQuint: function (t) { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t },
 	easeOutElastic: function(t) {
-		var p = 0.3;
+		let p = 0.3;
 		return Math.pow(2,-10*t) * Math.sin((t-p/4)*(2*Math.PI)/p) + 1;
 	}
 };

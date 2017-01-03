@@ -1,6 +1,6 @@
 "use strict";
 
-var PIXI = require('pixi.js'),
+const PIXI = require('pixi.js'),
 	noise = require('../util/noise'),
 	Chunk = require('./chunk')
 ;
@@ -42,7 +42,7 @@ class World {
 
 		this.chunks = [];
 
-		for( var i = 0; i <= this.chunkCount; i++ )
+		for( let i = 0; i <= this.chunkCount; i++ )
 		{
 			// @TODO how far will we generate the terrain?
 			this.chunks.push( new Chunk( this, i ) );
@@ -65,7 +65,7 @@ class World {
 
 		// draw moisture (dev)
 
-		for( var i = 0; i <= this.chunkCount * 2; i++ )
+		for( let i = 0; i <= this.chunkCount * 2; i++ )
 		{
 			let x = i * this.chunkWidth;
 			let y = this.stageHeight - noise.getMoisture( i + offset, 1 ) * this.altitude;
@@ -79,7 +79,7 @@ class World {
 
 		// pois
 
-		for( var i = 0; i <= this.chunkCount; i++ )
+		for( let i = 0; i <= this.chunkCount; i++ )
 		{
 			let x = i * this.chunkWidth;
 			let y = this.stageHeight - noise.getElevation( i + offset, 1 ) * this.altitude;
@@ -100,7 +100,7 @@ class World {
 			0, this.stageHeight // bottom left
 		];
 
-		for( var i = 0; i <= this.chunkCount; i++ )
+		for( let i = 0; i <= this.chunkCount; i++ )
 		{
 			let x = i * this.chunkWidth;
 			let y = this.stageHeight - noise.getElevation( i + offset, 1 ) * this.altitude;

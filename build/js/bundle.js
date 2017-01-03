@@ -5,7 +5,7 @@ var App = require('./src/app');
 
 var app = new App();
 
-},{"./src/app":318}],2:[function(require,module,exports){
+},{"./src/app":319}],2:[function(require,module,exports){
 var asn1 = exports;
 
 asn1.bignum = require('bn.js');
@@ -79,7 +79,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":2,"inherits":98,"vm":311}],4:[function(require,module,exports){
+},{"../asn1":2,"inherits":98,"vm":312}],4:[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -37304,7 +37304,7 @@ var determineCrossOrigin = function (url, loc) {
 
 module.exports = determineCrossOrigin;
 
-},{"url":308}],203:[function(require,module,exports){
+},{"url":309}],203:[function(require,module,exports){
 var CONST = require('../const');
 
 /**
@@ -52724,7 +52724,7 @@ Loader.prototype._onLoad = function (resource) {
 Loader.LOAD_TYPE = Resource.LOAD_TYPE;
 Loader.XHR_RESPONSE_TYPE = Resource.XHR_RESPONSE_TYPE;
 
-},{"./Resource":273,"async":271,"eventemitter3":86,"url":308}],273:[function(require,module,exports){
+},{"./Resource":273,"async":271,"eventemitter3":86,"url":309}],273:[function(require,module,exports){
 'use strict';
 
 var EventEmitter    = require('eventemitter3');
@@ -53637,7 +53637,7 @@ function setExtMap(map, extname, val) {
     map[extname] = val;
 }
 
-},{"eventemitter3":86,"url":308}],274:[function(require,module,exports){
+},{"eventemitter3":86,"url":309}],274:[function(require,module,exports){
 /* eslint no-magic-numbers: 0 */
 'use strict';
 
@@ -57624,7 +57624,7 @@ function CorkedRequest(state) {
   };
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":298,"_process":259,"buffer":48,"buffer-shims":46,"core-util-is":51,"events":87,"inherits":98,"process-nextick-args":258,"util-deprecate":310}],303:[function(require,module,exports){
+},{"./_stream_duplex":298,"_process":259,"buffer":48,"buffer-shims":46,"core-util-is":51,"events":87,"inherits":98,"process-nextick-args":258,"util-deprecate":311}],303:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
 },{"./lib/_stream_passthrough.js":299}],304:[function(require,module,exports){
@@ -57877,6 +57877,112 @@ function base64DetectIncompleteChar(buffer) {
 }
 
 },{"buffer":48}],308:[function(require,module,exports){
+"use strict";
+
+class Vector2 {
+
+	constructor ( x, y ) {
+
+		this.x = x;
+		this.y = y;
+	}
+
+	length() {
+
+		return Math.sqrt( Math.abs( this.x * this.x + this.y * this.y ) );
+	}
+
+	lerp( v, factor ) {
+
+		return v.sub( this ).mul( factor ).add( this );
+	}
+
+	dot( v ) {
+
+		return ( this.x * v.x ) + ( this.y * v.y );
+	}
+
+	normalize() {
+
+		let len = this.length();
+
+		if( len > 0 ) {
+
+			len = 1 / Math.sqrt( len );
+
+			return new Vector2( this.x * len, this.y * len );
+		}
+
+		return this;
+	}
+
+	cross( v ) {
+
+		return ( this.x * v.y ) - ( this.y * v.x );
+	}
+
+	rotate( angle ) {
+
+		let rad = angle * Math.PI / 180;
+		let cos = Math.cos( rad );
+		let sin = Math.sin( rad );
+
+		return new Vector2( this.x * cos - this.y * sin, this.x * sin + this.y * cos );
+	}
+
+	add( v ) {
+
+		if( typeof v === 'number' ) {
+
+			return new Vector2( this.x + v, this.y + v );
+		}
+
+		return new Vector2( this.x + v.x, this.y + v.y );
+	}
+
+	sub( v ) {
+
+		if( typeof v === 'number' ) {
+
+			return new Vector2( this.x - v, this.y - v );
+		}
+
+		return new Vector2( this.x - v.x, this.y - v.y );
+	}
+
+	mul( v ) {
+
+		if( typeof v === 'number' ) {
+
+			return new Vector2( this.x * v, this.y * v );
+		}
+
+		return new Vector2( this.x * v.x, this.y * v.y );
+	}
+
+	div( v ) {
+
+		if( typeof v === 'number' ) {
+
+			return new Vector2( this.x / v, this.y / v );
+		}
+
+		return new Vector2( this.x / v.x, this.y / v.y );
+	}
+
+	abs() {
+
+		return new Vector2( Math.abs( this.x ), Math.abs( this.y ) );
+	}
+
+	equals( v ) {
+
+		return ( this.x === v.x && this.y === v.y );
+	}
+}
+
+module.exports = Vector2;
+},{}],309:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -58610,7 +58716,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":309,"punycode":266,"querystring":269}],309:[function(require,module,exports){
+},{"./util":310,"punycode":266,"querystring":269}],310:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -58628,7 +58734,7 @@ module.exports = {
   }
 };
 
-},{}],310:[function(require,module,exports){
+},{}],311:[function(require,module,exports){
 (function (global){
 
 /**
@@ -58699,7 +58805,7 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],311:[function(require,module,exports){
+},{}],312:[function(require,module,exports){
 var indexOf = require('indexof');
 
 var Object_keys = function (obj) {
@@ -58839,7 +58945,7 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":97}],312:[function(require,module,exports){
+},{"indexof":97}],313:[function(require,module,exports){
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
@@ -59148,7 +59254,7 @@ ECS.uid = _uid2['default'];
 
 exports['default'] = ECS;
 module.exports = exports['default'];
-},{"./entity":313,"./performance":314,"./system":315,"./uid":316,"./utils":317}],313:[function(require,module,exports){
+},{"./entity":314,"./performance":315,"./system":316,"./uid":317,"./utils":318}],314:[function(require,module,exports){
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
@@ -59423,7 +59529,7 @@ var Entity = (function () {
 
 exports['default'] = Entity;
 module.exports = exports['default'];
-},{"./uid":316}],314:[function(require,module,exports){
+},{"./uid":317}],315:[function(require,module,exports){
 (function (global){
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -59449,7 +59555,7 @@ if (!global) {
 exports["default"] = perf;
 module.exports = exports["default"];
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],315:[function(require,module,exports){
+},{}],316:[function(require,module,exports){
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
@@ -59642,7 +59748,7 @@ var System = (function () {
 
 exports['default'] = System;
 module.exports = exports['default'];
-},{"./utils":317}],316:[function(require,module,exports){
+},{"./utils":318}],317:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -59801,7 +59907,7 @@ var UID = {
 
 exports["default"] = UID;
 module.exports = exports["default"];
-},{}],317:[function(require,module,exports){
+},{}],318:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -59831,7 +59937,7 @@ function fastSplice(array, startIndex, removeCount) {
 
   array.length = removeLen;
 }
-},{}],318:[function(require,module,exports){
+},{}],319:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -59840,15 +59946,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var PIXI = require('pixi.js'),
     ECS = require('yagl-ecs'),
-    RenderingSystem = require('./system/renderingsystem'),
-    WorldGenerationSystem = require('./system/worldgenerationsystem'),
-    MovementSystem = require('./system/movementsystem'),
+
+
+// Systems
+Rendering = require('./system/rendering'),
+    WorldGeneration = require('./system/worldgeneration'),
+    Gravity = require('./system/gravity'),
+    CollisionDetection = require('./system/collisiondetection'),
+    Physics = require('./system/physics'),
+    Control = require('./system/control'),
+
+
+// Components
+Sprite = require('./component/sprite'),
     Position = require('./component/position'),
-    Sprite = require('./component/sprite'),
+    Velocity = require('./component/velocity'),
+    Collision = require('./component/collision'),
     Camera = require('./component/camera'),
+    Input = require('./component/input'),
+    Stats = require('./component/stats'),
     Debug = require('./component/debug'),
-    PlayerControllable = require('./component/playercontrollable'),
-    math = require('./util/math'),
+
+
+// Util
+math = require('./util/math'),
     noise = require('./util/noise');
 
 var App = function () {
@@ -59871,32 +59992,27 @@ var App = function () {
 
 		// install ECS
 		this.ecs = new ECS();
-		this.ecs.addSystem(new RenderingSystem(this.stage));
-		this.ecs.addSystem(new WorldGenerationSystem(this.stage, '5ds45ds4'));
-		this.ecs.addSystem(new MovementSystem());
+		this.ecs.addSystem(new Rendering(this.stage));
+		this.ecs.addSystem(new Control());
+		this.ecs.addSystem(new WorldGeneration(this.stage, '5ds45ds4'));
+		this.ecs.addSystem(new Physics());
+		this.ecs.addSystem(new Gravity());
+		this.ecs.addSystem(new CollisionDetection());
 
-		this.spawnPlayer();
+		this.spawnPlayer(math.randBetween(0, 1000000), -20);
 		this.start();
 	}
 
 	_createClass(App, [{
 		key: 'spawnPlayer',
 		value: function spawnPlayer() {
+			var x = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
+			var y = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 
-			var player = new ECS.Entity('player', [Sprite, Position, Camera, PlayerControllable, Debug]);
 
-			player.updateComponent('pos', {
-				x: math.randBetween(0, 1000000),
-				y: 300
-			});
+			var player = new ECS.Entity('player', [Sprite, Position, Velocity, Collision, Input, Stats, Camera, Debug]);
 
-			/*
-   setInterval( () => {
-   		player.updateComponent( 'pos', {
-   		x: math.randBetween( 0, 1000000 )
-   	} );
-   }, 50 );
-   */
+			player.updateComponent('position', { x: x, y: y });
 
 			this.ecs.addEntity(player);
 		}
@@ -59920,17 +60036,29 @@ var App = function () {
 
 module.exports = App;
 
-},{"./component/camera":319,"./component/debug":320,"./component/playercontrollable":321,"./component/position":322,"./component/sprite":323,"./system/movementsystem":326,"./system/renderingsystem":327,"./system/worldgenerationsystem":328,"./util/math":330,"./util/noise":331,"pixi.js":230,"yagl-ecs":312}],319:[function(require,module,exports){
+},{"./component/camera":320,"./component/collision":321,"./component/debug":322,"./component/input":323,"./component/position":324,"./component/sprite":325,"./component/stats":326,"./component/velocity":327,"./system/collisiondetection":330,"./system/control":331,"./system/gravity":332,"./system/physics":333,"./system/rendering":334,"./system/worldgeneration":335,"./util/math":337,"./util/noise":338,"pixi.js":230,"yagl-ecs":313}],320:[function(require,module,exports){
 "use strict";
 
 var Camera = {
-	name: 'cam',
+	name: 'camera',
 	defaults: {}
 };
 
 module.exports = Camera;
 
-},{}],320:[function(require,module,exports){
+},{}],321:[function(require,module,exports){
+"use strict";
+
+var Collision = {
+	name: 'collision',
+	defaults: {
+		bottom: false
+	}
+};
+
+module.exports = Collision;
+
+},{}],322:[function(require,module,exports){
 "use strict";
 
 var Debug = {
@@ -59940,21 +60068,26 @@ var Debug = {
 
 module.exports = Debug;
 
-},{}],321:[function(require,module,exports){
+},{}],323:[function(require,module,exports){
 "use strict";
 
-var PlayerControllable = {
-	name: 'playerctrl',
-	defaults: {}
+var Input = {
+	name: 'input',
+	defaults: {
+		keyJump: false,
+		keyLeft: false,
+		keyRight: false,
+		keyDown: false
+	}
 };
 
-module.exports = PlayerControllable;
+module.exports = Input;
 
-},{}],322:[function(require,module,exports){
+},{}],324:[function(require,module,exports){
 "use strict";
 
 var Position = {
-	name: 'pos',
+	name: 'position',
 	defaults: {
 		x: 0,
 		y: 0
@@ -59963,7 +60096,7 @@ var Position = {
 
 module.exports = Position;
 
-},{}],323:[function(require,module,exports){
+},{}],325:[function(require,module,exports){
 "use strict";
 
 var Sprite = {
@@ -59976,7 +60109,32 @@ var Sprite = {
 
 module.exports = Sprite;
 
-},{}],324:[function(require,module,exports){
+},{}],326:[function(require,module,exports){
+"use strict";
+
+var Stats = {
+	name: 'stats',
+	defaults: {
+		health: 100
+	}
+};
+
+module.exports = Stats;
+
+},{}],327:[function(require,module,exports){
+"use strict";
+
+var Velocity = {
+	name: 'velocity',
+	defaults: {
+		x: 0,
+		y: 0
+	}
+};
+
+module.exports = Velocity;
+
+},{}],328:[function(require,module,exports){
 module.exports={
   "water": {
     "color": "0x0c78bb"
@@ -60024,7 +60182,7 @@ module.exports={
     "color": "0x00bf0d"
   }
 }
-},{}],325:[function(require,module,exports){
+},{}],329:[function(require,module,exports){
 "use strict";
 
 var input = {
@@ -60059,7 +60217,68 @@ window.addEventListener('keydown', function (event) {
 
 module.exports = input;
 
-},{}],326:[function(require,module,exports){
+},{}],330:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ECS = require('yagl-ecs');
+
+var CollisionDetection = function (_ECS$System) {
+	_inherits(CollisionDetection, _ECS$System);
+
+	function CollisionDetection() {
+		_classCallCheck(this, CollisionDetection);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(CollisionDetection).apply(this, arguments));
+	}
+
+	_createClass(CollisionDetection, [{
+		key: "test",
+		value: function test(entity) {
+			return entity.components.position;
+		}
+	}, {
+		key: "update",
+		value: function update(entity) {
+			var position = entity.components.position;
+
+
+			if (position.y >= 300) {
+
+				position.y = 300;
+
+				if (entity.components.velocity) {
+					entity.components.velocity.y = 0;
+				}
+
+				if (entity.components.collision) {
+					entity.components.collision.bottom = true;
+				}
+			} else {
+
+				if (entity.components.collision) {
+					entity.components.collision.bottom = false;
+				}
+			}
+		}
+	}, {
+		key: "exit",
+		value: function exit(entity) {}
+	}]);
+
+	return CollisionDetection;
+}(ECS.System);
+
+module.exports = CollisionDetection;
+
+},{"yagl-ecs":313}],331:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60071,62 +60290,182 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ECS = require('yagl-ecs'),
-    input = require('../input');
+    keys = require('../input');
 
-var MovementSystem = function (_ECS$System) {
-	_inherits(MovementSystem, _ECS$System);
+var Control = function (_ECS$System) {
+	_inherits(Control, _ECS$System);
 
-	function MovementSystem() {
-		_classCallCheck(this, MovementSystem);
+	function Control() {
+		_classCallCheck(this, Control);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(MovementSystem).apply(this, arguments));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Control).apply(this, arguments));
 	}
 
-	_createClass(MovementSystem, [{
+	_createClass(Control, [{
+		key: 'enter',
+		value: function enter(entity) {
+			entity.acceleration = .1;
+			entity.maxVelocity = 4;
+		}
+	}, {
 		key: 'test',
 		value: function test(entity) {
-
-			return entity.components.playerctrl && entity.components.pos;
+			return entity.components.input && entity.components.position && entity.components.velocity;
 		}
 	}, {
 		key: 'update',
 		value: function update(entity) {
-			var pos = entity.components.pos;
+			var _entity$components = entity.components;
+			var velocity = _entity$components.velocity;
+			var input = _entity$components.input;
 
 
-			var speed = 30;
+			if (keys.isDown(keys.RIGHT)) {
 
-			if (input.isDown(input.RIGHT)) {
+				input.keyRight = true;
+				velocity.x = Math.max(velocity.x + entity.acceleration, entity.maxVelocity);
+				console.log('right');
+			} else {
 
-				pos.x += speed;
+				input.keyRight = false;
 			}
 
-			if (input.isDown(input.LEFT)) {
+			if (keys.isDown(keys.LEFT)) {
 
-				pos.x -= speed;
+				input.keyLeft = true;
+				velocity.x = Math.max(velocity.x - entity.acceleration, -entity.maxVelocity);
+			} else {
+
+				input.keyLeft = false;
 			}
 
-			if (input.isDown(input.UP)) {
+			if (entity.components.collision) {
 
-				pos.y -= speed;
+				if (entity.components.collision.bottom && keys.isDown(keys.UP)) {
+
+					if (!entity.components.input.keyJump) {
+
+						velocity.y = velocity.y - 10;
+						input.keyJump = true;
+					}
+				} else {
+
+					input.keyJump = false;
+				}
 			}
 
-			if (input.isDown(input.DOWN)) {
-
-				pos.y += speed;
-			}
+			input.keyDown = keys.isDown(keys.DOWN);
 		}
 	}, {
 		key: 'exit',
 		value: function exit(entity) {}
 	}]);
 
-	return MovementSystem;
+	return Control;
 }(ECS.System);
 
-module.exports = MovementSystem;
+module.exports = Control;
 
-},{"../input":325,"yagl-ecs":312}],327:[function(require,module,exports){
+},{"../input":329,"yagl-ecs":313}],332:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ECS = require('yagl-ecs');
+
+var Gravity = function (_ECS$System) {
+	_inherits(Gravity, _ECS$System);
+
+	function Gravity() {
+		_classCallCheck(this, Gravity);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Gravity).apply(this, arguments));
+	}
+
+	_createClass(Gravity, [{
+		key: "test",
+		value: function test(entity) {
+			return entity.components.position && entity.components.velocity;
+		}
+	}, {
+		key: "update",
+		value: function update(entity) {
+			var velocity = entity.components.velocity;
+
+
+			velocity.y += .2;
+		}
+	}, {
+		key: "exit",
+		value: function exit(entity) {}
+	}]);
+
+	return Gravity;
+}(ECS.System);
+
+module.exports = Gravity;
+
+},{"yagl-ecs":313}],333:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ECS = require('yagl-ecs'),
+    Vector2 = require('tnt-vec2');
+
+var Physics = function (_ECS$System) {
+	_inherits(Physics, _ECS$System);
+
+	function Physics() {
+		_classCallCheck(this, Physics);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Physics).apply(this, arguments));
+	}
+
+	_createClass(Physics, [{
+		key: 'test',
+		value: function test(entity) {
+			return entity.components.position && entity.components.velocity;
+		}
+	}, {
+		key: 'update',
+		value: function update(entity) {
+			var _entity$components = entity.components;
+			var position = _entity$components.position;
+			var velocity = _entity$components.velocity;
+
+
+			var positionVec2 = new Vector2(position.x, position.y),
+			    velocityVec2 = new Vector2(velocity.x, velocity.y);
+
+			var newPositionVec2 = positionVec2.add(velocityVec2);
+
+			position.x = newPositionVec2.x;
+			position.y = newPositionVec2.y;
+		}
+	}, {
+		key: 'exit',
+		value: function exit(entity) {}
+	}]);
+
+	return Physics;
+}(ECS.System);
+
+module.exports = Physics;
+
+},{"tnt-vec2":308,"yagl-ecs":313}],334:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60140,32 +60479,28 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ECS = require('yagl-ecs'),
     PIXI = require('pixi.js');
 
-var RenderingSystem = function (_ECS$System) {
-	_inherits(RenderingSystem, _ECS$System);
+var Rendering = function (_ECS$System) {
+	_inherits(Rendering, _ECS$System);
 
-	function RenderingSystem(stage) {
-		_classCallCheck(this, RenderingSystem);
+	function Rendering(stage) {
+		_classCallCheck(this, Rendering);
 
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(RenderingSystem).call(this));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Rendering).call(this));
 
 		_this.stage = stage;
 		return _this;
 	}
 
-	_createClass(RenderingSystem, [{
+	_createClass(Rendering, [{
 		key: 'test',
 		value: function test(entity) {
-
-			return entity.components.pos && entity.components.sprite;
+			return entity.components.position && entity.components.sprite;
 		}
 	}, {
 		key: 'enter',
 		value: function enter(entity) {
 
-			var src = entity.components.sprite.src;
-			var sprite = new PIXI.Sprite(PIXI.Texture.fromImage(src));
-
-			entity.sprite = sprite;
+			entity.sprite = new PIXI.Sprite(PIXI.Texture.fromImage(entity.components.sprite.src));
 
 			if (entity.components.debug) {
 
@@ -60179,31 +60514,31 @@ var RenderingSystem = function (_ECS$System) {
 				this.stage.addChild(entity.debugText);
 			}
 
-			this.stage.addChild(sprite);
+			this.stage.addChild(entity.sprite);
 		}
 	}, {
 		key: 'update',
 		value: function update(entity) {
-			var pos = entity.components.pos;
+			var position = entity.components.position;
 
 
-			entity.sprite.position.x = pos.x;
-			entity.sprite.position.y = pos.y;
+			entity.sprite.position.x = position.x;
+			entity.sprite.position.y = position.y;
 
-			if (entity.components.cam) {
+			if (entity.components.camera) {
 
 				entity.sprite.alpha = .5;
 
-				this.stage.position.x = -pos.x + 800 / 2;
-				this.stage.position.y = -pos.y + 600 / 2;
+				this.stage.position.x = -position.x + 800 / 2;
+				this.stage.position.y = -position.y + 600 / 2;
 			}
 
 			if (entity.components.debug) {
 
-				entity.debugText.text = pos.x + ', ' + pos.y;
+				entity.debugText.text = 'x: ' + position.x + ', y: ' + position.y;
 
-				entity.debugText.position.x = pos.x;
-				entity.debugText.position.y = pos.y;
+				entity.debugText.position.x = position.x;
+				entity.debugText.position.y = position.y;
 			}
 		}
 	}, {
@@ -60211,12 +60546,12 @@ var RenderingSystem = function (_ECS$System) {
 		value: function exit(entity) {}
 	}]);
 
-	return RenderingSystem;
+	return Rendering;
 }(ECS.System);
 
-module.exports = RenderingSystem;
+module.exports = Rendering;
 
-},{"pixi.js":230,"yagl-ecs":312}],328:[function(require,module,exports){
+},{"pixi.js":230,"yagl-ecs":313}],335:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60228,49 +60563,47 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ECS = require('yagl-ecs'),
-    PIXI = require('pixi.js'),
     noise = require('../util/noise'),
     input = require('../input'),
     World = require('../world/world');
 
-var WorldGenerationSystem = function (_ECS$System) {
-	_inherits(WorldGenerationSystem, _ECS$System);
+var WorldGeneration = function (_ECS$System) {
+	_inherits(WorldGeneration, _ECS$System);
 
-	function WorldGenerationSystem(stage, seed) {
-		_classCallCheck(this, WorldGenerationSystem);
+	function WorldGeneration(stage, seed) {
+		_classCallCheck(this, WorldGeneration);
 
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(WorldGenerationSystem).call(this));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(WorldGeneration).call(this));
 
 		_this.stage = stage;
 		_this.world = new World(seed, _this.stage, 10, 3000);
 		return _this;
 	}
 
-	_createClass(WorldGenerationSystem, [{
+	_createClass(WorldGeneration, [{
 		key: 'test',
 		value: function test(entity) {
-
-			return entity.components.cam && entity.components.pos;
+			return entity.components.camera && entity.components.position;
 		}
 	}, {
 		key: 'update',
 		value: function update(entity) {
-			var pos = entity.components.pos;
+			var position = entity.components.position;
 
 
-			this.world.render(pos.x, pos.y);
+			this.world.render(position.x, position.y);
 		}
 	}, {
 		key: 'exit',
 		value: function exit(entity) {}
 	}]);
 
-	return WorldGenerationSystem;
+	return WorldGeneration;
 }(ECS.System);
 
-module.exports = WorldGenerationSystem;
+module.exports = WorldGeneration;
 
-},{"../input":325,"../util/noise":331,"../world/world":333,"pixi.js":230,"yagl-ecs":312}],329:[function(require,module,exports){
+},{"../input":329,"../util/noise":338,"../world/world":340,"yagl-ecs":313}],336:[function(require,module,exports){
 "use strict";
 
 var curve = {
@@ -60334,7 +60667,7 @@ var curve = {
 
 module.exports = curve;
 
-},{}],330:[function(require,module,exports){
+},{}],337:[function(require,module,exports){
 "use strict";
 
 var math = {
@@ -60345,7 +60678,7 @@ var math = {
 
 module.exports = math;
 
-},{}],331:[function(require,module,exports){
+},{}],338:[function(require,module,exports){
 'use strict';
 
 var FastSimplexNoise = require('fast-simplex-noise'),
@@ -60410,7 +60743,6 @@ var noise = {
 		var m = this.getMoisture(x, y);
 
 		if (e < 0.1) {
-
 			return 'water';
 		}
 
@@ -60445,7 +60777,6 @@ var noise = {
 		}
 
 		if (e > 0.6) {
-
 			if (m < 0.33) {
 				//console.log( 'temperate_desert' );
 				return 'temperate_desert';
@@ -60510,7 +60841,7 @@ var noise = {
 
 module.exports = noise;
 
-},{"../data/biomes.json":324,"./curve":329,"fast-simplex-noise":89,"seedrandom":279}],332:[function(require,module,exports){
+},{"../data/biomes.json":328,"./curve":336,"fast-simplex-noise":89,"seedrandom":279}],339:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60549,7 +60880,7 @@ var Chunk = function () {
 
 module.exports = Chunk;
 
-},{"../data/biomes.json":324,"../util/noise":331,"pixi.js":230}],333:[function(require,module,exports){
+},{"../data/biomes.json":328,"../util/noise":338,"pixi.js":230}],340:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60600,7 +60931,7 @@ var World = function () {
 			this.chunks = [];
 
 			for (var i = 0; i <= this.chunkCount; i++) {
-				// @TODO how far will we generate the terrain
+				// @TODO how far will we generate the terrain?
 				this.chunks.push(new Chunk(this, i));
 			}
 		}
@@ -60631,11 +60962,11 @@ var World = function () {
 
 			// pois
 
-			for (var i = 0; i <= this.chunkCount; i++) {
-				var _x2 = i * this.chunkWidth;
-				var _y2 = this.stageHeight - noise.getElevation(i + offset, 1) * this.altitude;
+			for (var _i = 0; _i <= this.chunkCount; _i++) {
+				var _x2 = _i * this.chunkWidth;
+				var _y2 = this.stageHeight - noise.getElevation(_i + offset, 1) * this.altitude;
 
-				if (noise.getPoi(i + offset, 1)) {
+				if (noise.getPoi(_i + offset, 1)) {
 
 					this.graphics.beginFill(0xEA00FF).drawCircle(offset * this.chunkWidth + _x2 - this.stageWidth / 2, _y2, 25).endFill();
 				}
@@ -60646,9 +60977,9 @@ var World = function () {
 			this.points = [0, this.stageHeight // bottom left
 			];
 
-			for (var i = 0; i <= this.chunkCount; i++) {
-				var _x3 = i * this.chunkWidth;
-				var _y3 = this.stageHeight - noise.getElevation(i + offset, 1) * this.altitude;
+			for (var _i2 = 0; _i2 <= this.chunkCount; _i2++) {
+				var _x3 = _i2 * this.chunkWidth;
+				var _y3 = this.stageHeight - noise.getElevation(_i2 + offset, 1) * this.altitude;
 
 				this.points.push(_x3);
 				this.points.push(_y3);
@@ -60679,4 +61010,4 @@ var World = function () {
 
 module.exports = World;
 
-},{"../util/noise":331,"./chunk":332,"pixi.js":230}]},{},[1]);
+},{"../util/noise":338,"./chunk":339,"pixi.js":230}]},{},[1]);

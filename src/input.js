@@ -1,6 +1,6 @@
 "use strict";
 
-var input = {
+const input = {
 
 	_pressed: {},
 

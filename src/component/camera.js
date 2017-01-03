@@ -1,7 +1,7 @@
 "use strict";
 
 const Camera = {
-	name: 'cam',
+	name: 'camera',
 	defaults: {}
 };
 
