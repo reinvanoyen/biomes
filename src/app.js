@@ -10,6 +10,7 @@ const PIXI = require('pixi.js'),
 	CollisionDetection = require('./system/collisiondetection'),
 	Physics = require('./system/physics'),
 	Control = require('./system/control'),
+	AI = require('./system/ai'),
 
 	// Components
 	Sprite = require('./component/sprite'),
@@ -19,6 +20,7 @@ const PIXI = require('pixi.js'),
 	Camera = require('./component/camera'),
 	Input = require('./component/input'),
 	Stats = require('./component/stats'),
+	Behavior = require('./component/behavior'),
 	Debug = require('./component/debug'),
 
 	// Util
@@ -46,15 +48,40 @@ class App {
 
 		// install ECS
 		this.ecs = new ECS();
-		this.ecs.addSystem(new Rendering(this.stage));
+
+		let worldGeneration = new WorldGeneration(this.stage, '5ds45ds4');
+
 		this.ecs.addSystem(new Control());
-		this.ecs.addSystem(new WorldGeneration(this.stage, '5ds45ds4'));
-		this.ecs.addSystem(new Physics());
+		this.ecs.addSystem(new Rendering(this.stage));
+		this.ecs.addSystem(worldGeneration);
+		this.ecs.addSystem(new AI());
 		this.ecs.addSystem(new Gravity());
-		this.ecs.addSystem(new CollisionDetection());
+		this.ecs.addSystem(new Physics());
+		this.ecs.addSystem(new CollisionDetection(worldGeneration.world));
 
 		this.spawnPlayer(math.randBetween(0, 1000000), -20);
+
+		for( let i = 0; i < 2000; i++ ) {
+			this.spawnNpc(math.randBetween(0, 1000000), -20);
+		}
+
 		this.start();
+	}
+
+	spawnNpc(x=0, y=0) {
+
+		let npc = new ECS.Entity('npc', [
+			Sprite,
+			Position,
+			Velocity,
+			Collision,
+			Stats,
+			Behavior
+		]);
+
+		npc.updateComponent('position', { x: x, y: y });
+
+		this.ecs.addEntity(npc);
 	}
 
 	spawnPlayer(x=0, y=0) {

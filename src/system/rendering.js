@@ -52,7 +52,7 @@ class Rendering extends ECS.System {
 
 		if( entity.components.debug ) {
 
-			entity.debugText.text = 'x: '+position.x + ', y: ' + position.y;
+			entity.debugText.text = 'x: ' + parseInt(position.x) + ', y: ' + parseInt(position.y);
 
 			entity.debugText.position.x = position.x;
 			entity.debugText.position.y = position.y;

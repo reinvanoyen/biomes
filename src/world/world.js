@@ -40,13 +40,18 @@ class World {
 		this.stage.addChild( this.devLayer );
 		this.stage.addChild( this.graphics );
 
-		this.chunks = [];
+		// this.chunks = [];
+		//
+		// for( let i = 0; i <= this.chunkCount; i++ )
+		// {
+		// 	// @TODO how far will we generate the terrain?
+		// 	this.chunks.push( new Chunk( this, i ) );
+		// }
+	}
 
-		for( let i = 0; i <= this.chunkCount; i++ )
-		{
-			// @TODO how far will we generate the terrain?
-			this.chunks.push( new Chunk( this, i ) );
-		}
+	getElevationAt( x ) {
+
+		return this.stageHeight - noise.getElevation( x, 1 ) * this.altitude;
 	}
 
 	render( x, y ) {
@@ -57,6 +62,7 @@ class World {
 		};
 
 		let offset = Math.floor( pos.x / this.chunkWidth );
+		//let offset = pos.x;
 
 		this.graphics.clear();
 		this.terrain.clear();
@@ -103,7 +109,7 @@ class World {
 		for( let i = 0; i <= this.chunkCount; i++ )
 		{
 			let x = i * this.chunkWidth;
-			let y = this.stageHeight - noise.getElevation( i + offset, 1 ) * this.altitude;
+			let y = this.getElevationAt( i + offset );
 
 			this.points.push( x );
 			this.points.push( y );
@@ -135,6 +141,8 @@ class World {
 
 		this.water.position.x = ( offset * this.chunkWidth - ( this.stageWidth / 2 ) );
 		this.terrain.position.x = ( offset * this.chunkWidth - ( this.stageWidth / 2 ) );
+		// this.water.position.x = ( offset - ( this.stageWidth / 2 ) );
+		// this.terrain.position.x = ( offset - ( this.stageWidth / 2 ) );
 	}
 }
 

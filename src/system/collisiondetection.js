@@ -4,6 +4,13 @@ const ECS = require('yagl-ecs');
 
 class CollisionDetection extends ECS.System {
 
+	constructor(world) {
+
+		super();
+
+		this.world = world;
+	}
+
 	test(entity) {
 		return entity.components.position;
 	}
@@ -12,9 +19,12 @@ class CollisionDetection extends ECS.System {
 
 		let {position} = entity.components;
 
-		if( position.y >= 300 ) {
+		let elevation = 0;
+		//let elevation = this.world.getElevationAt( position.x );
 
-			position.y = 300;
+		if( position.y >= elevation ) {
+
+			position.y = elevation;
 
 			if(entity.components.velocity) {
 				entity.components.velocity.y = 0;

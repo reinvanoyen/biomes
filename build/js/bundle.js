@@ -59955,6 +59955,7 @@ Rendering = require('./system/rendering'),
     CollisionDetection = require('./system/collisiondetection'),
     Physics = require('./system/physics'),
     Control = require('./system/control'),
+    AI = require('./system/ai'),
 
 
 // Components
@@ -59965,6 +59966,7 @@ Sprite = require('./component/sprite'),
     Camera = require('./component/camera'),
     Input = require('./component/input'),
     Stats = require('./component/stats'),
+    Behavior = require('./component/behavior'),
     Debug = require('./component/debug'),
 
 
@@ -59992,18 +59994,40 @@ var App = function () {
 
 		// install ECS
 		this.ecs = new ECS();
-		this.ecs.addSystem(new Rendering(this.stage));
+
+		var worldGeneration = new WorldGeneration(this.stage, '5ds45ds4');
+
 		this.ecs.addSystem(new Control());
-		this.ecs.addSystem(new WorldGeneration(this.stage, '5ds45ds4'));
-		this.ecs.addSystem(new Physics());
+		this.ecs.addSystem(new Rendering(this.stage));
+		this.ecs.addSystem(worldGeneration);
+		this.ecs.addSystem(new AI());
 		this.ecs.addSystem(new Gravity());
-		this.ecs.addSystem(new CollisionDetection());
+		this.ecs.addSystem(new Physics());
+		this.ecs.addSystem(new CollisionDetection(worldGeneration.world));
 
 		this.spawnPlayer(math.randBetween(0, 1000000), -20);
+
+		for (var i = 0; i < 2000; i++) {
+			this.spawnNpc(math.randBetween(0, 1000000), -20);
+		}
+
 		this.start();
 	}
 
 	_createClass(App, [{
+		key: 'spawnNpc',
+		value: function spawnNpc() {
+			var x = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
+			var y = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
+
+
+			var npc = new ECS.Entity('npc', [Sprite, Position, Velocity, Collision, Stats, Behavior]);
+
+			npc.updateComponent('position', { x: x, y: y });
+
+			this.ecs.addEntity(npc);
+		}
+	}, {
 		key: 'spawnPlayer',
 		value: function spawnPlayer() {
 			var x = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
@@ -60036,7 +60060,19 @@ var App = function () {
 
 module.exports = App;
 
-},{"./component/camera":320,"./component/collision":321,"./component/debug":322,"./component/input":323,"./component/position":324,"./component/sprite":325,"./component/stats":326,"./component/velocity":327,"./system/collisiondetection":330,"./system/control":331,"./system/gravity":332,"./system/physics":333,"./system/rendering":334,"./system/worldgeneration":335,"./util/math":337,"./util/noise":338,"pixi.js":230,"yagl-ecs":313}],320:[function(require,module,exports){
+},{"./component/behavior":320,"./component/camera":321,"./component/collision":322,"./component/debug":323,"./component/input":324,"./component/position":325,"./component/sprite":326,"./component/stats":327,"./component/velocity":328,"./system/ai":331,"./system/collisiondetection":332,"./system/control":333,"./system/gravity":334,"./system/physics":335,"./system/rendering":336,"./system/worldgeneration":337,"./util/math":339,"./util/noise":340,"pixi.js":230,"yagl-ecs":313}],320:[function(require,module,exports){
+"use strict";
+
+var Behavior = {
+	name: 'behavior',
+	defaults: {
+		state: 'idle'
+	}
+};
+
+module.exports = Behavior;
+
+},{}],321:[function(require,module,exports){
 "use strict";
 
 var Camera = {
@@ -60046,7 +60082,7 @@ var Camera = {
 
 module.exports = Camera;
 
-},{}],321:[function(require,module,exports){
+},{}],322:[function(require,module,exports){
 "use strict";
 
 var Collision = {
@@ -60058,7 +60094,7 @@ var Collision = {
 
 module.exports = Collision;
 
-},{}],322:[function(require,module,exports){
+},{}],323:[function(require,module,exports){
 "use strict";
 
 var Debug = {
@@ -60068,7 +60104,7 @@ var Debug = {
 
 module.exports = Debug;
 
-},{}],323:[function(require,module,exports){
+},{}],324:[function(require,module,exports){
 "use strict";
 
 var Input = {
@@ -60083,7 +60119,7 @@ var Input = {
 
 module.exports = Input;
 
-},{}],324:[function(require,module,exports){
+},{}],325:[function(require,module,exports){
 "use strict";
 
 var Position = {
@@ -60096,7 +60132,7 @@ var Position = {
 
 module.exports = Position;
 
-},{}],325:[function(require,module,exports){
+},{}],326:[function(require,module,exports){
 "use strict";
 
 var Sprite = {
@@ -60109,7 +60145,7 @@ var Sprite = {
 
 module.exports = Sprite;
 
-},{}],326:[function(require,module,exports){
+},{}],327:[function(require,module,exports){
 "use strict";
 
 var Stats = {
@@ -60121,7 +60157,7 @@ var Stats = {
 
 module.exports = Stats;
 
-},{}],327:[function(require,module,exports){
+},{}],328:[function(require,module,exports){
 "use strict";
 
 var Velocity = {
@@ -60134,7 +60170,7 @@ var Velocity = {
 
 module.exports = Velocity;
 
-},{}],328:[function(require,module,exports){
+},{}],329:[function(require,module,exports){
 module.exports={
   "water": {
     "color": "0x0c78bb"
@@ -60182,7 +60218,7 @@ module.exports={
     "color": "0x00bf0d"
   }
 }
-},{}],329:[function(require,module,exports){
+},{}],330:[function(require,module,exports){
 "use strict";
 
 var input = {
@@ -60217,7 +60253,53 @@ window.addEventListener('keydown', function (event) {
 
 module.exports = input;
 
-},{}],330:[function(require,module,exports){
+},{}],331:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ECS = require('yagl-ecs');
+
+var AI = function (_ECS$System) {
+	_inherits(AI, _ECS$System);
+
+	function AI() {
+		_classCallCheck(this, AI);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(AI).apply(this, arguments));
+	}
+
+	_createClass(AI, [{
+		key: "test",
+		value: function test(entity) {
+			return entity.components.behavior;
+		}
+	}, {
+		key: "enter",
+		value: function enter(entity) {
+			if (entity.components.velocity) {
+				entity.components.velocity.x = .8;
+			}
+		}
+	}, {
+		key: "update",
+		value: function update(entity) {
+			// @TODO
+		}
+	}]);
+
+	return AI;
+}(ECS.System);
+
+module.exports = AI;
+
+},{"yagl-ecs":313}],332:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60233,10 +60315,13 @@ var ECS = require('yagl-ecs');
 var CollisionDetection = function (_ECS$System) {
 	_inherits(CollisionDetection, _ECS$System);
 
-	function CollisionDetection() {
+	function CollisionDetection(world) {
 		_classCallCheck(this, CollisionDetection);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(CollisionDetection).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CollisionDetection).call(this));
+
+		_this.world = world;
+		return _this;
 	}
 
 	_createClass(CollisionDetection, [{
@@ -60250,9 +60335,12 @@ var CollisionDetection = function (_ECS$System) {
 			var position = entity.components.position;
 
 
-			if (position.y >= 300) {
+			var elevation = 0;
+			//let elevation = this.world.getElevationAt( position.x );
 
-				position.y = 300;
+			if (position.y >= elevation) {
+
+				position.y = elevation;
 
 				if (entity.components.velocity) {
 					entity.components.velocity.y = 0;
@@ -60278,7 +60366,7 @@ var CollisionDetection = function (_ECS$System) {
 
 module.exports = CollisionDetection;
 
-},{"yagl-ecs":313}],331:[function(require,module,exports){
+},{"yagl-ecs":313}],333:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60366,7 +60454,7 @@ var Control = function (_ECS$System) {
 
 module.exports = Control;
 
-},{"../input":329,"yagl-ecs":313}],332:[function(require,module,exports){
+},{"../input":330,"yagl-ecs":313}],334:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60411,7 +60499,7 @@ var Gravity = function (_ECS$System) {
 
 module.exports = Gravity;
 
-},{"yagl-ecs":313}],333:[function(require,module,exports){
+},{"yagl-ecs":313}],335:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60465,7 +60553,7 @@ var Physics = function (_ECS$System) {
 
 module.exports = Physics;
 
-},{"tnt-vec2":308,"yagl-ecs":313}],334:[function(require,module,exports){
+},{"tnt-vec2":308,"yagl-ecs":313}],336:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60535,7 +60623,7 @@ var Rendering = function (_ECS$System) {
 
 			if (entity.components.debug) {
 
-				entity.debugText.text = 'x: ' + position.x + ', y: ' + position.y;
+				entity.debugText.text = 'x: ' + parseInt(position.x) + ', y: ' + parseInt(position.y);
 
 				entity.debugText.position.x = position.x;
 				entity.debugText.position.y = position.y;
@@ -60551,7 +60639,7 @@ var Rendering = function (_ECS$System) {
 
 module.exports = Rendering;
 
-},{"pixi.js":230,"yagl-ecs":313}],335:[function(require,module,exports){
+},{"pixi.js":230,"yagl-ecs":313}],337:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60603,7 +60691,7 @@ var WorldGeneration = function (_ECS$System) {
 
 module.exports = WorldGeneration;
 
-},{"../input":329,"../util/noise":338,"../world/world":340,"yagl-ecs":313}],336:[function(require,module,exports){
+},{"../input":330,"../util/noise":340,"../world/world":342,"yagl-ecs":313}],338:[function(require,module,exports){
 "use strict";
 
 var curve = {
@@ -60667,7 +60755,7 @@ var curve = {
 
 module.exports = curve;
 
-},{}],337:[function(require,module,exports){
+},{}],339:[function(require,module,exports){
 "use strict";
 
 var math = {
@@ -60678,7 +60766,7 @@ var math = {
 
 module.exports = math;
 
-},{}],338:[function(require,module,exports){
+},{}],340:[function(require,module,exports){
 'use strict';
 
 var FastSimplexNoise = require('fast-simplex-noise'),
@@ -60841,7 +60929,7 @@ var noise = {
 
 module.exports = noise;
 
-},{"../data/biomes.json":328,"./curve":336,"fast-simplex-noise":89,"seedrandom":279}],339:[function(require,module,exports){
+},{"../data/biomes.json":329,"./curve":338,"fast-simplex-noise":89,"seedrandom":279}],341:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60880,7 +60968,7 @@ var Chunk = function () {
 
 module.exports = Chunk;
 
-},{"../data/biomes.json":328,"../util/noise":338,"pixi.js":230}],340:[function(require,module,exports){
+},{"../data/biomes.json":329,"../util/noise":340,"pixi.js":230}],342:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60928,12 +61016,19 @@ var World = function () {
 			this.stage.addChild(this.devLayer);
 			this.stage.addChild(this.graphics);
 
-			this.chunks = [];
+			// this.chunks = [];
+			//
+			// for( let i = 0; i <= this.chunkCount; i++ )
+			// {
+			// 	// @TODO how far will we generate the terrain?
+			// 	this.chunks.push( new Chunk( this, i ) );
+			// }
+		}
+	}, {
+		key: 'getElevationAt',
+		value: function getElevationAt(x) {
 
-			for (var i = 0; i <= this.chunkCount; i++) {
-				// @TODO how far will we generate the terrain?
-				this.chunks.push(new Chunk(this, i));
-			}
+			return this.stageHeight - noise.getElevation(x, 1) * this.altitude;
 		}
 	}, {
 		key: 'render',
@@ -60945,6 +61040,7 @@ var World = function () {
 			};
 
 			var offset = Math.floor(pos.x / this.chunkWidth);
+			//let offset = pos.x;
 
 			this.graphics.clear();
 			this.terrain.clear();
@@ -60979,7 +61075,7 @@ var World = function () {
 
 			for (var _i2 = 0; _i2 <= this.chunkCount; _i2++) {
 				var _x3 = _i2 * this.chunkWidth;
-				var _y3 = this.stageHeight - noise.getElevation(_i2 + offset, 1) * this.altitude;
+				var _y3 = this.getElevationAt(_i2 + offset);
 
 				this.points.push(_x3);
 				this.points.push(_y3);
@@ -61002,6 +61098,8 @@ var World = function () {
 
 			this.water.position.x = offset * this.chunkWidth - this.stageWidth / 2;
 			this.terrain.position.x = offset * this.chunkWidth - this.stageWidth / 2;
+			// this.water.position.x = ( offset - ( this.stageWidth / 2 ) );
+			// this.terrain.position.x = ( offset - ( this.stageWidth / 2 ) );
 		}
 	}]);
 
@@ -61010,4 +61108,4 @@ var World = function () {
 
 module.exports = World;
 
-},{"../util/noise":338,"./chunk":339,"pixi.js":230}]},{},[1]);
+},{"../util/noise":340,"./chunk":341,"pixi.js":230}]},{},[1]);
