@@ -56133,7 +56133,7 @@ Sprite = require('./component/sprite'),
     Camera = require('./component/camera'),
     Input = require('./component/input'),
     Stats = require('./component/stats'),
-    Behavior = require('./component/behavior'),
+    WalkingBehavior = require('./component/walkingbehavior'),
     Debug = require('./component/debug'),
 
 
@@ -56166,16 +56166,16 @@ var App = function () {
 		this.ecs.addSystem(worldGeneration);
 		this.ecs.addSystem(new CollisionDetection(worldGeneration.world));
 		this.ecs.addSystem(new Gravity());
-		this.ecs.addSystem(new Physics());
+		this.ecs.addSystem(new Physics(worldGeneration.world));
 		this.ecs.addSystem(new AI());
 		this.ecs.addSystem(new Control());
 		this.ecs.addSystem(new Movement());
 		this.ecs.addSystem(new Rendering(this.stage));
 
-		this.spawnPlayer(0, 0);
+		this.spawnPlayer(0, -1000);
 
-		for (var i = 0; i < 50; i++) {
-			this.spawnNpc(math.randBetween(0, 10000), -20);
+		for (var i = 0; i < 5000; i++) {
+			this.spawnNpc(math.randBetween(0, 100000), math.randBetween(0, -1000));
 		}
 
 		this.start();
@@ -56188,8 +56188,8 @@ var App = function () {
 			var y = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 
 
-			var npc = new ECS.Entity('npc', [Sprite, Position, Body, Collision, Stats, Behavior]);
-
+			var npc = new ECS.Entity('npc', [Sprite, Position, Body, Collision, Stats, WalkingBehavior]);
+			npc.components.body.acceleration.x = 2;
 			npc.updateComponent('position', { x: x, y: y });
 
 			this.ecs.addEntity(npc);
@@ -56201,7 +56201,7 @@ var App = function () {
 			var y = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 
 
-			var player = new ECS.Entity('player', [Sprite, Position, Body, Collision, Stats, Input, Camera, Debug]);
+			var player = new ECS.Entity('player', [Sprite, Position, Body, Collision, Stats, Input, Camera]);
 
 			player.updateComponent('position', { x: x, y: y });
 
@@ -56227,19 +56227,7 @@ var App = function () {
 
 module.exports = App;
 
-},{"./component/behavior":355,"./component/body":356,"./component/camera":357,"./component/collision":358,"./component/debug":359,"./component/input":360,"./component/position":361,"./component/sprite":362,"./component/stats":363,"./core/messagemanager":364,"./system/ai":367,"./system/collisiondetection":368,"./system/control":369,"./system/gravity":370,"./system/movement":371,"./system/physics":372,"./system/rendering":373,"./system/worldgeneration":374,"./util/math":376,"pixi.js":254,"yagl-ecs":348}],355:[function(require,module,exports){
-"use strict";
-
-var Behavior = {
-	name: 'behavior',
-	defaults: {
-		state: 'idle'
-	}
-};
-
-module.exports = Behavior;
-
-},{}],356:[function(require,module,exports){
+},{"./component/body":355,"./component/camera":356,"./component/collision":357,"./component/debug":358,"./component/input":359,"./component/position":360,"./component/sprite":361,"./component/stats":362,"./component/walkingbehavior":363,"./core/messagemanager":364,"./system/ai":367,"./system/collisiondetection":368,"./system/control":369,"./system/gravity":370,"./system/movement":371,"./system/physics":372,"./system/rendering":373,"./system/worldgeneration":374,"./util/math":376,"pixi.js":254,"yagl-ecs":348}],355:[function(require,module,exports){
 "use strict";
 
 var Vector2 = require('tnt-vec2');
@@ -56264,7 +56252,7 @@ var Body = {
 
 module.exports = Body;
 
-},{"tnt-vec2":343}],357:[function(require,module,exports){
+},{"tnt-vec2":343}],356:[function(require,module,exports){
 "use strict";
 
 var Camera = {
@@ -56274,7 +56262,7 @@ var Camera = {
 
 module.exports = Camera;
 
-},{}],358:[function(require,module,exports){
+},{}],357:[function(require,module,exports){
 "use strict";
 
 var Collision = {
@@ -56286,7 +56274,7 @@ var Collision = {
 
 module.exports = Collision;
 
-},{}],359:[function(require,module,exports){
+},{}],358:[function(require,module,exports){
 "use strict";
 
 var Debug = {
@@ -56296,7 +56284,7 @@ var Debug = {
 
 module.exports = Debug;
 
-},{}],360:[function(require,module,exports){
+},{}],359:[function(require,module,exports){
 "use strict";
 
 var Input = {
@@ -56311,7 +56299,7 @@ var Input = {
 
 module.exports = Input;
 
-},{}],361:[function(require,module,exports){
+},{}],360:[function(require,module,exports){
 "use strict";
 
 var Position = {
@@ -56324,7 +56312,7 @@ var Position = {
 
 module.exports = Position;
 
-},{}],362:[function(require,module,exports){
+},{}],361:[function(require,module,exports){
 "use strict";
 
 var Sprite = {
@@ -56337,7 +56325,7 @@ var Sprite = {
 
 module.exports = Sprite;
 
-},{}],363:[function(require,module,exports){
+},{}],362:[function(require,module,exports){
 "use strict";
 
 var Stats = {
@@ -56348,6 +56336,18 @@ var Stats = {
 };
 
 module.exports = Stats;
+
+},{}],363:[function(require,module,exports){
+"use strict";
+
+var WalkingBehavior = {
+	name: 'walkingbehavior',
+	defaults: {
+		state: 'idle'
+	}
+};
+
+module.exports = WalkingBehavior;
 
 },{}],364:[function(require,module,exports){
 "use strict";
@@ -56520,21 +56520,18 @@ var AI = function (_ECS$System) {
 	_createClass(AI, [{
 		key: 'test',
 		value: function test(entity) {
-			return entity.components.behavior;
+			return entity.components.walkingbehavior;
 		}
 	}, {
 		key: 'update',
 		value: function update(entity) {
-			var behavior = entity.components.behavior;
+			var walkingbehavior = entity.components.walkingbehavior;
 
 
-			if (behavior.state == 'idle') {
-				if (entity.components.sprite) {
-					entity.sprite.alpha = .5;
-				}
-			} else {
-				if (entity.components.sprite) {
-					entity.sprite.alpha = 1;
+			if (walkingbehavior.state == 'idle') {
+
+				if (entity.components.body) {
+					entity.components.body.velocity.x = .3;
 				}
 			}
 		}
@@ -56542,6 +56539,8 @@ var AI = function (_ECS$System) {
 
 	return AI;
 }(ECS.System);
+//
+
 
 module.exports = AI;
 
@@ -56581,7 +56580,7 @@ var CollisionDetection = function (_ECS$System) {
 		value: function update(entity) {
 			var position = entity.components.position;
 
-			var elevation = 0;
+			var elevation = this.world.getWorldElevation(position.x);
 
 			if (position.y >= elevation) {
 
@@ -56666,7 +56665,7 @@ var Control = function (_ECS$System) {
 			}
 
 			if (input.keyJump && entity.components.collision && entity.components.collision.bottom) {
-				body.velocity = body.velocity.add(new Vector2(0, -5));
+				body.velocity = body.velocity.add(new Vector2(0, -7));
 			}
 		}
 	}, {
@@ -56712,7 +56711,7 @@ var Gravity = function (_ECS$System) {
 		value: function update(entity) {
 			var body = entity.components.body;
 
-			body.velocity = body.velocity.add(new Vector2(0, .2));
+			body.velocity = body.velocity.add(new Vector2(0, .3));
 		}
 	}, {
 		key: 'exit',
@@ -56760,8 +56759,9 @@ var Movement = function (_ECS$System) {
 			var body = _entity$components.body;
 
 
-			var positionVec2 = new Vector2(position.x, position.y),
-			    newPositionVec2 = positionVec2.add(body.velocity);
+			var positionVec2 = new Vector2(position.x, position.y);
+			body.velocity = body.velocity.add(body.acceleration);
+			var newPositionVec2 = positionVec2.add(body.velocity);
 
 			position.x = newPositionVec2.x;
 			position.y = newPositionVec2.y;
@@ -56793,10 +56793,13 @@ var ECS = require('yagl-ecs'),
 var Physics = function (_ECS$System) {
 	_inherits(Physics, _ECS$System);
 
-	function Physics() {
+	function Physics(world) {
 		_classCallCheck(this, Physics);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Physics).call(this));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Physics).call(this));
+
+		_this.world = world;
+		return _this;
 	}
 
 	_createClass(Physics, [{
@@ -56813,7 +56816,7 @@ var Physics = function (_ECS$System) {
 
 
 			if (entity.components.collision && entity.components.collision.bottom) {
-				position.y = 0;
+				position.y = this.world.getWorldElevation(position.x);
 				body.velocity.y = 0;
 			}
 		}
@@ -57237,6 +57240,12 @@ var World = function () {
 			this.points = [];
 
 			this.stage.addChild(this.terrain);
+		}
+	}, {
+		key: 'getWorldElevation',
+		value: function getWorldElevation(x) {
+			x = x / 80;
+			return this.getElevationAt(x);
 		}
 	}, {
 		key: 'getElevationAt',

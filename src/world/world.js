@@ -31,6 +31,11 @@ class World {
 		this.stage.addChild( this.terrain );
 	}
 
+	getWorldElevation( x ) {
+		x = x / 80;
+		return this.getElevationAt(x);
+	}
+
 	getElevationAt( x ) {
 		return -noise.getElevation( x, 1 ) * this.altitude;
 	}

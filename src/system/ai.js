@@ -5,23 +5,20 @@ const ECS = require('yagl-ecs');
 class AI extends ECS.System {
 
 	test(entity) {
-		return entity.components.behavior;
+		return entity.components.walkingbehavior;
 	}
 
 	update(entity) {
 
-		let {behavior} = entity.components;
+		let {walkingbehavior} = entity.components;
 
-		if( behavior.state == 'idle' ) {
-			if( entity.components.sprite ) {
-				entity.sprite.alpha = .5;
-			}
-		} else {
-			if( entity.components.sprite ) {
-				entity.sprite.alpha = 1;
+		if( walkingbehavior.state == 'idle' ) {
+
+			if( entity.components.body ) {
+				entity.components.body.velocity.x = .3;
 			}
 		}
 	}
 }
-
+//
 module.exports = AI;

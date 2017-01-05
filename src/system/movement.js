@@ -14,9 +14,9 @@ class Movement extends ECS.System {
 
 		let {position, body} = entity.components;
 
-		let positionVec2 = new Vector2(position.x, position.y),
-			newPositionVec2 = positionVec2.add(body.velocity)
-		;
+		let positionVec2 = new Vector2(position.x, position.y);
+		body.velocity = body.velocity.add(body.acceleration);
+		let newPositionVec2 = positionVec2.add(body.velocity);
 
 		position.x = newPositionVec2.x;
 		position.y = newPositionVec2.y;

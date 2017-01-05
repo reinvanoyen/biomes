@@ -6,9 +6,10 @@ const ECS = require('yagl-ecs'),
 
 class Physics extends ECS.System {
 
-	constructor() {
+	constructor(world) {
 
 		super();
+		this.world = world;
 	}
 
 	test(entity) {
@@ -20,7 +21,7 @@ class Physics extends ECS.System {
 		let {position, body} = entity.components;
 
 		if( entity.components.collision && entity.components.collision.bottom ) {
-			position.y = 0;
+			position.y = this.world.getWorldElevation(position.x);
 			body.velocity.y = 0;
 		}
 	}

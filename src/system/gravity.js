@@ -13,7 +13,7 @@ class Gravity extends ECS.System {
 	update(entity) {
 
 		let {body} = entity.components;
-		body.velocity = body.velocity.add(new Vector2(0, .2));
+		body.velocity = body.velocity.add(new Vector2(0, .3));
 	}
 
 	exit(entity) {}

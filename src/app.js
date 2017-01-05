@@ -24,7 +24,7 @@ const PIXI = require('pixi.js'),
 	Camera = require('./component/camera'),
 	Input = require('./component/input'),
 	Stats = require('./component/stats'),
-	Behavior = require('./component/behavior'),
+	WalkingBehavior = require('./component/walkingbehavior'),
 	Debug = require('./component/debug'),
 
 	// Util
@@ -57,16 +57,16 @@ class App {
 		this.ecs.addSystem(worldGeneration);
 		this.ecs.addSystem(new CollisionDetection(worldGeneration.world));
 		this.ecs.addSystem(new Gravity());
-		this.ecs.addSystem(new Physics());
+		this.ecs.addSystem(new Physics(worldGeneration.world));
 		this.ecs.addSystem(new AI());
 		this.ecs.addSystem(new Control());
 		this.ecs.addSystem(new Movement());
 		this.ecs.addSystem(new Rendering(this.stage));
 
-		this.spawnPlayer(0, 0);
+		this.spawnPlayer(0, -1000);
 
-		for( let i = 0; i < 50; i++ ) {
-			this.spawnNpc(math.randBetween(0, 10000), -20);
+		for( let i = 0; i < 5000; i++ ) {
+			this.spawnNpc(math.randBetween(0, 100000), math.randBetween(0, -1000));
 		}
 
 		this.start();
@@ -80,9 +80,9 @@ class App {
 			Body,
 			Collision,
 			Stats,
-			Behavior
+			WalkingBehavior
 		]);
-
+		npc.components.body.acceleration.x = 2;
 		npc.updateComponent('position', { x: x, y: y });
 
 		this.ecs.addEntity(npc);
@@ -98,8 +98,7 @@ class App {
 			Stats,
 
 			Input,
-			Camera,
-			Debug
+			Camera
 		]);
 
 		player.updateComponent('position', { x: x, y: y });

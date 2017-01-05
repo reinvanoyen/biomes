@@ -33,7 +33,7 @@ class Control extends ECS.System {
 			entity.components.collision &&
 			entity.components.collision.bottom
 		) {
-			body.velocity = body.velocity.add(new Vector2( 0, -5 ));
+			body.velocity = body.velocity.add(new Vector2( 0, -7 ));
 		}
 	}
 
