@@ -1,62 +1,40 @@
 "use strict";
 
 const ECS = require('yagl-ecs'),
+	Vector2 = require('tnt-vec2'),
 	keys = require('../input')
 ;
 
 class Control extends ECS.System {
 
-	enter(entity) {
-		entity.acceleration = .1;
-		entity.maxVelocity = 4;
-	}
-
 	test(entity) {
-		return entity.components.input && entity.components.position && entity.components.velocity;
+		return entity.components.input && entity.components.position && entity.components.body;
 	}
 
 	update(entity) {
 
-		let {velocity, input} = entity.components;
+		let {input, body} = entity.components;
 
-		if( keys.isDown( keys.RIGHT ) ) {
+		input.keyJump = keys.isDown(keys.UP_ARROW);
+		input.keyForward = keys.isDown(keys.RIGHT_ARROW);
+		input.keyBackward = keys.isDown(keys.LEFT_ARROW);
+		input.keyDown = keys.isDown(keys.DOWN_ARROW);
 
-			input.keyRight = true;
-			velocity.x = Math.max( velocity.x + entity.acceleration, entity.maxVelocity );
-			console.log( 'right' );
-
-		} else {
-
-			input.keyRight = false;
+		if( input.keyForward ) {
+			body.velocity = body.velocity.add(new Vector2( 1, 0 ));
 		}
 
-		if( keys.isDown( keys.LEFT ) ) {
-
-			input.keyLeft = true;
-			velocity.x = Math.max( velocity.x - entity.acceleration, -entity.maxVelocity );
-
-		} else {
-
-			input.keyLeft = false;
+		if( input.keyBackward ) {
+			body.velocity = body.velocity.add(new Vector2( -1, 0 ));
 		}
 
-		if( entity.components.collision ) {
-
-			if( entity.components.collision.bottom && keys.isDown( keys.UP ) ) {
-
-				if( ! entity.components.input.keyJump ) {
-
-					velocity.y = velocity.y - 10;
-					input.keyJump = true;
-				}
-
-			} else {
-
-				input.keyJump = false;
-			}
+		if(
+			input.keyJump &&
+			entity.components.collision &&
+			entity.components.collision.bottom
+		) {
+			body.velocity = body.velocity.add(new Vector2( 0, -5 ));
 		}
-
-		input.keyDown = keys.isDown( keys.DOWN );
 	}
 
 	exit(entity) {}

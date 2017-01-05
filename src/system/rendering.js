@@ -44,8 +44,6 @@ class Rendering extends ECS.System {
 
 		if( entity.components.camera ) {
 
-			entity.sprite.alpha = .5;
-
 			this.stage.position.x = -position.x + ( 800 / 2 );
 			this.stage.position.y = -position.y + ( 600 / 2 );
 		}

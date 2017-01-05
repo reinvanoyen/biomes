@@ -8,14 +8,19 @@ class AI extends ECS.System {
 		return entity.components.behavior;
 	}
 
-	enter(entity) {
-		if(entity.components.velocity) {
-			entity.components.velocity.x = .8;
-		}
-	}
-
 	update(entity) {
-		// @TODO
+
+		let {behavior} = entity.components;
+
+		if( behavior.state == 'idle' ) {
+			if( entity.components.sprite ) {
+				entity.sprite.alpha = .5;
+			}
+		} else {
+			if( entity.components.sprite ) {
+				entity.sprite.alpha = 1;
+			}
+		}
 	}
 }
 

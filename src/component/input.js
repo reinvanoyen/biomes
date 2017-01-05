@@ -4,8 +4,8 @@ const Input = {
 	name: 'input',
 	defaults: {
 		keyJump: false,
-		keyLeft: false,
-		keyRight: false,
+		keyForward: false,
+		keyBackward: false,
 		keyDown: false
 	}
 };

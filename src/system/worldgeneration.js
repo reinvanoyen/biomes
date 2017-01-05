@@ -1,7 +1,6 @@
 "use strict";
 
 const ECS = require('yagl-ecs'),
-	noise = require('../util/noise'),
 	input = require('../input'),
 	World = require('../world/world')
 ;
@@ -9,9 +8,7 @@ const ECS = require('yagl-ecs'),
 class WorldGeneration extends ECS.System {
 
 	constructor(stage, seed) {
-
 		super();
-
 		this.stage = stage;
 		this.world = new World(seed, this.stage, 10, 3000);
 	}

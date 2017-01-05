@@ -1,18 +1,19 @@
 "use strict";
 
-const ECS = require('yagl-ecs');
+const ECS = require('yagl-ecs'),
+	Vector2 = require('tnt-vec2')
+;
 
 class Gravity extends ECS.System {
 
 	test(entity) {
-		return entity.components.position && entity.components.velocity;
+		return entity.components.position && entity.components.body;
 	}
 
 	update(entity) {
 
-		let {velocity} = entity.components;
-
-		velocity.y += .2;
+		let {body} = entity.components;
+		body.velocity = body.velocity.add(new Vector2(0, .2));
 	}
 
 	exit(entity) {}

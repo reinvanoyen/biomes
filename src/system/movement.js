@@ -4,12 +4,7 @@ const ECS = require('yagl-ecs'),
 	Vector2 = require('tnt-vec2')
 ;
 
-class Physics extends ECS.System {
-
-	constructor() {
-
-		super();
-	}
+class Movement extends ECS.System {
 
 	test(entity) {
 		return entity.components.position && entity.components.body;
@@ -19,13 +14,15 @@ class Physics extends ECS.System {
 
 		let {position, body} = entity.components;
 
-		if( entity.components.collision && entity.components.collision.bottom ) {
-			position.y = 0;
-			body.velocity.y = 0;
-		}
+		let positionVec2 = new Vector2(position.x, position.y),
+			newPositionVec2 = positionVec2.add(body.velocity)
+		;
+
+		position.x = newPositionVec2.x;
+		position.y = newPositionVec2.y;
 	}
 
 	exit(entity) {}
 }
 
-module.exports = Physics;
+module.exports = Movement;

@@ -3,19 +3,23 @@
 const PIXI = require('pixi.js'),
 	ECS = require('yagl-ecs'),
 
+	// Core
+	MessageManager = require('./core/messagemanager'),
+
 	// Systems
 	Rendering = require('./system/rendering'),
 	WorldGeneration = require('./system/worldgeneration'),
 	Gravity = require('./system/gravity'),
 	CollisionDetection = require('./system/collisiondetection'),
 	Physics = require('./system/physics'),
+	Movement = require('./system/movement'),
 	Control = require('./system/control'),
 	AI = require('./system/ai'),
 
 	// Components
 	Sprite = require('./component/sprite'),
 	Position = require('./component/position'),
-	Velocity = require('./component/velocity'),
+	Body = require('./component/body'),
 	Collision = require('./component/collision'),
 	Camera = require('./component/camera'),
 	Input = require('./component/input'),
@@ -24,8 +28,7 @@ const PIXI = require('pixi.js'),
 	Debug = require('./component/debug'),
 
 	// Util
-	math = require('./util/math'),
-	noise = require('./util/noise')
+	math = require('./util/math')
 ;
 
 class App {
@@ -49,20 +52,21 @@ class App {
 		// install ECS
 		this.ecs = new ECS();
 
-		let worldGeneration = new WorldGeneration(this.stage, '5ds45ds4');
+		let worldGeneration = new WorldGeneration(this.stage, 'mldjksjkl');
 
-		this.ecs.addSystem(new Control());
-		this.ecs.addSystem(new Rendering(this.stage));
 		this.ecs.addSystem(worldGeneration);
-		this.ecs.addSystem(new AI());
+		this.ecs.addSystem(new CollisionDetection(worldGeneration.world));
 		this.ecs.addSystem(new Gravity());
 		this.ecs.addSystem(new Physics());
-		this.ecs.addSystem(new CollisionDetection(worldGeneration.world));
+		this.ecs.addSystem(new AI());
+		this.ecs.addSystem(new Control());
+		this.ecs.addSystem(new Movement());
+		this.ecs.addSystem(new Rendering(this.stage));
 
-		this.spawnPlayer(math.randBetween(0, 1000000), -20);
+		this.spawnPlayer(0, 0);
 
-		for( let i = 0; i < 2000; i++ ) {
-			this.spawnNpc(math.randBetween(0, 1000000), -20);
+		for( let i = 0; i < 50; i++ ) {
+			this.spawnNpc(math.randBetween(0, 10000), -20);
 		}
 
 		this.start();
@@ -73,7 +77,7 @@ class App {
 		let npc = new ECS.Entity('npc', [
 			Sprite,
 			Position,
-			Velocity,
+			Body,
 			Collision,
 			Stats,
 			Behavior
@@ -89,10 +93,11 @@ class App {
 		let player = new ECS.Entity('player', [
 			Sprite,
 			Position,
-			Velocity,
+			Body,
 			Collision,
-			Input,
 			Stats,
+
+			Input,
 			Camera,
 			Debug
 		]);
@@ -107,7 +112,7 @@ class App {
 		this.ticker.start();
 
 		this.ticker.add(time => {
-
+			MessageManager.process_queue();
 			this.ecs.update();
 			this.renderer.render(this.stage);
 		} );

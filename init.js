@@ -1,5 +1,5 @@
 "use strict";
 
-var App = require('./src/app')
+const App = require('./src/app');
 
-var app = new App();
+let app = new App();

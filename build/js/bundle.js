@@ -5,7 +5,7 @@ var App = require('./src/app');
 
 var app = new App();
 
-},{"./src/app":319}],2:[function(require,module,exports){
+},{"./src/app":354}],2:[function(require,module,exports){
 var asn1 = exports;
 
 asn1.bignum = require('bn.js');
@@ -79,7 +79,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":2,"inherits":98,"vm":312}],4:[function(require,module,exports){
+},{"../asn1":2,"inherits":96,"vm":347}],4:[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -197,7 +197,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":5,"buffer":48,"inherits":98}],5:[function(require,module,exports){
+},{"../base":5,"buffer":47,"inherits":96}],5:[function(require,module,exports){
 var base = exports;
 
 base.Reporter = require('./reporter').Reporter;
@@ -836,7 +836,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
   return /^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str);
 };
 
-},{"../base":5,"minimalistic-assert":102}],7:[function(require,module,exports){
+},{"../base":5,"minimalistic-assert":126}],7:[function(require,module,exports){
 var inherits = require('inherits');
 
 function Reporter(options) {
@@ -959,7 +959,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":98}],8:[function(require,module,exports){
+},{"inherits":96}],8:[function(require,module,exports){
 var constants = require('../constants');
 
 exports.tagClass = {
@@ -1348,7 +1348,7 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":2,"inherits":98}],11:[function(require,module,exports){
+},{"../../asn1":2,"inherits":96}],11:[function(require,module,exports){
 var decoders = exports;
 
 decoders.der = require('./der');
@@ -1405,7 +1405,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"./der":10,"buffer":48,"inherits":98}],13:[function(require,module,exports){
+},{"./der":10,"buffer":47,"inherits":96}],13:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -1700,7 +1700,7 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":2,"buffer":48,"inherits":98}],14:[function(require,module,exports){
+},{"../../asn1":2,"buffer":47,"inherits":96}],14:[function(require,module,exports){
 var encoders = exports;
 
 encoders.der = require('./der');
@@ -1729,7 +1729,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"./der":13,"inherits":98}],16:[function(require,module,exports){
+},{"./der":13,"inherits":96}],16:[function(require,module,exports){
 (function (process,global){
 /*!
  * async
@@ -2998,7 +2998,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
 }());
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":259}],17:[function(require,module,exports){
+},{"_process":283}],17:[function(require,module,exports){
 'use strict'
 
 exports.toByteArray = toByteArray
@@ -6986,7 +6986,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48}],23:[function(require,module,exports){
+},{"buffer":47}],23:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -7087,7 +7087,7 @@ function xorTest (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":22,"./ghash":27,"buffer":48,"buffer-xor":47,"cipher-base":50,"inherits":98}],24:[function(require,module,exports){
+},{"./aes":22,"./ghash":27,"buffer":47,"buffer-xor":46,"cipher-base":48,"inherits":96}],24:[function(require,module,exports){
 var ciphers = require('./encrypter')
 exports.createCipher = exports.Cipher = ciphers.createCipher
 exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv
@@ -7241,7 +7241,7 @@ exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":22,"./authCipher":23,"./modes":28,"./modes/cbc":29,"./modes/cfb":30,"./modes/cfb1":31,"./modes/cfb8":32,"./modes/ctr":33,"./modes/ecb":34,"./modes/ofb":35,"./streamCipher":36,"buffer":48,"cipher-base":50,"evp_bytestokey":88,"inherits":98}],26:[function(require,module,exports){
+},{"./aes":22,"./authCipher":23,"./modes":28,"./modes/cbc":29,"./modes/cfb":30,"./modes/cfb1":31,"./modes/cfb8":32,"./modes/ctr":33,"./modes/ecb":34,"./modes/ofb":35,"./streamCipher":36,"buffer":47,"cipher-base":48,"evp_bytestokey":86,"inherits":96}],26:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -7367,7 +7367,7 @@ exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":22,"./authCipher":23,"./modes":28,"./modes/cbc":29,"./modes/cfb":30,"./modes/cfb1":31,"./modes/cfb8":32,"./modes/ctr":33,"./modes/ecb":34,"./modes/ofb":35,"./streamCipher":36,"buffer":48,"cipher-base":50,"evp_bytestokey":88,"inherits":98}],27:[function(require,module,exports){
+},{"./aes":22,"./authCipher":23,"./modes":28,"./modes/cbc":29,"./modes/cfb":30,"./modes/cfb1":31,"./modes/cfb8":32,"./modes/ctr":33,"./modes/ecb":34,"./modes/ofb":35,"./streamCipher":36,"buffer":47,"cipher-base":48,"evp_bytestokey":86,"inherits":96}],27:[function(require,module,exports){
 (function (Buffer){
 var zeros = new Buffer(16)
 zeros.fill(0)
@@ -7469,7 +7469,7 @@ function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48}],28:[function(require,module,exports){
+},{"buffer":47}],28:[function(require,module,exports){
 exports['aes-128-ecb'] = {
   cipher: 'AES',
   key: 128,
@@ -7661,7 +7661,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":47}],30:[function(require,module,exports){
+},{"buffer-xor":46}],30:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -7696,7 +7696,7 @@ function encryptStart (self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48,"buffer-xor":47}],31:[function(require,module,exports){
+},{"buffer":47,"buffer-xor":46}],31:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -7734,7 +7734,7 @@ function shiftIn (buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48}],32:[function(require,module,exports){
+},{"buffer":47}],32:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)
@@ -7753,7 +7753,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48}],33:[function(require,module,exports){
+},{"buffer":47}],33:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -7788,7 +7788,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48,"buffer-xor":47}],34:[function(require,module,exports){
+},{"buffer":47,"buffer-xor":46}],34:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -7816,7 +7816,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48,"buffer-xor":47}],36:[function(require,module,exports){
+},{"buffer":47,"buffer-xor":46}],36:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -7845,7 +7845,7 @@ StreamCipher.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":22,"buffer":48,"cipher-base":50,"inherits":98}],37:[function(require,module,exports){
+},{"./aes":22,"buffer":47,"cipher-base":48,"inherits":96}],37:[function(require,module,exports){
 var ebtk = require('evp_bytestokey')
 var aes = require('browserify-aes/browser')
 var DES = require('browserify-des')
@@ -7920,7 +7920,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"browserify-aes/browser":24,"browserify-aes/modes":28,"browserify-des":38,"browserify-des/modes":39,"evp_bytestokey":88}],38:[function(require,module,exports){
+},{"browserify-aes/browser":24,"browserify-aes/modes":28,"browserify-des":38,"browserify-des/modes":39,"evp_bytestokey":86}],38:[function(require,module,exports){
 (function (Buffer){
 var CipherBase = require('cipher-base')
 var des = require('des.js')
@@ -7967,7 +7967,7 @@ DES.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48,"cipher-base":50,"des.js":58,"inherits":98}],39:[function(require,module,exports){
+},{"buffer":47,"cipher-base":48,"des.js":56,"inherits":96}],39:[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -8037,7 +8037,7 @@ function getr(priv) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":19,"buffer":48,"randombytes":270}],41:[function(require,module,exports){
+},{"bn.js":19,"buffer":47,"randombytes":294}],41:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 exports['RSA-SHA224'] = exports.sha224WithRSAEncryption = {
@@ -8113,7 +8113,7 @@ exports['RSA-MD5'] = exports.md5WithRSAEncryption = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48}],42:[function(require,module,exports){
+},{"buffer":47}],42:[function(require,module,exports){
 (function (Buffer){
 var _algos = require('./algos')
 var createHash = require('create-hash')
@@ -8220,7 +8220,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algos":41,"./sign":44,"./verify":45,"buffer":48,"create-hash":53,"inherits":98,"stream":295}],43:[function(require,module,exports){
+},{"./algos":41,"./sign":44,"./verify":45,"buffer":47,"create-hash":51,"inherits":96,"stream":341}],43:[function(require,module,exports){
 'use strict'
 exports['1.3.132.0.10'] = 'secp256k1'
 
@@ -8423,7 +8423,7 @@ module.exports.getKey = getKey
 module.exports.makeKey = makeKey
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":43,"bn.js":19,"browserify-rsa":40,"buffer":48,"create-hmac":56,"elliptic":69,"parse-asn1":106}],45:[function(require,module,exports){
+},{"./curves":43,"bn.js":19,"browserify-rsa":40,"buffer":47,"create-hmac":54,"elliptic":67,"parse-asn1":131}],45:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var curves = require('./curves')
@@ -8530,119 +8530,7 @@ function checkValue (b, q) {
 module.exports = verify
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":43,"bn.js":19,"buffer":48,"elliptic":69,"parse-asn1":106}],46:[function(require,module,exports){
-(function (global){
-'use strict';
-
-var buffer = require('buffer');
-var Buffer = buffer.Buffer;
-var SlowBuffer = buffer.SlowBuffer;
-var MAX_LEN = buffer.kMaxLength || 2147483647;
-exports.alloc = function alloc(size, fill, encoding) {
-  if (typeof Buffer.alloc === 'function') {
-    return Buffer.alloc(size, fill, encoding);
-  }
-  if (typeof encoding === 'number') {
-    throw new TypeError('encoding must not be number');
-  }
-  if (typeof size !== 'number') {
-    throw new TypeError('size must be a number');
-  }
-  if (size > MAX_LEN) {
-    throw new RangeError('size is too large');
-  }
-  var enc = encoding;
-  var _fill = fill;
-  if (_fill === undefined) {
-    enc = undefined;
-    _fill = 0;
-  }
-  var buf = new Buffer(size);
-  if (typeof _fill === 'string') {
-    var fillBuf = new Buffer(_fill, enc);
-    var flen = fillBuf.length;
-    var i = -1;
-    while (++i < size) {
-      buf[i] = fillBuf[i % flen];
-    }
-  } else {
-    buf.fill(_fill);
-  }
-  return buf;
-}
-exports.allocUnsafe = function allocUnsafe(size) {
-  if (typeof Buffer.allocUnsafe === 'function') {
-    return Buffer.allocUnsafe(size);
-  }
-  if (typeof size !== 'number') {
-    throw new TypeError('size must be a number');
-  }
-  if (size > MAX_LEN) {
-    throw new RangeError('size is too large');
-  }
-  return new Buffer(size);
-}
-exports.from = function from(value, encodingOrOffset, length) {
-  if (typeof Buffer.from === 'function' && (!global.Uint8Array || Uint8Array.from !== Buffer.from)) {
-    return Buffer.from(value, encodingOrOffset, length);
-  }
-  if (typeof value === 'number') {
-    throw new TypeError('"value" argument must not be a number');
-  }
-  if (typeof value === 'string') {
-    return new Buffer(value, encodingOrOffset);
-  }
-  if (typeof ArrayBuffer !== 'undefined' && value instanceof ArrayBuffer) {
-    var offset = encodingOrOffset;
-    if (arguments.length === 1) {
-      return new Buffer(value);
-    }
-    if (typeof offset === 'undefined') {
-      offset = 0;
-    }
-    var len = length;
-    if (typeof len === 'undefined') {
-      len = value.byteLength - offset;
-    }
-    if (offset >= value.byteLength) {
-      throw new RangeError('\'offset\' is out of bounds');
-    }
-    if (len > value.byteLength - offset) {
-      throw new RangeError('\'length\' is out of bounds');
-    }
-    return new Buffer(value.slice(offset, offset + len));
-  }
-  if (Buffer.isBuffer(value)) {
-    var out = new Buffer(value.length);
-    value.copy(out, 0, 0, value.length);
-    return out;
-  }
-  if (value) {
-    if (Array.isArray(value) || (typeof ArrayBuffer !== 'undefined' && value.buffer instanceof ArrayBuffer) || 'length' in value) {
-      return new Buffer(value);
-    }
-    if (value.type === 'Buffer' && Array.isArray(value.data)) {
-      return new Buffer(value.data);
-    }
-  }
-
-  throw new TypeError('First argument must be a string, Buffer, ' + 'ArrayBuffer, Array, or array-like object.');
-}
-exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
-  if (typeof Buffer.allocUnsafeSlow === 'function') {
-    return Buffer.allocUnsafeSlow(size);
-  }
-  if (typeof size !== 'number') {
-    throw new TypeError('size must be a number');
-  }
-  if (size >= MAX_LEN) {
-    throw new RangeError('size is too large');
-  }
-  return new SlowBuffer(size);
-}
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"buffer":48}],47:[function(require,module,exports){
+},{"./curves":43,"bn.js":19,"buffer":47,"elliptic":67,"parse-asn1":131}],46:[function(require,module,exports){
 (function (Buffer){
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)
@@ -8656,7 +8544,7 @@ module.exports = function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48}],48:[function(require,module,exports){
+},{"buffer":47}],47:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -10447,14 +10335,7 @@ function isnan (val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":17,"ieee754":96,"isarray":49}],49:[function(require,module,exports){
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
-},{}],50:[function(require,module,exports){
+},{"base64-js":17,"ieee754":94,"isarray":98}],48:[function(require,module,exports){
 (function (Buffer){
 var Transform = require('stream').Transform
 var inherits = require('inherits')
@@ -10548,7 +10429,7 @@ CipherBase.prototype._toString = function (value, enc, final) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48,"inherits":98,"stream":295,"string_decoder":307}],51:[function(require,module,exports){
+},{"buffer":47,"inherits":96,"stream":341,"string_decoder":342}],49:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -10659,7 +10540,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":99}],52:[function(require,module,exports){
+},{"../../is-buffer/index.js":97}],50:[function(require,module,exports){
 (function (Buffer){
 var elliptic = require('elliptic');
 var BN = require('bn.js');
@@ -10785,7 +10666,7 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":19,"buffer":48,"elliptic":69}],53:[function(require,module,exports){
+},{"bn.js":19,"buffer":47,"elliptic":67}],51:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var inherits = require('inherits')
@@ -10841,7 +10722,7 @@ module.exports = function createHash (alg) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./md5":55,"buffer":48,"cipher-base":50,"inherits":98,"ripemd160":278,"sha.js":288}],54:[function(require,module,exports){
+},{"./md5":53,"buffer":47,"cipher-base":48,"inherits":96,"ripemd160":324,"sha.js":334}],52:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var intSize = 4;
@@ -10878,7 +10759,7 @@ function hash(buf, fn, hashSize, bigEndian) {
 }
 exports.hash = hash;
 }).call(this,require("buffer").Buffer)
-},{"buffer":48}],55:[function(require,module,exports){
+},{"buffer":47}],53:[function(require,module,exports){
 'use strict';
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -11035,7 +10916,7 @@ function bit_rol(num, cnt)
 module.exports = function md5(buf) {
   return helpers.hash(buf, core_md5, 16);
 };
-},{"./helpers":54}],56:[function(require,module,exports){
+},{"./helpers":52}],54:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var createHash = require('create-hash/browser');
@@ -11107,7 +10988,7 @@ module.exports = function createHmac(alg, key) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48,"create-hash/browser":53,"inherits":98,"stream":295}],57:[function(require,module,exports){
+},{"buffer":47,"create-hash/browser":51,"inherits":96,"stream":341}],55:[function(require,module,exports){
 'use strict'
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -11186,7 +11067,7 @@ var publicEncrypt = require('public-encrypt')
   }
 })
 
-},{"browserify-cipher":37,"browserify-sign":42,"browserify-sign/algos":41,"create-ecdh":52,"create-hash":53,"create-hmac":56,"diffie-hellman":64,"pbkdf2":108,"public-encrypt":260,"randombytes":270}],58:[function(require,module,exports){
+},{"browserify-cipher":37,"browserify-sign":42,"browserify-sign/algos":41,"create-ecdh":50,"create-hash":51,"create-hmac":54,"diffie-hellman":62,"pbkdf2":133,"public-encrypt":284,"randombytes":294}],56:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -11195,7 +11076,7 @@ exports.DES = require('./des/des');
 exports.CBC = require('./des/cbc');
 exports.EDE = require('./des/ede');
 
-},{"./des/cbc":59,"./des/cipher":60,"./des/des":61,"./des/ede":62,"./des/utils":63}],59:[function(require,module,exports){
+},{"./des/cbc":57,"./des/cipher":58,"./des/des":59,"./des/ede":60,"./des/utils":61}],57:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -11262,7 +11143,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
   }
 };
 
-},{"inherits":98,"minimalistic-assert":102}],60:[function(require,module,exports){
+},{"inherits":96,"minimalistic-assert":126}],58:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -11405,7 +11286,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
   return this._unpad(out);
 };
 
-},{"minimalistic-assert":102}],61:[function(require,module,exports){
+},{"minimalistic-assert":126}],59:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -11550,7 +11431,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
   utils.rip(l, r, out, off);
 };
 
-},{"../des":58,"inherits":98,"minimalistic-assert":102}],62:[function(require,module,exports){
+},{"../des":56,"inherits":96,"minimalistic-assert":126}],60:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -11607,7 +11488,7 @@ EDE.prototype._update = function _update(inp, inOff, out, outOff) {
 EDE.prototype._pad = DES.prototype._pad;
 EDE.prototype._unpad = DES.prototype._unpad;
 
-},{"../des":58,"inherits":98,"minimalistic-assert":102}],63:[function(require,module,exports){
+},{"../des":56,"inherits":96,"minimalistic-assert":126}],61:[function(require,module,exports){
 'use strict';
 
 exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -11865,7 +11746,7 @@ exports.padSplit = function padSplit(num, size, group) {
   return out.join(' ');
 };
 
-},{}],64:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 (function (Buffer){
 var generatePrime = require('./lib/generatePrime')
 var primes = require('./lib/primes.json')
@@ -11911,7 +11792,7 @@ exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffi
 exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/dh":65,"./lib/generatePrime":66,"./lib/primes.json":67,"buffer":48}],65:[function(require,module,exports){
+},{"./lib/dh":63,"./lib/generatePrime":64,"./lib/primes.json":65,"buffer":47}],63:[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -12079,7 +11960,7 @@ function formatReturnValue(bn, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":66,"bn.js":19,"buffer":48,"miller-rabin":101,"randombytes":270}],66:[function(require,module,exports){
+},{"./generatePrime":64,"bn.js":19,"buffer":47,"miller-rabin":125,"randombytes":294}],64:[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -12186,7 +12067,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":19,"miller-rabin":101,"randombytes":270}],67:[function(require,module,exports){
+},{"bn.js":19,"miller-rabin":125,"randombytes":294}],65:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -12221,7 +12102,7 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],68:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 'use strict';
 
 module.exports = earcut;
@@ -12867,7 +12748,7 @@ earcut.flatten = function (data) {
     return result;
 };
 
-},{}],69:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -12883,7 +12764,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":85,"./elliptic/curve":72,"./elliptic/curves":75,"./elliptic/ec":76,"./elliptic/eddsa":79,"./elliptic/hmac-drbg":82,"./elliptic/utils":84,"brorand":20}],70:[function(require,module,exports){
+},{"../package.json":83,"./elliptic/curve":70,"./elliptic/curves":73,"./elliptic/ec":74,"./elliptic/eddsa":77,"./elliptic/hmac-drbg":80,"./elliptic/utils":82,"brorand":20}],68:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -13260,7 +13141,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":69,"bn.js":19}],71:[function(require,module,exports){
+},{"../../elliptic":67,"bn.js":19}],69:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -13695,7 +13576,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":69,"../curve":72,"bn.js":19,"inherits":98}],72:[function(require,module,exports){
+},{"../../elliptic":67,"../curve":70,"bn.js":19,"inherits":96}],70:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -13705,7 +13586,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":70,"./edwards":71,"./mont":73,"./short":74}],73:[function(require,module,exports){
+},{"./base":68,"./edwards":69,"./mont":71,"./short":72}],71:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -13887,7 +13768,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":69,"../curve":72,"bn.js":19,"inherits":98}],74:[function(require,module,exports){
+},{"../../elliptic":67,"../curve":70,"bn.js":19,"inherits":96}],72:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -14827,7 +14708,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":69,"../curve":72,"bn.js":19,"inherits":98}],75:[function(require,module,exports){
+},{"../../elliptic":67,"../curve":70,"bn.js":19,"inherits":96}],73:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -15034,7 +14915,7 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"../elliptic":69,"./precomputed/secp256k1":83,"hash.js":90}],76:[function(require,module,exports){
+},{"../elliptic":67,"./precomputed/secp256k1":81,"hash.js":88}],74:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -15272,7 +15153,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":69,"./key":77,"./signature":78,"bn.js":19}],77:[function(require,module,exports){
+},{"../../elliptic":67,"./key":75,"./signature":76,"bn.js":19}],75:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -15381,7 +15262,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"bn.js":19}],78:[function(require,module,exports){
+},{"bn.js":19}],76:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -15518,7 +15399,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":69,"bn.js":19}],79:[function(require,module,exports){
+},{"../../elliptic":67,"bn.js":19}],77:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -15638,7 +15519,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../../elliptic":69,"./key":80,"./signature":81,"hash.js":90}],80:[function(require,module,exports){
+},{"../../elliptic":67,"./key":78,"./signature":79,"hash.js":88}],78:[function(require,module,exports){
 'use strict';
 
 var elliptic = require('../../elliptic');
@@ -15736,7 +15617,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../../elliptic":69}],81:[function(require,module,exports){
+},{"../../elliptic":67}],79:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -15804,7 +15685,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":69,"bn.js":19}],82:[function(require,module,exports){
+},{"../../elliptic":67,"bn.js":19}],80:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -15920,7 +15801,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"../elliptic":69,"hash.js":90}],83:[function(require,module,exports){
+},{"../elliptic":67,"hash.js":88}],81:[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -16702,7 +16583,7 @@ module.exports = {
   }
 };
 
-},{}],84:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -16876,12 +16757,12 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":19}],85:[function(require,module,exports){
+},{"bn.js":19}],83:[function(require,module,exports){
 module.exports={
   "_args": [
     [
       "elliptic@^6.0.0",
-      "/Users/rein/htdocs/biomes/node_modules/browserify-sign"
+      "/home/rein/htdocs/biomes/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -16916,7 +16797,7 @@ module.exports={
   "_shasum": "17781f2109ab0ec686b146bdcff5d2e8c6aeceda",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/rein/htdocs/biomes/node_modules/browserify-sign",
+  "_where": "/home/rein/htdocs/biomes/node_modules/browserify-sign",
   "author": {
     "email": "fedor@indutny.com",
     "name": "Fedor Indutny"
@@ -16957,17 +16838,17 @@ module.exports={
   "gitHead": "c53f5cf3d832c0073eb4a4ed423a464cbce68f3e",
   "homepage": "https://github.com/indutny/elliptic",
   "keywords": [
-    "Cryptography",
     "EC",
     "Elliptic",
-    "curve"
+    "curve",
+    "Cryptography"
   ],
   "license": "MIT",
   "main": "lib/elliptic.js",
   "maintainers": [
     {
-      "name": "indutny",
-      "email": "fedor@indutny.com"
+      "email": "fedor@indutny.com",
+      "name": "indutny"
     }
   ],
   "name": "elliptic",
@@ -16988,7 +16869,7 @@ module.exports={
   "version": "6.3.1"
 }
 
-},{}],86:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 'use strict';
 
 var has = Object.prototype.hasOwnProperty;
@@ -17279,7 +17160,7 @@ if ('undefined' !== typeof module) {
   module.exports = EventEmitter;
 }
 
-},{}],87:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -17583,7 +17464,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],88:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 (function (Buffer){
 var md5 = require('create-hash/md5')
 module.exports = EVP_BytesToKey
@@ -17655,7 +17536,7 @@ function EVP_BytesToKey (password, salt, keyLen, ivLen) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48,"create-hash/md5":55}],89:[function(require,module,exports){
+},{"buffer":47,"create-hash/md5":53}],87:[function(require,module,exports){
 /*
  * A speed-improved simplex noise algorithm for 2D, 3D and 4D in JavaScript.
  *
@@ -18185,7 +18066,7 @@ function dot4D (g, x, y, z, w) {
   return g[0] * x + g[1] * y + g[2] * z + g[3] * w
 }
 
-},{}],90:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 var hash = exports;
 
 hash.utils = require('./hash/utils');
@@ -18202,7 +18083,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":91,"./hash/hmac":92,"./hash/ripemd":93,"./hash/sha":94,"./hash/utils":95}],91:[function(require,module,exports){
+},{"./hash/common":89,"./hash/hmac":90,"./hash/ripemd":91,"./hash/sha":92,"./hash/utils":93}],89:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -18295,7 +18176,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"../hash":90}],92:[function(require,module,exports){
+},{"../hash":88}],90:[function(require,module,exports){
 var hmac = exports;
 
 var hash = require('../hash');
@@ -18345,7 +18226,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"../hash":90}],93:[function(require,module,exports){
+},{"../hash":88}],91:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 
@@ -18491,7 +18372,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"../hash":90}],94:[function(require,module,exports){
+},{"../hash":88}],92:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -19057,7 +18938,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../hash":90}],95:[function(require,module,exports){
+},{"../hash":88}],93:[function(require,module,exports){
 var utils = exports;
 var inherits = require('inherits');
 
@@ -19316,7 +19197,7 @@ function shr64_lo(ah, al, num) {
 };
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":98}],96:[function(require,module,exports){
+},{"inherits":96}],94:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -19402,7 +19283,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],97:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 
 var indexOf = [].indexOf;
 
@@ -19413,7 +19294,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],98:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -19438,7 +19319,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],99:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -19461,7 +19342,14 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],100:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
+};
+
+},{}],99:[function(require,module,exports){
 /**
  * isMobile.js v0.4.0
  *
@@ -19600,7 +19488,835 @@ function isSlowBuffer (obj) {
 
 })(this);
 
+},{}],100:[function(require,module,exports){
+/**
+ * A faster alternative to `Function#apply`, this function invokes `func`
+ * with the `this` binding of `thisArg` and the arguments of `args`.
+ *
+ * @private
+ * @param {Function} func The function to invoke.
+ * @param {*} thisArg The `this` binding of `func`.
+ * @param {Array} args The arguments to invoke `func` with.
+ * @returns {*} Returns the result of `func`.
+ */
+function apply(func, thisArg, args) {
+  switch (args.length) {
+    case 0: return func.call(thisArg);
+    case 1: return func.call(thisArg, args[0]);
+    case 2: return func.call(thisArg, args[0], args[1]);
+    case 3: return func.call(thisArg, args[0], args[1], args[2]);
+  }
+  return func.apply(thisArg, args);
+}
+
+module.exports = apply;
+
 },{}],101:[function(require,module,exports){
+/**
+ * A specialized version of `_.forEach` for arrays without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns `array`.
+ */
+function arrayEach(array, iteratee) {
+  var index = -1,
+      length = array ? array.length : 0;
+
+  while (++index < length) {
+    if (iteratee(array[index], index, array) === false) {
+      break;
+    }
+  }
+  return array;
+}
+
+module.exports = arrayEach;
+
+},{}],102:[function(require,module,exports){
+var baseTimes = require('./_baseTimes'),
+    isArguments = require('./isArguments'),
+    isArray = require('./isArray'),
+    isIndex = require('./_isIndex');
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Creates an array of the enumerable property names of the array-like `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @param {boolean} inherited Specify returning inherited property names.
+ * @returns {Array} Returns the array of property names.
+ */
+function arrayLikeKeys(value, inherited) {
+  // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+  // Safari 9 makes `arguments.length` enumerable in strict mode.
+  var result = (isArray(value) || isArguments(value))
+    ? baseTimes(value.length, String)
+    : [];
+
+  var length = result.length,
+      skipIndexes = !!length;
+
+  for (var key in value) {
+    if ((inherited || hasOwnProperty.call(value, key)) &&
+        !(skipIndexes && (key == 'length' || isIndex(key, length)))) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+module.exports = arrayLikeKeys;
+
+},{"./_baseTimes":105,"./_isIndex":106,"./isArguments":110,"./isArray":111}],103:[function(require,module,exports){
+var isPrototype = require('./_isPrototype'),
+    nativeKeys = require('./_nativeKeys');
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeys(object) {
+  if (!isPrototype(object)) {
+    return nativeKeys(object);
+  }
+  var result = [];
+  for (var key in Object(object)) {
+    if (hasOwnProperty.call(object, key) && key != 'constructor') {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+module.exports = baseKeys;
+
+},{"./_isPrototype":107,"./_nativeKeys":108}],104:[function(require,module,exports){
+var apply = require('./_apply');
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max;
+
+/**
+ * The base implementation of `_.rest` which doesn't validate or coerce arguments.
+ *
+ * @private
+ * @param {Function} func The function to apply a rest parameter to.
+ * @param {number} [start=func.length-1] The start position of the rest parameter.
+ * @returns {Function} Returns the new function.
+ */
+function baseRest(func, start) {
+  start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
+  return function() {
+    var args = arguments,
+        index = -1,
+        length = nativeMax(args.length - start, 0),
+        array = Array(length);
+
+    while (++index < length) {
+      array[index] = args[start + index];
+    }
+    index = -1;
+    var otherArgs = Array(start + 1);
+    while (++index < start) {
+      otherArgs[index] = args[index];
+    }
+    otherArgs[start] = array;
+    return apply(func, this, otherArgs);
+  };
+}
+
+module.exports = baseRest;
+
+},{"./_apply":100}],105:[function(require,module,exports){
+/**
+ * The base implementation of `_.times` without support for iteratee shorthands
+ * or max array length checks.
+ *
+ * @private
+ * @param {number} n The number of times to invoke `iteratee`.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the array of results.
+ */
+function baseTimes(n, iteratee) {
+  var index = -1,
+      result = Array(n);
+
+  while (++index < n) {
+    result[index] = iteratee(index);
+  }
+  return result;
+}
+
+module.exports = baseTimes;
+
+},{}],106:[function(require,module,exports){
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/** Used to detect unsigned integer values. */
+var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+/**
+ * Checks if `value` is a valid array-like index.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+ * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ */
+function isIndex(value, length) {
+  length = length == null ? MAX_SAFE_INTEGER : length;
+  return !!length &&
+    (typeof value == 'number' || reIsUint.test(value)) &&
+    (value > -1 && value % 1 == 0 && value < length);
+}
+
+module.exports = isIndex;
+
+},{}],107:[function(require,module,exports){
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Checks if `value` is likely a prototype object.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+ */
+function isPrototype(value) {
+  var Ctor = value && value.constructor,
+      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+
+  return value === proto;
+}
+
+module.exports = isPrototype;
+
+},{}],108:[function(require,module,exports){
+var overArg = require('./_overArg');
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeKeys = overArg(Object.keys, Object);
+
+module.exports = nativeKeys;
+
+},{"./_overArg":109}],109:[function(require,module,exports){
+/**
+ * Creates a unary function that invokes `func` with its argument transformed.
+ *
+ * @private
+ * @param {Function} func The function to wrap.
+ * @param {Function} transform The argument transform.
+ * @returns {Function} Returns the new function.
+ */
+function overArg(func, transform) {
+  return function(arg) {
+    return func(transform(arg));
+  };
+}
+
+module.exports = overArg;
+
+},{}],110:[function(require,module,exports){
+var isArrayLikeObject = require('./isArrayLikeObject');
+
+/** `Object#toString` result references. */
+var argsTag = '[object Arguments]';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/** Built-in value references. */
+var propertyIsEnumerable = objectProto.propertyIsEnumerable;
+
+/**
+ * Checks if `value` is likely an `arguments` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArguments(function() { return arguments; }());
+ * // => true
+ *
+ * _.isArguments([1, 2, 3]);
+ * // => false
+ */
+function isArguments(value) {
+  // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
+    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
+}
+
+module.exports = isArguments;
+
+},{"./isArrayLikeObject":113}],111:[function(require,module,exports){
+/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */
+var isArray = Array.isArray;
+
+module.exports = isArray;
+
+},{}],112:[function(require,module,exports){
+var isFunction = require('./isFunction'),
+    isLength = require('./isLength');
+
+/**
+ * Checks if `value` is array-like. A value is considered array-like if it's
+ * not a function and has a `value.length` that's an integer greater than or
+ * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ * @example
+ *
+ * _.isArrayLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLike(document.body.children);
+ * // => true
+ *
+ * _.isArrayLike('abc');
+ * // => true
+ *
+ * _.isArrayLike(_.noop);
+ * // => false
+ */
+function isArrayLike(value) {
+  return value != null && isLength(value.length) && !isFunction(value);
+}
+
+module.exports = isArrayLike;
+
+},{"./isFunction":114,"./isLength":115}],113:[function(require,module,exports){
+var isArrayLike = require('./isArrayLike'),
+    isObjectLike = require('./isObjectLike');
+
+/**
+ * This method is like `_.isArrayLike` except that it also checks if `value`
+ * is an object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array-like object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArrayLikeObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLikeObject(document.body.children);
+ * // => true
+ *
+ * _.isArrayLikeObject('abc');
+ * // => false
+ *
+ * _.isArrayLikeObject(_.noop);
+ * // => false
+ */
+function isArrayLikeObject(value) {
+  return isObjectLike(value) && isArrayLike(value);
+}
+
+module.exports = isArrayLikeObject;
+
+},{"./isArrayLike":112,"./isObjectLike":117}],114:[function(require,module,exports){
+var isObject = require('./isObject');
+
+/** `Object#toString` result references. */
+var funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in Safari 8-9 which returns 'object' for typed array and other constructors.
+  var tag = isObject(value) ? objectToString.call(value) : '';
+  return tag == funcTag || tag == genTag;
+}
+
+module.exports = isFunction;
+
+},{"./isObject":116}],115:[function(require,module,exports){
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/**
+ * Checks if `value` is a valid array-like length.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3);
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE);
+ * // => false
+ *
+ * _.isLength(Infinity);
+ * // => false
+ *
+ * _.isLength('3');
+ * // => false
+ */
+function isLength(value) {
+  return typeof value == 'number' &&
+    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+}
+
+module.exports = isLength;
+
+},{}],116:[function(require,module,exports){
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+module.exports = isObject;
+
+},{}],117:[function(require,module,exports){
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
+}
+
+module.exports = isObjectLike;
+
+},{}],118:[function(require,module,exports){
+var isObjectLike = require('./isObjectLike');
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' ||
+    (isObjectLike(value) && objectToString.call(value) == symbolTag);
+}
+
+module.exports = isSymbol;
+
+},{"./isObjectLike":117}],119:[function(require,module,exports){
+var arrayLikeKeys = require('./_arrayLikeKeys'),
+    baseKeys = require('./_baseKeys'),
+    isArrayLike = require('./isArrayLike');
+
+/**
+ * Creates an array of the own enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects. See the
+ * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * for more details.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keys(new Foo);
+ * // => ['a', 'b'] (iteration order is not guaranteed)
+ *
+ * _.keys('hi');
+ * // => ['0', '1']
+ */
+function keys(object) {
+  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
+}
+
+module.exports = keys;
+
+},{"./_arrayLikeKeys":102,"./_baseKeys":103,"./isArrayLike":112}],120:[function(require,module,exports){
+/**
+ * This method returns `undefined`.
+ *
+ * @static
+ * @memberOf _
+ * @since 2.3.0
+ * @category Util
+ * @example
+ *
+ * _.times(2, _.noop);
+ * // => [undefined, undefined]
+ */
+function noop() {
+  // No operation performed.
+}
+
+module.exports = noop;
+
+},{}],121:[function(require,module,exports){
+var baseRest = require('./_baseRest'),
+    toInteger = require('./toInteger');
+
+/** Used as the `TypeError` message for "Functions" methods. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/**
+ * Creates a function that invokes `func` with the `this` binding of the
+ * created function and arguments from `start` and beyond provided as
+ * an array.
+ *
+ * **Note:** This method is based on the
+ * [rest parameter](https://mdn.io/rest_parameters).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Function
+ * @param {Function} func The function to apply a rest parameter to.
+ * @param {number} [start=func.length-1] The start position of the rest parameter.
+ * @returns {Function} Returns the new function.
+ * @example
+ *
+ * var say = _.rest(function(what, names) {
+ *   return what + ' ' + _.initial(names).join(', ') +
+ *     (_.size(names) > 1 ? ', & ' : '') + _.last(names);
+ * });
+ *
+ * say('hello', 'fred', 'barney', 'pebbles');
+ * // => 'hello fred, barney, & pebbles'
+ */
+function rest(func, start) {
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  start = start === undefined ? start : toInteger(start);
+  return baseRest(func, start);
+}
+
+module.exports = rest;
+
+},{"./_baseRest":104,"./toInteger":123}],122:[function(require,module,exports){
+var toNumber = require('./toNumber');
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0,
+    MAX_INTEGER = 1.7976931348623157e+308;
+
+/**
+ * Converts `value` to a finite number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.12.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted number.
+ * @example
+ *
+ * _.toFinite(3.2);
+ * // => 3.2
+ *
+ * _.toFinite(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toFinite(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toFinite('3.2');
+ * // => 3.2
+ */
+function toFinite(value) {
+  if (!value) {
+    return value === 0 ? value : 0;
+  }
+  value = toNumber(value);
+  if (value === INFINITY || value === -INFINITY) {
+    var sign = (value < 0 ? -1 : 1);
+    return sign * MAX_INTEGER;
+  }
+  return value === value ? value : 0;
+}
+
+module.exports = toFinite;
+
+},{"./toNumber":124}],123:[function(require,module,exports){
+var toFinite = require('./toFinite');
+
+/**
+ * Converts `value` to an integer.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted integer.
+ * @example
+ *
+ * _.toInteger(3.2);
+ * // => 3
+ *
+ * _.toInteger(Number.MIN_VALUE);
+ * // => 0
+ *
+ * _.toInteger(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toInteger('3.2');
+ * // => 3
+ */
+function toInteger(value) {
+  var result = toFinite(value),
+      remainder = result % 1;
+
+  return result === result ? (remainder ? result - remainder : result) : 0;
+}
+
+module.exports = toInteger;
+
+},{"./toFinite":122}],124:[function(require,module,exports){
+var isObject = require('./isObject'),
+    isSymbol = require('./isSymbol');
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+module.exports = toNumber;
+
+},{"./isObject":116,"./isSymbol":118}],125:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -19715,7 +20431,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":19,"brorand":20}],102:[function(require,module,exports){
+},{"bn.js":19,"brorand":20}],126:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -19728,7 +20444,92 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],103:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
+'use strict';
+/* eslint-disable no-unused-vars */
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (e) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (Object.getOwnPropertySymbols) {
+			symbols = Object.getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+},{}],128:[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -19742,7 +20543,7 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],104:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
 // Fedor, you are amazing.
 
@@ -19861,7 +20662,7 @@ exports.signature = asn1.define('signature', function () {
   )
 })
 
-},{"asn1.js":2}],105:[function(require,module,exports){
+},{"asn1.js":2}],130:[function(require,module,exports){
 (function (Buffer){
 // adapted from https://github.com/apatil/pemstrip
 var findProc = /Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\r?\n\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n/m
@@ -19895,7 +20696,7 @@ module.exports = function (okey, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"browserify-aes":24,"buffer":48,"evp_bytestokey":88}],106:[function(require,module,exports){
+},{"browserify-aes":24,"buffer":47,"evp_bytestokey":86}],131:[function(require,module,exports){
 (function (Buffer){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
@@ -20000,7 +20801,7 @@ function decrypt (data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":103,"./asn1":104,"./fixProc":105,"browserify-aes":24,"buffer":48,"pbkdf2":108}],107:[function(require,module,exports){
+},{"./aesid.json":128,"./asn1":129,"./fixProc":130,"browserify-aes":24,"buffer":47,"pbkdf2":133}],132:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -20228,7 +21029,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":259}],108:[function(require,module,exports){
+},{"_process":283}],133:[function(require,module,exports){
 (function (Buffer){
 var createHmac = require('create-hmac')
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
@@ -20312,7 +21113,7 @@ function pbkdf2Sync (password, salt, iterations, keylen, digest) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48,"create-hmac":56}],109:[function(require,module,exports){
+},{"buffer":47,"create-hmac":54}],134:[function(require,module,exports){
 var EMPTY_ARRAY_BUFFER = new ArrayBuffer(0);
 
 /**
@@ -20431,7 +21232,7 @@ Buffer.prototype.destroy = function(){
 
 module.exports = Buffer;
 
-},{}],110:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 
 var Texture = require('./GLTexture');
 
@@ -20660,7 +21461,7 @@ Framebuffer.createFloat32 = function(gl, width, height, data)
 
 module.exports = Framebuffer;
 
-},{"./GLTexture":112}],111:[function(require,module,exports){
+},{"./GLTexture":137}],136:[function(require,module,exports){
 
 var compileProgram = require('./shader/compileProgram'),
 	extractAttributes = require('./shader/extractAttributes'),
@@ -20738,7 +21539,7 @@ Shader.prototype.destroy = function()
 
 module.exports = Shader;
 
-},{"./shader/compileProgram":117,"./shader/extractAttributes":119,"./shader/extractUniforms":120,"./shader/generateUniformAccessObject":121}],112:[function(require,module,exports){
+},{"./shader/compileProgram":142,"./shader/extractAttributes":144,"./shader/extractUniforms":145,"./shader/generateUniformAccessObject":146}],137:[function(require,module,exports){
 
 /**
  * Helper class to create a WebGL Texture
@@ -21050,7 +21851,7 @@ Texture.fromData = function(gl, data, width, height)
 
 module.exports = Texture;
 
-},{}],113:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 
 // state object//
 var setVertexAttribArrays = require( './setVertexAttribArrays' );
@@ -21299,7 +22100,7 @@ VertexArrayObject.prototype.destroy = function()
     this.nativeVao = null;
 };
 
-},{"./setVertexAttribArrays":116}],114:[function(require,module,exports){
+},{"./setVertexAttribArrays":141}],139:[function(require,module,exports){
 
 /**
  * Helper class to create a webGL Context
@@ -21327,7 +22128,7 @@ var createContext = function(canvas, options)
 
 module.exports = createContext;
 
-},{}],115:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 var gl = {
     createContext:          require('./createContext'),
     setVertexAttribArrays:  require('./setVertexAttribArrays'),
@@ -21352,7 +22153,7 @@ if (typeof window !== 'undefined')
     // add the window object
     window.pixi = { gl: gl };
 }
-},{"./GLBuffer":109,"./GLFramebuffer":110,"./GLShader":111,"./GLTexture":112,"./VertexArrayObject":113,"./createContext":114,"./setVertexAttribArrays":116,"./shader":122}],116:[function(require,module,exports){
+},{"./GLBuffer":134,"./GLFramebuffer":135,"./GLShader":136,"./GLTexture":137,"./VertexArrayObject":138,"./createContext":139,"./setVertexAttribArrays":141,"./shader":147}],141:[function(require,module,exports){
 // var GL_MAP = {};
 
 /**
@@ -21409,7 +22210,7 @@ var setVertexAttribArrays = function (gl, attribs, state)
 
 module.exports = setVertexAttribArrays;
 
-},{}],117:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 
 /**
  * @class
@@ -21479,7 +22280,7 @@ var compileShader = function (gl, type, src)
 
 module.exports = compileProgram;
 
-},{}],118:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 /**
  * @class
  * @memberof pixi.gl.shader
@@ -21559,7 +22360,7 @@ var booleanArray = function(size)
 
 module.exports = defaultValue;
 
-},{}],119:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 
 var mapType = require('./mapType');
 var mapSize = require('./mapSize');
@@ -21602,7 +22403,7 @@ var pointer = function(type, normalized, stride, start){
 
 module.exports = extractAttributes;
 
-},{"./mapSize":123,"./mapType":124}],120:[function(require,module,exports){
+},{"./mapSize":148,"./mapType":149}],145:[function(require,module,exports){
 var mapType = require('./mapType');
 var defaultValue = require('./defaultValue');
 
@@ -21639,7 +22440,7 @@ var extractUniforms = function(gl, program)
 
 module.exports = extractUniforms;
 
-},{"./defaultValue":118,"./mapType":124}],121:[function(require,module,exports){
+},{"./defaultValue":143,"./mapType":149}],146:[function(require,module,exports){
 /**
  * Extracts the attributes
  * @class
@@ -21781,7 +22582,7 @@ var GLSL_TO_ARRAY_SETTERS = {
 
 module.exports = generateUniformAccessObject;
 
-},{}],122:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 module.exports = {
     compileProgram: require('./compileProgram'),
     defaultValue: require('./defaultValue'),
@@ -21791,7 +22592,7 @@ module.exports = {
     mapSize: require('./mapSize'),
     mapType: require('./mapType')  
 };
-},{"./compileProgram":117,"./defaultValue":118,"./extractAttributes":119,"./extractUniforms":120,"./generateUniformAccessObject":121,"./mapSize":123,"./mapType":124}],123:[function(require,module,exports){
+},{"./compileProgram":142,"./defaultValue":143,"./extractAttributes":144,"./extractUniforms":145,"./generateUniformAccessObject":146,"./mapSize":148,"./mapType":149}],148:[function(require,module,exports){
 /**
  * @class
  * @memberof pixi.gl.shader
@@ -21829,7 +22630,7 @@ var GLSL_TO_SIZE = {
 
 module.exports = mapSize;
 
-},{}],124:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 
 
 var mapSize = function(gl, type) 
@@ -21877,92 +22678,7 @@ var GL_TO_GLSL_TYPES = {
 
 module.exports = mapSize;
 
-},{}],125:[function(require,module,exports){
-'use strict';
-/* eslint-disable no-unused-vars */
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function toObject(val) {
-	if (val === null || val === undefined) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
-
-	return Object(val);
-}
-
-function shouldUseNative() {
-	try {
-		if (!Object.assign) {
-			return false;
-		}
-
-		// Detect buggy property enumeration order in older V8 versions.
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line
-		test1[5] = 'de';
-		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test2 = {};
-		for (var i = 0; i < 10; i++) {
-			test2['_' + String.fromCharCode(i)] = i;
-		}
-		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-			return test2[n];
-		});
-		if (order2.join('') !== '0123456789') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test3 = {};
-		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-			test3[letter] = letter;
-		});
-		if (Object.keys(Object.assign({}, test3)).join('') !==
-				'abcdefghijklmnopqrst') {
-			return false;
-		}
-
-		return true;
-	} catch (e) {
-		// We don't expect any of the above to throw, but better to be safe.
-		return false;
-	}
-}
-
-module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-	var from;
-	var to = toObject(target);
-	var symbols;
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = Object(arguments[s]);
-
-		for (var key in from) {
-			if (hasOwnProperty.call(from, key)) {
-				to[key] = from[key];
-			}
-		}
-
-		if (Object.getOwnPropertySymbols) {
-			symbols = Object.getOwnPropertySymbols(from);
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					to[symbols[i]] = from[symbols[i]];
-				}
-			}
-		}
-	}
-
-	return to;
-};
-
-},{}],126:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 var core = require('../core');
 var  Device = require('ismobilejs');
 
@@ -22419,7 +23135,7 @@ AccessibilityManager.prototype.destroy = function ()
 core.WebGLRenderer.registerPlugin('accessibility', AccessibilityManager);
 core.CanvasRenderer.registerPlugin('accessibility', AccessibilityManager);
 
-},{"../core":149,"./accessibleTarget":127,"ismobilejs":100}],127:[function(require,module,exports){
+},{"../core":173,"./accessibleTarget":151,"ismobilejs":99}],151:[function(require,module,exports){
 /**
  * Default property values of accessible objects
  * used by {@link PIXI.accessibility.AccessibilityManager}.
@@ -22478,7 +23194,7 @@ var accessibleTarget = {
 
 module.exports = accessibleTarget;
 
-},{}],128:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 /**
  * @file        Main export of the PIXI accessibility library
  * @author      Mat Groves <mat@goodboydigital.com>
@@ -22494,7 +23210,7 @@ module.exports = {
     AccessibilityManager: require('./AccessibilityManager')
 };
 
-},{"./AccessibilityManager":126,"./accessibleTarget":127}],129:[function(require,module,exports){
+},{"./AccessibilityManager":150,"./accessibleTarget":151}],153:[function(require,module,exports){
 var GLShader = require('pixi-gl-core').GLShader;
 var Const = require('./const');
 
@@ -22531,7 +23247,7 @@ Shader.prototype = Object.create(GLShader.prototype);
 Shader.prototype.constructor = Shader;
 module.exports = Shader;
 
-},{"./const":130,"pixi-gl-core":115}],130:[function(require,module,exports){
+},{"./const":154,"pixi-gl-core":140}],154:[function(require,module,exports){
 
 /**
  * Constant values used in pixi
@@ -22910,7 +23626,7 @@ var CONST = {
 
 module.exports = CONST;
 
-},{"./utils/maxRecommendedTextures":204}],131:[function(require,module,exports){
+},{"./utils/maxRecommendedTextures":228}],155:[function(require,module,exports){
 var math = require('../math'),
     Rectangle = math.Rectangle;
 
@@ -23138,7 +23854,7 @@ Bounds.prototype.addBounds = function(bounds)
     this.maxY = bounds.maxY > maxY ? bounds.maxY : maxY;
 };
 
-},{"../math":154}],132:[function(require,module,exports){
+},{"../math":178}],156:[function(require,module,exports){
 var utils = require('../utils'),
     DisplayObject = require('./DisplayObject');
 
@@ -23701,7 +24417,7 @@ Container.prototype.destroy = function (options)
     this.children = null;
 };
 
-},{"../utils":203,"./DisplayObject":133}],133:[function(require,module,exports){
+},{"../utils":227,"./DisplayObject":157}],157:[function(require,module,exports){
 var EventEmitter = require('eventemitter3'),
     CONST = require('../const'),
     TransformStatic = require('./TransformStatic'),
@@ -24271,7 +24987,7 @@ DisplayObject.prototype.destroy = function ()
     this.filterArea = null;
 };
 
-},{"../const":130,"./Bounds":131,"./Transform":134,"./TransformStatic":136,"eventemitter3":86}],134:[function(require,module,exports){
+},{"../const":154,"./Bounds":155,"./Transform":158,"./TransformStatic":160,"eventemitter3":84}],158:[function(require,module,exports){
 var math = require('../math'),
     TransformBase = require('./TransformBase');
 
@@ -24428,7 +25144,7 @@ Object.defineProperties(Transform.prototype, {
 
 module.exports = Transform;
 
-},{"../math":154,"./TransformBase":135}],135:[function(require,module,exports){
+},{"../math":178,"./TransformBase":159}],159:[function(require,module,exports){
 var math = require('../math');
 
 
@@ -24498,7 +25214,7 @@ TransformBase.IDENTITY = new TransformBase();
 
 module.exports = TransformBase;
 
-},{"../math":154}],136:[function(require,module,exports){
+},{"../math":178}],160:[function(require,module,exports){
 var math = require('../math'),
     TransformBase = require('./TransformBase');
 
@@ -24682,7 +25398,7 @@ Object.defineProperties(TransformStatic.prototype, {
 
 module.exports = TransformStatic;
 
-},{"../math":154,"./TransformBase":135}],137:[function(require,module,exports){
+},{"../math":178,"./TransformBase":159}],161:[function(require,module,exports){
 var Container = require('../display/Container'),
     RenderTexture = require('../textures/RenderTexture'),
     Texture = require('../textures/Texture'),
@@ -25725,7 +26441,7 @@ Graphics.prototype.destroy = function ()
     this._localBounds = null;
 };
 
-},{"../const":130,"../display/Bounds":131,"../display/Container":132,"../math":154,"../renderers/canvas/CanvasRenderer":161,"../sprites/Sprite":185,"../textures/RenderTexture":195,"../textures/Texture":196,"./GraphicsData":138,"./utils/bezierCurveTo":140}],138:[function(require,module,exports){
+},{"../const":154,"../display/Bounds":155,"../display/Container":156,"../math":178,"../renderers/canvas/CanvasRenderer":185,"../sprites/Sprite":209,"../textures/RenderTexture":219,"../textures/Texture":220,"./GraphicsData":162,"./utils/bezierCurveTo":164}],162:[function(require,module,exports){
 /**
  * A GraphicsData object.
  *
@@ -25832,7 +26548,7 @@ GraphicsData.prototype.destroy = function () {
     this.holes = null;
 };
 
-},{}],139:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 var CanvasRenderer = require('../../renderers/canvas/CanvasRenderer'),
     CONST = require('../../const');
 
@@ -26110,7 +26826,7 @@ CanvasGraphicsRenderer.prototype.destroy = function ()
   this.renderer = null;
 };
 
-},{"../../const":130,"../../renderers/canvas/CanvasRenderer":161}],140:[function(require,module,exports){
+},{"../../const":154,"../../renderers/canvas/CanvasRenderer":185}],164:[function(require,module,exports){
 
 /**
  * Calculate the points for a bezier curve and then draws it.
@@ -26164,7 +26880,7 @@ var bezierCurveTo = function (fromX, fromY, cpX, cpY, cpX2, cpY2, toX, toY, path
 
 module.exports = bezierCurveTo;
 
-},{}],141:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 var utils = require('../../utils'),
     CONST = require('../../const'),
     ObjectRenderer = require('../../renderers/webgl/utils/ObjectRenderer'),
@@ -26384,7 +27100,7 @@ GraphicsRenderer.prototype.getWebGLData = function (webGL, type)
     return webGLData;
 };
 
-},{"../../const":130,"../../renderers/webgl/WebGLRenderer":168,"../../renderers/webgl/utils/ObjectRenderer":178,"../../utils":203,"./WebGLGraphicsData":142,"./shaders/PrimitiveShader":143,"./utils/buildCircle":144,"./utils/buildPoly":146,"./utils/buildRectangle":147,"./utils/buildRoundedRectangle":148}],142:[function(require,module,exports){
+},{"../../const":154,"../../renderers/webgl/WebGLRenderer":192,"../../renderers/webgl/utils/ObjectRenderer":202,"../../utils":227,"./WebGLGraphicsData":166,"./shaders/PrimitiveShader":167,"./utils/buildCircle":168,"./utils/buildPoly":170,"./utils/buildRectangle":171,"./utils/buildRoundedRectangle":172}],166:[function(require,module,exports){
 var glCore = require('pixi-gl-core');
 
 
@@ -26511,7 +27227,7 @@ WebGLGraphicsData.prototype.destroy = function ()
     this.glIndices = null;
 };
 
-},{"pixi-gl-core":115}],143:[function(require,module,exports){
+},{"pixi-gl-core":140}],167:[function(require,module,exports){
 var Shader = require('../../../Shader');
 
 /**
@@ -26560,7 +27276,7 @@ PrimitiveShader.prototype.constructor = PrimitiveShader;
 
 module.exports = PrimitiveShader;
 
-},{"../../../Shader":129}],144:[function(require,module,exports){
+},{"../../../Shader":153}],168:[function(require,module,exports){
 var buildLine = require('./buildLine'),
     CONST = require('../../../const'),
     utils = require('../../../utils');
@@ -26652,7 +27368,7 @@ var buildCircle = function (graphicsData, webGLData)
 
 module.exports = buildCircle;
 
-},{"../../../const":130,"../../../utils":203,"./buildLine":145}],145:[function(require,module,exports){
+},{"../../../const":154,"../../../utils":227,"./buildLine":169}],169:[function(require,module,exports){
 var math = require('../../../math'),
     utils = require('../../../utils');
 
@@ -26876,7 +27592,7 @@ var buildLine = function (graphicsData, webGLData)
 
 module.exports = buildLine;
 
-},{"../../../math":154,"../../../utils":203}],146:[function(require,module,exports){
+},{"../../../math":178,"../../../utils":227}],170:[function(require,module,exports){
 var buildLine = require('./buildLine'),
     utils = require('../../../utils'),
     earcut = require('earcut');
@@ -26958,7 +27674,7 @@ var buildPoly = function (graphicsData, webGLData)
 
 module.exports = buildPoly;
 
-},{"../../../utils":203,"./buildLine":145,"earcut":68}],147:[function(require,module,exports){
+},{"../../../utils":227,"./buildLine":169,"earcut":66}],171:[function(require,module,exports){
 var buildLine = require('./buildLine'),
     utils = require('../../../utils');
 
@@ -27033,7 +27749,7 @@ var buildRectangle = function (graphicsData, webGLData)
 
 module.exports = buildRectangle;
 
-},{"../../../utils":203,"./buildLine":145}],148:[function(require,module,exports){
+},{"../../../utils":227,"./buildLine":169}],172:[function(require,module,exports){
 var earcut = require('earcut'),
     buildLine = require('./buildLine'),
     utils = require('../../../utils');
@@ -27169,7 +27885,7 @@ var quadraticBezierCurve = function (fromX, fromY, cpX, cpY, toX, toY, out)// js
 
 module.exports = buildRoundedRectangle;
 
-},{"../../../utils":203,"./buildLine":145,"earcut":68}],149:[function(require,module,exports){
+},{"../../../utils":227,"./buildLine":169,"earcut":66}],173:[function(require,module,exports){
 /**
  * @file        Main export of the PIXI core library
  * @author      Mat Groves <mat@goodboydigital.com>
@@ -27267,7 +27983,7 @@ var core = module.exports = Object.assign(require('./const'), require('./math'),
     }
 });
 
-},{"./Shader":129,"./const":130,"./display/Container":132,"./display/DisplayObject":133,"./display/Transform":134,"./display/TransformBase":135,"./display/TransformStatic":136,"./graphics/Graphics":137,"./graphics/GraphicsData":138,"./graphics/canvas/CanvasGraphicsRenderer":139,"./graphics/webgl/GraphicsRenderer":141,"./math":154,"./renderers/canvas/CanvasRenderer":161,"./renderers/canvas/utils/CanvasRenderTarget":163,"./renderers/webgl/WebGLRenderer":168,"./renderers/webgl/filters/Filter":170,"./renderers/webgl/filters/spriteMask/SpriteMaskFilter":173,"./renderers/webgl/managers/WebGLManager":177,"./renderers/webgl/utils/ObjectRenderer":178,"./renderers/webgl/utils/Quad":179,"./renderers/webgl/utils/RenderTarget":180,"./sprites/Sprite":185,"./sprites/canvas/CanvasSpriteRenderer":186,"./sprites/canvas/CanvasTinter":187,"./sprites/webgl/SpriteRenderer":189,"./text/Text":191,"./text/TextStyle":192,"./textures/BaseRenderTexture":193,"./textures/BaseTexture":194,"./textures/RenderTexture":195,"./textures/Texture":196,"./textures/TextureUvs":197,"./textures/VideoBaseTexture":198,"./ticker":200,"./utils":203,"pixi-gl-core":115}],150:[function(require,module,exports){
+},{"./Shader":153,"./const":154,"./display/Container":156,"./display/DisplayObject":157,"./display/Transform":158,"./display/TransformBase":159,"./display/TransformStatic":160,"./graphics/Graphics":161,"./graphics/GraphicsData":162,"./graphics/canvas/CanvasGraphicsRenderer":163,"./graphics/webgl/GraphicsRenderer":165,"./math":178,"./renderers/canvas/CanvasRenderer":185,"./renderers/canvas/utils/CanvasRenderTarget":187,"./renderers/webgl/WebGLRenderer":192,"./renderers/webgl/filters/Filter":194,"./renderers/webgl/filters/spriteMask/SpriteMaskFilter":197,"./renderers/webgl/managers/WebGLManager":201,"./renderers/webgl/utils/ObjectRenderer":202,"./renderers/webgl/utils/Quad":203,"./renderers/webgl/utils/RenderTarget":204,"./sprites/Sprite":209,"./sprites/canvas/CanvasSpriteRenderer":210,"./sprites/canvas/CanvasTinter":211,"./sprites/webgl/SpriteRenderer":213,"./text/Text":215,"./text/TextStyle":216,"./textures/BaseRenderTexture":217,"./textures/BaseTexture":218,"./textures/RenderTexture":219,"./textures/Texture":220,"./textures/TextureUvs":221,"./textures/VideoBaseTexture":222,"./ticker":224,"./utils":227,"pixi-gl-core":140}],174:[function(require,module,exports){
 // Your friendly neighbour https://en.wikipedia.org/wiki/Dihedral_group of order 16
 
 var ux = [1, 1, 0, -1, -1, -1, 0, 1, 1, 1, 0, -1, -1, -1, 0, 1];
@@ -27431,7 +28147,7 @@ var GroupD8 = {
 
 module.exports = GroupD8;
 
-},{"./Matrix":151}],151:[function(require,module,exports){
+},{"./Matrix":175}],175:[function(require,module,exports){
 // @todo - ignore the too many parameters warning for now
 // should either fix it or change the jshint config
 // jshint -W072
@@ -27921,7 +28637,7 @@ Matrix.IDENTITY = new Matrix();
  */
 Matrix.TEMP_MATRIX = new Matrix();
 
-},{"./Point":153}],152:[function(require,module,exports){
+},{"./Point":177}],176:[function(require,module,exports){
 /**
  * The Point object represents a location in a two-dimensional coordinate system, where x represents
  * the horizontal axis and y represents the vertical axis.
@@ -28023,7 +28739,7 @@ ObservablePoint.prototype.copy = function (point)
     }
 };
 
-},{}],153:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 /**
  * The Point object represents a location in a two-dimensional coordinate system, where x represents
  * the horizontal axis and y represents the vertical axis.
@@ -28093,7 +28809,7 @@ Point.prototype.set = function (x, y)
     this.y = y || ( (y !== 0) ? this.x : 0 ) ;
 };
 
-},{}],154:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 /**
  * Math classes and utilities mixed into PIXI namespace.
  *
@@ -28117,7 +28833,7 @@ module.exports = {
     RoundedRectangle:   require('./shapes/RoundedRectangle')
 };
 
-},{"./GroupD8":150,"./Matrix":151,"./ObservablePoint":152,"./Point":153,"./shapes/Circle":155,"./shapes/Ellipse":156,"./shapes/Polygon":157,"./shapes/Rectangle":158,"./shapes/RoundedRectangle":159}],155:[function(require,module,exports){
+},{"./GroupD8":174,"./Matrix":175,"./ObservablePoint":176,"./Point":177,"./shapes/Circle":179,"./shapes/Ellipse":180,"./shapes/Polygon":181,"./shapes/Rectangle":182,"./shapes/RoundedRectangle":183}],179:[function(require,module,exports){
 var Rectangle = require('./Rectangle'),
     CONST = require('../../const');
 
@@ -28208,7 +28924,7 @@ Circle.prototype.getBounds = function ()
     return new Rectangle(this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
 };
 
-},{"../../const":130,"./Rectangle":158}],156:[function(require,module,exports){
+},{"../../const":154,"./Rectangle":182}],180:[function(require,module,exports){
 var Rectangle = require('./Rectangle'),
     CONST = require('../../const');
 
@@ -28306,7 +29022,7 @@ Ellipse.prototype.getBounds = function ()
     return new Rectangle(this.x - this.width, this.y - this.height, this.width, this.height);
 };
 
-},{"../../const":130,"./Rectangle":158}],157:[function(require,module,exports){
+},{"../../const":154,"./Rectangle":182}],181:[function(require,module,exports){
 var Point = require('../Point'),
     CONST = require('../../const');
 
@@ -28424,7 +29140,7 @@ Polygon.prototype.contains = function (x, y)
     return inside;
 };
 
-},{"../../const":130,"../Point":153}],158:[function(require,module,exports){
+},{"../../const":154,"../Point":177}],182:[function(require,module,exports){
 var CONST = require('../../const');
 
 /**
@@ -28599,7 +29315,7 @@ Rectangle.prototype.enlarge = function (rect)
     this.height = y2 - y1;
 };
 
-},{"../../const":130}],159:[function(require,module,exports){
+},{"../../const":154}],183:[function(require,module,exports){
 var CONST = require('../../const');
 
 /**
@@ -28694,7 +29410,7 @@ RoundedRectangle.prototype.contains = function (x, y)
     return false;
 };
 
-},{"../../const":130}],160:[function(require,module,exports){
+},{"../../const":154}],184:[function(require,module,exports){
 var utils = require('../utils'),
     math = require('../math'),
     CONST = require('../const'),
@@ -28984,7 +29700,7 @@ SystemRenderer.prototype.destroy = function (removeView) {
     this._lastObjectRendered = null;
 };
 
-},{"../const":130,"../display/Container":132,"../math":154,"../textures/RenderTexture":195,"../utils":203,"eventemitter3":86}],161:[function(require,module,exports){
+},{"../const":154,"../display/Container":156,"../math":178,"../textures/RenderTexture":219,"../utils":227,"eventemitter3":84}],185:[function(require,module,exports){
 var SystemRenderer = require('../SystemRenderer'),
     CanvasMaskManager = require('./utils/CanvasMaskManager'),
     CanvasRenderTarget = require('./utils/CanvasRenderTarget'),
@@ -29249,7 +29965,7 @@ CanvasRenderer.prototype.resize = function (width, height)
 
 };
 
-},{"../../const":130,"../../utils":203,"../SystemRenderer":160,"./utils/CanvasMaskManager":162,"./utils/CanvasRenderTarget":163,"./utils/mapCanvasBlendModesToPixi":165}],162:[function(require,module,exports){
+},{"../../const":154,"../../utils":227,"../SystemRenderer":184,"./utils/CanvasMaskManager":186,"./utils/CanvasRenderTarget":187,"./utils/mapCanvasBlendModesToPixi":189}],186:[function(require,module,exports){
 var CONST = require('../../../const');
 /**
  * A set of functions used to handle masking.
@@ -29411,7 +30127,7 @@ CanvasMaskManager.prototype.popMask = function (renderer)
 
 CanvasMaskManager.prototype.destroy = function () {};
 
-},{"../../../const":130}],163:[function(require,module,exports){
+},{"../../../const":154}],187:[function(require,module,exports){
 var CONST = require('../../../const');
 
 /**
@@ -29516,7 +30232,7 @@ CanvasRenderTarget.prototype.destroy = function ()
     this.canvas = null;
 };
 
-},{"../../../const":130}],164:[function(require,module,exports){
+},{"../../../const":154}],188:[function(require,module,exports){
 
 /**
  * Checks whether the Canvas BlendModes are supported by the current browser
@@ -29555,7 +30271,7 @@ var canUseNewCanvasBlendModes = function ()
 
 module.exports = canUseNewCanvasBlendModes;
 
-},{}],165:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 var CONST = require('../../../const'),
 canUseNewCanvasBlendModes = require('./canUseNewCanvasBlendModes');
 
@@ -29616,7 +30332,7 @@ function mapCanvasBlendModesToPixi(array)
 
 module.exports = mapCanvasBlendModesToPixi;
 
-},{"../../../const":130,"./canUseNewCanvasBlendModes":164}],166:[function(require,module,exports){
+},{"../../../const":154,"./canUseNewCanvasBlendModes":188}],190:[function(require,module,exports){
 
 var CONST = require('../../const');
 
@@ -29727,7 +30443,7 @@ TextureGarbageCollector.prototype.unload = function( displayObject )
     }
 };
 
-},{"../../const":130}],167:[function(require,module,exports){
+},{"../../const":154}],191:[function(require,module,exports){
 var GLTexture = require('pixi-gl-core').GLTexture,
     CONST = require('../../const'),
     RenderTarget = require('./utils/RenderTarget'),
@@ -29934,7 +30650,7 @@ TextureManager.prototype.destroy = function()
 
 module.exports = TextureManager;
 
-},{"../../const":130,"../../utils":203,"./utils/RenderTarget":180,"pixi-gl-core":115}],168:[function(require,module,exports){
+},{"../../const":154,"../../utils":227,"./utils/RenderTarget":204,"pixi-gl-core":140}],192:[function(require,module,exports){
 var SystemRenderer = require('../SystemRenderer'),
     MaskManager = require('./managers/MaskManager'),
     StencilManager = require('./managers/StencilManager'),
@@ -30498,7 +31214,7 @@ WebGLRenderer.prototype.destroy = function (removeView)
     // this = null;
 };
 
-},{"../../const":130,"../../utils":203,"../SystemRenderer":160,"./TextureGarbageCollector":166,"./TextureManager":167,"./WebGLState":169,"./managers/FilterManager":174,"./managers/MaskManager":175,"./managers/StencilManager":176,"./utils/ObjectRenderer":178,"./utils/RenderTarget":180,"./utils/mapWebGLDrawModesToPixi":183,"./utils/validateContext":184,"pixi-gl-core":115}],169:[function(require,module,exports){
+},{"../../const":154,"../../utils":227,"../SystemRenderer":184,"./TextureGarbageCollector":190,"./TextureManager":191,"./WebGLState":193,"./managers/FilterManager":198,"./managers/MaskManager":199,"./managers/StencilManager":200,"./utils/ObjectRenderer":202,"./utils/RenderTarget":204,"./utils/mapWebGLDrawModesToPixi":207,"./utils/validateContext":208,"pixi-gl-core":140}],193:[function(require,module,exports){
 var mapWebGLBlendModesToPixi = require('./utils/mapWebGLBlendModesToPixi');
 
 /**
@@ -30781,7 +31497,7 @@ WebGLState.prototype.resetToDefault = function()
 
 module.exports = WebGLState;
 
-},{"./utils/mapWebGLBlendModesToPixi":182}],170:[function(require,module,exports){
+},{"./utils/mapWebGLBlendModesToPixi":206}],194:[function(require,module,exports){
 var extractUniformsFromSrc = require('./extractUniformsFromSrc'),
     utils = require('../../../utils'),
     CONST = require('../../../const'),
@@ -30914,7 +31630,7 @@ Filter.defaultFragmentSrc = [
     '}'
 ].join('\n');
 
-},{"../../../const":130,"../../../utils":203,"./extractUniformsFromSrc":171}],171:[function(require,module,exports){
+},{"../../../const":154,"../../../utils":227,"./extractUniformsFromSrc":195}],195:[function(require,module,exports){
 var defaultValue = require('pixi-gl-core').shader.defaultValue;
 
 function extractUniformsFromSrc(vertexSrc, fragmentSrc, mask)
@@ -30976,7 +31692,7 @@ function extractUniformsFromString(string)
 
 module.exports = extractUniformsFromSrc;
 
-},{"pixi-gl-core":115}],172:[function(require,module,exports){
+},{"pixi-gl-core":140}],196:[function(require,module,exports){
 var math = require('../../../math');
 
 /*
@@ -31061,7 +31777,7 @@ module.exports = {
     calculateSpriteMatrix:calculateSpriteMatrix
 };
 
-},{"../../../math":154}],173:[function(require,module,exports){
+},{"../../../math":178}],197:[function(require,module,exports){
 var Filter = require('../Filter'),
     math =  require('../../../../math');
 
@@ -31112,7 +31828,7 @@ SpriteMaskFilter.prototype.apply = function (filterManager, input, output)
     filterManager.applyFilter(this, input, output);
 };
 
-},{"../../../../math":154,"../Filter":170}],174:[function(require,module,exports){
+},{"../../../../math":178,"../Filter":194}],198:[function(require,module,exports){
 
 var WebGLManager = require('./WebGLManager'),
     RenderTarget = require('../utils/RenderTarget'),
@@ -31531,7 +32247,7 @@ FilterManager.prototype.freePotRenderTarget = function(renderTarget)
     this.pool[key].push(renderTarget);
 };
 
-},{"../../../Shader":129,"../../../math":154,"../filters/filterTransforms":172,"../utils/Quad":179,"../utils/RenderTarget":180,"./WebGLManager":177,"bit-twiddle":18}],175:[function(require,module,exports){
+},{"../../../Shader":153,"../../../math":178,"../filters/filterTransforms":196,"../utils/Quad":203,"../utils/RenderTarget":204,"./WebGLManager":201,"bit-twiddle":18}],199:[function(require,module,exports){
 var WebGLManager = require('./WebGLManager'),
     AlphaMaskFilter = require('../filters/spriteMask/SpriteMaskFilter');
 
@@ -31726,7 +32442,7 @@ MaskManager.prototype.popScissorMask = function ()
     gl.disable(gl.SCISSOR_TEST);
 };
 
-},{"../filters/spriteMask/SpriteMaskFilter":173,"./WebGLManager":177}],176:[function(require,module,exports){
+},{"../filters/spriteMask/SpriteMaskFilter":197,"./WebGLManager":201}],200:[function(require,module,exports){
 var WebGLManager = require('./WebGLManager');
 
 /**
@@ -31839,7 +32555,7 @@ StencilManager.prototype.destroy = function ()
     this.stencilMaskStack.stencilStack = null;
 };
 
-},{"./WebGLManager":177}],177:[function(require,module,exports){
+},{"./WebGLManager":201}],201:[function(require,module,exports){
 /**
  * @class
  * @memberof PIXI
@@ -31880,7 +32596,7 @@ WebGLManager.prototype.destroy = function ()
     this.renderer = null;
 };
 
-},{}],178:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 var WebGLManager = require('../managers/WebGLManager');
 
 /**
@@ -31938,7 +32654,7 @@ ObjectRenderer.prototype.render = function (object) // jshint unused:false
     // render the object
 };
 
-},{"../managers/WebGLManager":177}],179:[function(require,module,exports){
+},{"../managers/WebGLManager":201}],203:[function(require,module,exports){
 var glCore = require('pixi-gl-core'),
     createIndicesForQuads = require('../../../utils/createIndicesForQuads');
 
@@ -32111,7 +32827,7 @@ Quad.prototype.destroy = function()
 
 module.exports = Quad;
 
-},{"../../../utils/createIndicesForQuads":201,"pixi-gl-core":115}],180:[function(require,module,exports){
+},{"../../../utils/createIndicesForQuads":225,"pixi-gl-core":140}],204:[function(require,module,exports){
 var math = require('../../../math'),
     CONST = require('../../../const'),
     GLFramebuffer = require('pixi-gl-core').GLFramebuffer;
@@ -32431,7 +33147,7 @@ RenderTarget.prototype.destroy = function ()
     this.texture = null;
 };
 
-},{"../../../const":130,"../../../math":154,"pixi-gl-core":115}],181:[function(require,module,exports){
+},{"../../../const":154,"../../../math":178,"pixi-gl-core":140}],205:[function(require,module,exports){
 var glCore = require('pixi-gl-core');
 
 var fragTemplate = [
@@ -32512,7 +33228,7 @@ function generateIfTestSrc(maxIfs)
 
 module.exports = checkMaxIfStatmentsInShader;
 
-},{"pixi-gl-core":115}],182:[function(require,module,exports){
+},{"pixi-gl-core":140}],206:[function(require,module,exports){
 var CONST = require('../../../const');
 
 /**
@@ -32551,7 +33267,7 @@ function mapWebGLBlendModesToPixi(gl, array)
 
 module.exports = mapWebGLBlendModesToPixi;
 
-},{"../../../const":130}],183:[function(require,module,exports){
+},{"../../../const":154}],207:[function(require,module,exports){
 var CONST = require('../../../const');
 
 /**
@@ -32577,7 +33293,7 @@ function mapWebGLDrawModesToPixi(gl, object)
 
 module.exports = mapWebGLDrawModesToPixi;
 
-},{"../../../const":130}],184:[function(require,module,exports){
+},{"../../../const":154}],208:[function(require,module,exports){
 
 
 function validateContext(gl)
@@ -32593,7 +33309,7 @@ function validateContext(gl)
 
 module.exports = validateContext;
 
-},{}],185:[function(require,module,exports){
+},{}],209:[function(require,module,exports){
 var math = require('../math'),
     Texture = require('../textures/Texture'),
     Container = require('../display/Container'),
@@ -33065,7 +33781,7 @@ Sprite.fromImage = function (imageId, crossorigin, scaleMode)
     return new Sprite(Texture.fromImage(imageId, crossorigin, scaleMode));
 };
 
-},{"../const":130,"../display/Container":132,"../math":154,"../textures/Texture":196,"../utils":203}],186:[function(require,module,exports){
+},{"../const":154,"../display/Container":156,"../math":178,"../textures/Texture":220,"../utils":227}],210:[function(require,module,exports){
 var CanvasRenderer = require('../../renderers/canvas/CanvasRenderer'),
     CONST = require('../../const'),
     math = require('../../math'),
@@ -33231,7 +33947,7 @@ CanvasSpriteRenderer.prototype.destroy = function (){
   this.renderer = null;
 };
 
-},{"../../const":130,"../../math":154,"../../renderers/canvas/CanvasRenderer":161,"./CanvasTinter":187}],187:[function(require,module,exports){
+},{"../../const":154,"../../math":178,"../../renderers/canvas/CanvasRenderer":185,"./CanvasTinter":211}],211:[function(require,module,exports){
 var utils = require('../../utils'),
     canUseNewCanvasBlendModes = require('../../renderers/canvas/utils/canUseNewCanvasBlendModes');
 
@@ -33501,7 +34217,7 @@ CanvasTinter.tintMethod = CanvasTinter.canUseMultiply ? CanvasTinter.tintWithMul
  * @param canvas {HTMLCanvasElement} the current canvas
  */
 
-},{"../../renderers/canvas/utils/canUseNewCanvasBlendModes":164,"../../utils":203}],188:[function(require,module,exports){
+},{"../../renderers/canvas/utils/canUseNewCanvasBlendModes":188,"../../utils":227}],212:[function(require,module,exports){
 
 
  var Buffer = function(size)
@@ -33532,7 +34248,7 @@ CanvasTinter.tintMethod = CanvasTinter.canUseMultiply ? CanvasTinter.tintWithMul
    this.uvs = null;
    this.colors  = null;
  };
-},{}],189:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 var ObjectRenderer = require('../../renderers/webgl/utils/ObjectRenderer'),
     WebGLRenderer = require('../../renderers/webgl/WebGLRenderer'),
     createIndicesForQuads = require('../../utils/createIndicesForQuads'),
@@ -33934,7 +34650,7 @@ SpriteRenderer.prototype.destroy = function ()
 
 };
 
-},{"../../const":130,"../../renderers/webgl/WebGLRenderer":168,"../../renderers/webgl/utils/ObjectRenderer":178,"../../renderers/webgl/utils/checkMaxIfStatmentsInShader":181,"../../utils/createIndicesForQuads":201,"./BatchBuffer":188,"./generateMultiTextureShader":190,"bit-twiddle":18,"pixi-gl-core":115}],190:[function(require,module,exports){
+},{"../../const":154,"../../renderers/webgl/WebGLRenderer":192,"../../renderers/webgl/utils/ObjectRenderer":202,"../../renderers/webgl/utils/checkMaxIfStatmentsInShader":205,"../../utils/createIndicesForQuads":225,"./BatchBuffer":212,"./generateMultiTextureShader":214,"bit-twiddle":18,"pixi-gl-core":140}],214:[function(require,module,exports){
 var Shader = require('../../Shader');
 
 
@@ -34008,7 +34724,7 @@ function generateSampleSrc(maxTextures)
 
 module.exports = generateMultiTextureShader;
 
-},{"../../Shader":129}],191:[function(require,module,exports){
+},{"../../Shader":153}],215:[function(require,module,exports){
 var Sprite = require('../sprites/Sprite'),
     Texture = require('../textures/Texture'),
     math = require('../math'),
@@ -34750,7 +35466,7 @@ Text.prototype.destroy = function (options)
     this._style = null;
 };
 
-},{"../const":130,"../math":154,"../sprites/Sprite":185,"../textures/Texture":196,"../utils":203,"./TextStyle":192}],192:[function(require,module,exports){
+},{"../const":154,"../math":178,"../sprites/Sprite":209,"../textures/Texture":220,"../utils":227,"./TextStyle":216}],216:[function(require,module,exports){
 var EventEmitter = require('eventemitter3'),
     CONST = require('../const'),
     utils = require('../utils');
@@ -35248,7 +35964,7 @@ function getColor(color)
     return color;
 }
 
-},{"../const":130,"../utils":203,"eventemitter3":86}],193:[function(require,module,exports){
+},{"../const":154,"../utils":227,"eventemitter3":84}],217:[function(require,module,exports){
 var BaseTexture = require('./BaseTexture'),
     CONST = require('../const');
 
@@ -35380,7 +36096,7 @@ BaseRenderTexture.prototype.destroy = function ()
 };
 
 
-},{"../const":130,"./BaseTexture":194}],194:[function(require,module,exports){
+},{"../const":154,"./BaseTexture":218}],218:[function(require,module,exports){
 var utils = require('../utils'),
     CONST = require('../const'),
     EventEmitter = require('eventemitter3'),
@@ -35830,7 +36546,7 @@ BaseTexture.fromCanvas = function (canvas, scaleMode)
     return baseTexture;
 };
 
-},{"../const":130,"../utils":203,"../utils/determineCrossOrigin":202,"bit-twiddle":18,"eventemitter3":86}],195:[function(require,module,exports){
+},{"../const":154,"../utils":227,"../utils/determineCrossOrigin":226,"bit-twiddle":18,"eventemitter3":84}],219:[function(require,module,exports){
 var BaseRenderTexture = require('./BaseRenderTexture'),
     Texture = require('./Texture');
 
@@ -35954,7 +36670,7 @@ RenderTexture.create = function(width, height, scaleMode, resolution)
     return new RenderTexture(new BaseRenderTexture(width, height, scaleMode, resolution));
 };
 
-},{"./BaseRenderTexture":193,"./Texture":196}],196:[function(require,module,exports){
+},{"./BaseRenderTexture":217,"./Texture":220}],220:[function(require,module,exports){
 var BaseTexture = require('./BaseTexture'),
     VideoBaseTexture = require('./VideoBaseTexture'),
     TextureUvs = require('./TextureUvs'),
@@ -36473,7 +37189,7 @@ Texture.EMPTY.once = function() {};
 Texture.EMPTY.emit = function() {};
 
 
-},{"../math":154,"../utils":203,"./BaseTexture":194,"./TextureUvs":197,"./VideoBaseTexture":198,"eventemitter3":86}],197:[function(require,module,exports){
+},{"../math":178,"../utils":227,"./BaseTexture":218,"./TextureUvs":221,"./VideoBaseTexture":222,"eventemitter3":84}],221:[function(require,module,exports){
 
 /**
  * A standard object to store the Uvs of a texture
@@ -36558,7 +37274,7 @@ TextureUvs.prototype.set = function (frame, baseFrame, rotate)
     this.uvsUint32[3] = (((this.y3 * 65535) & 0xFFFF) << 16) | ((this.x3 * 65535) & 0xFFFF);
 };
 
-},{"../math/GroupD8":150}],198:[function(require,module,exports){
+},{"../math/GroupD8":174}],222:[function(require,module,exports){
 var BaseTexture = require('./BaseTexture'),
     utils = require('../utils');
 
@@ -36795,7 +37511,7 @@ function createSource(path, type)
     return source;
 }
 
-},{"../utils":203,"./BaseTexture":194}],199:[function(require,module,exports){
+},{"../utils":227,"./BaseTexture":218}],223:[function(require,module,exports){
 var CONST = require('../const'),
     EventEmitter = require('eventemitter3'),
     // Internal event used by composed emitter
@@ -37171,7 +37887,7 @@ Ticker.prototype.update = function update(currentTime)
 
 module.exports = Ticker;
 
-},{"../const":130,"eventemitter3":86}],200:[function(require,module,exports){
+},{"../const":154,"eventemitter3":84}],224:[function(require,module,exports){
 var Ticker = require('./Ticker');
 
 /**
@@ -37227,7 +37943,7 @@ module.exports = {
     Ticker: Ticker
 };
 
-},{"./Ticker":199}],201:[function(require,module,exports){
+},{"./Ticker":223}],225:[function(require,module,exports){
 /**
  * Generic Mask Stack data structure
  * @class
@@ -37259,7 +37975,7 @@ var createIndicesForQuads = function (size)
 
 module.exports = createIndicesForQuads;
 
-},{}],202:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 var tempAnchor;
 var _url = require('url');
 
@@ -37304,7 +38020,7 @@ var determineCrossOrigin = function (url, loc) {
 
 module.exports = determineCrossOrigin;
 
-},{"url":309}],203:[function(require,module,exports){
+},{"url":344}],227:[function(require,module,exports){
 var CONST = require('../const');
 
 /**
@@ -37532,7 +38248,7 @@ var utils = module.exports = {
     BaseTextureCache: {}
 };
 
-},{"../const":130,"./pluginTarget":205,"eventemitter3":86}],204:[function(require,module,exports){
+},{"../const":154,"./pluginTarget":229,"eventemitter3":84}],228:[function(require,module,exports){
 
 
 var  Device = require('ismobilejs');
@@ -37553,7 +38269,7 @@ var maxRecommendedTextures = function(max)
 };
 
 module.exports = maxRecommendedTextures;
-},{"ismobilejs":100}],205:[function(require,module,exports){
+},{"ismobilejs":99}],229:[function(require,module,exports){
 /**
  * Mixins functionality to make an object have "plugins".
  *
@@ -37623,7 +38339,7 @@ module.exports = {
     }
 };
 
-},{}],206:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 /*global console */
 var core = require('./core'),
     mesh = require('./mesh'),
@@ -38181,7 +38897,7 @@ core.utils.canUseNewCanvasBlendModes = function() {
 };
 
 
-},{"./core":149,"./core/const":130,"./extras":216,"./filters":227,"./mesh":244,"./particles":247}],207:[function(require,module,exports){
+},{"./core":173,"./core/const":154,"./extras":240,"./filters":251,"./mesh":268,"./particles":271}],231:[function(require,module,exports){
 var core = require('../../core'),
     tempRect = new core.Rectangle();
 
@@ -38333,13 +39049,13 @@ CanvasExtract.prototype.destroy = function ()
 
 core.CanvasRenderer.registerPlugin('extract', CanvasExtract);
 
-},{"../../core":149}],208:[function(require,module,exports){
+},{"../../core":173}],232:[function(require,module,exports){
 
 module.exports = {
     webGL: require('./webgl/WebGLExtract'),
     canvas: require('./canvas/CanvasExtract')
 };
-},{"./canvas/CanvasExtract":207,"./webgl/WebGLExtract":209}],209:[function(require,module,exports){
+},{"./canvas/CanvasExtract":231,"./webgl/WebGLExtract":233}],233:[function(require,module,exports){
 var core = require('../../core'),
     tempRect = new core.Rectangle();
 
@@ -38536,7 +39252,7 @@ WebGLExtract.prototype.destroy = function ()
 
 core.WebGLRenderer.registerPlugin('extract', WebGLExtract);
 
-},{"../../core":149}],210:[function(require,module,exports){
+},{"../../core":173}],234:[function(require,module,exports){
 var core = require('../core'),
     ObservablePoint = require('../core/math/ObservablePoint');
 
@@ -38969,7 +39685,7 @@ BitmapText.prototype.makeDirty = function() {
 
 BitmapText.fonts = {};
 
-},{"../core":149,"../core/math/ObservablePoint":152}],211:[function(require,module,exports){
+},{"../core":173,"../core/math/ObservablePoint":176}],235:[function(require,module,exports){
 var core = require('../core');
 
 /**
@@ -39298,7 +40014,7 @@ MovieClip.fromImages = function (images)
     return new MovieClip(textures);
 };
 
-},{"../core":149}],212:[function(require,module,exports){
+},{"../core":173}],236:[function(require,module,exports){
 var core = require('../core'),
     tempPoint = new core.Point(),
     CanvasTinter = require('../core/sprites/canvas/CanvasTinter'),
@@ -39738,7 +40454,7 @@ TilingSprite.fromImage = function (imageId, width, height, crossorigin, scaleMod
     return new TilingSprite(core.Texture.fromImage(imageId, crossorigin, scaleMode),width,height);
 };
 
-},{"../core":149,"../core/sprites/canvas/CanvasTinter":187,"./webgl/TilingShader":217}],213:[function(require,module,exports){
+},{"../core":173,"../core/sprites/canvas/CanvasTinter":211,"./webgl/TilingShader":241}],237:[function(require,module,exports){
 var core = require('../core'),
     DisplayObject = core.DisplayObject,
     _tempMatrix = new core.Matrix();
@@ -40053,7 +40769,7 @@ DisplayObject.prototype._cacheAsBitmapDestroy = function ()
     this.destroy();
 };
 
-},{"../core":149}],214:[function(require,module,exports){
+},{"../core":173}],238:[function(require,module,exports){
 var core = require('../core');
 
 /**
@@ -40083,7 +40799,7 @@ core.Container.prototype.getChildByName = function (name)
     return null;
 };
 
-},{"../core":149}],215:[function(require,module,exports){
+},{"../core":173}],239:[function(require,module,exports){
 var core = require('../core');
 
 /**
@@ -40113,7 +40829,7 @@ core.DisplayObject.prototype.getGlobalPosition = function (point)
     return point;
 };
 
-},{"../core":149}],216:[function(require,module,exports){
+},{"../core":173}],240:[function(require,module,exports){
 /**
  * @file        Main export of the PIXI extras library
  * @author      Mat Groves <mat@goodboydigital.com>
@@ -40134,7 +40850,7 @@ module.exports = {
     BitmapText:     require('./BitmapText')
 };
 
-},{"./BitmapText":210,"./MovieClip":211,"./TilingSprite":212,"./cacheAsBitmap":213,"./getChildByName":214,"./getGlobalPosition":215}],217:[function(require,module,exports){
+},{"./BitmapText":234,"./MovieClip":235,"./TilingSprite":236,"./cacheAsBitmap":237,"./getChildByName":238,"./getGlobalPosition":239}],241:[function(require,module,exports){
 var Shader = require('../../core/Shader');
 
 
@@ -40158,7 +40874,7 @@ TilingShader.prototype.constructor = TilingShader;
 module.exports = TilingShader;
 
 
-},{"../../core/Shader":129}],218:[function(require,module,exports){
+},{"../../core/Shader":153}],242:[function(require,module,exports){
 var core = require('../../core'),
     BlurXFilter = require('./BlurXFilter'),
     BlurYFilter = require('./BlurYFilter');
@@ -40278,7 +40994,7 @@ Object.defineProperties(BlurFilter.prototype, {
     }
 });
 
-},{"../../core":149,"./BlurXFilter":219,"./BlurYFilter":220}],219:[function(require,module,exports){
+},{"../../core":173,"./BlurXFilter":243,"./BlurYFilter":244}],243:[function(require,module,exports){
 var core = require('../../core');
 var generateBlurVertSource  = require('./generateBlurVertSource');
 var generateBlurFragSource  = require('./generateBlurFragSource');
@@ -40403,7 +41119,7 @@ Object.defineProperties(BlurXFilter.prototype, {
     }
 });
 
-},{"../../core":149,"./generateBlurFragSource":221,"./generateBlurVertSource":222,"./getMaxBlurKernelSize":223}],220:[function(require,module,exports){
+},{"../../core":173,"./generateBlurFragSource":245,"./generateBlurVertSource":246,"./getMaxBlurKernelSize":247}],244:[function(require,module,exports){
 var core = require('../../core');
 var generateBlurVertSource  = require('./generateBlurVertSource');
 var generateBlurFragSource  = require('./generateBlurFragSource');
@@ -40526,7 +41242,7 @@ Object.defineProperties(BlurYFilter.prototype, {
     }
 });
 
-},{"../../core":149,"./generateBlurFragSource":221,"./generateBlurVertSource":222,"./getMaxBlurKernelSize":223}],221:[function(require,module,exports){
+},{"../../core":173,"./generateBlurFragSource":245,"./generateBlurVertSource":246,"./getMaxBlurKernelSize":247}],245:[function(require,module,exports){
 var GAUSSIAN_VALUES = {
 	5:[0.153388, 0.221461, 0.250301],
 	7:[0.071303, 0.131514, 0.189879, 0.214607],
@@ -40588,7 +41304,7 @@ var generateFragBlurSource = function(kernelSize)
 
 module.exports = generateFragBlurSource;
 
-},{}],222:[function(require,module,exports){
+},{}],246:[function(require,module,exports){
 
 var vertTemplate = [
 	'attribute vec2 aVertexPosition;',
@@ -40654,7 +41370,7 @@ var generateVertBlurSource = function(kernelSize, x)
 
 module.exports = generateVertBlurSource;
 
-},{}],223:[function(require,module,exports){
+},{}],247:[function(require,module,exports){
 
 
 var getMaxKernelSize = function(gl)
@@ -40672,7 +41388,7 @@ var getMaxKernelSize = function(gl)
 
 module.exports = getMaxKernelSize;
 
-},{}],224:[function(require,module,exports){
+},{}],248:[function(require,module,exports){
 var core = require('../../core');
 // @see https://github.com/substack/brfs/issues/25
 
@@ -41229,7 +41945,7 @@ Object.defineProperties(ColorMatrixFilter.prototype, {
     }
 });
 
-},{"../../core":149}],225:[function(require,module,exports){
+},{"../../core":173}],249:[function(require,module,exports){
 var core = require('../../core');
 
 
@@ -41310,7 +42026,7 @@ Object.defineProperties(DisplacementFilter.prototype, {
     }
 });
 
-},{"../../core":149}],226:[function(require,module,exports){
+},{"../../core":173}],250:[function(require,module,exports){
 var core = require('../../core');
 
 
@@ -41345,7 +42061,7 @@ FXAAFilter.prototype.constructor = FXAAFilter;
 
 module.exports = FXAAFilter;
 
-},{"../../core":149}],227:[function(require,module,exports){
+},{"../../core":173}],251:[function(require,module,exports){
 /**
  * @file        Main export of the PIXI filters library
  * @author      Mat Groves <mat@goodboydigital.com>
@@ -41367,7 +42083,7 @@ module.exports = {
     VoidFilter:         require('./void/VoidFilter')
 };
 
-},{"./blur/BlurFilter":218,"./blur/BlurXFilter":219,"./blur/BlurYFilter":220,"./colormatrix/ColorMatrixFilter":224,"./displacement/DisplacementFilter":225,"./fxaa/FXAAFilter":226,"./noise/NoiseFilter":228,"./void/VoidFilter":229}],228:[function(require,module,exports){
+},{"./blur/BlurFilter":242,"./blur/BlurXFilter":243,"./blur/BlurYFilter":244,"./colormatrix/ColorMatrixFilter":248,"./displacement/DisplacementFilter":249,"./fxaa/FXAAFilter":250,"./noise/NoiseFilter":252,"./void/VoidFilter":253}],252:[function(require,module,exports){
 var core = require('../../core');
 
 
@@ -41419,7 +42135,7 @@ Object.defineProperties(NoiseFilter.prototype, {
     }
 });
 
-},{"../../core":149}],229:[function(require,module,exports){
+},{"../../core":173}],253:[function(require,module,exports){
 var core = require('../../core');
 // @see https://github.com/substack/brfs/issues/25
 
@@ -41447,7 +42163,7 @@ VoidFilter.prototype = Object.create(core.Filter.prototype);
 VoidFilter.prototype.constructor = VoidFilter;
 module.exports = VoidFilter;
 
-},{"../../core":149}],230:[function(require,module,exports){
+},{"../../core":173}],254:[function(require,module,exports){
 (function (global){
 // run the polyfills
 require('./polyfill');
@@ -41482,7 +42198,7 @@ Object.assign(core, require('./deprecation'));
 global.PIXI = core;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./accessibility":128,"./core":149,"./deprecation":206,"./extract":208,"./extras":216,"./filters":227,"./interaction":233,"./loaders":236,"./mesh":244,"./particles":247,"./polyfill":253,"./prepare":256}],231:[function(require,module,exports){
+},{"./accessibility":152,"./core":173,"./deprecation":230,"./extract":232,"./extras":240,"./filters":251,"./interaction":257,"./loaders":260,"./mesh":268,"./particles":271,"./polyfill":277,"./prepare":280}],255:[function(require,module,exports){
 var core = require('../core');
 
 /**
@@ -41531,7 +42247,7 @@ InteractionData.prototype.getLocalPosition = function (displayObject, point, glo
     return displayObject.worldTransform.applyInverse(globalPos || this.global, point);
 };
 
-},{"../core":149}],232:[function(require,module,exports){
+},{"../core":173}],256:[function(require,module,exports){
 var core = require('../core'),
     InteractionData = require('./InteractionData'),
     EventEmitter = require('eventemitter3');
@@ -42535,7 +43251,7 @@ InteractionManager.prototype.destroy = function () {
 core.WebGLRenderer.registerPlugin('interaction', InteractionManager);
 core.CanvasRenderer.registerPlugin('interaction', InteractionManager);
 
-},{"../core":149,"./InteractionData":231,"./interactiveTarget":234,"eventemitter3":86}],233:[function(require,module,exports){
+},{"../core":173,"./InteractionData":255,"./interactiveTarget":258,"eventemitter3":84}],257:[function(require,module,exports){
 /**
  * @file        Main export of the PIXI interactions library
  * @author      Mat Groves <mat@goodboydigital.com>
@@ -42552,7 +43268,7 @@ module.exports = {
     interactiveTarget:  require('./interactiveTarget')
 };
 
-},{"./InteractionData":231,"./InteractionManager":232,"./interactiveTarget":234}],234:[function(require,module,exports){
+},{"./InteractionData":255,"./InteractionManager":256,"./interactiveTarget":258}],258:[function(require,module,exports){
 /**
  * Default property values of interactive objects
  * Used by {@link PIXI.interaction.InteractionManager} to automatically give all DisplayObjects these properties
@@ -42641,7 +43357,7 @@ var interactiveTarget = {
 
 module.exports = interactiveTarget;
 
-},{}],235:[function(require,module,exports){
+},{}],259:[function(require,module,exports){
 var Resource = require('resource-loader').Resource,
     core = require('../core'),
     extras = require('../extras'),
@@ -42768,7 +43484,7 @@ module.exports = function ()
     };
 };
 
-},{"../core":149,"../extras":216,"path":107,"resource-loader":275}],236:[function(require,module,exports){
+},{"../core":173,"../extras":240,"path":132,"resource-loader":321}],260:[function(require,module,exports){
 /**
  * @file        Main export of the PIXI loaders library
  * @author      Mat Groves <mat@goodboydigital.com>
@@ -42789,7 +43505,7 @@ module.exports = {
     Resource:           require('resource-loader').Resource
 };
 
-},{"./bitmapFontParser":235,"./loader":237,"./spritesheetParser":238,"./textureParser":239,"resource-loader":275}],237:[function(require,module,exports){
+},{"./bitmapFontParser":259,"./loader":261,"./spritesheetParser":262,"./textureParser":263,"resource-loader":321}],261:[function(require,module,exports){
 var ResourceLoader = require('resource-loader'),
     textureParser = require('./textureParser'),
     spritesheetParser = require('./spritesheetParser'),
@@ -42852,7 +43568,7 @@ var Resource = ResourceLoader.Resource;
 
 Resource.setExtensionXhrType('fnt', Resource.XHR_RESPONSE_TYPE.DOCUMENT);
 
-},{"./bitmapFontParser":235,"./spritesheetParser":238,"./textureParser":239,"resource-loader":275}],238:[function(require,module,exports){
+},{"./bitmapFontParser":259,"./spritesheetParser":262,"./textureParser":263,"resource-loader":321}],262:[function(require,module,exports){
 var Resource = require('resource-loader').Resource,
     path = require('path'),
     core = require('../core'),
@@ -42969,7 +43685,7 @@ module.exports = function ()
     };
 };
 
-},{"../core":149,"async":16,"path":107,"resource-loader":275}],239:[function(require,module,exports){
+},{"../core":173,"async":16,"path":132,"resource-loader":321}],263:[function(require,module,exports){
 var core = require('../core');
 
 module.exports = function ()
@@ -42991,7 +43707,7 @@ module.exports = function ()
     };
 };
 
-},{"../core":149}],240:[function(require,module,exports){
+},{"../core":173}],264:[function(require,module,exports){
 var core = require('../core'),
     glCore = require('pixi-gl-core'),
     Shader = require('./webgl/MeshShader'),
@@ -43493,7 +44209,7 @@ Mesh.DRAW_MODES = {
     TRIANGLES: 1
 };
 
-},{"../core":149,"./webgl/MeshShader":245,"pixi-gl-core":115}],241:[function(require,module,exports){
+},{"../core":173,"./webgl/MeshShader":269,"pixi-gl-core":140}],265:[function(require,module,exports){
 var DEFAULT_BORDER_SIZE= 10;
 
 var Plane = require('./Plane');
@@ -43816,7 +44532,7 @@ NineSlicePlane.prototype.drawSegment= function (context, textureSource, w, h, x1
     }
     context.drawImage(textureSource, uvs[x1] * w, uvs[y1] * h, sw, sh, vertices[x1], vertices[y1], dw, dh);
 };
-},{"./Plane":242}],242:[function(require,module,exports){
+},{"./Plane":266}],266:[function(require,module,exports){
 var Mesh = require('./Mesh');
 
 /**
@@ -43941,7 +44657,7 @@ Plane.prototype._onTextureUpdate = function ()
     }
 };
 
-},{"./Mesh":240}],243:[function(require,module,exports){
+},{"./Mesh":264}],267:[function(require,module,exports){
 var Mesh = require('./Mesh');
 var core = require('../core');
 
@@ -44156,7 +44872,7 @@ Rope.prototype.updateTransform = function ()
     this.containerUpdateTransform();
 };
 
-},{"../core":149,"./Mesh":240}],244:[function(require,module,exports){
+},{"../core":173,"./Mesh":264}],268:[function(require,module,exports){
 /**
  * @file        Main export of the PIXI extras library
  * @author      Mat Groves <mat@goodboydigital.com>
@@ -44175,7 +44891,7 @@ module.exports = {
     MeshShader:     require('./webgl/MeshShader')
 };
 
-},{"./Mesh":240,"./NineSlicePlane":241,"./Plane":242,"./Rope":243,"./webgl/MeshShader":245}],245:[function(require,module,exports){
+},{"./Mesh":264,"./NineSlicePlane":265,"./Plane":266,"./Rope":267,"./webgl/MeshShader":269}],269:[function(require,module,exports){
 var Shader = require('../../core/Shader');
 
 /**
@@ -44223,7 +44939,7 @@ MeshShader.prototype.constructor = MeshShader;
 module.exports = MeshShader;
 
 
-},{"../../core/Shader":129}],246:[function(require,module,exports){
+},{"../../core/Shader":153}],270:[function(require,module,exports){
 var core = require('../core');
 
 /**
@@ -44557,7 +45273,7 @@ ParticleContainer.prototype.destroy = function () {
     this._buffers = null;
 };
 
-},{"../core":149}],247:[function(require,module,exports){
+},{"../core":173}],271:[function(require,module,exports){
 /**
  * @file        Main export of the PIXI extras library
  * @author      Mat Groves <mat@goodboydigital.com>
@@ -44573,7 +45289,7 @@ module.exports = {
     ParticleRenderer: 			 require('./webgl/ParticleRenderer')
 };
 
-},{"./ParticleContainer":246,"./webgl/ParticleRenderer":249}],248:[function(require,module,exports){
+},{"./ParticleContainer":270,"./webgl/ParticleRenderer":273}],272:[function(require,module,exports){
 var glCore = require('pixi-gl-core'),
     createIndicesForQuads = require('../../core/utils/createIndicesForQuads');
 
@@ -44804,7 +45520,7 @@ ParticleBuffer.prototype.destroy = function ()
     this.staticBuffer.destroy();
 };
 
-},{"../../core/utils/createIndicesForQuads":201,"pixi-gl-core":115}],249:[function(require,module,exports){
+},{"../../core/utils/createIndicesForQuads":225,"pixi-gl-core":140}],273:[function(require,module,exports){
 var core = require('../../core'),
     ParticleShader = require('./ParticleShader'),
     ParticleBuffer = require('./ParticleBuffer');
@@ -45236,7 +45952,7 @@ ParticleRenderer.prototype.destroy = function ()
     this.tempMatrix = null;
 };
 
-},{"../../core":149,"./ParticleBuffer":248,"./ParticleShader":250}],250:[function(require,module,exports){
+},{"../../core":173,"./ParticleBuffer":272,"./ParticleShader":274}],274:[function(require,module,exports){
 var Shader = require('../../core/Shader');
 
 /**
@@ -45302,7 +46018,7 @@ ParticleShader.prototype.constructor = ParticleShader;
 
 module.exports = ParticleShader;
 
-},{"../../core/Shader":129}],251:[function(require,module,exports){
+},{"../../core/Shader":153}],275:[function(require,module,exports){
 // References:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sign
 
@@ -45318,7 +46034,7 @@ if (!Math.sign)
     };
 }
 
-},{}],252:[function(require,module,exports){
+},{}],276:[function(require,module,exports){
 // References:
 // https://github.com/sindresorhus/object-assign
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
@@ -45328,7 +46044,7 @@ if (!Object.assign)
     Object.assign = require('object-assign');
 }
 
-},{"object-assign":125}],253:[function(require,module,exports){
+},{"object-assign":127}],277:[function(require,module,exports){
 require('./Object.assign');
 require('./requestAnimationFrame');
 require('./Math.sign');
@@ -45346,7 +46062,7 @@ if(!window.Uint16Array){
   window.Uint16Array = Array;
 }
 
-},{"./Math.sign":251,"./Object.assign":252,"./requestAnimationFrame":254}],254:[function(require,module,exports){
+},{"./Math.sign":275,"./Object.assign":276,"./requestAnimationFrame":278}],278:[function(require,module,exports){
 (function (global){
 // References:
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
@@ -45416,7 +46132,7 @@ if (!global.cancelAnimationFrame) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],255:[function(require,module,exports){
+},{}],279:[function(require,module,exports){
 var core = require('../../core');
 
 /**
@@ -45476,13 +46192,13 @@ CanvasPrepare.prototype.destroy = function()
 };
 
 core.CanvasRenderer.registerPlugin('prepare', CanvasPrepare);
-},{"../../core":149}],256:[function(require,module,exports){
+},{"../../core":173}],280:[function(require,module,exports){
 
 module.exports = {
     webGL: require('./webgl/WebGLPrepare'),
     canvas: require('./canvas/CanvasPrepare')
 };
-},{"./canvas/CanvasPrepare":255,"./webgl/WebGLPrepare":257}],257:[function(require,module,exports){
+},{"./canvas/CanvasPrepare":279,"./webgl/WebGLPrepare":281}],281:[function(require,module,exports){
 var core = require('../../core'),
     SharedTicker = core.ticker.shared;
 
@@ -45786,7 +46502,7 @@ function findGraphics(item, queue)
 }
 
 core.WebGLRenderer.registerPlugin('prepare', WebGLPrepare);
-},{"../../core":149}],258:[function(require,module,exports){
+},{"../../core":173}],282:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -45833,7 +46549,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 }).call(this,require('_process'))
-},{"_process":259}],259:[function(require,module,exports){
+},{"_process":283}],283:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -45995,7 +46711,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],260:[function(require,module,exports){
+},{}],284:[function(require,module,exports){
 exports.publicEncrypt = require('./publicEncrypt');
 exports.privateDecrypt = require('./privateDecrypt');
 
@@ -46006,7 +46722,7 @@ exports.privateEncrypt = function privateEncrypt(key, buf) {
 exports.publicDecrypt = function publicDecrypt(key, buf) {
   return exports.privateDecrypt(key, buf, true);
 };
-},{"./privateDecrypt":262,"./publicEncrypt":263}],261:[function(require,module,exports){
+},{"./privateDecrypt":286,"./publicEncrypt":287}],285:[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash');
 module.exports = function (seed, len) {
@@ -46025,7 +46741,7 @@ function i2ops(c) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"buffer":48,"create-hash":53}],262:[function(require,module,exports){
+},{"buffer":47,"create-hash":51}],286:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var mgf = require('./mgf');
@@ -46136,7 +46852,7 @@ function compare(a, b){
   return dif;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":261,"./withPublic":264,"./xor":265,"bn.js":19,"browserify-rsa":40,"buffer":48,"create-hash":53,"parse-asn1":106}],263:[function(require,module,exports){
+},{"./mgf":285,"./withPublic":288,"./xor":289,"bn.js":19,"browserify-rsa":40,"buffer":47,"create-hash":51,"parse-asn1":131}],287:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var randomBytes = require('randombytes');
@@ -46234,7 +46950,7 @@ function nonZero(len, crypto) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":261,"./withPublic":264,"./xor":265,"bn.js":19,"browserify-rsa":40,"buffer":48,"create-hash":53,"parse-asn1":106,"randombytes":270}],264:[function(require,module,exports){
+},{"./mgf":285,"./withPublic":288,"./xor":289,"bn.js":19,"browserify-rsa":40,"buffer":47,"create-hash":51,"parse-asn1":131,"randombytes":294}],288:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 function withPublic(paddedMsg, key) {
@@ -46247,7 +46963,7 @@ function withPublic(paddedMsg, key) {
 
 module.exports = withPublic;
 }).call(this,require("buffer").Buffer)
-},{"bn.js":19,"buffer":48}],265:[function(require,module,exports){
+},{"bn.js":19,"buffer":47}],289:[function(require,module,exports){
 module.exports = function xor(a, b) {
   var len = a.length;
   var i = -1;
@@ -46256,7 +46972,7 @@ module.exports = function xor(a, b) {
   }
   return a
 };
-},{}],266:[function(require,module,exports){
+},{}],290:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -46793,7 +47509,7 @@ module.exports = function xor(a, b) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],267:[function(require,module,exports){
+},{}],291:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -46879,7 +47595,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],268:[function(require,module,exports){
+},{}],292:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -46966,13 +47682,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],269:[function(require,module,exports){
+},{}],293:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":267,"./encode":268}],270:[function(require,module,exports){
+},{"./decode":291,"./encode":292}],294:[function(require,module,exports){
 (function (process,global,Buffer){
 'use strict'
 
@@ -47012,5231 +47728,2420 @@ function randomBytes (size, cb) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"_process":259,"buffer":48}],271:[function(require,module,exports){
-(function (process,global){
-(function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-    typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (factory((global.async = global.async || {})));
-}(this, function (exports) { 'use strict';
+},{"_process":283,"buffer":47}],295:[function(require,module,exports){
+module.exports = require("./lib/_stream_duplex.js")
+
+},{"./lib/_stream_duplex.js":296}],296:[function(require,module,exports){
+// a duplex stream is just a stream that is both readable and writable.
+// Since JS doesn't have multiple prototypal inheritance, this class
+// prototypally inherits from Readable, and then parasitically from
+// Writable.
 
-    /**
-     * A faster alternative to `Function#apply`, this function invokes `func`
-     * with the `this` binding of `thisArg` and the arguments of `args`.
-     *
-     * @private
-     * @param {Function} func The function to invoke.
-     * @param {*} thisArg The `this` binding of `func`.
-     * @param {Array} args The arguments to invoke `func` with.
-     * @returns {*} Returns the result of `func`.
-     */
-    function apply(func, thisArg, args) {
-      var length = args.length;
-      switch (length) {
-        case 0: return func.call(thisArg);
-        case 1: return func.call(thisArg, args[0]);
-        case 2: return func.call(thisArg, args[0], args[1]);
-        case 3: return func.call(thisArg, args[0], args[1], args[2]);
-      }
-      return func.apply(thisArg, args);
-    }
-
-    /**
-     * Checks if `value` is the
-     * [language type](http://www.ecma-international.org/ecma-262/6.0/#sec-ecmascript-language-types)
-     * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
-     *
-     * @static
-     * @memberOf _
-     * @since 0.1.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is an object, else `false`.
-     * @example
-     *
-     * _.isObject({});
-     * // => true
-     *
-     * _.isObject([1, 2, 3]);
-     * // => true
-     *
-     * _.isObject(_.noop);
-     * // => true
-     *
-     * _.isObject(null);
-     * // => false
-     */
-    function isObject(value) {
-      var type = typeof value;
-      return !!value && (type == 'object' || type == 'function');
-    }
-
-    var funcTag = '[object Function]';
-    var genTag = '[object GeneratorFunction]';
-    /** Used for built-in method references. */
-    var objectProto = Object.prototype;
-
-    /**
-     * Used to resolve the
-     * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-     * of values.
-     */
-    var objectToString = objectProto.toString;
-
-    /**
-     * Checks if `value` is classified as a `Function` object.
-     *
-     * @static
-     * @memberOf _
-     * @since 0.1.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is correctly classified,
-     *  else `false`.
-     * @example
-     *
-     * _.isFunction(_);
-     * // => true
-     *
-     * _.isFunction(/abc/);
-     * // => false
-     */
-    function isFunction(value) {
-      // The use of `Object#toString` avoids issues with the `typeof` operator
-      // in Safari 8 which returns 'object' for typed array and weak map constructors,
-      // and PhantomJS 1.9 which returns 'function' for `NodeList` instances.
-      var tag = isObject(value) ? objectToString.call(value) : '';
-      return tag == funcTag || tag == genTag;
-    }
-
-    /**
-     * Checks if `value` is object-like. A value is object-like if it's not `null`
-     * and has a `typeof` result of "object".
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
-     * @example
-     *
-     * _.isObjectLike({});
-     * // => true
-     *
-     * _.isObjectLike([1, 2, 3]);
-     * // => true
-     *
-     * _.isObjectLike(_.noop);
-     * // => false
-     *
-     * _.isObjectLike(null);
-     * // => false
-     */
-    function isObjectLike(value) {
-      return !!value && typeof value == 'object';
-    }
-
-    /** `Object#toString` result references. */
-    var symbolTag = '[object Symbol]';
-
-    /** Used for built-in method references. */
-    var objectProto$1 = Object.prototype;
-
-    /**
-     * Used to resolve the
-     * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-     * of values.
-     */
-    var objectToString$1 = objectProto$1.toString;
-
-    /**
-     * Checks if `value` is classified as a `Symbol` primitive or object.
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is correctly classified,
-     *  else `false`.
-     * @example
-     *
-     * _.isSymbol(Symbol.iterator);
-     * // => true
-     *
-     * _.isSymbol('abc');
-     * // => false
-     */
-    function isSymbol(value) {
-      return typeof value == 'symbol' ||
-        (isObjectLike(value) && objectToString$1.call(value) == symbolTag);
-    }
-
-    /** Used as references for various `Number` constants. */
-    var NAN = 0 / 0;
-
-    /** Used to match leading and trailing whitespace. */
-    var reTrim = /^\s+|\s+$/g;
-
-    /** Used to detect bad signed hexadecimal string values. */
-    var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-    /** Used to detect binary string values. */
-    var reIsBinary = /^0b[01]+$/i;
-
-    /** Used to detect octal string values. */
-    var reIsOctal = /^0o[0-7]+$/i;
-
-    /** Built-in method references without a dependency on `root`. */
-    var freeParseInt = parseInt;
-
-    /**
-     * Converts `value` to a number.
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Lang
-     * @param {*} value The value to process.
-     * @returns {number} Returns the number.
-     * @example
-     *
-     * _.toNumber(3.2);
-     * // => 3.2
-     *
-     * _.toNumber(Number.MIN_VALUE);
-     * // => 5e-324
-     *
-     * _.toNumber(Infinity);
-     * // => Infinity
-     *
-     * _.toNumber('3.2');
-     * // => 3.2
-     */
-    function toNumber(value) {
-      if (typeof value == 'number') {
-        return value;
-      }
-      if (isSymbol(value)) {
-        return NAN;
-      }
-      if (isObject(value)) {
-        var other = isFunction(value.valueOf) ? value.valueOf() : value;
-        value = isObject(other) ? (other + '') : other;
-      }
-      if (typeof value != 'string') {
-        return value === 0 ? value : +value;
-      }
-      value = value.replace(reTrim, '');
-      var isBinary = reIsBinary.test(value);
-      return (isBinary || reIsOctal.test(value))
-        ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
-        : (reIsBadHex.test(value) ? NAN : +value);
-    }
-
-    var INFINITY = 1 / 0;
-    var MAX_INTEGER = 1.7976931348623157e+308;
-    /**
-     * Converts `value` to a finite number.
-     *
-     * @static
-     * @memberOf _
-     * @since 4.12.0
-     * @category Lang
-     * @param {*} value The value to convert.
-     * @returns {number} Returns the converted number.
-     * @example
-     *
-     * _.toFinite(3.2);
-     * // => 3.2
-     *
-     * _.toFinite(Number.MIN_VALUE);
-     * // => 5e-324
-     *
-     * _.toFinite(Infinity);
-     * // => 1.7976931348623157e+308
-     *
-     * _.toFinite('3.2');
-     * // => 3.2
-     */
-    function toFinite(value) {
-      if (!value) {
-        return value === 0 ? value : 0;
-      }
-      value = toNumber(value);
-      if (value === INFINITY || value === -INFINITY) {
-        var sign = (value < 0 ? -1 : 1);
-        return sign * MAX_INTEGER;
-      }
-      return value === value ? value : 0;
-    }
-
-    /**
-     * Converts `value` to an integer.
-     *
-     * **Note:** This method is loosely based on
-     * [`ToInteger`](http://www.ecma-international.org/ecma-262/6.0/#sec-tointeger).
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Lang
-     * @param {*} value The value to convert.
-     * @returns {number} Returns the converted integer.
-     * @example
-     *
-     * _.toInteger(3.2);
-     * // => 3
-     *
-     * _.toInteger(Number.MIN_VALUE);
-     * // => 0
-     *
-     * _.toInteger(Infinity);
-     * // => 1.7976931348623157e+308
-     *
-     * _.toInteger('3.2');
-     * // => 3
-     */
-    function toInteger(value) {
-      var result = toFinite(value),
-          remainder = result % 1;
-
-      return result === result ? (remainder ? result - remainder : result) : 0;
-    }
-
-    /** Used as the `TypeError` message for "Functions" methods. */
-    var FUNC_ERROR_TEXT = 'Expected a function';
-
-    /* Built-in method references for those with the same name as other `lodash` methods. */
-    var nativeMax = Math.max;
-
-    /**
-     * Creates a function that invokes `func` with the `this` binding of the
-     * created function and arguments from `start` and beyond provided as
-     * an array.
-     *
-     * **Note:** This method is based on the
-     * [rest parameter](https://mdn.io/rest_parameters).
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Function
-     * @param {Function} func The function to apply a rest parameter to.
-     * @param {number} [start=func.length-1] The start position of the rest parameter.
-     * @returns {Function} Returns the new function.
-     * @example
-     *
-     * var say = _.rest(function(what, names) {
-     *   return what + ' ' + _.initial(names).join(', ') +
-     *     (_.size(names) > 1 ? ', & ' : '') + _.last(names);
-     * });
-     *
-     * say('hello', 'fred', 'barney', 'pebbles');
-     * // => 'hello fred, barney, & pebbles'
-     */
-    function rest(func, start) {
-      if (typeof func != 'function') {
-        throw new TypeError(FUNC_ERROR_TEXT);
-      }
-      start = nativeMax(start === undefined ? (func.length - 1) : toInteger(start), 0);
-      return function() {
-        var args = arguments,
-            index = -1,
-            length = nativeMax(args.length - start, 0),
-            array = Array(length);
-
-        while (++index < length) {
-          array[index] = args[start + index];
-        }
-        switch (start) {
-          case 0: return func.call(this, array);
-          case 1: return func.call(this, args[0], array);
-          case 2: return func.call(this, args[0], args[1], array);
-        }
-        var otherArgs = Array(start + 1);
-        index = -1;
-        while (++index < start) {
-          otherArgs[index] = args[index];
-        }
-        otherArgs[start] = array;
-        return apply(func, this, otherArgs);
-      };
-    }
-
-    function initialParams (fn) {
-        return rest(function (args /*..., callback*/) {
-            var callback = args.pop();
-            fn.call(this, args, callback);
-        });
-    }
-
-    function applyEach$1(eachfn) {
-        return rest(function (fns, args) {
-            var go = initialParams(function (args, callback) {
-                var that = this;
-                return eachfn(fns, function (fn, cb) {
-                    fn.apply(that, args.concat([cb]));
-                }, callback);
-            });
-            if (args.length) {
-                return go.apply(this, args);
-            } else {
-                return go;
-            }
-        });
-    }
-
-    /**
-     * The base implementation of `_.property` without support for deep paths.
-     *
-     * @private
-     * @param {string} key The key of the property to get.
-     * @returns {Function} Returns the new accessor function.
-     */
-    function baseProperty(key) {
-      return function(object) {
-        return object == null ? undefined : object[key];
-      };
-    }
-
-    /**
-     * Gets the "length" property value of `object`.
-     *
-     * **Note:** This function is used to avoid a
-     * [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792) that affects
-     * Safari on at least iOS 8.1-8.3 ARM64.
-     *
-     * @private
-     * @param {Object} object The object to query.
-     * @returns {*} Returns the "length" value.
-     */
-    var getLength = baseProperty('length');
-
-    /** Used as references for various `Number` constants. */
-    var MAX_SAFE_INTEGER = 9007199254740991;
-
-    /**
-     * Checks if `value` is a valid array-like length.
-     *
-     * **Note:** This function is loosely based on
-     * [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is a valid length,
-     *  else `false`.
-     * @example
-     *
-     * _.isLength(3);
-     * // => true
-     *
-     * _.isLength(Number.MIN_VALUE);
-     * // => false
-     *
-     * _.isLength(Infinity);
-     * // => false
-     *
-     * _.isLength('3');
-     * // => false
-     */
-    function isLength(value) {
-      return typeof value == 'number' &&
-        value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-    }
-
-    /**
-     * Checks if `value` is array-like. A value is considered array-like if it's
-     * not a function and has a `value.length` that's an integer greater than or
-     * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
-     * @example
-     *
-     * _.isArrayLike([1, 2, 3]);
-     * // => true
-     *
-     * _.isArrayLike(document.body.children);
-     * // => true
-     *
-     * _.isArrayLike('abc');
-     * // => true
-     *
-     * _.isArrayLike(_.noop);
-     * // => false
-     */
-    function isArrayLike(value) {
-      return value != null && isLength(getLength(value)) && !isFunction(value);
-    }
-
-    /**
-     * A method that returns `undefined`.
-     *
-     * @static
-     * @memberOf _
-     * @since 2.3.0
-     * @category Util
-     * @example
-     *
-     * _.times(2, _.noop);
-     * // => [undefined, undefined]
-     */
-    function noop() {
-      // No operation performed.
-    }
-
-    function once(fn) {
-        return function () {
-            if (fn === null) return;
-            var callFn = fn;
-            fn = null;
-            callFn.apply(this, arguments);
-        };
-    }
-
-    var iteratorSymbol = typeof Symbol === 'function' && Symbol.iterator;
-
-    function getIterator (coll) {
-        return iteratorSymbol && coll[iteratorSymbol] && coll[iteratorSymbol]();
-    }
-
-    /* Built-in method references for those with the same name as other `lodash` methods. */
-    var nativeGetPrototype = Object.getPrototypeOf;
-
-    /**
-     * Gets the `[[Prototype]]` of `value`.
-     *
-     * @private
-     * @param {*} value The value to query.
-     * @returns {null|Object} Returns the `[[Prototype]]`.
-     */
-    function getPrototype(value) {
-      return nativeGetPrototype(Object(value));
-    }
-
-    /** Used for built-in method references. */
-    var objectProto$2 = Object.prototype;
-
-    /** Used to check objects for own properties. */
-    var hasOwnProperty = objectProto$2.hasOwnProperty;
-
-    /**
-     * The base implementation of `_.has` without support for deep paths.
-     *
-     * @private
-     * @param {Object} [object] The object to query.
-     * @param {Array|string} key The key to check.
-     * @returns {boolean} Returns `true` if `key` exists, else `false`.
-     */
-    function baseHas(object, key) {
-      // Avoid a bug in IE 10-11 where objects with a [[Prototype]] of `null`,
-      // that are composed entirely of index properties, return `false` for
-      // `hasOwnProperty` checks of them.
-      return object != null &&
-        (hasOwnProperty.call(object, key) ||
-          (typeof object == 'object' && key in object && getPrototype(object) === null));
-    }
-
-    /* Built-in method references for those with the same name as other `lodash` methods. */
-    var nativeKeys = Object.keys;
-
-    /**
-     * The base implementation of `_.keys` which doesn't skip the constructor
-     * property of prototypes or treat sparse arrays as dense.
-     *
-     * @private
-     * @param {Object} object The object to query.
-     * @returns {Array} Returns the array of property names.
-     */
-    function baseKeys(object) {
-      return nativeKeys(Object(object));
-    }
-
-    /**
-     * The base implementation of `_.times` without support for iteratee shorthands
-     * or max array length checks.
-     *
-     * @private
-     * @param {number} n The number of times to invoke `iteratee`.
-     * @param {Function} iteratee The function invoked per iteration.
-     * @returns {Array} Returns the array of results.
-     */
-    function baseTimes(n, iteratee) {
-      var index = -1,
-          result = Array(n);
-
-      while (++index < n) {
-        result[index] = iteratee(index);
-      }
-      return result;
-    }
-
-    /**
-     * This method is like `_.isArrayLike` except that it also checks if `value`
-     * is an object.
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is an array-like object,
-     *  else `false`.
-     * @example
-     *
-     * _.isArrayLikeObject([1, 2, 3]);
-     * // => true
-     *
-     * _.isArrayLikeObject(document.body.children);
-     * // => true
-     *
-     * _.isArrayLikeObject('abc');
-     * // => false
-     *
-     * _.isArrayLikeObject(_.noop);
-     * // => false
-     */
-    function isArrayLikeObject(value) {
-      return isObjectLike(value) && isArrayLike(value);
-    }
-
-    /** `Object#toString` result references. */
-    var argsTag = '[object Arguments]';
-
-    /** Used for built-in method references. */
-    var objectProto$3 = Object.prototype;
-
-    /** Used to check objects for own properties. */
-    var hasOwnProperty$1 = objectProto$3.hasOwnProperty;
-
-    /**
-     * Used to resolve the
-     * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-     * of values.
-     */
-    var objectToString$2 = objectProto$3.toString;
-
-    /** Built-in value references. */
-    var propertyIsEnumerable = objectProto$3.propertyIsEnumerable;
-
-    /**
-     * Checks if `value` is likely an `arguments` object.
-     *
-     * @static
-     * @memberOf _
-     * @since 0.1.0
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is correctly classified,
-     *  else `false`.
-     * @example
-     *
-     * _.isArguments(function() { return arguments; }());
-     * // => true
-     *
-     * _.isArguments([1, 2, 3]);
-     * // => false
-     */
-    function isArguments(value) {
-      // Safari 8.1 incorrectly makes `arguments.callee` enumerable in strict mode.
-      return isArrayLikeObject(value) && hasOwnProperty$1.call(value, 'callee') &&
-        (!propertyIsEnumerable.call(value, 'callee') || objectToString$2.call(value) == argsTag);
-    }
-
-    /**
-     * Checks if `value` is classified as an `Array` object.
-     *
-     * @static
-     * @memberOf _
-     * @since 0.1.0
-     * @type {Function}
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is correctly classified,
-     *  else `false`.
-     * @example
-     *
-     * _.isArray([1, 2, 3]);
-     * // => true
-     *
-     * _.isArray(document.body.children);
-     * // => false
-     *
-     * _.isArray('abc');
-     * // => false
-     *
-     * _.isArray(_.noop);
-     * // => false
-     */
-    var isArray = Array.isArray;
-
-    /** `Object#toString` result references. */
-    var stringTag = '[object String]';
-
-    /** Used for built-in method references. */
-    var objectProto$4 = Object.prototype;
-
-    /**
-     * Used to resolve the
-     * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-     * of values.
-     */
-    var objectToString$3 = objectProto$4.toString;
-
-    /**
-     * Checks if `value` is classified as a `String` primitive or object.
-     *
-     * @static
-     * @since 0.1.0
-     * @memberOf _
-     * @category Lang
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is correctly classified,
-     *  else `false`.
-     * @example
-     *
-     * _.isString('abc');
-     * // => true
-     *
-     * _.isString(1);
-     * // => false
-     */
-    function isString(value) {
-      return typeof value == 'string' ||
-        (!isArray(value) && isObjectLike(value) && objectToString$3.call(value) == stringTag);
-    }
-
-    /**
-     * Creates an array of index keys for `object` values of arrays,
-     * `arguments` objects, and strings, otherwise `null` is returned.
-     *
-     * @private
-     * @param {Object} object The object to query.
-     * @returns {Array|null} Returns index keys, else `null`.
-     */
-    function indexKeys(object) {
-      var length = object ? object.length : undefined;
-      if (isLength(length) &&
-          (isArray(object) || isString(object) || isArguments(object))) {
-        return baseTimes(length, String);
-      }
-      return null;
-    }
-
-    /** Used as references for various `Number` constants. */
-    var MAX_SAFE_INTEGER$1 = 9007199254740991;
-
-    /** Used to detect unsigned integer values. */
-    var reIsUint = /^(?:0|[1-9]\d*)$/;
-
-    /**
-     * Checks if `value` is a valid array-like index.
-     *
-     * @private
-     * @param {*} value The value to check.
-     * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
-     * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
-     */
-    function isIndex(value, length) {
-      length = length == null ? MAX_SAFE_INTEGER$1 : length;
-      return !!length &&
-        (typeof value == 'number' || reIsUint.test(value)) &&
-        (value > -1 && value % 1 == 0 && value < length);
-    }
-
-    /** Used for built-in method references. */
-    var objectProto$5 = Object.prototype;
-
-    /**
-     * Checks if `value` is likely a prototype object.
-     *
-     * @private
-     * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
-     */
-    function isPrototype(value) {
-      var Ctor = value && value.constructor,
-          proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto$5;
-
-      return value === proto;
-    }
-
-    /**
-     * Creates an array of the own enumerable property names of `object`.
-     *
-     * **Note:** Non-object values are coerced to objects. See the
-     * [ES spec](http://ecma-international.org/ecma-262/6.0/#sec-object.keys)
-     * for more details.
-     *
-     * @static
-     * @since 0.1.0
-     * @memberOf _
-     * @category Object
-     * @param {Object} object The object to query.
-     * @returns {Array} Returns the array of property names.
-     * @example
-     *
-     * function Foo() {
-     *   this.a = 1;
-     *   this.b = 2;
-     * }
-     *
-     * Foo.prototype.c = 3;
-     *
-     * _.keys(new Foo);
-     * // => ['a', 'b'] (iteration order is not guaranteed)
-     *
-     * _.keys('hi');
-     * // => ['0', '1']
-     */
-    function keys(object) {
-      var isProto = isPrototype(object);
-      if (!(isProto || isArrayLike(object))) {
-        return baseKeys(object);
-      }
-      var indexes = indexKeys(object),
-          skipIndexes = !!indexes,
-          result = indexes || [],
-          length = result.length;
-
-      for (var key in object) {
-        if (baseHas(object, key) &&
-            !(skipIndexes && (key == 'length' || isIndex(key, length))) &&
-            !(isProto && key == 'constructor')) {
-          result.push(key);
-        }
-      }
-      return result;
-    }
-
-    function createArrayIterator(coll) {
-        var i = -1;
-        var len = coll.length;
-        return function next() {
-            return ++i < len ? { value: coll[i], key: i } : null;
-        };
-    }
-
-    function createES2015Iterator(iterator) {
-        var i = -1;
-        return function next() {
-            var item = iterator.next();
-            if (item.done) return null;
-            i++;
-            return { value: item.value, key: i };
-        };
-    }
-
-    function createObjectIterator(obj) {
-        var okeys = keys(obj);
-        var i = -1;
-        var len = okeys.length;
-        return function next() {
-            var key = okeys[++i];
-            return i < len ? { value: obj[key], key: key } : null;
-        };
-    }
-
-    function iterator(coll) {
-        if (isArrayLike(coll)) {
-            return createArrayIterator(coll);
-        }
-
-        var iterator = getIterator(coll);
-        return iterator ? createES2015Iterator(iterator) : createObjectIterator(coll);
-    }
-
-    function onlyOnce(fn) {
-        return function () {
-            if (fn === null) throw new Error("Callback was already called.");
-            var callFn = fn;
-            fn = null;
-            callFn.apply(this, arguments);
-        };
-    }
-
-    function _eachOfLimit(limit) {
-        return function (obj, iteratee, callback) {
-            callback = once(callback || noop);
-            if (limit <= 0 || !obj) {
-                return callback(null);
-            }
-            var nextElem = iterator(obj);
-            var done = false;
-            var running = 0;
-
-            function iterateeCallback(err) {
-                running -= 1;
-                if (err) {
-                    done = true;
-                    callback(err);
-                } else if (done && running <= 0) {
-                    return callback(null);
-                } else {
-                    replenish();
-                }
-            }
-
-            function replenish() {
-                while (running < limit && !done) {
-                    var elem = nextElem();
-                    if (elem === null) {
-                        done = true;
-                        if (running <= 0) {
-                            callback(null);
-                        }
-                        return;
-                    }
-                    running += 1;
-                    iteratee(elem.value, elem.key, onlyOnce(iterateeCallback));
-                }
-            }
-
-            replenish();
-        };
-    }
-
-    /**
-     * The same as [`eachOf`]{@link module:Collections.eachOf} but runs a maximum of `limit` async operations at a
-     * time.
-     *
-     * @name eachOfLimit
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.eachOf]{@link module:Collections.eachOf}
-     * @alias forEachOfLimit
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {number} limit - The maximum number of async operations at a time.
-     * @param {Function} iteratee - A function to apply to each
-     * item in `coll`. The `key` is the item's key, or index in the case of an
-     * array. The iteratee is passed a `callback(err)` which must be called once it
-     * has completed. If no error has occurred, the callback should be run without
-     * arguments or with an explicit `null` argument. Invoked with
-     * (item, key, callback).
-     * @param {Function} [callback] - A callback which is called when all
-     * `iteratee` functions have finished, or an error occurs. Invoked with (err).
-     */
-    function eachOfLimit(coll, limit, iteratee, callback) {
-      _eachOfLimit(limit)(coll, iteratee, callback);
-    }
-
-    function doLimit(fn, limit) {
-        return function (iterable, iteratee, callback) {
-            return fn(iterable, limit, iteratee, callback);
-        };
-    }
-
-    /** Used as the `TypeError` message for "Functions" methods. */
-    var FUNC_ERROR_TEXT$1 = 'Expected a function';
-
-    /**
-     * Creates a function that invokes `func`, with the `this` binding and arguments
-     * of the created function, while it's called less than `n` times. Subsequent
-     * calls to the created function return the result of the last `func` invocation.
-     *
-     * @static
-     * @memberOf _
-     * @since 3.0.0
-     * @category Function
-     * @param {number} n The number of calls at which `func` is no longer invoked.
-     * @param {Function} func The function to restrict.
-     * @returns {Function} Returns the new restricted function.
-     * @example
-     *
-     * jQuery(element).on('click', _.before(5, addContactToList));
-     * // => allows adding up to 4 contacts to the list
-     */
-    function before(n, func) {
-      var result;
-      if (typeof func != 'function') {
-        throw new TypeError(FUNC_ERROR_TEXT$1);
-      }
-      n = toInteger(n);
-      return function() {
-        if (--n > 0) {
-          result = func.apply(this, arguments);
-        }
-        if (n <= 1) {
-          func = undefined;
-        }
-        return result;
-      };
-    }
-
-    /**
-     * Creates a function that is restricted to invoking `func` once. Repeat calls
-     * to the function return the value of the first invocation. The `func` is
-     * invoked with the `this` binding and arguments of the created function.
-     *
-     * @static
-     * @memberOf _
-     * @since 0.1.0
-     * @category Function
-     * @param {Function} func The function to restrict.
-     * @returns {Function} Returns the new restricted function.
-     * @example
-     *
-     * var initialize = _.once(createApplication);
-     * initialize();
-     * initialize();
-     * // `initialize` invokes `createApplication` once
-     */
-    function once$1(func) {
-      return before(2, func);
-    }
-
-    // eachOf implementation optimized for array-likes
-    function eachOfArrayLike(coll, iteratee, callback) {
-        callback = once$1(callback || noop);
-        var index = 0,
-            completed = 0,
-            length = coll.length;
-        if (length === 0) {
-            callback(null);
-        }
-
-        function iteratorCallback(err) {
-            if (err) {
-                callback(err);
-            } else if (++completed === length) {
-                callback(null);
-            }
-        }
-
-        for (; index < length; index++) {
-            iteratee(coll[index], index, onlyOnce(iteratorCallback));
-        }
-    }
-
-    // a generic version of eachOf which can handle array, object, and iterator cases.
-    var eachOfGeneric = doLimit(eachOfLimit, Infinity);
-
-    /**
-     * Like [`each`]{@link module:Collections.each}, except that it passes the key (or index) as the second argument
-     * to the iteratee.
-     *
-     * @name eachOf
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @alias forEachOf
-     * @category Collection
-     * @see [async.each]{@link module:Collections.each}
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A function to apply to each
-     * item in `coll`. The `key` is the item's key, or index in the case of an
-     * array. The iteratee is passed a `callback(err)` which must be called once it
-     * has completed. If no error has occurred, the callback should be run without
-     * arguments or with an explicit `null` argument. Invoked with
-     * (item, key, callback).
-     * @param {Function} [callback] - A callback which is called when all
-     * `iteratee` functions have finished, or an error occurs. Invoked with (err).
-     * @example
-     *
-     * var obj = {dev: "/dev.json", test: "/test.json", prod: "/prod.json"};
-     * var configs = {};
-     *
-     * async.forEachOf(obj, function (value, key, callback) {
-     *     fs.readFile(__dirname + value, "utf8", function (err, data) {
-     *         if (err) return callback(err);
-     *         try {
-     *             configs[key] = JSON.parse(data);
-     *         } catch (e) {
-     *             return callback(e);
-     *         }
-     *         callback();
-     *     });
-     * }, function (err) {
-     *     if (err) console.error(err.message);
-     *     // configs is now a map of JSON data
-     *     doSomethingWith(configs);
-     * });
-     */
-    function eachOf (coll, iteratee, callback) {
-        var eachOfImplementation = isArrayLike(coll) ? eachOfArrayLike : eachOfGeneric;
-        eachOfImplementation(coll, iteratee, callback);
-    }
-
-    function doParallel(fn) {
-        return function (obj, iteratee, callback) {
-            return fn(eachOf, obj, iteratee, callback);
-        };
-    }
-
-    function _asyncMap(eachfn, arr, iteratee, callback) {
-        callback = once(callback || noop);
-        arr = arr || [];
-        var results = [];
-        var counter = 0;
-
-        eachfn(arr, function (value, _, callback) {
-            var index = counter++;
-            iteratee(value, function (err, v) {
-                results[index] = v;
-                callback(err);
-            });
-        }, function (err) {
-            callback(err, results);
-        });
-    }
-
-    /**
-     * Produces a new collection of values by mapping each value in `coll` through
-     * the `iteratee` function. The `iteratee` is called with an item from `coll`
-     * and a callback for when it has finished processing. Each of these callback
-     * takes 2 arguments: an `error`, and the transformed item from `coll`. If
-     * `iteratee` passes an error to its callback, the main `callback` (for the
-     * `map` function) is immediately called with the error.
-     *
-     * Note, that since this function applies the `iteratee` to each item in
-     * parallel, there is no guarantee that the `iteratee` functions will complete
-     * in order. However, the results array will be in the same order as the
-     * original `coll`.
-     *
-     * If `map` is passed an Object, the results will be an Array.  The results
-     * will roughly be in the order of the original Objects' keys (but this can
-     * vary across JavaScript engines)
-     *
-     * @name map
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A function to apply to each item in `coll`.
-     * The iteratee is passed a `callback(err, transformed)` which must be called
-     * once it has completed with an error (which can be `null`) and a
-     * transformed item. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called when all `iteratee`
-     * functions have finished, or an error occurs. Results is an Array of the
-     * transformed items from the `coll`. Invoked with (err, results).
-     * @example
-     *
-     * async.map(['file1','file2','file3'], fs.stat, function(err, results) {
-     *     // results is now an array of stats for each file
-     * });
-     */
-    var map = doParallel(_asyncMap);
-
-    /**
-     * Applies the provided arguments to each function in the array, calling
-     * `callback` after all functions have completed. If you only provide the first
-     * argument, then it will return a function which lets you pass in the
-     * arguments as if it were a single function call.
-     *
-     * @name applyEach
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @category Control Flow
-     * @param {Array|Iterable|Object} fns - A collection of asynchronous functions to all
-     * call with the same arguments
-     * @param {...*} [args] - any number of separate arguments to pass to the
-     * function.
-     * @param {Function} [callback] - the final argument should be the callback,
-     * called when all functions have completed processing.
-     * @returns {Function} - If only the first argument is provided, it will return
-     * a function which lets you pass in the arguments as if it were a single
-     * function call.
-     * @example
-     *
-     * async.applyEach([enableSearch, updateSchema], 'bucket', callback);
-     *
-     * // partial application example:
-     * async.each(
-     *     buckets,
-     *     async.applyEach([enableSearch, updateSchema]),
-     *     callback
-     * );
-     */
-    var applyEach = applyEach$1(map);
-
-    function doParallelLimit(fn) {
-        return function (obj, limit, iteratee, callback) {
-            return fn(_eachOfLimit(limit), obj, iteratee, callback);
-        };
-    }
-
-    /**
-     * The same as [`map`]{@link module:Collections.map} but runs a maximum of `limit` async operations at a time.
-     *
-     * @name mapLimit
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.map]{@link module:Collections.map}
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {number} limit - The maximum number of async operations at a time.
-     * @param {Function} iteratee - A function to apply to each item in `coll`.
-     * The iteratee is passed a `callback(err, transformed)` which must be called
-     * once it has completed with an error (which can be `null`) and a transformed
-     * item. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called when all `iteratee`
-     * functions have finished, or an error occurs. Results is an array of the
-     * transformed items from the `coll`. Invoked with (err, results).
-     */
-    var mapLimit = doParallelLimit(_asyncMap);
-
-    /**
-     * The same as [`map`]{@link module:Collections.map} but runs only a single async operation at a time.
-     *
-     * @name mapSeries
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.map]{@link module:Collections.map}
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A function to apply to each item in `coll`.
-     * The iteratee is passed a `callback(err, transformed)` which must be called
-     * once it has completed with an error (which can be `null`) and a
-     * transformed item. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called when all `iteratee`
-     * functions have finished, or an error occurs. Results is an array of the
-     * transformed items from the `coll`. Invoked with (err, results).
-     */
-    var mapSeries = doLimit(mapLimit, 1);
-
-    /**
-     * The same as [`applyEach`]{@link module:ControlFlow.applyEach} but runs only a single async operation at a time.
-     *
-     * @name applyEachSeries
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.applyEach]{@link module:ControlFlow.applyEach}
-     * @category Control Flow
-     * @param {Array|Iterable|Object} fns - A collection of asynchronous functions to all
-     * call with the same arguments
-     * @param {...*} [args] - any number of separate arguments to pass to the
-     * function.
-     * @param {Function} [callback] - the final argument should be the callback,
-     * called when all functions have completed processing.
-     * @returns {Function} - If only the first argument is provided, it will return
-     * a function which lets you pass in the arguments as if it were a single
-     * function call.
-     */
-    var applyEachSeries = applyEach$1(mapSeries);
-
-    /**
-     * Creates a continuation function with some arguments already applied.
-     *
-     * Useful as a shorthand when combined with other control flow functions. Any
-     * arguments passed to the returned function are added to the arguments
-     * originally passed to apply.
-     *
-     * @name apply
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @category Util
-     * @param {Function} function - The function you want to eventually apply all
-     * arguments to. Invokes with (arguments...).
-     * @param {...*} arguments... - Any number of arguments to automatically apply
-     * when the continuation is called.
-     * @example
-     *
-     * // using apply
-     * async.parallel([
-     *     async.apply(fs.writeFile, 'testfile1', 'test1'),
-     *     async.apply(fs.writeFile, 'testfile2', 'test2')
-     * ]);
-     *
-     *
-     * // the same process without using apply
-     * async.parallel([
-     *     function(callback) {
-     *         fs.writeFile('testfile1', 'test1', callback);
-     *     },
-     *     function(callback) {
-     *         fs.writeFile('testfile2', 'test2', callback);
-     *     }
-     * ]);
-     *
-     * // It's possible to pass any number of additional arguments when calling the
-     * // continuation:
-     *
-     * node> var fn = async.apply(sys.puts, 'one');
-     * node> fn('two', 'three');
-     * one
-     * two
-     * three
-     */
-    var apply$1 = rest(function (fn, args) {
-        return rest(function (callArgs) {
-            return fn.apply(null, args.concat(callArgs));
-        });
-    });
-
-    /**
-     * Take a sync function and make it async, passing its return value to a
-     * callback. This is useful for plugging sync functions into a waterfall,
-     * series, or other async functions. Any arguments passed to the generated
-     * function will be passed to the wrapped function (except for the final
-     * callback argument). Errors thrown will be passed to the callback.
-     *
-     * If the function passed to `asyncify` returns a Promise, that promises's
-     * resolved/rejected state will be used to call the callback, rather than simply
-     * the synchronous return value.
-     *
-     * This also means you can asyncify ES2016 `async` functions.
-     *
-     * @name asyncify
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @alias wrapSync
-     * @category Util
-     * @param {Function} func - The synchronous function to convert to an
-     * asynchronous function.
-     * @returns {Function} An asynchronous wrapper of the `func`. To be invoked with
-     * (callback).
-     * @example
-     *
-     * // passing a regular synchronous function
-     * async.waterfall([
-     *     async.apply(fs.readFile, filename, "utf8"),
-     *     async.asyncify(JSON.parse),
-     *     function (data, next) {
-     *         // data is the result of parsing the text.
-     *         // If there was a parsing error, it would have been caught.
-     *     }
-     * ], callback);
-     *
-     * // passing a function returning a promise
-     * async.waterfall([
-     *     async.apply(fs.readFile, filename, "utf8"),
-     *     async.asyncify(function (contents) {
-     *         return db.model.create(contents);
-     *     }),
-     *     function (model, next) {
-     *         // `model` is the instantiated model object.
-     *         // If there was an error, this function would be skipped.
-     *     }
-     * ], callback);
-     *
-     * // es6 example
-     * var q = async.queue(async.asyncify(async function(file) {
-     *     var intermediateStep = await processFile(file);
-     *     return await somePromise(intermediateStep)
-     * }));
-     *
-     * q.push(files);
-     */
-    function asyncify(func) {
-        return initialParams(function (args, callback) {
-            var result;
-            try {
-                result = func.apply(this, args);
-            } catch (e) {
-                return callback(e);
-            }
-            // if result is Promise object
-            if (isObject(result) && typeof result.then === 'function') {
-                result.then(function (value) {
-                    callback(null, value);
-                }, function (err) {
-                    callback(err.message ? err : new Error(err));
-                });
-            } else {
-                callback(null, result);
-            }
-        });
-    }
-
-    /**
-     * A specialized version of `_.forEach` for arrays without support for
-     * iteratee shorthands.
-     *
-     * @private
-     * @param {Array} [array] The array to iterate over.
-     * @param {Function} iteratee The function invoked per iteration.
-     * @returns {Array} Returns `array`.
-     */
-    function arrayEach(array, iteratee) {
-      var index = -1,
-          length = array ? array.length : 0;
-
-      while (++index < length) {
-        if (iteratee(array[index], index, array) === false) {
-          break;
-        }
-      }
-      return array;
-    }
-
-    /**
-     * Creates a base function for methods like `_.forIn` and `_.forOwn`.
-     *
-     * @private
-     * @param {boolean} [fromRight] Specify iterating from right to left.
-     * @returns {Function} Returns the new base function.
-     */
-    function createBaseFor(fromRight) {
-      return function(object, iteratee, keysFunc) {
-        var index = -1,
-            iterable = Object(object),
-            props = keysFunc(object),
-            length = props.length;
-
-        while (length--) {
-          var key = props[fromRight ? length : ++index];
-          if (iteratee(iterable[key], key, iterable) === false) {
-            break;
-          }
-        }
-        return object;
-      };
-    }
-
-    /**
-     * The base implementation of `baseForOwn` which iterates over `object`
-     * properties returned by `keysFunc` and invokes `iteratee` for each property.
-     * Iteratee functions may exit iteration early by explicitly returning `false`.
-     *
-     * @private
-     * @param {Object} object The object to iterate over.
-     * @param {Function} iteratee The function invoked per iteration.
-     * @param {Function} keysFunc The function to get the keys of `object`.
-     * @returns {Object} Returns `object`.
-     */
-    var baseFor = createBaseFor();
-
-    /**
-     * The base implementation of `_.forOwn` without support for iteratee shorthands.
-     *
-     * @private
-     * @param {Object} object The object to iterate over.
-     * @param {Function} iteratee The function invoked per iteration.
-     * @returns {Object} Returns `object`.
-     */
-    function baseForOwn(object, iteratee) {
-      return object && baseFor(object, iteratee, keys);
-    }
-
-    /**
-     * Gets the index at which the first occurrence of `NaN` is found in `array`.
-     *
-     * @private
-     * @param {Array} array The array to search.
-     * @param {number} fromIndex The index to search from.
-     * @param {boolean} [fromRight] Specify iterating from right to left.
-     * @returns {number} Returns the index of the matched `NaN`, else `-1`.
-     */
-    function indexOfNaN(array, fromIndex, fromRight) {
-      var length = array.length,
-          index = fromIndex + (fromRight ? 1 : -1);
-
-      while ((fromRight ? index-- : ++index < length)) {
-        var other = array[index];
-        if (other !== other) {
-          return index;
-        }
-      }
-      return -1;
-    }
-
-    /**
-     * The base implementation of `_.indexOf` without `fromIndex` bounds checks.
-     *
-     * @private
-     * @param {Array} array The array to search.
-     * @param {*} value The value to search for.
-     * @param {number} fromIndex The index to search from.
-     * @returns {number} Returns the index of the matched value, else `-1`.
-     */
-    function baseIndexOf(array, value, fromIndex) {
-      if (value !== value) {
-        return indexOfNaN(array, fromIndex);
-      }
-      var index = fromIndex - 1,
-          length = array.length;
-
-      while (++index < length) {
-        if (array[index] === value) {
-          return index;
-        }
-      }
-      return -1;
-    }
-
-    /**
-     * Determines the best order for running the functions in `tasks`, based on
-     * their requirements. Each function can optionally depend on other functions
-     * being completed first, and each function is run as soon as its requirements
-     * are satisfied.
-     *
-     * If any of the functions pass an error to their callback, the `auto` sequence
-     * will stop. Further tasks will not execute (so any other functions depending
-     * on it will not run), and the main `callback` is immediately called with the
-     * error.
-     *
-     * Functions also receive an object containing the results of functions which
-     * have completed so far as the first argument, if they have dependencies. If a
-     * task function has no dependencies, it will only be passed a callback.
-     *
-     * @name auto
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @category Control Flow
-     * @param {Object} tasks - An object. Each of its properties is either a
-     * function or an array of requirements, with the function itself the last item
-     * in the array. The object's key of a property serves as the name of the task
-     * defined by that property, i.e. can be used when specifying requirements for
-     * other tasks. The function receives one or two arguments:
-     * * a `results` object, containing the results of the previously executed
-     *   functions, only passed if the task has any dependencies,
-     * * a `callback(err, result)` function, which must be called when finished,
-     *   passing an `error` (which can be `null`) and the result of the function's
-     *   execution.
-     * @param {number} [concurrency=Infinity] - An optional `integer` for
-     * determining the maximum number of tasks that can be run in parallel. By
-     * default, as many as possible.
-     * @param {Function} [callback] - An optional callback which is called when all
-     * the tasks have been completed. It receives the `err` argument if any `tasks`
-     * pass an error to their callback. Results are always returned; however, if an
-     * error occurs, no further `tasks` will be performed, and the results object
-     * will only contain partial results. Invoked with (err, results).
-     * @returns undefined
-     * @example
-     *
-     * async.auto({
-     *     // this function will just be passed a callback
-     *     readData: async.apply(fs.readFile, 'data.txt', 'utf-8'),
-     *     showData: ['readData', function(results, cb) {
-     *         // results.readData is the file's contents
-     *         // ...
-     *     }]
-     * }, callback);
-     *
-     * async.auto({
-     *     get_data: function(callback) {
-     *         console.log('in get_data');
-     *         // async code to get some data
-     *         callback(null, 'data', 'converted to array');
-     *     },
-     *     make_folder: function(callback) {
-     *         console.log('in make_folder');
-     *         // async code to create a directory to store a file in
-     *         // this is run at the same time as getting the data
-     *         callback(null, 'folder');
-     *     },
-     *     write_file: ['get_data', 'make_folder', function(results, callback) {
-     *         console.log('in write_file', JSON.stringify(results));
-     *         // once there is some data and the directory exists,
-     *         // write the data to a file in the directory
-     *         callback(null, 'filename');
-     *     }],
-     *     email_link: ['write_file', function(results, callback) {
-     *         console.log('in email_link', JSON.stringify(results));
-     *         // once the file is written let's email a link to it...
-     *         // results.write_file contains the filename returned by write_file.
-     *         callback(null, {'file':results.write_file, 'email':'user@example.com'});
-     *     }]
-     * }, function(err, results) {
-     *     console.log('err = ', err);
-     *     console.log('results = ', results);
-     * });
-     */
-    function auto (tasks, concurrency, callback) {
-        if (typeof concurrency === 'function') {
-            // concurrency is optional, shift the args.
-            callback = concurrency;
-            concurrency = null;
-        }
-        callback = once(callback || noop);
-        var keys$$ = keys(tasks);
-        var numTasks = keys$$.length;
-        if (!numTasks) {
-            return callback(null);
-        }
-        if (!concurrency) {
-            concurrency = numTasks;
-        }
-
-        var results = {};
-        var runningTasks = 0;
-        var hasError = false;
-
-        var listeners = {};
-
-        var readyTasks = [];
-
-        // for cycle detection:
-        var readyToCheck = []; // tasks that have been identified as reachable
-        // without the possibility of returning to an ancestor task
-        var uncheckedDependencies = {};
-
-        baseForOwn(tasks, function (task, key) {
-            if (!isArray(task)) {
-                // no dependencies
-                enqueueTask(key, [task]);
-                readyToCheck.push(key);
-                return;
-            }
-
-            var dependencies = task.slice(0, task.length - 1);
-            var remainingDependencies = dependencies.length;
-            if (remainingDependencies === 0) {
-                enqueueTask(key, task);
-                readyToCheck.push(key);
-                return;
-            }
-            uncheckedDependencies[key] = remainingDependencies;
-
-            arrayEach(dependencies, function (dependencyName) {
-                if (!tasks[dependencyName]) {
-                    throw new Error('async.auto task `' + key + '` has a non-existent dependency in ' + dependencies.join(', '));
-                }
-                addListener(dependencyName, function () {
-                    remainingDependencies--;
-                    if (remainingDependencies === 0) {
-                        enqueueTask(key, task);
-                    }
-                });
-            });
-        });
-
-        checkForDeadlocks();
-        processQueue();
-
-        function enqueueTask(key, task) {
-            readyTasks.push(function () {
-                runTask(key, task);
-            });
-        }
-
-        function processQueue() {
-            if (readyTasks.length === 0 && runningTasks === 0) {
-                return callback(null, results);
-            }
-            while (readyTasks.length && runningTasks < concurrency) {
-                var run = readyTasks.shift();
-                run();
-            }
-        }
-
-        function addListener(taskName, fn) {
-            var taskListeners = listeners[taskName];
-            if (!taskListeners) {
-                taskListeners = listeners[taskName] = [];
-            }
-
-            taskListeners.push(fn);
-        }
-
-        function taskComplete(taskName) {
-            var taskListeners = listeners[taskName] || [];
-            arrayEach(taskListeners, function (fn) {
-                fn();
-            });
-            processQueue();
-        }
-
-        function runTask(key, task) {
-            if (hasError) return;
-
-            var taskCallback = onlyOnce(rest(function (err, args) {
-                runningTasks--;
-                if (args.length <= 1) {
-                    args = args[0];
-                }
-                if (err) {
-                    var safeResults = {};
-                    baseForOwn(results, function (val, rkey) {
-                        safeResults[rkey] = val;
-                    });
-                    safeResults[key] = args;
-                    hasError = true;
-                    listeners = [];
-
-                    callback(err, safeResults);
-                } else {
-                    results[key] = args;
-                    taskComplete(key);
-                }
-            }));
-
-            runningTasks++;
-            var taskFn = task[task.length - 1];
-            if (task.length > 1) {
-                taskFn(results, taskCallback);
-            } else {
-                taskFn(taskCallback);
-            }
-        }
-
-        function checkForDeadlocks() {
-            // Kahn's algorithm
-            // https://en.wikipedia.org/wiki/Topological_sorting#Kahn.27s_algorithm
-            // http://connalle.blogspot.com/2013/10/topological-sortingkahn-algorithm.html
-            var currentTask;
-            var counter = 0;
-            while (readyToCheck.length) {
-                currentTask = readyToCheck.pop();
-                counter++;
-                arrayEach(getDependents(currentTask), function (dependent) {
-                    if (--uncheckedDependencies[dependent] === 0) {
-                        readyToCheck.push(dependent);
-                    }
-                });
-            }
-
-            if (counter !== numTasks) {
-                throw new Error('async.auto cannot execute tasks due to a recursive dependency');
-            }
-        }
-
-        function getDependents(taskName) {
-            var result = [];
-            baseForOwn(tasks, function (task, key) {
-                if (isArray(task) && baseIndexOf(task, taskName, 0) >= 0) {
-                    result.push(key);
-                }
-            });
-            return result;
-        }
-    }
-
-    /**
-     * A specialized version of `_.map` for arrays without support for iteratee
-     * shorthands.
-     *
-     * @private
-     * @param {Array} [array] The array to iterate over.
-     * @param {Function} iteratee The function invoked per iteration.
-     * @returns {Array} Returns the new mapped array.
-     */
-    function arrayMap(array, iteratee) {
-      var index = -1,
-          length = array ? array.length : 0,
-          result = Array(length);
-
-      while (++index < length) {
-        result[index] = iteratee(array[index], index, array);
-      }
-      return result;
-    }
-
-    /**
-     * Copies the values of `source` to `array`.
-     *
-     * @private
-     * @param {Array} source The array to copy values from.
-     * @param {Array} [array=[]] The array to copy values to.
-     * @returns {Array} Returns `array`.
-     */
-    function copyArray(source, array) {
-      var index = -1,
-          length = source.length;
-
-      array || (array = Array(length));
-      while (++index < length) {
-        array[index] = source[index];
-      }
-      return array;
-    }
-
-    /**
-     * Checks if `value` is a global object.
-     *
-     * @private
-     * @param {*} value The value to check.
-     * @returns {null|Object} Returns `value` if it's a global object, else `null`.
-     */
-    function checkGlobal(value) {
-      return (value && value.Object === Object) ? value : null;
-    }
-
-    /** Detect free variable `global` from Node.js. */
-    var freeGlobal = checkGlobal(typeof global == 'object' && global);
-
-    /** Detect free variable `self`. */
-    var freeSelf = checkGlobal(typeof self == 'object' && self);
-
-    /** Detect `this` as the global object. */
-    var thisGlobal = checkGlobal(typeof this == 'object' && this);
-
-    /** Used as a reference to the global object. */
-    var root = freeGlobal || freeSelf || thisGlobal || Function('return this')();
-
-    /** Built-in value references. */
-    var Symbol$1 = root.Symbol;
-
-    /** Used as references for various `Number` constants. */
-    var INFINITY$1 = 1 / 0;
-
-    /** Used to convert symbols to primitives and strings. */
-    var symbolProto = Symbol$1 ? Symbol$1.prototype : undefined;
-    var symbolToString = symbolProto ? symbolProto.toString : undefined;
-    /**
-     * The base implementation of `_.toString` which doesn't convert nullish
-     * values to empty strings.
-     *
-     * @private
-     * @param {*} value The value to process.
-     * @returns {string} Returns the string.
-     */
-    function baseToString(value) {
-      // Exit early for strings to avoid a performance hit in some environments.
-      if (typeof value == 'string') {
-        return value;
-      }
-      if (isSymbol(value)) {
-        return symbolToString ? symbolToString.call(value) : '';
-      }
-      var result = (value + '');
-      return (result == '0' && (1 / value) == -INFINITY$1) ? '-0' : result;
-    }
-
-    /**
-     * The base implementation of `_.slice` without an iteratee call guard.
-     *
-     * @private
-     * @param {Array} array The array to slice.
-     * @param {number} [start=0] The start position.
-     * @param {number} [end=array.length] The end position.
-     * @returns {Array} Returns the slice of `array`.
-     */
-    function baseSlice(array, start, end) {
-      var index = -1,
-          length = array.length;
-
-      if (start < 0) {
-        start = -start > length ? 0 : (length + start);
-      }
-      end = end > length ? length : end;
-      if (end < 0) {
-        end += length;
-      }
-      length = start > end ? 0 : ((end - start) >>> 0);
-      start >>>= 0;
-
-      var result = Array(length);
-      while (++index < length) {
-        result[index] = array[index + start];
-      }
-      return result;
-    }
-
-    /**
-     * Casts `array` to a slice if it's needed.
-     *
-     * @private
-     * @param {Array} array The array to inspect.
-     * @param {number} start The start position.
-     * @param {number} [end=array.length] The end position.
-     * @returns {Array} Returns the cast slice.
-     */
-    function castSlice(array, start, end) {
-      var length = array.length;
-      end = end === undefined ? length : end;
-      return (!start && end >= length) ? array : baseSlice(array, start, end);
-    }
-
-    /**
-     * Used by `_.trim` and `_.trimEnd` to get the index of the last string symbol
-     * that is not found in the character symbols.
-     *
-     * @private
-     * @param {Array} strSymbols The string symbols to inspect.
-     * @param {Array} chrSymbols The character symbols to find.
-     * @returns {number} Returns the index of the last unmatched string symbol.
-     */
-    function charsEndIndex(strSymbols, chrSymbols) {
-      var index = strSymbols.length;
-
-      while (index-- && baseIndexOf(chrSymbols, strSymbols[index], 0) > -1) {}
-      return index;
-    }
-
-    /**
-     * Used by `_.trim` and `_.trimStart` to get the index of the first string symbol
-     * that is not found in the character symbols.
-     *
-     * @private
-     * @param {Array} strSymbols The string symbols to inspect.
-     * @param {Array} chrSymbols The character symbols to find.
-     * @returns {number} Returns the index of the first unmatched string symbol.
-     */
-    function charsStartIndex(strSymbols, chrSymbols) {
-      var index = -1,
-          length = strSymbols.length;
-
-      while (++index < length && baseIndexOf(chrSymbols, strSymbols[index], 0) > -1) {}
-      return index;
-    }
-
-    /** Used to compose unicode character classes. */
-    var rsAstralRange = '\\ud800-\\udfff';
-    var rsComboMarksRange = '\\u0300-\\u036f\\ufe20-\\ufe23';
-    var rsComboSymbolsRange = '\\u20d0-\\u20f0';
-    var rsVarRange = '\\ufe0e\\ufe0f';
-    var rsAstral = '[' + rsAstralRange + ']';
-    var rsCombo = '[' + rsComboMarksRange + rsComboSymbolsRange + ']';
-    var rsFitz = '\\ud83c[\\udffb-\\udfff]';
-    var rsModifier = '(?:' + rsCombo + '|' + rsFitz + ')';
-    var rsNonAstral = '[^' + rsAstralRange + ']';
-    var rsRegional = '(?:\\ud83c[\\udde6-\\uddff]){2}';
-    var rsSurrPair = '[\\ud800-\\udbff][\\udc00-\\udfff]';
-    var rsZWJ = '\\u200d';
-    var reOptMod = rsModifier + '?';
-    var rsOptVar = '[' + rsVarRange + ']?';
-    var rsOptJoin = '(?:' + rsZWJ + '(?:' + [rsNonAstral, rsRegional, rsSurrPair].join('|') + ')' + rsOptVar + reOptMod + ')*';
-    var rsSeq = rsOptVar + reOptMod + rsOptJoin;
-    var rsSymbol = '(?:' + [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') + ')';
-    /** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */
-    var reComplexSymbol = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g');
-
-    /**
-     * Converts `string` to an array.
-     *
-     * @private
-     * @param {string} string The string to convert.
-     * @returns {Array} Returns the converted array.
-     */
-    function stringToArray(string) {
-      return string.match(reComplexSymbol);
-    }
-
-    /**
-     * Converts `value` to a string. An empty string is returned for `null`
-     * and `undefined` values. The sign of `-0` is preserved.
-     *
-     * @static
-     * @memberOf _
-     * @since 4.0.0
-     * @category Lang
-     * @param {*} value The value to process.
-     * @returns {string} Returns the string.
-     * @example
-     *
-     * _.toString(null);
-     * // => ''
-     *
-     * _.toString(-0);
-     * // => '-0'
-     *
-     * _.toString([1, 2, 3]);
-     * // => '1,2,3'
-     */
-    function toString(value) {
-      return value == null ? '' : baseToString(value);
-    }
-
-    /** Used to match leading and trailing whitespace. */
-    var reTrim$1 = /^\s+|\s+$/g;
-
-    /**
-     * Removes leading and trailing whitespace or specified characters from `string`.
-     *
-     * @static
-     * @memberOf _
-     * @since 3.0.0
-     * @category String
-     * @param {string} [string=''] The string to trim.
-     * @param {string} [chars=whitespace] The characters to trim.
-     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
-     * @returns {string} Returns the trimmed string.
-     * @example
-     *
-     * _.trim('  abc  ');
-     * // => 'abc'
-     *
-     * _.trim('-_-abc-_-', '_-');
-     * // => 'abc'
-     *
-     * _.map(['  foo  ', '  bar  '], _.trim);
-     * // => ['foo', 'bar']
-     */
-    function trim(string, chars, guard) {
-      string = toString(string);
-      if (string && (guard || chars === undefined)) {
-        return string.replace(reTrim$1, '');
-      }
-      if (!string || !(chars = baseToString(chars))) {
-        return string;
-      }
-      var strSymbols = stringToArray(string),
-          chrSymbols = stringToArray(chars),
-          start = charsStartIndex(strSymbols, chrSymbols),
-          end = charsEndIndex(strSymbols, chrSymbols) + 1;
-
-      return castSlice(strSymbols, start, end).join('');
-    }
-
-    var FN_ARGS = /^(function)?\s*[^\(]*\(\s*([^\)]*)\)/m;
-    var FN_ARG_SPLIT = /,/;
-    var FN_ARG = /(=.+)?(\s*)$/;
-    var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
-
-    function parseParams(func) {
-        func = func.toString().replace(STRIP_COMMENTS, '');
-        func = func.match(FN_ARGS)[2].replace(' ', '');
-        func = func ? func.split(FN_ARG_SPLIT) : [];
-        func = func.map(function (arg) {
-            return trim(arg.replace(FN_ARG, ''));
-        });
-        return func;
-    }
-
-    /**
-     * A dependency-injected version of the [async.auto]{@link module:ControlFlow.auto} function. Dependent
-     * tasks are specified as parameters to the function, after the usual callback
-     * parameter, with the parameter names matching the names of the tasks it
-     * depends on. This can provide even more readable task graphs which can be
-     * easier to maintain.
-     *
-     * If a final callback is specified, the task results are similarly injected,
-     * specified as named parameters after the initial error parameter.
-     *
-     * The autoInject function is purely syntactic sugar and its semantics are
-     * otherwise equivalent to [async.auto]{@link module:ControlFlow.auto}.
-     *
-     * @name autoInject
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.auto]{@link module:ControlFlow.auto}
-     * @category Control Flow
-     * @param {Object} tasks - An object, each of whose properties is a function of
-     * the form 'func([dependencies...], callback). The object's key of a property
-     * serves as the name of the task defined by that property, i.e. can be used
-     * when specifying requirements for other tasks.
-     * * The `callback` parameter is a `callback(err, result)` which must be called
-     *   when finished, passing an `error` (which can be `null`) and the result of
-     *   the function's execution. The remaining parameters name other tasks on
-     *   which the task is dependent, and the results from those tasks are the
-     *   arguments of those parameters.
-     * @param {Function} [callback] - An optional callback which is called when all
-     * the tasks have been completed. It receives the `err` argument if any `tasks`
-     * pass an error to their callback, and a `results` object with any completed
-     * task results, similar to `auto`.
-     * @example
-     *
-     * //  The example from `auto` can be rewritten as follows:
-     * async.autoInject({
-     *     get_data: function(callback) {
-     *         // async code to get some data
-     *         callback(null, 'data', 'converted to array');
-     *     },
-     *     make_folder: function(callback) {
-     *         // async code to create a directory to store a file in
-     *         // this is run at the same time as getting the data
-     *         callback(null, 'folder');
-     *     },
-     *     write_file: function(get_data, make_folder, callback) {
-     *         // once there is some data and the directory exists,
-     *         // write the data to a file in the directory
-     *         callback(null, 'filename');
-     *     },
-     *     email_link: function(write_file, callback) {
-     *         // once the file is written let's email a link to it...
-     *         // write_file contains the filename returned by write_file.
-     *         callback(null, {'file':write_file, 'email':'user@example.com'});
-     *     }
-     * }, function(err, results) {
-     *     console.log('err = ', err);
-     *     console.log('email_link = ', results.email_link);
-     * });
-     *
-     * // If you are using a JS minifier that mangles parameter names, `autoInject`
-     * // will not work with plain functions, since the parameter names will be
-     * // collapsed to a single letter identifier.  To work around this, you can
-     * // explicitly specify the names of the parameters your task function needs
-     * // in an array, similar to Angular.js dependency injection.
-     *
-     * // This still has an advantage over plain `auto`, since the results a task
-     * // depends on are still spread into arguments.
-     * async.autoInject({
-     *     //...
-     *     write_file: ['get_data', 'make_folder', function(get_data, make_folder, callback) {
-     *         callback(null, 'filename');
-     *     }],
-     *     email_link: ['write_file', function(write_file, callback) {
-     *         callback(null, {'file':write_file, 'email':'user@example.com'});
-     *     }]
-     *     //...
-     * }, function(err, results) {
-     *     console.log('err = ', err);
-     *     console.log('email_link = ', results.email_link);
-     * });
-     */
-    function autoInject(tasks, callback) {
-        var newTasks = {};
-
-        baseForOwn(tasks, function (taskFn, key) {
-            var params;
-
-            if (isArray(taskFn)) {
-                params = copyArray(taskFn);
-                taskFn = params.pop();
-
-                newTasks[key] = params.concat(params.length > 0 ? newTask : taskFn);
-            } else if (taskFn.length === 1) {
-                // no dependencies, use the function as-is
-                newTasks[key] = taskFn;
-            } else {
-                params = parseParams(taskFn);
-                if (taskFn.length === 0 && params.length === 0) {
-                    throw new Error("autoInject task functions require explicit parameters.");
-                }
-
-                params.pop();
-
-                newTasks[key] = params.concat(newTask);
-            }
-
-            function newTask(results, taskCb) {
-                var newArgs = arrayMap(params, function (name) {
-                    return results[name];
-                });
-                newArgs.push(taskCb);
-                taskFn.apply(null, newArgs);
-            }
-        });
-
-        auto(newTasks, callback);
-    }
-
-    var hasSetImmediate = typeof setImmediate === 'function' && setImmediate;
-    var hasNextTick = typeof process === 'object' && typeof process.nextTick === 'function';
-
-    function fallback(fn) {
-        setTimeout(fn, 0);
-    }
-
-    function wrap(defer) {
-        return rest(function (fn, args) {
-            defer(function () {
-                fn.apply(null, args);
-            });
-        });
-    }
-
-    var _defer;
-
-    if (hasSetImmediate) {
-        _defer = setImmediate;
-    } else if (hasNextTick) {
-        _defer = process.nextTick;
-    } else {
-        _defer = fallback;
-    }
-
-    var setImmediate$1 = wrap(_defer);
-
-    // Simple doubly linked list (https://en.wikipedia.org/wiki/Doubly_linked_list) implementation
-    // used for queues. This implementation assumes that the node provided by the user can be modified
-    // to adjust the next and last properties. We implement only the minimal functionality
-    // for queue support.
-    function DLL() {
-        this.head = this.tail = null;
-        this.length = 0;
-    }
-
-    function setInitial(dll, node) {
-        dll.length = 1;
-        dll.head = dll.tail = node;
-    }
-
-    DLL.prototype.removeLink = function (node) {
-        if (node.prev) node.prev.next = node.next;else this.head = node.next;
-        if (node.next) node.next.prev = node.prev;else this.tail = node.prev;
-
-        node.prev = node.next = null;
-        this.length -= 1;
-        return node;
-    };
-
-    DLL.prototype.empty = DLL;
-
-    DLL.prototype.insertAfter = function (node, newNode) {
-        newNode.prev = node;
-        newNode.next = node.next;
-        if (node.next) node.next.prev = newNode;else this.tail = newNode;
-        node.next = newNode;
-        this.length += 1;
-    };
-
-    DLL.prototype.insertBefore = function (node, newNode) {
-        newNode.prev = node.prev;
-        newNode.next = node;
-        if (node.prev) node.prev.next = newNode;else this.head = newNode;
-        node.prev = newNode;
-        this.length += 1;
-    };
-
-    DLL.prototype.unshift = function (node) {
-        if (this.head) this.insertBefore(this.head, node);else setInitial(this, node);
-    };
-
-    DLL.prototype.push = function (node) {
-        if (this.tail) this.insertAfter(this.tail, node);else setInitial(this, node);
-    };
-
-    DLL.prototype.shift = function () {
-        return this.head && this.removeLink(this.head);
-    };
-
-    DLL.prototype.pop = function () {
-        return this.tail && this.removeLink(this.tail);
-    };
-
-    function queue(worker, concurrency, payload) {
-        if (concurrency == null) {
-            concurrency = 1;
-        } else if (concurrency === 0) {
-            throw new Error('Concurrency must not be zero');
-        }
-
-        function _insert(data, insertAtFront, callback) {
-            if (callback != null && typeof callback !== 'function') {
-                throw new Error('task callback must be a function');
-            }
-            q.started = true;
-            if (!isArray(data)) {
-                data = [data];
-            }
-            if (data.length === 0 && q.idle()) {
-                // call drain immediately if there are no tasks
-                return setImmediate$1(function () {
-                    q.drain();
-                });
-            }
-            arrayEach(data, function (task) {
-                var item = {
-                    data: task,
-                    callback: callback || noop
-                };
-
-                if (insertAtFront) {
-                    q._tasks.unshift(item);
-                } else {
-                    q._tasks.push(item);
-                }
-            });
-            setImmediate$1(q.process);
-        }
-
-        function _next(tasks) {
-            return rest(function (args) {
-                workers -= 1;
-
-                arrayEach(tasks, function (task) {
-                    arrayEach(workersList, function (worker, index) {
-                        if (worker === task) {
-                            workersList.splice(index, 1);
-                            return false;
-                        }
-                    });
-
-                    task.callback.apply(task, args);
-
-                    if (args[0] != null) {
-                        q.error(args[0], task.data);
-                    }
-                });
-
-                if (workers <= q.concurrency - q.buffer) {
-                    q.unsaturated();
-                }
-
-                if (q.idle()) {
-                    q.drain();
-                }
-                q.process();
-            });
-        }
-
-        var workers = 0;
-        var workersList = [];
-        var q = {
-            _tasks: new DLL(),
-            concurrency: concurrency,
-            payload: payload,
-            saturated: noop,
-            unsaturated: noop,
-            buffer: concurrency / 4,
-            empty: noop,
-            drain: noop,
-            error: noop,
-            started: false,
-            paused: false,
-            push: function (data, callback) {
-                _insert(data, false, callback);
-            },
-            kill: function () {
-                q.drain = noop;
-                q._tasks.empty();
-            },
-            unshift: function (data, callback) {
-                _insert(data, true, callback);
-            },
-            process: function () {
-                while (!q.paused && workers < q.concurrency && q._tasks.length) {
-                    var tasks = [],
-                        data = [];
-                    var l = q._tasks.length;
-                    if (q.payload) l = Math.min(l, q.payload);
-                    for (var i = 0; i < l; i++) {
-                        var node = q._tasks.shift();
-                        tasks.push(node);
-                        data.push(node.data);
-                    }
-
-                    if (q._tasks.length === 0) {
-                        q.empty();
-                    }
-                    workers += 1;
-                    workersList.push(tasks[0]);
-
-                    if (workers === q.concurrency) {
-                        q.saturated();
-                    }
-
-                    var cb = onlyOnce(_next(tasks));
-                    worker(data, cb);
-                }
-            },
-            length: function () {
-                return q._tasks.length;
-            },
-            running: function () {
-                return workers;
-            },
-            workersList: function () {
-                return workersList;
-            },
-            idle: function () {
-                return q._tasks.length + workers === 0;
-            },
-            pause: function () {
-                q.paused = true;
-            },
-            resume: function () {
-                if (q.paused === false) {
-                    return;
-                }
-                q.paused = false;
-                var resumeCount = Math.min(q.concurrency, q._tasks.length);
-                // Need to call q.process once per concurrent
-                // worker to preserve full concurrency after pause
-                for (var w = 1; w <= resumeCount; w++) {
-                    setImmediate$1(q.process);
-                }
-            }
-        };
-        return q;
-    }
-
-    /**
-     * A cargo of tasks for the worker function to complete. Cargo inherits all of
-     * the same methods and event callbacks as [`queue`]{@link module:ControlFlow.queue}.
-     * @typedef {Object} CargoObject
-     * @memberOf module:ControlFlow
-     * @property {Function} length - A function returning the number of items
-     * waiting to be processed. Invoke like `cargo.length()`.
-     * @property {number} payload - An `integer` for determining how many tasks
-     * should be process per round. This property can be changed after a `cargo` is
-     * created to alter the payload on-the-fly.
-     * @property {Function} push - Adds `task` to the `queue`. The callback is
-     * called once the `worker` has finished processing the task. Instead of a
-     * single task, an array of `tasks` can be submitted. The respective callback is
-     * used for every task in the list. Invoke like `cargo.push(task, [callback])`.
-     * @property {Function} saturated - A callback that is called when the
-     * `queue.length()` hits the concurrency and further tasks will be queued.
-     * @property {Function} empty - A callback that is called when the last item
-     * from the `queue` is given to a `worker`.
-     * @property {Function} drain - A callback that is called when the last item
-     * from the `queue` has returned from the `worker`.
-     * @property {Function} idle - a function returning false if there are items
-     * waiting or being processed, or true if not. Invoke like `cargo.idle()`.
-     * @property {Function} pause - a function that pauses the processing of tasks
-     * until `resume()` is called. Invoke like `cargo.pause()`.
-     * @property {Function} resume - a function that resumes the processing of
-     * queued tasks when the queue is paused. Invoke like `cargo.resume()`.
-     * @property {Function} kill - a function that removes the `drain` callback and
-     * empties remaining tasks from the queue forcing it to go idle. Invoke like `cargo.kill()`.
-     */
-
-    /**
-     * Creates a `cargo` object with the specified payload. Tasks added to the
-     * cargo will be processed altogether (up to the `payload` limit). If the
-     * `worker` is in progress, the task is queued until it becomes available. Once
-     * the `worker` has completed some tasks, each callback of those tasks is
-     * called. Check out [these](https://camo.githubusercontent.com/6bbd36f4cf5b35a0f11a96dcd2e97711ffc2fb37/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f313637363837312f36383130382f62626330636662302d356632392d313165322d393734662d3333393763363464633835382e676966) [animations](https://camo.githubusercontent.com/f4810e00e1c5f5f8addbe3e9f49064fd5d102699/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f313637363837312f36383130312f38346339323036362d356632392d313165322d383134662d3964336430323431336266642e676966)
-     * for how `cargo` and `queue` work.
-     *
-     * While [`queue`]{@link module:ControlFlow.queue} passes only one task to one of a group of workers
-     * at a time, cargo passes an array of tasks to a single worker, repeating
-     * when the worker is finished.
-     *
-     * @name cargo
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.queue]{@link module:ControlFlow.queue}
-     * @category Control Flow
-     * @param {Function} worker - An asynchronous function for processing an array
-     * of queued tasks, which must call its `callback(err)` argument when finished,
-     * with an optional `err` argument. Invoked with `(tasks, callback)`.
-     * @param {number} [payload=Infinity] - An optional `integer` for determining
-     * how many tasks should be processed per round; if omitted, the default is
-     * unlimited.
-     * @returns {module:ControlFlow.CargoObject} A cargo object to manage the tasks. Callbacks can
-     * attached as certain properties to listen for specific events during the
-     * lifecycle of the cargo and inner queue.
-     * @example
-     *
-     * // create a cargo object with payload 2
-     * var cargo = async.cargo(function(tasks, callback) {
-     *     for (var i=0; i<tasks.length; i++) {
-     *         console.log('hello ' + tasks[i].name);
-     *     }
-     *     callback();
-     * }, 2);
-     *
-     * // add some items
-     * cargo.push({name: 'foo'}, function(err) {
-     *     console.log('finished processing foo');
-     * });
-     * cargo.push({name: 'bar'}, function(err) {
-     *     console.log('finished processing bar');
-     * });
-     * cargo.push({name: 'baz'}, function(err) {
-     *     console.log('finished processing baz');
-     * });
-     */
-    function cargo(worker, payload) {
-      return queue(worker, 1, payload);
-    }
-
-    /**
-     * The same as [`eachOf`]{@link module:Collections.eachOf} but runs only a single async operation at a time.
-     *
-     * @name eachOfSeries
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.eachOf]{@link module:Collections.eachOf}
-     * @alias forEachOfSeries
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A function to apply to each item in `coll`. The
-     * `key` is the item's key, or index in the case of an array. The iteratee is
-     * passed a `callback(err)` which must be called once it has completed. If no
-     * error has occurred, the callback should be run without arguments or with an
-     * explicit `null` argument. Invoked with (item, key, callback).
-     * @param {Function} [callback] - A callback which is called when all `iteratee`
-     * functions have finished, or an error occurs. Invoked with (err).
-     */
-    var eachOfSeries = doLimit(eachOfLimit, 1);
-
-    /**
-     * Reduces `coll` into a single value using an async `iteratee` to return each
-     * successive step. `memo` is the initial state of the reduction. This function
-     * only operates in series.
-     *
-     * For performance reasons, it may make sense to split a call to this function
-     * into a parallel map, and then use the normal `Array.prototype.reduce` on the
-     * results. This function is for situations where each step in the reduction
-     * needs to be async; if you can get the data before reducing it, then it's
-     * probably a good idea to do so.
-     *
-     * @name reduce
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @alias inject
-     * @alias foldl
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {*} memo - The initial state of the reduction.
-     * @param {Function} iteratee - A function applied to each item in the
-     * array to produce the next step in the reduction. The `iteratee` is passed a
-     * `callback(err, reduction)` which accepts an optional error as its first
-     * argument, and the state of the reduction as the second. If an error is
-     * passed to the callback, the reduction is stopped and the main `callback` is
-     * immediately called with the error. Invoked with (memo, item, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Result is the reduced value. Invoked with
-     * (err, result).
-     * @example
-     *
-     * async.reduce([1,2,3], 0, function(memo, item, callback) {
-     *     // pointless async:
-     *     process.nextTick(function() {
-     *         callback(null, memo + item)
-     *     });
-     * }, function(err, result) {
-     *     // result is now equal to the last value of memo, which is 6
-     * });
-     */
-    function reduce(coll, memo, iteratee, callback) {
-        callback = once(callback || noop);
-        eachOfSeries(coll, function (x, i, callback) {
-            iteratee(memo, x, function (err, v) {
-                memo = v;
-                callback(err);
-            });
-        }, function (err) {
-            callback(err, memo);
-        });
-    }
-
-    /**
-     * Version of the compose function that is more natural to read. Each function
-     * consumes the return value of the previous function. It is the equivalent of
-     * [compose]{@link module:ControlFlow.compose} with the arguments reversed.
-     *
-     * Each function is executed with the `this` binding of the composed function.
-     *
-     * @name seq
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.compose]{@link module:ControlFlow.compose}
-     * @category Control Flow
-     * @param {...Function} functions - the asynchronous functions to compose
-     * @returns {Function} a function that composes the `functions` in order
-     * @example
-     *
-     * // Requires lodash (or underscore), express3 and dresende's orm2.
-     * // Part of an app, that fetches cats of the logged user.
-     * // This example uses `seq` function to avoid overnesting and error
-     * // handling clutter.
-     * app.get('/cats', function(request, response) {
-     *     var User = request.models.User;
-     *     async.seq(
-     *         _.bind(User.get, User),  // 'User.get' has signature (id, callback(err, data))
-     *         function(user, fn) {
-     *             user.getCats(fn);      // 'getCats' has signature (callback(err, data))
-     *         }
-     *     )(req.session.user_id, function (err, cats) {
-     *         if (err) {
-     *             console.error(err);
-     *             response.json({ status: 'error', message: err.message });
-     *         } else {
-     *             response.json({ status: 'ok', message: 'Cats found', data: cats });
-     *         }
-     *     });
-     * });
-     */
-    var seq = rest(function seq(functions) {
-        return rest(function (args) {
-            var that = this;
-
-            var cb = args[args.length - 1];
-            if (typeof cb == 'function') {
-                args.pop();
-            } else {
-                cb = noop;
-            }
-
-            reduce(functions, args, function (newargs, fn, cb) {
-                fn.apply(that, newargs.concat([rest(function (err, nextargs) {
-                    cb(err, nextargs);
-                })]));
-            }, function (err, results) {
-                cb.apply(that, [err].concat(results));
-            });
-        });
-    });
-
-    /**
-     * Creates a function which is a composition of the passed asynchronous
-     * functions. Each function consumes the return value of the function that
-     * follows. Composing functions `f()`, `g()`, and `h()` would produce the result
-     * of `f(g(h()))`, only this version uses callbacks to obtain the return values.
-     *
-     * Each function is executed with the `this` binding of the composed function.
-     *
-     * @name compose
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @category Control Flow
-     * @param {...Function} functions - the asynchronous functions to compose
-     * @returns {Function} an asynchronous function that is the composed
-     * asynchronous `functions`
-     * @example
-     *
-     * function add1(n, callback) {
-     *     setTimeout(function () {
-     *         callback(null, n + 1);
-     *     }, 10);
-     * }
-     *
-     * function mul3(n, callback) {
-     *     setTimeout(function () {
-     *         callback(null, n * 3);
-     *     }, 10);
-     * }
-     *
-     * var add1mul3 = async.compose(mul3, add1);
-     * add1mul3(4, function (err, result) {
-     *     // result now equals 15
-     * });
-     */
-    var compose = rest(function (args) {
-      return seq.apply(null, args.reverse());
-    });
-
-    function concat$1(eachfn, arr, fn, callback) {
-        var result = [];
-        eachfn(arr, function (x, index, cb) {
-            fn(x, function (err, y) {
-                result = result.concat(y || []);
-                cb(err);
-            });
-        }, function (err) {
-            callback(err, result);
-        });
-    }
-
-    /**
-     * Applies `iteratee` to each item in `coll`, concatenating the results. Returns
-     * the concatenated list. The `iteratee`s are called in parallel, and the
-     * results are concatenated as they return. There is no guarantee that the
-     * results array will be returned in the original order of `coll` passed to the
-     * `iteratee` function.
-     *
-     * @name concat
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A function to apply to each item in `coll`.
-     * The iteratee is passed a `callback(err, results)` which must be called once
-     * it has completed with an error (which can be `null`) and an array of results.
-     * Invoked with (item, callback).
-     * @param {Function} [callback(err)] - A callback which is called after all the
-     * `iteratee` functions have finished, or an error occurs. Results is an array
-     * containing the concatenated results of the `iteratee` function. Invoked with
-     * (err, results).
-     * @example
-     *
-     * async.concat(['dir1','dir2','dir3'], fs.readdir, function(err, files) {
-     *     // files is now a list of filenames that exist in the 3 directories
-     * });
-     */
-    var concat = doParallel(concat$1);
-
-    function doSeries(fn) {
-        return function (obj, iteratee, callback) {
-            return fn(eachOfSeries, obj, iteratee, callback);
-        };
-    }
-
-    /**
-     * The same as [`concat`]{@link module:Collections.concat} but runs only a single async operation at a time.
-     *
-     * @name concatSeries
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.concat]{@link module:Collections.concat}
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A function to apply to each item in `coll`.
-     * The iteratee is passed a `callback(err, results)` which must be called once
-     * it has completed with an error (which can be `null`) and an array of results.
-     * Invoked with (item, callback).
-     * @param {Function} [callback(err)] - A callback which is called after all the
-     * `iteratee` functions have finished, or an error occurs. Results is an array
-     * containing the concatenated results of the `iteratee` function. Invoked with
-     * (err, results).
-     */
-    var concatSeries = doSeries(concat$1);
-
-    /**
-     * Returns a function that when called, calls-back with the values provided.
-     * Useful as the first function in a [`waterfall`]{@link module:ControlFlow.waterfall}, or for plugging values in to
-     * [`auto`]{@link module:ControlFlow.auto}.
-     *
-     * @name constant
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @category Util
-     * @param {...*} arguments... - Any number of arguments to automatically invoke
-     * callback with.
-     * @returns {Function} Returns a function that when invoked, automatically
-     * invokes the callback with the previous given arguments.
-     * @example
-     *
-     * async.waterfall([
-     *     async.constant(42),
-     *     function (value, next) {
-     *         // value === 42
-     *     },
-     *     //...
-     * ], callback);
-     *
-     * async.waterfall([
-     *     async.constant(filename, "utf8"),
-     *     fs.readFile,
-     *     function (fileData, next) {
-     *         //...
-     *     }
-     *     //...
-     * ], callback);
-     *
-     * async.auto({
-     *     hostname: async.constant("https://server.net/"),
-     *     port: findFreePort,
-     *     launchServer: ["hostname", "port", function (options, cb) {
-     *         startServer(options, cb);
-     *     }],
-     *     //...
-     * }, callback);
-     */
-    var constant = rest(function (values) {
-        var args = [null].concat(values);
-        return initialParams(function (ignoredArgs, callback) {
-            return callback.apply(this, args);
-        });
-    });
-
-    /**
-     * This method returns the first argument given to it.
-     *
-     * @static
-     * @since 0.1.0
-     * @memberOf _
-     * @category Util
-     * @param {*} value Any value.
-     * @returns {*} Returns `value`.
-     * @example
-     *
-     * var object = { 'user': 'fred' };
-     *
-     * console.log(_.identity(object) === object);
-     * // => true
-     */
-    function identity(value) {
-      return value;
-    }
-
-    function _createTester(eachfn, check, getResult) {
-        return function (arr, limit, iteratee, cb) {
-            function done(err) {
-                if (cb) {
-                    if (err) {
-                        cb(err);
-                    } else {
-                        cb(null, getResult(false));
-                    }
-                }
-            }
-            function wrappedIteratee(x, _, callback) {
-                if (!cb) return callback();
-                iteratee(x, function (err, v) {
-                    if (cb) {
-                        if (err) {
-                            cb(err);
-                            cb = iteratee = false;
-                        } else if (check(v)) {
-                            cb(null, getResult(true, x));
-                            cb = iteratee = false;
-                        }
-                    }
-                    callback();
-                });
-            }
-            if (arguments.length > 3) {
-                cb = cb || noop;
-                eachfn(arr, limit, wrappedIteratee, done);
-            } else {
-                cb = iteratee;
-                cb = cb || noop;
-                iteratee = limit;
-                eachfn(arr, wrappedIteratee, done);
-            }
-        };
-    }
-
-    function _findGetResult(v, x) {
-        return x;
-    }
-
-    /**
-     * Returns the first value in `coll` that passes an async truth test. The
-     * `iteratee` is applied in parallel, meaning the first iteratee to return
-     * `true` will fire the detect `callback` with that result. That means the
-     * result might not be the first item in the original `coll` (in terms of order)
-     * that passes the test.
-
-     * If order within the original `coll` is important, then look at
-     * [`detectSeries`]{@link module:Collections.detectSeries}.
-     *
-     * @name detect
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @alias find
-     * @category Collections
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A truth test to apply to each item in `coll`.
-     * The iteratee is passed a `callback(err, truthValue)` which must be called
-     * with a boolean argument once it has completed. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called as soon as any
-     * iteratee returns `true`, or after all the `iteratee` functions have finished.
-     * Result will be the first item in the array that passes the truth test
-     * (iteratee) or the value `undefined` if none passed. Invoked with
-     * (err, result).
-     * @example
-     *
-     * async.detect(['file1','file2','file3'], function(filePath, callback) {
-     *     fs.access(filePath, function(err) {
-     *         callback(null, !err)
-     *     });
-     * }, function(err, result) {
-     *     // result now equals the first file in the list that exists
-     * });
-     */
-    var detect = _createTester(eachOf, identity, _findGetResult);
-
-    /**
-     * The same as [`detect`]{@link module:Collections.detect} but runs a maximum of `limit` async operations at a
-     * time.
-     *
-     * @name detectLimit
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.detect]{@link module:Collections.detect}
-     * @alias findLimit
-     * @category Collections
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {number} limit - The maximum number of async operations at a time.
-     * @param {Function} iteratee - A truth test to apply to each item in `coll`.
-     * The iteratee is passed a `callback(err, truthValue)` which must be called
-     * with a boolean argument once it has completed. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called as soon as any
-     * iteratee returns `true`, or after all the `iteratee` functions have finished.
-     * Result will be the first item in the array that passes the truth test
-     * (iteratee) or the value `undefined` if none passed. Invoked with
-     * (err, result).
-     */
-    var detectLimit = _createTester(eachOfLimit, identity, _findGetResult);
-
-    /**
-     * The same as [`detect`]{@link module:Collections.detect} but runs only a single async operation at a time.
-     *
-     * @name detectSeries
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.detect]{@link module:Collections.detect}
-     * @alias findSeries
-     * @category Collections
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A truth test to apply to each item in `coll`.
-     * The iteratee is passed a `callback(err, truthValue)` which must be called
-     * with a boolean argument once it has completed. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called as soon as any
-     * iteratee returns `true`, or after all the `iteratee` functions have finished.
-     * Result will be the first item in the array that passes the truth test
-     * (iteratee) or the value `undefined` if none passed. Invoked with
-     * (err, result).
-     */
-    var detectSeries = _createTester(eachOfSeries, identity, _findGetResult);
-
-    function consoleFunc(name) {
-        return rest(function (fn, args) {
-            fn.apply(null, args.concat([rest(function (err, args) {
-                if (typeof console === 'object') {
-                    if (err) {
-                        if (console.error) {
-                            console.error(err);
-                        }
-                    } else if (console[name]) {
-                        arrayEach(args, function (x) {
-                            console[name](x);
-                        });
-                    }
-                }
-            })]));
-        });
-    }
-
-    /**
-     * Logs the result of an `async` function to the `console` using `console.dir`
-     * to display the properties of the resulting object. Only works in Node.js or
-     * in browsers that support `console.dir` and `console.error` (such as FF and
-     * Chrome). If multiple arguments are returned from the async function,
-     * `console.dir` is called on each argument in order.
-     *
-     * @name dir
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @category Util
-     * @param {Function} function - The function you want to eventually apply all
-     * arguments to.
-     * @param {...*} arguments... - Any number of arguments to apply to the function.
-     * @example
-     *
-     * // in a module
-     * var hello = function(name, callback) {
-     *     setTimeout(function() {
-     *         callback(null, {hello: name});
-     *     }, 1000);
-     * };
-     *
-     * // in the node repl
-     * node> async.dir(hello, 'world');
-     * {hello: 'world'}
-     */
-    var dir = consoleFunc('dir');
-
-    /**
-     * The post-check version of [`during`]{@link module:ControlFlow.during}. To reflect the difference in
-     * the order of operations, the arguments `test` and `fn` are switched.
-     *
-     * Also a version of [`doWhilst`]{@link module:ControlFlow.doWhilst} with asynchronous `test` function.
-     * @name doDuring
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.during]{@link module:ControlFlow.during}
-     * @category Control Flow
-     * @param {Function} fn - A function which is called each time `test` passes.
-     * The function is passed a `callback(err)`, which must be called once it has
-     * completed with an optional `err` argument. Invoked with (callback).
-     * @param {Function} test - asynchronous truth test to perform before each
-     * execution of `fn`. Invoked with (...args, callback), where `...args` are the
-     * non-error args from the previous callback of `fn`.
-     * @param {Function} [callback] - A callback which is called after the test
-     * function has failed and repeated execution of `fn` has stopped. `callback`
-     * will be passed an error if one occured, otherwise `null`.
-     */
-    function doDuring(fn, test, callback) {
-        callback = onlyOnce(callback || noop);
-
-        var next = rest(function (err, args) {
-            if (err) return callback(err);
-            args.push(check);
-            test.apply(this, args);
-        });
-
-        function check(err, truth) {
-            if (err) return callback(err);
-            if (!truth) return callback(null);
-            fn(next);
-        }
-
-        check(null, true);
-    }
-
-    /**
-     * The post-check version of [`whilst`]{@link module:ControlFlow.whilst}. To reflect the difference in
-     * the order of operations, the arguments `test` and `iteratee` are switched.
-     *
-     * `doWhilst` is to `whilst` as `do while` is to `while` in plain JavaScript.
-     *
-     * @name doWhilst
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.whilst]{@link module:ControlFlow.whilst}
-     * @category Control Flow
-     * @param {Function} iteratee - A function which is called each time `test`
-     * passes. The function is passed a `callback(err)`, which must be called once
-     * it has completed with an optional `err` argument. Invoked with (callback).
-     * @param {Function} test - synchronous truth test to perform after each
-     * execution of `iteratee`. Invoked with Invoked with the non-error callback
-     * results of `iteratee`.
-     * @param {Function} [callback] - A callback which is called after the test
-     * function has failed and repeated execution of `iteratee` has stopped.
-     * `callback` will be passed an error and any arguments passed to the final
-     * `iteratee`'s callback. Invoked with (err, [results]);
-     */
-    function doWhilst(iteratee, test, callback) {
-        callback = onlyOnce(callback || noop);
-        var next = rest(function (err, args) {
-            if (err) return callback(err);
-            if (test.apply(this, args)) return iteratee(next);
-            callback.apply(null, [null].concat(args));
-        });
-        iteratee(next);
-    }
-
-    /**
-     * Like ['doWhilst']{@link module:ControlFlow.doWhilst}, except the `test` is inverted. Note the
-     * argument ordering differs from `until`.
-     *
-     * @name doUntil
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.doWhilst]{@link module:ControlFlow.doWhilst}
-     * @category Control Flow
-     * @param {Function} fn - A function which is called each time `test` fails.
-     * The function is passed a `callback(err)`, which must be called once it has
-     * completed with an optional `err` argument. Invoked with (callback).
-     * @param {Function} test - synchronous truth test to perform after each
-     * execution of `fn`. Invoked with the non-error callback results of `fn`.
-     * @param {Function} [callback] - A callback which is called after the test
-     * function has passed and repeated execution of `fn` has stopped. `callback`
-     * will be passed an error and any arguments passed to the final `fn`'s
-     * callback. Invoked with (err, [results]);
-     */
-    function doUntil(fn, test, callback) {
-        doWhilst(fn, function () {
-            return !test.apply(this, arguments);
-        }, callback);
-    }
-
-    /**
-     * Like [`whilst`]{@link module:ControlFlow.whilst}, except the `test` is an asynchronous function that
-     * is passed a callback in the form of `function (err, truth)`. If error is
-     * passed to `test` or `fn`, the main callback is immediately called with the
-     * value of the error.
-     *
-     * @name during
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.whilst]{@link module:ControlFlow.whilst}
-     * @category Control Flow
-     * @param {Function} test - asynchronous truth test to perform before each
-     * execution of `fn`. Invoked with (callback).
-     * @param {Function} fn - A function which is called each time `test` passes.
-     * The function is passed a `callback(err)`, which must be called once it has
-     * completed with an optional `err` argument. Invoked with (callback).
-     * @param {Function} [callback] - A callback which is called after the test
-     * function has failed and repeated execution of `fn` has stopped. `callback`
-     * will be passed an error, if one occured, otherwise `null`.
-     * @example
-     *
-     * var count = 0;
-     *
-     * async.during(
-     *     function (callback) {
-     *         return callback(null, count < 5);
-     *     },
-     *     function (callback) {
-     *         count++;
-     *         setTimeout(callback, 1000);
-     *     },
-     *     function (err) {
-     *         // 5 seconds have passed
-     *     }
-     * );
-     */
-    function during(test, fn, callback) {
-        callback = onlyOnce(callback || noop);
-
-        function next(err) {
-            if (err) return callback(err);
-            test(check);
-        }
-
-        function check(err, truth) {
-            if (err) return callback(err);
-            if (!truth) return callback(null);
-            fn(next);
-        }
-
-        test(check);
-    }
-
-    function _withoutIndex(iteratee) {
-        return function (value, index, callback) {
-            return iteratee(value, callback);
-        };
-    }
-
-    /**
-     * Applies the function `iteratee` to each item in `coll`, in parallel.
-     * The `iteratee` is called with an item from the list, and a callback for when
-     * it has finished. If the `iteratee` passes an error to its `callback`, the
-     * main `callback` (for the `each` function) is immediately called with the
-     * error.
-     *
-     * Note, that since this function applies `iteratee` to each item in parallel,
-     * there is no guarantee that the iteratee functions will complete in order.
-     *
-     * @name each
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @alias forEach
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A function to apply to each item
-     * in `coll`. The iteratee is passed a `callback(err)` which must be called once
-     * it has completed. If no error has occurred, the `callback` should be run
-     * without arguments or with an explicit `null` argument. The array index is not
-     * passed to the iteratee. Invoked with (item, callback). If you need the index,
-     * use `eachOf`.
-     * @param {Function} [callback] - A callback which is called when all
-     * `iteratee` functions have finished, or an error occurs. Invoked with (err).
-     * @example
-     *
-     * // assuming openFiles is an array of file names and saveFile is a function
-     * // to save the modified contents of that file:
-     *
-     * async.each(openFiles, saveFile, function(err){
-     *   // if any of the saves produced an error, err would equal that error
-     * });
-     *
-     * // assuming openFiles is an array of file names
-     * async.each(openFiles, function(file, callback) {
-     *
-     *     // Perform operation on file here.
-     *     console.log('Processing file ' + file);
-     *
-     *     if( file.length > 32 ) {
-     *       console.log('This file name is too long');
-     *       callback('File name too long');
-     *     } else {
-     *       // Do work to process file here
-     *       console.log('File processed');
-     *       callback();
-     *     }
-     * }, function(err) {
-     *     // if any of the file processing produced an error, err would equal that error
-     *     if( err ) {
-     *       // One of the iterations produced an error.
-     *       // All processing will now stop.
-     *       console.log('A file failed to process');
-     *     } else {
-     *       console.log('All files have been processed successfully');
-     *     }
-     * });
-     */
-    function eachLimit(coll, iteratee, callback) {
-      eachOf(coll, _withoutIndex(iteratee), callback);
-    }
-
-    /**
-     * The same as [`each`]{@link module:Collections.each} but runs a maximum of `limit` async operations at a time.
-     *
-     * @name eachLimit
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.each]{@link module:Collections.each}
-     * @alias forEachLimit
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A colleciton to iterate over.
-     * @param {number} limit - The maximum number of async operations at a time.
-     * @param {Function} iteratee - A function to apply to each item in `coll`. The
-     * iteratee is passed a `callback(err)` which must be called once it has
-     * completed. If no error has occurred, the `callback` should be run without
-     * arguments or with an explicit `null` argument. The array index is not passed
-     * to the iteratee. Invoked with (item, callback). If you need the index, use
-     * `eachOfLimit`.
-     * @param {Function} [callback] - A callback which is called when all
-     * `iteratee` functions have finished, or an error occurs. Invoked with (err).
-     */
-    function eachLimit$1(coll, limit, iteratee, callback) {
-      _eachOfLimit(limit)(coll, _withoutIndex(iteratee), callback);
-    }
-
-    /**
-     * The same as [`each`]{@link module:Collections.each} but runs only a single async operation at a time.
-     *
-     * @name eachSeries
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.each]{@link module:Collections.each}
-     * @alias forEachSeries
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A function to apply to each
-     * item in `coll`. The iteratee is passed a `callback(err)` which must be called
-     * once it has completed. If no error has occurred, the `callback` should be run
-     * without arguments or with an explicit `null` argument. The array index is
-     * not passed to the iteratee. Invoked with (item, callback). If you need the
-     * index, use `eachOfSeries`.
-     * @param {Function} [callback] - A callback which is called when all
-     * `iteratee` functions have finished, or an error occurs. Invoked with (err).
-     */
-    var eachSeries = doLimit(eachLimit$1, 1);
-
-    /**
-     * Wrap an async function and ensure it calls its callback on a later tick of
-     * the event loop.  If the function already calls its callback on a next tick,
-     * no extra deferral is added. This is useful for preventing stack overflows
-     * (`RangeError: Maximum call stack size exceeded`) and generally keeping
-     * [Zalgo](http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony)
-     * contained.
-     *
-     * @name ensureAsync
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @category Util
-     * @param {Function} fn - an async function, one that expects a node-style
-     * callback as its last argument.
-     * @returns {Function} Returns a wrapped function with the exact same call
-     * signature as the function passed in.
-     * @example
-     *
-     * function sometimesAsync(arg, callback) {
-     *     if (cache[arg]) {
-     *         return callback(null, cache[arg]); // this would be synchronous!!
-     *     } else {
-     *         doSomeIO(arg, callback); // this IO would be asynchronous
-     *     }
-     * }
-     *
-     * // this has a risk of stack overflows if many results are cached in a row
-     * async.mapSeries(args, sometimesAsync, done);
-     *
-     * // this will defer sometimesAsync's callback if necessary,
-     * // preventing stack overflows
-     * async.mapSeries(args, async.ensureAsync(sometimesAsync), done);
-     */
-    function ensureAsync(fn) {
-        return initialParams(function (args, callback) {
-            var sync = true;
-            args.push(function () {
-                var innerArgs = arguments;
-                if (sync) {
-                    setImmediate$1(function () {
-                        callback.apply(null, innerArgs);
-                    });
-                } else {
-                    callback.apply(null, innerArgs);
-                }
-            });
-            fn.apply(this, args);
-            sync = false;
-        });
-    }
-
-    function notId(v) {
-        return !v;
-    }
-
-    /**
-     * Returns `true` if every element in `coll` satisfies an async test. If any
-     * iteratee call returns `false`, the main `callback` is immediately called.
-     *
-     * @name every
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @alias all
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A truth test to apply to each item in the
-     * collection in parallel. The iteratee is passed a `callback(err, truthValue)`
-     * which must be called with a  boolean argument once it has completed. Invoked
-     * with (item, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Result will be either `true` or `false`
-     * depending on the values of the async tests. Invoked with (err, result).
-     * @example
-     *
-     * async.every(['file1','file2','file3'], function(filePath, callback) {
-     *     fs.access(filePath, function(err) {
-     *         callback(null, !err)
-     *     });
-     * }, function(err, result) {
-     *     // if result is true then every file exists
-     * });
-     */
-    var every = _createTester(eachOf, notId, notId);
-
-    /**
-     * The same as [`every`]{@link module:Collections.every} but runs a maximum of `limit` async operations at a time.
-     *
-     * @name everyLimit
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.every]{@link module:Collections.every}
-     * @alias allLimit
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {number} limit - The maximum number of async operations at a time.
-     * @param {Function} iteratee - A truth test to apply to each item in the
-     * collection in parallel. The iteratee is passed a `callback(err, truthValue)`
-     * which must be called with a  boolean argument once it has completed. Invoked
-     * with (item, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Result will be either `true` or `false`
-     * depending on the values of the async tests. Invoked with (err, result).
-     */
-    var everyLimit = _createTester(eachOfLimit, notId, notId);
-
-    /**
-     * The same as [`every`]{@link module:Collections.every} but runs only a single async operation at a time.
-     *
-     * @name everySeries
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.every]{@link module:Collections.every}
-     * @alias allSeries
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A truth test to apply to each item in the
-     * collection in parallel. The iteratee is passed a `callback(err, truthValue)`
-     * which must be called with a  boolean argument once it has completed. Invoked
-     * with (item, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Result will be either `true` or `false`
-     * depending on the values of the async tests. Invoked with (err, result).
-     */
-    var everySeries = doLimit(everyLimit, 1);
-
-    function _filter(eachfn, arr, iteratee, callback) {
-        callback = once(callback || noop);
-        var results = [];
-        eachfn(arr, function (x, index, callback) {
-            iteratee(x, function (err, v) {
-                if (err) {
-                    callback(err);
-                } else {
-                    if (v) {
-                        results.push({ index: index, value: x });
-                    }
-                    callback();
-                }
-            });
-        }, function (err) {
-            if (err) {
-                callback(err);
-            } else {
-                callback(null, arrayMap(results.sort(function (a, b) {
-                    return a.index - b.index;
-                }), baseProperty('value')));
-            }
-        });
-    }
-
-    /**
-     * Returns a new array of all the values in `coll` which pass an async truth
-     * test. This operation is performed in parallel, but the results array will be
-     * in the same order as the original.
-     *
-     * @name filter
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @alias select
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A truth test to apply to each item in `coll`.
-     * The `iteratee` is passed a `callback(err, truthValue)`, which must be called
-     * with a boolean argument once it has completed. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Invoked with (err, results).
-     * @example
-     *
-     * async.filter(['file1','file2','file3'], function(filePath, callback) {
-     *     fs.access(filePath, function(err) {
-     *         callback(null, !err)
-     *     });
-     * }, function(err, results) {
-     *     // results now equals an array of the existing files
-     * });
-     */
-    var filter = doParallel(_filter);
-
-    /**
-     * The same as [`filter`]{@link module:Collections.filter} but runs a maximum of `limit` async operations at a
-     * time.
-     *
-     * @name filterLimit
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.filter]{@link module:Collections.filter}
-     * @alias selectLimit
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {number} limit - The maximum number of async operations at a time.
-     * @param {Function} iteratee - A truth test to apply to each item in `coll`.
-     * The `iteratee` is passed a `callback(err, truthValue)`, which must be called
-     * with a boolean argument once it has completed. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Invoked with (err, results).
-     */
-    var filterLimit = doParallelLimit(_filter);
-
-    /**
-     * The same as [`filter`]{@link module:Collections.filter} but runs only a single async operation at a time.
-     *
-     * @name filterSeries
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.filter]{@link module:Collections.filter}
-     * @alias selectSeries
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A truth test to apply to each item in `coll`.
-     * The `iteratee` is passed a `callback(err, truthValue)`, which must be called
-     * with a boolean argument once it has completed. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Invoked with (err, results)
-     */
-    var filterSeries = doLimit(filterLimit, 1);
-
-    /**
-     * Calls the asynchronous function `fn` with a callback parameter that allows it
-     * to call itself again, in series, indefinitely.
-
-     * If an error is passed to the
-     * callback then `errback` is called with the error, and execution stops,
-     * otherwise it will never be called.
-     *
-     * @name forever
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @category Control Flow
-     * @param {Function} fn - a function to call repeatedly. Invoked with (next).
-     * @param {Function} [errback] - when `fn` passes an error to it's callback,
-     * this function will be called, and execution stops. Invoked with (err).
-     * @example
-     *
-     * async.forever(
-     *     function(next) {
-     *         // next is suitable for passing to things that need a callback(err [, whatever]);
-     *         // it will result in this function being called again.
-     *     },
-     *     function(err) {
-     *         // if next is called with a value in its first parameter, it will appear
-     *         // in here as 'err', and execution will stop.
-     *     }
-     * );
-     */
-    function forever(fn, errback) {
-        var done = onlyOnce(errback || noop);
-        var task = ensureAsync(fn);
-
-        function next(err) {
-            if (err) return done(err);
-            task(next);
-        }
-        next();
-    }
-
-    /**
-     * Logs the result of an `async` function to the `console`. Only works in
-     * Node.js or in browsers that support `console.log` and `console.error` (such
-     * as FF and Chrome). If multiple arguments are returned from the async
-     * function, `console.log` is called on each argument in order.
-     *
-     * @name log
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @category Util
-     * @param {Function} function - The function you want to eventually apply all
-     * arguments to.
-     * @param {...*} arguments... - Any number of arguments to apply to the function.
-     * @example
-     *
-     * // in a module
-     * var hello = function(name, callback) {
-     *     setTimeout(function() {
-     *         callback(null, 'hello ' + name);
-     *     }, 1000);
-     * };
-     *
-     * // in the node repl
-     * node> async.log(hello, 'world');
-     * 'hello world'
-     */
-    var log = consoleFunc('log');
-
-    /**
-     * The same as [`mapValues`]{@link module:Collections.mapValues} but runs a maximum of `limit` async operations at a
-     * time.
-     *
-     * @name mapValuesLimit
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.mapValues]{@link module:Collections.mapValues}
-     * @category Collection
-     * @param {Object} obj - A collection to iterate over.
-     * @param {number} limit - The maximum number of async operations at a time.
-     * @param {Function} iteratee - A function to apply to each value in `obj`.
-     * The iteratee is passed a `callback(err, transformed)` which must be called
-     * once it has completed with an error (which can be `null`) and a
-     * transformed value. Invoked with (value, key, callback).
-     * @param {Function} [callback] - A callback which is called when all `iteratee`
-     * functions have finished, or an error occurs. Result is an object of the
-     * transformed values from the `obj`. Invoked with (err, result).
-     */
-    function mapValuesLimit(obj, limit, iteratee, callback) {
-        callback = once(callback || noop);
-        var newObj = {};
-        eachOfLimit(obj, limit, function (val, key, next) {
-            iteratee(val, key, function (err, result) {
-                if (err) return next(err);
-                newObj[key] = result;
-                next();
-            });
-        }, function (err) {
-            callback(err, newObj);
-        });
-    }
-
-    /**
-     * A relative of [`map`]{@link module:Collections.map}, designed for use with objects.
-     *
-     * Produces a new Object by mapping each value of `obj` through the `iteratee`
-     * function. The `iteratee` is called each `value` and `key` from `obj` and a
-     * callback for when it has finished processing. Each of these callbacks takes
-     * two arguments: an `error`, and the transformed item from `obj`. If `iteratee`
-     * passes an error to its callback, the main `callback` (for the `mapValues`
-     * function) is immediately called with the error.
-     *
-     * Note, the order of the keys in the result is not guaranteed.  The keys will
-     * be roughly in the order they complete, (but this is very engine-specific)
-     *
-     * @name mapValues
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @category Collection
-     * @param {Object} obj - A collection to iterate over.
-     * @param {Function} iteratee - A function to apply to each value and key in
-     * `coll`. The iteratee is passed a `callback(err, transformed)` which must be
-     * called once it has completed with an error (which can be `null`) and a
-     * transformed value. Invoked with (value, key, callback).
-     * @param {Function} [callback] - A callback which is called when all `iteratee`
-     * functions have finished, or an error occurs. Results is an array of the
-     * transformed items from the `obj`. Invoked with (err, result).
-     * @example
-     *
-     * async.mapValues({
-     *     f1: 'file1',
-     *     f2: 'file2',
-     *     f3: 'file3'
-     * }, function (file, key, callback) {
-     *   fs.stat(file, callback);
-     * }, function(err, result) {
-     *     // results is now a map of stats for each file, e.g.
-     *     // {
-     *     //     f1: [stats for file1],
-     *     //     f2: [stats for file2],
-     *     //     f3: [stats for file3]
-     *     // }
-     * });
-     */
-
-    var mapValues = doLimit(mapValuesLimit, Infinity);
-
-    /**
-     * The same as [`mapValues`]{@link module:Collections.mapValues} but runs only a single async operation at a time.
-     *
-     * @name mapValuesSeries
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.mapValues]{@link module:Collections.mapValues}
-     * @category Collection
-     * @param {Object} obj - A collection to iterate over.
-     * @param {Function} iteratee - A function to apply to each value in `obj`.
-     * The iteratee is passed a `callback(err, transformed)` which must be called
-     * once it has completed with an error (which can be `null`) and a
-     * transformed value. Invoked with (value, key, callback).
-     * @param {Function} [callback] - A callback which is called when all `iteratee`
-     * functions have finished, or an error occurs. Result is an object of the
-     * transformed values from the `obj`. Invoked with (err, result).
-     */
-    var mapValuesSeries = doLimit(mapValuesLimit, 1);
-
-    function has(obj, key) {
-        return key in obj;
-    }
-
-    /**
-     * Caches the results of an `async` function. When creating a hash to store
-     * function results against, the callback is omitted from the hash and an
-     * optional hash function can be used.
-     *
-     * If no hash function is specified, the first argument is used as a hash key,
-     * which may work reasonably if it is a string or a data type that converts to a
-     * distinct string. Note that objects and arrays will not behave reasonably.
-     * Neither will cases where the other arguments are significant. In such cases,
-     * specify your own hash function.
-     *
-     * The cache of results is exposed as the `memo` property of the function
-     * returned by `memoize`.
-     *
-     * @name memoize
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @category Util
-     * @param {Function} fn - The function to proxy and cache results from.
-     * @param {Function} hasher - An optional function for generating a custom hash
-     * for storing results. It has all the arguments applied to it apart from the
-     * callback, and must be synchronous.
-     * @returns {Function} a memoized version of `fn`
-     * @example
-     *
-     * var slow_fn = function(name, callback) {
-     *     // do something
-     *     callback(null, result);
-     * };
-     * var fn = async.memoize(slow_fn);
-     *
-     * // fn can now be used as if it were slow_fn
-     * fn('some name', function() {
-     *     // callback
-     * });
-     */
-    function memoize(fn, hasher) {
-        var memo = Object.create(null);
-        var queues = Object.create(null);
-        hasher = hasher || identity;
-        var memoized = initialParams(function memoized(args, callback) {
-            var key = hasher.apply(null, args);
-            if (has(memo, key)) {
-                setImmediate$1(function () {
-                    callback.apply(null, memo[key]);
-                });
-            } else if (has(queues, key)) {
-                queues[key].push(callback);
-            } else {
-                queues[key] = [callback];
-                fn.apply(null, args.concat([rest(function (args) {
-                    memo[key] = args;
-                    var q = queues[key];
-                    delete queues[key];
-                    for (var i = 0, l = q.length; i < l; i++) {
-                        q[i].apply(null, args);
-                    }
-                })]));
-            }
-        });
-        memoized.memo = memo;
-        memoized.unmemoized = fn;
-        return memoized;
-    }
-
-    /**
-     * Calls `callback` on a later loop around the event loop. In Node.js this just
-     * calls `setImmediate`.  In the browser it will use `setImmediate` if
-     * available, otherwise `setTimeout(callback, 0)`, which means other higher
-     * priority events may precede the execution of `callback`.
-     *
-     * This is used internally for browser-compatibility purposes.
-     *
-     * @name nextTick
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @alias setImmediate
-     * @category Util
-     * @param {Function} callback - The function to call on a later loop around
-     * the event loop. Invoked with (args...).
-     * @param {...*} args... - any number of additional arguments to pass to the
-     * callback on the next tick.
-     * @example
-     *
-     * var call_order = [];
-     * async.nextTick(function() {
-     *     call_order.push('two');
-     *     // call_order now equals ['one','two']
-     * });
-     * call_order.push('one');
-     *
-     * async.setImmediate(function (a, b, c) {
-     *     // a, b, and c equal 1, 2, and 3
-     * }, 1, 2, 3);
-     */
-    var _defer$1;
-
-    if (hasNextTick) {
-        _defer$1 = process.nextTick;
-    } else if (hasSetImmediate) {
-        _defer$1 = setImmediate;
-    } else {
-        _defer$1 = fallback;
-    }
-
-    var nextTick = wrap(_defer$1);
-
-    function _parallel(eachfn, tasks, callback) {
-        callback = callback || noop;
-        var results = isArrayLike(tasks) ? [] : {};
-
-        eachfn(tasks, function (task, key, callback) {
-            task(rest(function (err, args) {
-                if (args.length <= 1) {
-                    args = args[0];
-                }
-                results[key] = args;
-                callback(err);
-            }));
-        }, function (err) {
-            callback(err, results);
-        });
-    }
-
-    /**
-     * Run the `tasks` collection of functions in parallel, without waiting until
-     * the previous function has completed. If any of the functions pass an error to
-     * its callback, the main `callback` is immediately called with the value of the
-     * error. Once the `tasks` have completed, the results are passed to the final
-     * `callback` as an array.
-     *
-     * **Note:** `parallel` is about kicking-off I/O tasks in parallel, not about
-     * parallel execution of code.  If your tasks do not use any timers or perform
-     * any I/O, they will actually be executed in series.  Any synchronous setup
-     * sections for each task will happen one after the other.  JavaScript remains
-     * single-threaded.
-     *
-     * It is also possible to use an object instead of an array. Each property will
-     * be run as a function and the results will be passed to the final `callback`
-     * as an object instead of an array. This can be a more readable way of handling
-     * results from {@link async.parallel}.
-     *
-     * @name parallel
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @category Control Flow
-     * @param {Array|Iterable|Object} tasks - A collection containing functions to run.
-     * Each function is passed a `callback(err, result)` which it must call on
-     * completion with an error `err` (which can be `null`) and an optional `result`
-     * value.
-     * @param {Function} [callback] - An optional callback to run once all the
-     * functions have completed successfully. This function gets a results array
-     * (or object) containing all the result arguments passed to the task callbacks.
-     * Invoked with (err, results).
-     * @example
-     * async.parallel([
-     *     function(callback) {
-     *         setTimeout(function() {
-     *             callback(null, 'one');
-     *         }, 200);
-     *     },
-     *     function(callback) {
-     *         setTimeout(function() {
-     *             callback(null, 'two');
-     *         }, 100);
-     *     }
-     * ],
-     * // optional callback
-     * function(err, results) {
-     *     // the results array will equal ['one','two'] even though
-     *     // the second function had a shorter timeout.
-     * });
-     *
-     * // an example using an object instead of an array
-     * async.parallel({
-     *     one: function(callback) {
-     *         setTimeout(function() {
-     *             callback(null, 1);
-     *         }, 200);
-     *     },
-     *     two: function(callback) {
-     *         setTimeout(function() {
-     *             callback(null, 2);
-     *         }, 100);
-     *     }
-     * }, function(err, results) {
-     *     // results is now equals to: {one: 1, two: 2}
-     * });
-     */
-    function parallelLimit(tasks, callback) {
-      _parallel(eachOf, tasks, callback);
-    }
-
-    /**
-     * The same as [`parallel`]{@link module:ControlFlow.parallel} but runs a maximum of `limit` async operations at a
-     * time.
-     *
-     * @name parallelLimit
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.parallel]{@link module:ControlFlow.parallel}
-     * @category Control Flow
-     * @param {Array|Collection} tasks - A collection containing functions to run.
-     * Each function is passed a `callback(err, result)` which it must call on
-     * completion with an error `err` (which can be `null`) and an optional `result`
-     * value.
-     * @param {number} limit - The maximum number of async operations at a time.
-     * @param {Function} [callback] - An optional callback to run once all the
-     * functions have completed successfully. This function gets a results array
-     * (or object) containing all the result arguments passed to the task callbacks.
-     * Invoked with (err, results).
-     */
-    function parallelLimit$1(tasks, limit, callback) {
-      _parallel(_eachOfLimit(limit), tasks, callback);
-    }
-
-    /**
-     * A queue of tasks for the worker function to complete.
-     * @typedef {Object} QueueObject
-     * @memberOf module:ControlFlow
-     * @property {Function} length - a function returning the number of items
-     * waiting to be processed. Invoke with `queue.length()`.
-     * @property {boolean} started - a boolean indicating whether or not any
-     * items have been pushed and processed by the queue.
-     * @property {Function} running - a function returning the number of items
-     * currently being processed. Invoke with `queue.running()`.
-     * @property {Function} workersList - a function returning the array of items
-     * currently being processed. Invoke with `queue.workersList()`.
-     * @property {Function} idle - a function returning false if there are items
-     * waiting or being processed, or true if not. Invoke with `queue.idle()`.
-     * @property {number} concurrency - an integer for determining how many `worker`
-     * functions should be run in parallel. This property can be changed after a
-     * `queue` is created to alter the concurrency on-the-fly.
-     * @property {Function} push - add a new task to the `queue`. Calls `callback`
-     * once the `worker` has finished processing the task. Instead of a single task,
-     * a `tasks` array can be submitted. The respective callback is used for every
-     * task in the list. Invoke with `queue.push(task, [callback])`,
-     * @property {Function} unshift - add a new task to the front of the `queue`.
-     * Invoke with `queue.unshift(task, [callback])`.
-     * @property {Function} saturated - a callback that is called when the number of
-     * running workers hits the `concurrency` limit, and further tasks will be
-     * queued.
-     * @property {Function} unsaturated - a callback that is called when the number
-     * of running workers is less than the `concurrency` & `buffer` limits, and
-     * further tasks will not be queued.
-     * @property {number} buffer - A minimum threshold buffer in order to say that
-     * the `queue` is `unsaturated`.
-     * @property {Function} empty - a callback that is called when the last item
-     * from the `queue` is given to a `worker`.
-     * @property {Function} drain - a callback that is called when the last item
-     * from the `queue` has returned from the `worker`.
-     * @property {Function} error - a callback that is called when a task errors.
-     * Has the signature `function(error, task)`.
-     * @property {boolean} paused - a boolean for determining whether the queue is
-     * in a paused state.
-     * @property {Function} pause - a function that pauses the processing of tasks
-     * until `resume()` is called. Invoke with `queue.pause()`.
-     * @property {Function} resume - a function that resumes the processing of
-     * queued tasks when the queue is paused. Invoke with `queue.resume()`.
-     * @property {Function} kill - a function that removes the `drain` callback and
-     * empties remaining tasks from the queue forcing it to go idle. Invoke with `queue.kill()`.
-     */
-
-    /**
-     * Creates a `queue` object with the specified `concurrency`. Tasks added to the
-     * `queue` are processed in parallel (up to the `concurrency` limit). If all
-     * `worker`s are in progress, the task is queued until one becomes available.
-     * Once a `worker` completes a `task`, that `task`'s callback is called.
-     *
-     * @name queue
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @category Control Flow
-     * @param {Function} worker - An asynchronous function for processing a queued
-     * task, which must call its `callback(err)` argument when finished, with an
-     * optional `error` as an argument.  If you want to handle errors from an
-     * individual task, pass a callback to `q.push()`. Invoked with
-     * (task, callback).
-     * @param {number} [concurrency=1] - An `integer` for determining how many
-     * `worker` functions should be run in parallel.  If omitted, the concurrency
-     * defaults to `1`.  If the concurrency is `0`, an error is thrown.
-     * @returns {module:ControlFlow.QueueObject} A queue object to manage the tasks. Callbacks can
-     * attached as certain properties to listen for specific events during the
-     * lifecycle of the queue.
-     * @example
-     *
-     * // create a queue object with concurrency 2
-     * var q = async.queue(function(task, callback) {
-     *     console.log('hello ' + task.name);
-     *     callback();
-     * }, 2);
-     *
-     * // assign a callback
-     * q.drain = function() {
-     *     console.log('all items have been processed');
-     * };
-     *
-     * // add some items to the queue
-     * q.push({name: 'foo'}, function(err) {
-     *     console.log('finished processing foo');
-     * });
-     * q.push({name: 'bar'}, function (err) {
-     *     console.log('finished processing bar');
-     * });
-     *
-     * // add some items to the queue (batch-wise)
-     * q.push([{name: 'baz'},{name: 'bay'},{name: 'bax'}], function(err) {
-     *     console.log('finished processing item');
-     * });
-     *
-     * // add some items to the front of the queue
-     * q.unshift({name: 'bar'}, function (err) {
-     *     console.log('finished processing bar');
-     * });
-     */
-    function queue$1 (worker, concurrency) {
-      return queue(function (items, cb) {
-        worker(items[0], cb);
-      }, concurrency, 1);
-    }
-
-    /**
-     * The same as [async.queue]{@link module:ControlFlow.queue} only tasks are assigned a priority and
-     * completed in ascending priority order.
-     *
-     * @name priorityQueue
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.queue]{@link module:ControlFlow.queue}
-     * @category Control Flow
-     * @param {Function} worker - An asynchronous function for processing a queued
-     * task, which must call its `callback(err)` argument when finished, with an
-     * optional `error` as an argument.  If you want to handle errors from an
-     * individual task, pass a callback to `q.push()`. Invoked with
-     * (task, callback).
-     * @param {number} concurrency - An `integer` for determining how many `worker`
-     * functions should be run in parallel.  If omitted, the concurrency defaults to
-     * `1`.  If the concurrency is `0`, an error is thrown.
-     * @returns {module:ControlFlow.QueueObject} A priorityQueue object to manage the tasks. There are two
-     * differences between `queue` and `priorityQueue` objects:
-     * * `push(task, priority, [callback])` - `priority` should be a number. If an
-     *   array of `tasks` is given, all tasks will be assigned the same priority.
-     * * The `unshift` method was removed.
-     */
-    function priorityQueue (worker, concurrency) {
-        // Start with a normal queue
-        var q = queue$1(worker, concurrency);
-
-        // Override push to accept second parameter representing priority
-        q.push = function (data, priority, callback) {
-            if (callback == null) callback = noop;
-            if (typeof callback !== 'function') {
-                throw new Error('task callback must be a function');
-            }
-            q.started = true;
-            if (!isArray(data)) {
-                data = [data];
-            }
-            if (data.length === 0) {
-                // call drain immediately if there are no tasks
-                return setImmediate$1(function () {
-                    q.drain();
-                });
-            }
-
-            priority = priority || 0;
-            var nextNode = q._tasks.head;
-            while (nextNode && priority >= nextNode.priority) {
-                nextNode = nextNode.next;
-            }
-
-            arrayEach(data, function (task) {
-                var item = {
-                    data: task,
-                    priority: priority,
-                    callback: callback
-                };
-
-                if (nextNode) {
-                    q._tasks.insertBefore(nextNode, item);
-                } else {
-                    q._tasks.push(item);
-                }
-            });
-            setImmediate$1(q.process);
-        };
-
-        // Remove unshift function
-        delete q.unshift;
-
-        return q;
-    }
-
-    /**
-     * Runs the `tasks` array of functions in parallel, without waiting until the
-     * previous function has completed. Once any the `tasks` completed or pass an
-     * error to its callback, the main `callback` is immediately called. It's
-     * equivalent to `Promise.race()`.
-     *
-     * @name race
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @category Control Flow
-     * @param {Array} tasks - An array containing functions to run. Each function
-     * is passed a `callback(err, result)` which it must call on completion with an
-     * error `err` (which can be `null`) and an optional `result` value.
-     * @param {Function} callback - A callback to run once any of the functions have
-     * completed. This function gets an error or result from the first function that
-     * completed. Invoked with (err, result).
-     * @returns undefined
-     * @example
-     *
-     * async.race([
-     *     function(callback) {
-     *         setTimeout(function() {
-     *             callback(null, 'one');
-     *         }, 200);
-     *     },
-     *     function(callback) {
-     *         setTimeout(function() {
-     *             callback(null, 'two');
-     *         }, 100);
-     *     }
-     * ],
-     * // main callback
-     * function(err, result) {
-     *     // the result will be equal to 'two' as it finishes earlier
-     * });
-     */
-    function race(tasks, callback) {
-        callback = once(callback || noop);
-        if (!isArray(tasks)) return callback(new TypeError('First argument to race must be an array of functions'));
-        if (!tasks.length) return callback();
-        arrayEach(tasks, function (task) {
-            task(callback);
-        });
-    }
-
-    var slice = Array.prototype.slice;
-
-    /**
-     * Same as [`reduce`]{@link module:Collections.reduce}, only operates on `array` in reverse order.
-     *
-     * @name reduceRight
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.reduce]{@link module:Collections.reduce}
-     * @alias foldr
-     * @category Collection
-     * @param {Array} array - A collection to iterate over.
-     * @param {*} memo - The initial state of the reduction.
-     * @param {Function} iteratee - A function applied to each item in the
-     * array to produce the next step in the reduction. The `iteratee` is passed a
-     * `callback(err, reduction)` which accepts an optional error as its first
-     * argument, and the state of the reduction as the second. If an error is
-     * passed to the callback, the reduction is stopped and the main `callback` is
-     * immediately called with the error. Invoked with (memo, item, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Result is the reduced value. Invoked with
-     * (err, result).
-     */
-    function reduceRight(array, memo, iteratee, callback) {
-      var reversed = slice.call(array).reverse();
-      reduce(reversed, memo, iteratee, callback);
-    }
-
-    /**
-     * Wraps the function in another function that always returns data even when it
-     * errors.
-     *
-     * The object returned has either the property `error` or `value`.
-     *
-     * @name reflect
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @category Util
-     * @param {Function} fn - The function you want to wrap
-     * @returns {Function} - A function that always passes null to it's callback as
-     * the error. The second argument to the callback will be an `object` with
-     * either an `error` or a `value` property.
-     * @example
-     *
-     * async.parallel([
-     *     async.reflect(function(callback) {
-     *         // do some stuff ...
-     *         callback(null, 'one');
-     *     }),
-     *     async.reflect(function(callback) {
-     *         // do some more stuff but error ...
-     *         callback('bad stuff happened');
-     *     }),
-     *     async.reflect(function(callback) {
-     *         // do some more stuff ...
-     *         callback(null, 'two');
-     *     })
-     * ],
-     * // optional callback
-     * function(err, results) {
-     *     // values
-     *     // results[0].value = 'one'
-     *     // results[1].error = 'bad stuff happened'
-     *     // results[2].value = 'two'
-     * });
-     */
-    function reflect(fn) {
-        return initialParams(function reflectOn(args, reflectCallback) {
-            args.push(rest(function callback(err, cbArgs) {
-                if (err) {
-                    reflectCallback(null, {
-                        error: err
-                    });
-                } else {
-                    var value = null;
-                    if (cbArgs.length === 1) {
-                        value = cbArgs[0];
-                    } else if (cbArgs.length > 1) {
-                        value = cbArgs;
-                    }
-                    reflectCallback(null, {
-                        value: value
-                    });
-                }
-            }));
-
-            return fn.apply(this, args);
-        });
-    }
-
-    function reject$1(eachfn, arr, iteratee, callback) {
-        _filter(eachfn, arr, function (value, cb) {
-            iteratee(value, function (err, v) {
-                if (err) {
-                    cb(err);
-                } else {
-                    cb(null, !v);
-                }
-            });
-        }, callback);
-    }
-
-    /**
-     * The opposite of [`filter`]{@link module:Collections.filter}. Removes values that pass an `async` truth test.
-     *
-     * @name reject
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.filter]{@link module:Collections.filter}
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A truth test to apply to each item in `coll`.
-     * The `iteratee` is passed a `callback(err, truthValue)`, which must be called
-     * with a boolean argument once it has completed. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Invoked with (err, results).
-     * @example
-     *
-     * async.reject(['file1','file2','file3'], function(filePath, callback) {
-     *     fs.access(filePath, function(err) {
-     *         callback(null, !err)
-     *     });
-     * }, function(err, results) {
-     *     // results now equals an array of missing files
-     *     createFiles(results);
-     * });
-     */
-    var reject = doParallel(reject$1);
-
-    /**
-     * A helper function that wraps an array or an object of functions with reflect.
-     *
-     * @name reflectAll
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @see [async.reflect]{@link module:Utils.reflect}
-     * @category Util
-     * @param {Array} tasks - The array of functions to wrap in `async.reflect`.
-     * @returns {Array} Returns an array of functions, each function wrapped in
-     * `async.reflect`
-     * @example
-     *
-     * let tasks = [
-     *     function(callback) {
-     *         setTimeout(function() {
-     *             callback(null, 'one');
-     *         }, 200);
-     *     },
-     *     function(callback) {
-     *         // do some more stuff but error ...
-     *         callback(new Error('bad stuff happened'));
-     *     },
-     *     function(callback) {
-     *         setTimeout(function() {
-     *             callback(null, 'two');
-     *         }, 100);
-     *     }
-     * ];
-     *
-     * async.parallel(async.reflectAll(tasks),
-     * // optional callback
-     * function(err, results) {
-     *     // values
-     *     // results[0].value = 'one'
-     *     // results[1].error = Error('bad stuff happened')
-     *     // results[2].value = 'two'
-     * });
-     *
-     * // an example using an object instead of an array
-     * let tasks = {
-     *     one: function(callback) {
-     *         setTimeout(function() {
-     *             callback(null, 'one');
-     *         }, 200);
-     *     },
-     *     two: function(callback) {
-     *         callback('two');
-     *     },
-     *     three: function(callback) {
-     *         setTimeout(function() {
-     *             callback(null, 'three');
-     *         }, 100);
-     *     }
-     * };
-     *
-     * async.parallel(async.reflectAll(tasks),
-     * // optional callback
-     * function(err, results) {
-     *     // values
-     *     // results.one.value = 'one'
-     *     // results.two.error = 'two'
-     *     // results.three.value = 'three'
-     * });
-     */
-    function reflectAll(tasks) {
-        var results;
-        if (isArray(tasks)) {
-            results = arrayMap(tasks, reflect);
-        } else {
-            results = {};
-            baseForOwn(tasks, function (task, key) {
-                results[key] = reflect.call(this, task);
-            });
-        }
-        return results;
-    }
-
-    /**
-     * The same as [`reject`]{@link module:Collections.reject} but runs a maximum of `limit` async operations at a
-     * time.
-     *
-     * @name rejectLimit
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.reject]{@link module:Collections.reject}
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {number} limit - The maximum number of async operations at a time.
-     * @param {Function} iteratee - A truth test to apply to each item in `coll`.
-     * The `iteratee` is passed a `callback(err, truthValue)`, which must be called
-     * with a boolean argument once it has completed. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Invoked with (err, results).
-     */
-    var rejectLimit = doParallelLimit(reject$1);
-
-    /**
-     * The same as [`reject`]{@link module:Collections.reject} but runs only a single async operation at a time.
-     *
-     * @name rejectSeries
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.reject]{@link module:Collections.reject}
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A truth test to apply to each item in `coll`.
-     * The `iteratee` is passed a `callback(err, truthValue)`, which must be called
-     * with a boolean argument once it has completed. Invoked with (item, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Invoked with (err, results).
-     */
-    var rejectSeries = doLimit(rejectLimit, 1);
-
-    /**
-     * Creates a function that returns `value`.
-     *
-     * @static
-     * @memberOf _
-     * @since 2.4.0
-     * @category Util
-     * @param {*} value The value to return from the new function.
-     * @returns {Function} Returns the new constant function.
-     * @example
-     *
-     * var objects = _.times(2, _.constant({ 'a': 1 }));
-     *
-     * console.log(objects);
-     * // => [{ 'a': 1 }, { 'a': 1 }]
-     *
-     * console.log(objects[0] === objects[1]);
-     * // => true
-     */
-    function constant$1(value) {
-      return function() {
-        return value;
-      };
-    }
-
-    /**
-     * Attempts to get a successful response from `task` no more than `times` times
-     * before returning an error. If the task is successful, the `callback` will be
-     * passed the result of the successful task. If all attempts fail, the callback
-     * will be passed the error and result (if any) of the final attempt.
-     *
-     * @name retry
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @category Control Flow
-     * @param {Object|number} [opts = {times: 5, interval: 0}| 5] - Can be either an
-     * object with `times` and `interval` or a number.
-     * * `times` - The number of attempts to make before giving up.  The default
-     *   is `5`.
-     * * `interval` - The time to wait between retries, in milliseconds.  The
-     *   default is `0`. The interval may also be specified as a function of the
-     *   retry count (see example).
-     * * If `opts` is a number, the number specifies the number of times to retry,
-     *   with the default interval of `0`.
-     * @param {Function} task - A function which receives two arguments: (1) a
-     * `callback(err, result)` which must be called when finished, passing `err`
-     * (which can be `null`) and the `result` of the function's execution, and (2)
-     * a `results` object, containing the results of the previously executed
-     * functions (if nested inside another control flow). Invoked with
-     * (callback, results).
-     * @param {Function} [callback] - An optional callback which is called when the
-     * task has succeeded, or after the final failed attempt. It receives the `err`
-     * and `result` arguments of the last attempt at completing the `task`. Invoked
-     * with (err, results).
-     * @example
-     *
-     * // The `retry` function can be used as a stand-alone control flow by passing
-     * // a callback, as shown below:
-     *
-     * // try calling apiMethod 3 times
-     * async.retry(3, apiMethod, function(err, result) {
-     *     // do something with the result
-     * });
-     *
-     * // try calling apiMethod 3 times, waiting 200 ms between each retry
-     * async.retry({times: 3, interval: 200}, apiMethod, function(err, result) {
-     *     // do something with the result
-     * });
-     *
-     * // try calling apiMethod 10 times with exponential backoff
-     * // (i.e. intervals of 100, 200, 400, 800, 1600, ... milliseconds)
-     * async.retry({
-     *   times: 10,
-     *   interval: function(retryCount) {
-     *     return 50 * Math.pow(2, retryCount);
-     *   }
-     * }, apiMethod, function(err, result) {
-     *     // do something with the result
-     * });
-     *
-     * // try calling apiMethod the default 5 times no delay between each retry
-     * async.retry(apiMethod, function(err, result) {
-     *     // do something with the result
-     * });
-     *
-     * // It can also be embedded within other control flow functions to retry
-     * // individual methods that are not as reliable, like this:
-     * async.auto({
-     *     users: api.getUsers.bind(api),
-     *     payments: async.retry(3, api.getPayments.bind(api))
-     * }, function(err, results) {
-     *     // do something with the results
-     * });
-     */
-    function retry(opts, task, callback) {
-        var DEFAULT_TIMES = 5;
-        var DEFAULT_INTERVAL = 0;
-
-        var options = {
-            times: DEFAULT_TIMES,
-            intervalFunc: constant$1(DEFAULT_INTERVAL)
-        };
-
-        function parseTimes(acc, t) {
-            if (typeof t === 'object') {
-                acc.times = +t.times || DEFAULT_TIMES;
-
-                acc.intervalFunc = typeof t.interval === 'function' ? t.interval : constant$1(+t.interval || DEFAULT_INTERVAL);
-            } else if (typeof t === 'number' || typeof t === 'string') {
-                acc.times = +t || DEFAULT_TIMES;
-            } else {
-                throw new Error("Invalid arguments for async.retry");
-            }
-        }
-
-        if (arguments.length < 3 && typeof opts === 'function') {
-            callback = task || noop;
-            task = opts;
-        } else {
-            parseTimes(options, opts);
-            callback = callback || noop;
-        }
-
-        if (typeof task !== 'function') {
-            throw new Error("Invalid arguments for async.retry");
-        }
-
-        var attempt = 1;
-        function retryAttempt() {
-            task(function (err) {
-                if (err && attempt++ < options.times) {
-                    setTimeout(retryAttempt, options.intervalFunc(attempt));
-                } else {
-                    callback.apply(null, arguments);
-                }
-            });
-        }
-
-        retryAttempt();
-    }
-
-    /**
-     * A close relative of [`retry`]{@link module:ControlFlow.retry}.  This method wraps a task and makes it
-     * retryable, rather than immediately calling it with retries.
-     *
-     * @name retryable
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.retry]{@link module:ControlFlow.retry}
-     * @category Control Flow
-     * @param {Object|number} [opts = {times: 5, interval: 0}| 5] - optional
-     * options, exactly the same as from `retry`
-     * @param {Function} task - the asynchronous function to wrap
-     * @returns {Functions} The wrapped function, which when invoked, will retry on
-     * an error, based on the parameters specified in `opts`.
-     * @example
-     *
-     * async.auto({
-     *     dep1: async.retryable(3, getFromFlakyService),
-     *     process: ["dep1", async.retryable(3, function (results, cb) {
-     *         maybeProcessData(results.dep1, cb);
-     *     })]
-     * }, callback);
-     */
-    function retryable (opts, task) {
-        if (!task) {
-            task = opts;
-            opts = null;
-        }
-        return initialParams(function (args, callback) {
-            function taskFn(cb) {
-                task.apply(null, args.concat([cb]));
-            }
-
-            if (opts) retry(opts, taskFn, callback);else retry(taskFn, callback);
-        });
-    }
-
-    /**
-     * Run the functions in the `tasks` collection in series, each one running once
-     * the previous function has completed. If any functions in the series pass an
-     * error to its callback, no more functions are run, and `callback` is
-     * immediately called with the value of the error. Otherwise, `callback`
-     * receives an array of results when `tasks` have completed.
-     *
-     * It is also possible to use an object instead of an array. Each property will
-     * be run as a function, and the results will be passed to the final `callback`
-     * as an object instead of an array. This can be a more readable way of handling
-     *  results from {@link async.series}.
-     *
-     * **Note** that while many implementations preserve the order of object
-     * properties, the [ECMAScript Language Specification](http://www.ecma-international.org/ecma-262/5.1/#sec-8.6)
-     * explicitly states that
-     *
-     * > The mechanics and order of enumerating the properties is not specified.
-     *
-     * So if you rely on the order in which your series of functions are executed,
-     * and want this to work on all platforms, consider using an array.
-     *
-     * @name series
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @category Control Flow
-     * @param {Array|Iterable|Object} tasks - A collection containing functions to run, each
-     * function is passed a `callback(err, result)` it must call on completion with
-     * an error `err` (which can be `null`) and an optional `result` value.
-     * @param {Function} [callback] - An optional callback to run once all the
-     * functions have completed. This function gets a results array (or object)
-     * containing all the result arguments passed to the `task` callbacks. Invoked
-     * with (err, result).
-     * @example
-     * async.series([
-     *     function(callback) {
-     *         // do some stuff ...
-     *         callback(null, 'one');
-     *     },
-     *     function(callback) {
-     *         // do some more stuff ...
-     *         callback(null, 'two');
-     *     }
-     * ],
-     * // optional callback
-     * function(err, results) {
-     *     // results is now equal to ['one', 'two']
-     * });
-     *
-     * async.series({
-     *     one: function(callback) {
-     *         setTimeout(function() {
-     *             callback(null, 1);
-     *         }, 200);
-     *     },
-     *     two: function(callback){
-     *         setTimeout(function() {
-     *             callback(null, 2);
-     *         }, 100);
-     *     }
-     * }, function(err, results) {
-     *     // results is now equal to: {one: 1, two: 2}
-     * });
-     */
-    function series(tasks, callback) {
-      _parallel(eachOfSeries, tasks, callback);
-    }
-
-    /**
-     * Returns `true` if at least one element in the `coll` satisfies an async test.
-     * If any iteratee call returns `true`, the main `callback` is immediately
-     * called.
-     *
-     * @name some
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @alias any
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A truth test to apply to each item in the array
-     * in parallel. The iteratee is passed a `callback(err, truthValue)` which must
-     * be called with a boolean argument once it has completed. Invoked with
-     * (item, callback).
-     * @param {Function} [callback] - A callback which is called as soon as any
-     * iteratee returns `true`, or after all the iteratee functions have finished.
-     * Result will be either `true` or `false` depending on the values of the async
-     * tests. Invoked with (err, result).
-     * @example
-     *
-     * async.some(['file1','file2','file3'], function(filePath, callback) {
-     *     fs.access(filePath, function(err) {
-     *         callback(null, !err)
-     *     });
-     * }, function(err, result) {
-     *     // if result is true then at least one of the files exists
-     * });
-     */
-    var some = _createTester(eachOf, Boolean, identity);
-
-    /**
-     * The same as [`some`]{@link module:Collections.some} but runs a maximum of `limit` async operations at a time.
-     *
-     * @name someLimit
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.some]{@link module:Collections.some}
-     * @alias anyLimit
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {number} limit - The maximum number of async operations at a time.
-     * @param {Function} iteratee - A truth test to apply to each item in the array
-     * in parallel. The iteratee is passed a `callback(err, truthValue)` which must
-     * be called with a boolean argument once it has completed. Invoked with
-     * (item, callback).
-     * @param {Function} [callback] - A callback which is called as soon as any
-     * iteratee returns `true`, or after all the iteratee functions have finished.
-     * Result will be either `true` or `false` depending on the values of the async
-     * tests. Invoked with (err, result).
-     */
-    var someLimit = _createTester(eachOfLimit, Boolean, identity);
-
-    /**
-     * The same as [`some`]{@link module:Collections.some} but runs only a single async operation at a time.
-     *
-     * @name someSeries
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @see [async.some]{@link module:Collections.some}
-     * @alias anySeries
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A truth test to apply to each item in the array
-     * in parallel. The iteratee is passed a `callback(err, truthValue)` which must
-     * be called with a boolean argument once it has completed. Invoked with
-     * (item, callback).
-     * @param {Function} [callback] - A callback which is called as soon as any
-     * iteratee returns `true`, or after all the iteratee functions have finished.
-     * Result will be either `true` or `false` depending on the values of the async
-     * tests. Invoked with (err, result).
-     */
-    var someSeries = doLimit(someLimit, 1);
-
-    /**
-     * Sorts a list by the results of running each `coll` value through an async
-     * `iteratee`.
-     *
-     * @name sortBy
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {Function} iteratee - A function to apply to each item in `coll`.
-     * The iteratee is passed a `callback(err, sortValue)` which must be called once
-     * it has completed with an error (which can be `null`) and a value to use as
-     * the sort criteria. Invoked with (item, callback).
-     * @param {Function} callback - A callback which is called after all the
-     * `iteratee` functions have finished, or an error occurs. Results is the items
-     * from the original `coll` sorted by the values returned by the `iteratee`
-     * calls. Invoked with (err, results).
-     * @example
-     *
-     * async.sortBy(['file1','file2','file3'], function(file, callback) {
-     *     fs.stat(file, function(err, stats) {
-     *         callback(err, stats.mtime);
-     *     });
-     * }, function(err, results) {
-     *     // results is now the original array of files sorted by
-     *     // modified date
-     * });
-     *
-     * // By modifying the callback parameter the
-     * // sorting order can be influenced:
-     *
-     * // ascending order
-     * async.sortBy([1,9,3,5], function(x, callback) {
-     *     callback(null, x);
-     * }, function(err,result) {
-     *     // result callback
-     * });
-     *
-     * // descending order
-     * async.sortBy([1,9,3,5], function(x, callback) {
-     *     callback(null, x*-1);    //<- x*-1 instead of x, turns the order around
-     * }, function(err,result) {
-     *     // result callback
-     * });
-     */
-    function sortBy(coll, iteratee, callback) {
-        map(coll, function (x, callback) {
-            iteratee(x, function (err, criteria) {
-                if (err) return callback(err);
-                callback(null, { value: x, criteria: criteria });
-            });
-        }, function (err, results) {
-            if (err) return callback(err);
-            callback(null, arrayMap(results.sort(comparator), baseProperty('value')));
-        });
-
-        function comparator(left, right) {
-            var a = left.criteria,
-                b = right.criteria;
-            return a < b ? -1 : a > b ? 1 : 0;
-        }
-    }
-
-    /**
-     * Sets a time limit on an asynchronous function. If the function does not call
-     * its callback within the specified milliseconds, it will be called with a
-     * timeout error. The code property for the error object will be `'ETIMEDOUT'`.
-     *
-     * @name timeout
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @category Util
-     * @param {Function} asyncFn - The asynchronous function you want to set the
-     * time limit.
-     * @param {number} milliseconds - The specified time limit.
-     * @param {*} [info] - Any variable you want attached (`string`, `object`, etc)
-     * to timeout Error for more information..
-     * @returns {Function} Returns a wrapped function that can be used with any of
-     * the control flow functions.
-     * @example
-     *
-     * async.timeout(function(callback) {
-     *     doAsyncTask(callback);
-     * }, 1000);
-     */
-    function timeout(asyncFn, milliseconds, info) {
-        var originalCallback, timer;
-        var timedOut = false;
-
-        function injectedCallback() {
-            if (!timedOut) {
-                originalCallback.apply(null, arguments);
-                clearTimeout(timer);
-            }
-        }
-
-        function timeoutCallback() {
-            var name = asyncFn.name || 'anonymous';
-            var error = new Error('Callback function "' + name + '" timed out.');
-            error.code = 'ETIMEDOUT';
-            if (info) {
-                error.info = info;
-            }
-            timedOut = true;
-            originalCallback(error);
-        }
-
-        return initialParams(function (args, origCallback) {
-            originalCallback = origCallback;
-            // setup timer and call original function
-            timer = setTimeout(timeoutCallback, milliseconds);
-            asyncFn.apply(null, args.concat(injectedCallback));
-        });
-    }
-
-    /* Built-in method references for those with the same name as other `lodash` methods. */
-    var nativeCeil = Math.ceil;
-    var nativeMax$1 = Math.max;
-    /**
-     * The base implementation of `_.range` and `_.rangeRight` which doesn't
-     * coerce arguments to numbers.
-     *
-     * @private
-     * @param {number} start The start of the range.
-     * @param {number} end The end of the range.
-     * @param {number} step The value to increment or decrement by.
-     * @param {boolean} [fromRight] Specify iterating from right to left.
-     * @returns {Array} Returns the range of numbers.
-     */
-    function baseRange(start, end, step, fromRight) {
-      var index = -1,
-          length = nativeMax$1(nativeCeil((end - start) / (step || 1)), 0),
-          result = Array(length);
-
-      while (length--) {
-        result[fromRight ? length : ++index] = start;
-        start += step;
-      }
-      return result;
-    }
-
-    /**
-     * The same as [times]{@link module:ControlFlow.times} but runs a maximum of `limit` async operations at a
-     * time.
-     *
-     * @name timesLimit
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.times]{@link module:ControlFlow.times}
-     * @category Control Flow
-     * @param {number} count - The number of times to run the function.
-     * @param {number} limit - The maximum number of async operations at a time.
-     * @param {Function} iteratee - The function to call `n` times. Invoked with the
-     * iteration index and a callback (n, next).
-     * @param {Function} callback - see [async.map]{@link module:Collections.map}.
-     */
-    function timeLimit(count, limit, iteratee, callback) {
-      mapLimit(baseRange(0, count, 1), limit, iteratee, callback);
-    }
-
-    /**
-     * Calls the `iteratee` function `n` times, and accumulates results in the same
-     * manner you would use with [map]{@link module:Collections.map}.
-     *
-     * @name times
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.map]{@link module:Collections.map}
-     * @category Control Flow
-     * @param {number} n - The number of times to run the function.
-     * @param {Function} iteratee - The function to call `n` times. Invoked with the
-     * iteration index and a callback (n, next).
-     * @param {Function} callback - see {@link module:Collections.map}.
-     * @example
-     *
-     * // Pretend this is some complicated async factory
-     * var createUser = function(id, callback) {
-     *     callback(null, {
-     *         id: 'user' + id
-     *     });
-     * };
-     *
-     * // generate 5 users
-     * async.times(5, function(n, next) {
-     *     createUser(n, function(err, user) {
-     *         next(err, user);
-     *     });
-     * }, function(err, users) {
-     *     // we should now have 5 users
-     * });
-     */
-    var times = doLimit(timeLimit, Infinity);
-
-    /**
-     * The same as [times]{@link module:ControlFlow.times} but runs only a single async operation at a time.
-     *
-     * @name timesSeries
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.times]{@link module:ControlFlow.times}
-     * @category Control Flow
-     * @param {number} n - The number of times to run the function.
-     * @param {Function} iteratee - The function to call `n` times. Invoked with the
-     * iteration index and a callback (n, next).
-     * @param {Function} callback - see {@link module:Collections.map}.
-     */
-    var timesSeries = doLimit(timeLimit, 1);
-
-    /**
-     * A relative of `reduce`.  Takes an Object or Array, and iterates over each
-     * element in series, each step potentially mutating an `accumulator` value.
-     * The type of the accumulator defaults to the type of collection passed in.
-     *
-     * @name transform
-     * @static
-     * @memberOf module:Collections
-     * @method
-     * @category Collection
-     * @param {Array|Iterable|Object} coll - A collection to iterate over.
-     * @param {*} [accumulator] - The initial state of the transform.  If omitted,
-     * it will default to an empty Object or Array, depending on the type of `coll`
-     * @param {Function} iteratee - A function applied to each item in the
-     * collection that potentially modifies the accumulator. The `iteratee` is
-     * passed a `callback(err)` which accepts an optional error as its first
-     * argument. If an error is passed to the callback, the transform is stopped
-     * and the main `callback` is immediately called with the error.
-     * Invoked with (accumulator, item, key, callback).
-     * @param {Function} [callback] - A callback which is called after all the
-     * `iteratee` functions have finished. Result is the transformed accumulator.
-     * Invoked with (err, result).
-     * @example
-     *
-     * async.transform([1,2,3], function(acc, item, index, callback) {
-     *     // pointless async:
-     *     process.nextTick(function() {
-     *         acc.push(item * 2)
-     *         callback(null)
-     *     });
-     * }, function(err, result) {
-     *     // result is now equal to [2, 4, 6]
-     * });
-     *
-     * @example
-     *
-     * async.transform({a: 1, b: 2, c: 3}, function (obj, val, key, callback) {
-     *     setImmediate(function () {
-     *         obj[key] = val * 2;
-     *         callback();
-     *     })
-     * }, function (err, result) {
-     *     // result is equal to {a: 2, b: 4, c: 6}
-     * })
-     */
-    function transform(coll, accumulator, iteratee, callback) {
-        if (arguments.length === 3) {
-            callback = iteratee;
-            iteratee = accumulator;
-            accumulator = isArray(coll) ? [] : {};
-        }
-        callback = once(callback || noop);
-
-        eachOf(coll, function (v, k, cb) {
-            iteratee(accumulator, v, k, cb);
-        }, function (err) {
-            callback(err, accumulator);
-        });
-    }
-
-    /**
-     * Undoes a [memoize]{@link module:Utils.memoize}d function, reverting it to the original,
-     * unmemoized form. Handy for testing.
-     *
-     * @name unmemoize
-     * @static
-     * @memberOf module:Utils
-     * @method
-     * @see [async.memoize]{@link module:Utils.memoize}
-     * @category Util
-     * @param {Function} fn - the memoized function
-     * @returns {Function} a function that calls the original unmemoized function
-     */
-    function unmemoize(fn) {
-        return function () {
-            return (fn.unmemoized || fn).apply(null, arguments);
-        };
-    }
-
-    /**
-     * Repeatedly call `fn`, while `test` returns `true`. Calls `callback` when
-     * stopped, or an error occurs.
-     *
-     * @name whilst
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @category Control Flow
-     * @param {Function} test - synchronous truth test to perform before each
-     * execution of `fn`. Invoked with ().
-     * @param {Function} iteratee - A function which is called each time `test` passes.
-     * The function is passed a `callback(err)`, which must be called once it has
-     * completed with an optional `err` argument. Invoked with (callback).
-     * @param {Function} [callback] - A callback which is called after the test
-     * function has failed and repeated execution of `fn` has stopped. `callback`
-     * will be passed an error and any arguments passed to the final `fn`'s
-     * callback. Invoked with (err, [results]);
-     * @returns undefined
-     * @example
-     *
-     * var count = 0;
-     * async.whilst(
-     *     function() { return count < 5; },
-     *     function(callback) {
-     *         count++;
-     *         setTimeout(function() {
-     *             callback(null, count);
-     *         }, 1000);
-     *     },
-     *     function (err, n) {
-     *         // 5 seconds have passed, n = 5
-     *     }
-     * );
-     */
-    function whilst(test, iteratee, callback) {
-        callback = onlyOnce(callback || noop);
-        if (!test()) return callback(null);
-        var next = rest(function (err, args) {
-            if (err) return callback(err);
-            if (test()) return iteratee(next);
-            callback.apply(null, [null].concat(args));
-        });
-        iteratee(next);
-    }
-
-    /**
-     * Repeatedly call `fn` until `test` returns `true`. Calls `callback` when
-     * stopped, or an error occurs. `callback` will be passed an error and any
-     * arguments passed to the final `fn`'s callback.
-     *
-     * The inverse of [whilst]{@link module:ControlFlow.whilst}.
-     *
-     * @name until
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @see [async.whilst]{@link module:ControlFlow.whilst}
-     * @category Control Flow
-     * @param {Function} test - synchronous truth test to perform before each
-     * execution of `fn`. Invoked with ().
-     * @param {Function} fn - A function which is called each time `test` fails.
-     * The function is passed a `callback(err)`, which must be called once it has
-     * completed with an optional `err` argument. Invoked with (callback).
-     * @param {Function} [callback] - A callback which is called after the test
-     * function has passed and repeated execution of `fn` has stopped. `callback`
-     * will be passed an error and any arguments passed to the final `fn`'s
-     * callback. Invoked with (err, [results]);
-     */
-    function until(test, fn, callback) {
-        whilst(function () {
-            return !test.apply(this, arguments);
-        }, fn, callback);
-    }
-
-    /**
-     * Runs the `tasks` array of functions in series, each passing their results to
-     * the next in the array. However, if any of the `tasks` pass an error to their
-     * own callback, the next function is not executed, and the main `callback` is
-     * immediately called with the error.
-     *
-     * @name waterfall
-     * @static
-     * @memberOf module:ControlFlow
-     * @method
-     * @category Control Flow
-     * @param {Array} tasks - An array of functions to run, each function is passed
-     * a `callback(err, result1, result2, ...)` it must call on completion. The
-     * first argument is an error (which can be `null`) and any further arguments
-     * will be passed as arguments in order to the next task.
-     * @param {Function} [callback] - An optional callback to run once all the
-     * functions have completed. This will be passed the results of the last task's
-     * callback. Invoked with (err, [results]).
-     * @returns undefined
-     * @example
-     *
-     * async.waterfall([
-     *     function(callback) {
-     *         callback(null, 'one', 'two');
-     *     },
-     *     function(arg1, arg2, callback) {
-     *         // arg1 now equals 'one' and arg2 now equals 'two'
-     *         callback(null, 'three');
-     *     },
-     *     function(arg1, callback) {
-     *         // arg1 now equals 'three'
-     *         callback(null, 'done');
-     *     }
-     * ], function (err, result) {
-     *     // result now equals 'done'
-     * });
-     *
-     * // Or, with named functions:
-     * async.waterfall([
-     *     myFirstFunction,
-     *     mySecondFunction,
-     *     myLastFunction,
-     * ], function (err, result) {
-     *     // result now equals 'done'
-     * });
-     * function myFirstFunction(callback) {
-     *     callback(null, 'one', 'two');
-     * }
-     * function mySecondFunction(arg1, arg2, callback) {
-     *     // arg1 now equals 'one' and arg2 now equals 'two'
-     *     callback(null, 'three');
-     * }
-     * function myLastFunction(arg1, callback) {
-     *     // arg1 now equals 'three'
-     *     callback(null, 'done');
-     * }
-     */
-    function waterfall (tasks, callback) {
-        callback = once(callback || noop);
-        if (!isArray(tasks)) return callback(new Error('First argument to waterfall must be an array of functions'));
-        if (!tasks.length) return callback();
-        var taskIndex = 0;
-
-        function nextTask(args) {
-            if (taskIndex === tasks.length) {
-                return callback.apply(null, [null].concat(args));
-            }
-
-            var taskCallback = onlyOnce(rest(function (err, args) {
-                if (err) {
-                    return callback.apply(null, [err].concat(args));
-                }
-                nextTask(args);
-            }));
-
-            args.push(taskCallback);
-
-            var task = tasks[taskIndex++];
-            task.apply(null, args);
-        }
-
-        nextTask([]);
-    }
-
-    var index = {
-      applyEach: applyEach,
-      applyEachSeries: applyEachSeries,
-      apply: apply$1,
-      asyncify: asyncify,
-      auto: auto,
-      autoInject: autoInject,
-      cargo: cargo,
-      compose: compose,
-      concat: concat,
-      concatSeries: concatSeries,
-      constant: constant,
-      detect: detect,
-      detectLimit: detectLimit,
-      detectSeries: detectSeries,
-      dir: dir,
-      doDuring: doDuring,
-      doUntil: doUntil,
-      doWhilst: doWhilst,
-      during: during,
-      each: eachLimit,
-      eachLimit: eachLimit$1,
-      eachOf: eachOf,
-      eachOfLimit: eachOfLimit,
-      eachOfSeries: eachOfSeries,
-      eachSeries: eachSeries,
-      ensureAsync: ensureAsync,
-      every: every,
-      everyLimit: everyLimit,
-      everySeries: everySeries,
-      filter: filter,
-      filterLimit: filterLimit,
-      filterSeries: filterSeries,
-      forever: forever,
-      log: log,
-      map: map,
-      mapLimit: mapLimit,
-      mapSeries: mapSeries,
-      mapValues: mapValues,
-      mapValuesLimit: mapValuesLimit,
-      mapValuesSeries: mapValuesSeries,
-      memoize: memoize,
-      nextTick: nextTick,
-      parallel: parallelLimit,
-      parallelLimit: parallelLimit$1,
-      priorityQueue: priorityQueue,
-      queue: queue$1,
-      race: race,
-      reduce: reduce,
-      reduceRight: reduceRight,
-      reflect: reflect,
-      reflectAll: reflectAll,
-      reject: reject,
-      rejectLimit: rejectLimit,
-      rejectSeries: rejectSeries,
-      retry: retry,
-      retryable: retryable,
-      seq: seq,
-      series: series,
-      setImmediate: setImmediate$1,
-      some: some,
-      someLimit: someLimit,
-      someSeries: someSeries,
-      sortBy: sortBy,
-      timeout: timeout,
-      times: times,
-      timesLimit: timeLimit,
-      timesSeries: timesSeries,
-      transform: transform,
-      unmemoize: unmemoize,
-      until: until,
-      waterfall: waterfall,
-      whilst: whilst,
-
-      // aliases
-      all: every,
-      any: some,
-      forEach: eachLimit,
-      forEachSeries: eachSeries,
-      forEachLimit: eachLimit$1,
-      forEachOf: eachOf,
-      forEachOfSeries: eachOfSeries,
-      forEachOfLimit: eachOfLimit,
-      inject: reduce,
-      foldl: reduce,
-      foldr: reduceRight,
-      select: filter,
-      selectLimit: filterLimit,
-      selectSeries: filterSeries,
-      wrapSync: asyncify
-    };
-
-    exports['default'] = index;
-    exports.applyEach = applyEach;
-    exports.applyEachSeries = applyEachSeries;
-    exports.apply = apply$1;
-    exports.asyncify = asyncify;
-    exports.auto = auto;
-    exports.autoInject = autoInject;
-    exports.cargo = cargo;
-    exports.compose = compose;
-    exports.concat = concat;
-    exports.concatSeries = concatSeries;
-    exports.constant = constant;
-    exports.detect = detect;
-    exports.detectLimit = detectLimit;
-    exports.detectSeries = detectSeries;
-    exports.dir = dir;
-    exports.doDuring = doDuring;
-    exports.doUntil = doUntil;
-    exports.doWhilst = doWhilst;
-    exports.during = during;
-    exports.each = eachLimit;
-    exports.eachLimit = eachLimit$1;
-    exports.eachOf = eachOf;
-    exports.eachOfLimit = eachOfLimit;
-    exports.eachOfSeries = eachOfSeries;
-    exports.eachSeries = eachSeries;
-    exports.ensureAsync = ensureAsync;
-    exports.every = every;
-    exports.everyLimit = everyLimit;
-    exports.everySeries = everySeries;
-    exports.filter = filter;
-    exports.filterLimit = filterLimit;
-    exports.filterSeries = filterSeries;
-    exports.forever = forever;
-    exports.log = log;
-    exports.map = map;
-    exports.mapLimit = mapLimit;
-    exports.mapSeries = mapSeries;
-    exports.mapValues = mapValues;
-    exports.mapValuesLimit = mapValuesLimit;
-    exports.mapValuesSeries = mapValuesSeries;
-    exports.memoize = memoize;
-    exports.nextTick = nextTick;
-    exports.parallel = parallelLimit;
-    exports.parallelLimit = parallelLimit$1;
-    exports.priorityQueue = priorityQueue;
-    exports.queue = queue$1;
-    exports.race = race;
-    exports.reduce = reduce;
-    exports.reduceRight = reduceRight;
-    exports.reflect = reflect;
-    exports.reflectAll = reflectAll;
-    exports.reject = reject;
-    exports.rejectLimit = rejectLimit;
-    exports.rejectSeries = rejectSeries;
-    exports.retry = retry;
-    exports.retryable = retryable;
-    exports.seq = seq;
-    exports.series = series;
-    exports.setImmediate = setImmediate$1;
-    exports.some = some;
-    exports.someLimit = someLimit;
-    exports.someSeries = someSeries;
-    exports.sortBy = sortBy;
-    exports.timeout = timeout;
-    exports.times = times;
-    exports.timesLimit = timeLimit;
-    exports.timesSeries = timesSeries;
-    exports.transform = transform;
-    exports.unmemoize = unmemoize;
-    exports.until = until;
-    exports.waterfall = waterfall;
-    exports.whilst = whilst;
-    exports.all = every;
-    exports.allLimit = everyLimit;
-    exports.allSeries = everySeries;
-    exports.any = some;
-    exports.anyLimit = someLimit;
-    exports.anySeries = someSeries;
-    exports.find = detect;
-    exports.findLimit = detectLimit;
-    exports.findSeries = detectSeries;
-    exports.forEach = eachLimit;
-    exports.forEachSeries = eachSeries;
-    exports.forEachLimit = eachLimit$1;
-    exports.forEachOf = eachOf;
-    exports.forEachOfSeries = eachOfSeries;
-    exports.forEachOfLimit = eachOfLimit;
-    exports.inject = reduce;
-    exports.foldl = reduce;
-    exports.foldr = reduceRight;
-    exports.select = filter;
-    exports.selectLimit = filterLimit;
-    exports.selectSeries = filterSeries;
-    exports.wrapSync = asyncify;
-
-}));
-}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":259}],272:[function(require,module,exports){
 'use strict';
 
-var async       = require('async');
-var urlParser   = require('url');
-var Resource    = require('./Resource');
-var EventEmitter = require('eventemitter3');
+/*<replacement>*/
+
+var objectKeys = Object.keys || function (obj) {
+  var keys = [];
+  for (var key in obj) {
+    keys.push(key);
+  }return keys;
+};
+/*</replacement>*/
+
+module.exports = Duplex;
+
+/*<replacement>*/
+var processNextTick = require('process-nextick-args');
+/*</replacement>*/
+
+/*<replacement>*/
+var util = require('core-util-is');
+util.inherits = require('inherits');
+/*</replacement>*/
+
+var Readable = require('./_stream_readable');
+var Writable = require('./_stream_writable');
+
+util.inherits(Duplex, Readable);
+
+var keys = objectKeys(Writable.prototype);
+for (var v = 0; v < keys.length; v++) {
+  var method = keys[v];
+  if (!Duplex.prototype[method]) Duplex.prototype[method] = Writable.prototype[method];
+}
+
+function Duplex(options) {
+  if (!(this instanceof Duplex)) return new Duplex(options);
+
+  Readable.call(this, options);
+  Writable.call(this, options);
+
+  if (options && options.readable === false) this.readable = false;
+
+  if (options && options.writable === false) this.writable = false;
+
+  this.allowHalfOpen = true;
+  if (options && options.allowHalfOpen === false) this.allowHalfOpen = false;
+
+  this.once('end', onend);
+}
+
+// the no-half-open enforcer
+function onend() {
+  // if we allow half-open state, or if the writable side ended,
+  // then we're ok.
+  if (this.allowHalfOpen || this._writableState.ended) return;
+
+  // no more data can be written.
+  // But allow more writes to happen in this tick.
+  processNextTick(onEndNT, this);
+}
+
+function onEndNT(self) {
+  self.end();
+}
+
+function forEach(xs, f) {
+  for (var i = 0, l = xs.length; i < l; i++) {
+    f(xs[i], i);
+  }
+}
+},{"./_stream_readable":298,"./_stream_writable":300,"core-util-is":49,"inherits":96,"process-nextick-args":282}],297:[function(require,module,exports){
+// a passthrough stream.
+// basically just the most minimal sort of Transform stream.
+// Every written chunk gets output as-is.
+
+'use strict';
+
+module.exports = PassThrough;
+
+var Transform = require('./_stream_transform');
+
+/*<replacement>*/
+var util = require('core-util-is');
+util.inherits = require('inherits');
+/*</replacement>*/
+
+util.inherits(PassThrough, Transform);
+
+function PassThrough(options) {
+  if (!(this instanceof PassThrough)) return new PassThrough(options);
+
+  Transform.call(this, options);
+}
+
+PassThrough.prototype._transform = function (chunk, encoding, cb) {
+  cb(null, chunk);
+};
+},{"./_stream_transform":299,"core-util-is":49,"inherits":96}],298:[function(require,module,exports){
+(function (process){
+'use strict';
+
+module.exports = Readable;
+
+/*<replacement>*/
+var processNextTick = require('process-nextick-args');
+/*</replacement>*/
+
+/*<replacement>*/
+var isArray = require('isarray');
+/*</replacement>*/
+
+/*<replacement>*/
+var Buffer = require('buffer').Buffer;
+/*</replacement>*/
+
+Readable.ReadableState = ReadableState;
+
+var EE = require('events');
+
+/*<replacement>*/
+var EElistenerCount = function (emitter, type) {
+  return emitter.listeners(type).length;
+};
+/*</replacement>*/
+
+/*<replacement>*/
+var Stream;
+(function () {
+  try {
+    Stream = require('st' + 'ream');
+  } catch (_) {} finally {
+    if (!Stream) Stream = require('events').EventEmitter;
+  }
+})();
+/*</replacement>*/
+
+var Buffer = require('buffer').Buffer;
+
+/*<replacement>*/
+var util = require('core-util-is');
+util.inherits = require('inherits');
+/*</replacement>*/
+
+/*<replacement>*/
+var debugUtil = require('util');
+var debug = undefined;
+if (debugUtil && debugUtil.debuglog) {
+  debug = debugUtil.debuglog('stream');
+} else {
+  debug = function () {};
+}
+/*</replacement>*/
+
+var StringDecoder;
+
+util.inherits(Readable, Stream);
+
+var Duplex;
+function ReadableState(options, stream) {
+  Duplex = Duplex || require('./_stream_duplex');
+
+  options = options || {};
+
+  // object stream flag. Used to make read(n) ignore n and to
+  // make all the buffer merging and length checks go away
+  this.objectMode = !!options.objectMode;
+
+  if (stream instanceof Duplex) this.objectMode = this.objectMode || !!options.readableObjectMode;
+
+  // the point at which it stops calling _read() to fill the buffer
+  // Note: 0 is a valid value, means "don't call _read preemptively ever"
+  var hwm = options.highWaterMark;
+  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
+  this.highWaterMark = hwm || hwm === 0 ? hwm : defaultHwm;
+
+  // cast to ints.
+  this.highWaterMark = ~ ~this.highWaterMark;
+
+  this.buffer = [];
+  this.length = 0;
+  this.pipes = null;
+  this.pipesCount = 0;
+  this.flowing = null;
+  this.ended = false;
+  this.endEmitted = false;
+  this.reading = false;
+
+  // a flag to be able to tell if the onwrite cb is called immediately,
+  // or on a later tick.  We set this to true at first, because any
+  // actions that shouldn't happen until "later" should generally also
+  // not happen before the first write call.
+  this.sync = true;
+
+  // whenever we return null, then we set a flag to say
+  // that we're awaiting a 'readable' event emission.
+  this.needReadable = false;
+  this.emittedReadable = false;
+  this.readableListening = false;
+  this.resumeScheduled = false;
+
+  // Crypto is kind of old and crusty.  Historically, its default string
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
+
+  // when piping, we only care about 'readable' events that happen
+  // after read()ing all the bytes and not getting any pushback.
+  this.ranOut = false;
+
+  // the number of writers that are awaiting a drain event in .pipe()s
+  this.awaitDrain = 0;
+
+  // if true, a maybeReadMore has been scheduled
+  this.readingMore = false;
+
+  this.decoder = null;
+  this.encoding = null;
+  if (options.encoding) {
+    if (!StringDecoder) StringDecoder = require('string_decoder/').StringDecoder;
+    this.decoder = new StringDecoder(options.encoding);
+    this.encoding = options.encoding;
+  }
+}
+
+var Duplex;
+function Readable(options) {
+  Duplex = Duplex || require('./_stream_duplex');
+
+  if (!(this instanceof Readable)) return new Readable(options);
+
+  this._readableState = new ReadableState(options, this);
+
+  // legacy
+  this.readable = true;
+
+  if (options && typeof options.read === 'function') this._read = options.read;
+
+  Stream.call(this);
+}
+
+// Manually shove something into the read() buffer.
+// This returns true if the highWaterMark has not been hit yet,
+// similar to how Writable.write() returns true if you should
+// write() some more.
+Readable.prototype.push = function (chunk, encoding) {
+  var state = this._readableState;
+
+  if (!state.objectMode && typeof chunk === 'string') {
+    encoding = encoding || state.defaultEncoding;
+    if (encoding !== state.encoding) {
+      chunk = new Buffer(chunk, encoding);
+      encoding = '';
+    }
+  }
+
+  return readableAddChunk(this, state, chunk, encoding, false);
+};
+
+// Unshift should *always* be something directly out of read()
+Readable.prototype.unshift = function (chunk) {
+  var state = this._readableState;
+  return readableAddChunk(this, state, chunk, '', true);
+};
+
+Readable.prototype.isPaused = function () {
+  return this._readableState.flowing === false;
+};
+
+function readableAddChunk(stream, state, chunk, encoding, addToFront) {
+  var er = chunkInvalid(state, chunk);
+  if (er) {
+    stream.emit('error', er);
+  } else if (chunk === null) {
+    state.reading = false;
+    onEofChunk(stream, state);
+  } else if (state.objectMode || chunk && chunk.length > 0) {
+    if (state.ended && !addToFront) {
+      var e = new Error('stream.push() after EOF');
+      stream.emit('error', e);
+    } else if (state.endEmitted && addToFront) {
+      var e = new Error('stream.unshift() after end event');
+      stream.emit('error', e);
+    } else {
+      var skipAdd;
+      if (state.decoder && !addToFront && !encoding) {
+        chunk = state.decoder.write(chunk);
+        skipAdd = !state.objectMode && chunk.length === 0;
+      }
+
+      if (!addToFront) state.reading = false;
+
+      // Don't add to the buffer if we've decoded to an empty string chunk and
+      // we're not in object mode
+      if (!skipAdd) {
+        // if we want the data now, just emit it.
+        if (state.flowing && state.length === 0 && !state.sync) {
+          stream.emit('data', chunk);
+          stream.read(0);
+        } else {
+          // update the buffer info.
+          state.length += state.objectMode ? 1 : chunk.length;
+          if (addToFront) state.buffer.unshift(chunk);else state.buffer.push(chunk);
+
+          if (state.needReadable) emitReadable(stream);
+        }
+      }
+
+      maybeReadMore(stream, state);
+    }
+  } else if (!addToFront) {
+    state.reading = false;
+  }
+
+  return needMoreData(state);
+}
+
+// if it's past the high water mark, we can push in some more.
+// Also, if we have no data yet, we can stand some
+// more bytes.  This is to work around cases where hwm=0,
+// such as the repl.  Also, if the push() triggered a
+// readable event, and the user called read(largeNumber) such that
+// needReadable was set, then we ought to push more, so that another
+// 'readable' event will be triggered.
+function needMoreData(state) {
+  return !state.ended && (state.needReadable || state.length < state.highWaterMark || state.length === 0);
+}
+
+// backwards compatibility.
+Readable.prototype.setEncoding = function (enc) {
+  if (!StringDecoder) StringDecoder = require('string_decoder/').StringDecoder;
+  this._readableState.decoder = new StringDecoder(enc);
+  this._readableState.encoding = enc;
+  return this;
+};
+
+// Don't raise the hwm > 8MB
+var MAX_HWM = 0x800000;
+function computeNewHighWaterMark(n) {
+  if (n >= MAX_HWM) {
+    n = MAX_HWM;
+  } else {
+    // Get the next highest power of 2
+    n--;
+    n |= n >>> 1;
+    n |= n >>> 2;
+    n |= n >>> 4;
+    n |= n >>> 8;
+    n |= n >>> 16;
+    n++;
+  }
+  return n;
+}
+
+function howMuchToRead(n, state) {
+  if (state.length === 0 && state.ended) return 0;
+
+  if (state.objectMode) return n === 0 ? 0 : 1;
+
+  if (n === null || isNaN(n)) {
+    // only flow one buffer at a time
+    if (state.flowing && state.buffer.length) return state.buffer[0].length;else return state.length;
+  }
+
+  if (n <= 0) return 0;
+
+  // If we're asking for more than the target buffer level,
+  // then raise the water mark.  Bump up to the next highest
+  // power of 2, to prevent increasing it excessively in tiny
+  // amounts.
+  if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);
+
+  // don't have that much.  return null, unless we've ended.
+  if (n > state.length) {
+    if (!state.ended) {
+      state.needReadable = true;
+      return 0;
+    } else {
+      return state.length;
+    }
+  }
+
+  return n;
+}
+
+// you can override either this method, or the async _read(n) below.
+Readable.prototype.read = function (n) {
+  debug('read', n);
+  var state = this._readableState;
+  var nOrig = n;
+
+  if (typeof n !== 'number' || n > 0) state.emittedReadable = false;
+
+  // if we're doing read(0) to trigger a readable event, but we
+  // already have a bunch of data in the buffer, then just trigger
+  // the 'readable' event and move on.
+  if (n === 0 && state.needReadable && (state.length >= state.highWaterMark || state.ended)) {
+    debug('read: emitReadable', state.length, state.ended);
+    if (state.length === 0 && state.ended) endReadable(this);else emitReadable(this);
+    return null;
+  }
+
+  n = howMuchToRead(n, state);
+
+  // if we've ended, and we're now clear, then finish it up.
+  if (n === 0 && state.ended) {
+    if (state.length === 0) endReadable(this);
+    return null;
+  }
+
+  // All the actual chunk generation logic needs to be
+  // *below* the call to _read.  The reason is that in certain
+  // synthetic stream cases, such as passthrough streams, _read
+  // may be a completely synchronous operation which may change
+  // the state of the read buffer, providing enough data when
+  // before there was *not* enough.
+  //
+  // So, the steps are:
+  // 1. Figure out what the state of things will be after we do
+  // a read from the buffer.
+  //
+  // 2. If that resulting state will trigger a _read, then call _read.
+  // Note that this may be asynchronous, or synchronous.  Yes, it is
+  // deeply ugly to write APIs this way, but that still doesn't mean
+  // that the Readable class should behave improperly, as streams are
+  // designed to be sync/async agnostic.
+  // Take note if the _read call is sync or async (ie, if the read call
+  // has returned yet), so that we know whether or not it's safe to emit
+  // 'readable' etc.
+  //
+  // 3. Actually pull the requested chunks out of the buffer and return.
+
+  // if we need a readable event, then we need to do some reading.
+  var doRead = state.needReadable;
+  debug('need readable', doRead);
+
+  // if we currently have less than the highWaterMark, then also read some
+  if (state.length === 0 || state.length - n < state.highWaterMark) {
+    doRead = true;
+    debug('length less than watermark', doRead);
+  }
+
+  // however, if we've ended, then there's no point, and if we're already
+  // reading, then it's unnecessary.
+  if (state.ended || state.reading) {
+    doRead = false;
+    debug('reading or ended', doRead);
+  }
+
+  if (doRead) {
+    debug('do read');
+    state.reading = true;
+    state.sync = true;
+    // if the length is currently zero, then we *need* a readable event.
+    if (state.length === 0) state.needReadable = true;
+    // call internal read method
+    this._read(state.highWaterMark);
+    state.sync = false;
+  }
+
+  // If _read pushed data synchronously, then `reading` will be false,
+  // and we need to re-evaluate how much data we can return to the user.
+  if (doRead && !state.reading) n = howMuchToRead(nOrig, state);
+
+  var ret;
+  if (n > 0) ret = fromList(n, state);else ret = null;
+
+  if (ret === null) {
+    state.needReadable = true;
+    n = 0;
+  }
+
+  state.length -= n;
+
+  // If we have nothing in the buffer, then we want to know
+  // as soon as we *do* get something into the buffer.
+  if (state.length === 0 && !state.ended) state.needReadable = true;
+
+  // If we tried to read() past the EOF, then emit end on the next tick.
+  if (nOrig !== n && state.ended && state.length === 0) endReadable(this);
+
+  if (ret !== null) this.emit('data', ret);
+
+  return ret;
+};
+
+function chunkInvalid(state, chunk) {
+  var er = null;
+  if (!Buffer.isBuffer(chunk) && typeof chunk !== 'string' && chunk !== null && chunk !== undefined && !state.objectMode) {
+    er = new TypeError('Invalid non-string/buffer chunk');
+  }
+  return er;
+}
+
+function onEofChunk(stream, state) {
+  if (state.ended) return;
+  if (state.decoder) {
+    var chunk = state.decoder.end();
+    if (chunk && chunk.length) {
+      state.buffer.push(chunk);
+      state.length += state.objectMode ? 1 : chunk.length;
+    }
+  }
+  state.ended = true;
+
+  // emit 'readable' now to make sure it gets picked up.
+  emitReadable(stream);
+}
+
+// Don't emit readable right away in sync mode, because this can trigger
+// another read() call => stack overflow.  This way, it might trigger
+// a nextTick recursion warning, but that's not so bad.
+function emitReadable(stream) {
+  var state = stream._readableState;
+  state.needReadable = false;
+  if (!state.emittedReadable) {
+    debug('emitReadable', state.flowing);
+    state.emittedReadable = true;
+    if (state.sync) processNextTick(emitReadable_, stream);else emitReadable_(stream);
+  }
+}
+
+function emitReadable_(stream) {
+  debug('emit readable');
+  stream.emit('readable');
+  flow(stream);
+}
+
+// at this point, the user has presumably seen the 'readable' event,
+// and called read() to consume some data.  that may have triggered
+// in turn another _read(n) call, in which case reading = true if
+// it's in progress.
+// However, if we're not ended, or reading, and the length < hwm,
+// then go ahead and try to read some more preemptively.
+function maybeReadMore(stream, state) {
+  if (!state.readingMore) {
+    state.readingMore = true;
+    processNextTick(maybeReadMore_, stream, state);
+  }
+}
+
+function maybeReadMore_(stream, state) {
+  var len = state.length;
+  while (!state.reading && !state.flowing && !state.ended && state.length < state.highWaterMark) {
+    debug('maybeReadMore read 0');
+    stream.read(0);
+    if (len === state.length)
+      // didn't get any data, stop spinning.
+      break;else len = state.length;
+  }
+  state.readingMore = false;
+}
+
+// abstract method.  to be overridden in specific implementation classes.
+// call cb(er, data) where data is <= n in length.
+// for virtual (non-string, non-buffer) streams, "length" is somewhat
+// arbitrary, and perhaps not very meaningful.
+Readable.prototype._read = function (n) {
+  this.emit('error', new Error('not implemented'));
+};
+
+Readable.prototype.pipe = function (dest, pipeOpts) {
+  var src = this;
+  var state = this._readableState;
+
+  switch (state.pipesCount) {
+    case 0:
+      state.pipes = dest;
+      break;
+    case 1:
+      state.pipes = [state.pipes, dest];
+      break;
+    default:
+      state.pipes.push(dest);
+      break;
+  }
+  state.pipesCount += 1;
+  debug('pipe count=%d opts=%j', state.pipesCount, pipeOpts);
+
+  var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
+
+  var endFn = doEnd ? onend : cleanup;
+  if (state.endEmitted) processNextTick(endFn);else src.once('end', endFn);
+
+  dest.on('unpipe', onunpipe);
+  function onunpipe(readable) {
+    debug('onunpipe');
+    if (readable === src) {
+      cleanup();
+    }
+  }
+
+  function onend() {
+    debug('onend');
+    dest.end();
+  }
+
+  // when the dest drains, it reduces the awaitDrain counter
+  // on the source.  This would be more elegant with a .once()
+  // handler in flow(), but adding and removing repeatedly is
+  // too slow.
+  var ondrain = pipeOnDrain(src);
+  dest.on('drain', ondrain);
+
+  var cleanedUp = false;
+  function cleanup() {
+    debug('cleanup');
+    // cleanup event handlers once the pipe is broken
+    dest.removeListener('close', onclose);
+    dest.removeListener('finish', onfinish);
+    dest.removeListener('drain', ondrain);
+    dest.removeListener('error', onerror);
+    dest.removeListener('unpipe', onunpipe);
+    src.removeListener('end', onend);
+    src.removeListener('end', cleanup);
+    src.removeListener('data', ondata);
+
+    cleanedUp = true;
+
+    // if the reader is waiting for a drain event from this
+    // specific writer, then it would cause it to never start
+    // flowing again.
+    // So, if this is awaiting a drain, then we just call it now.
+    // If we don't know, then assume that we are waiting for one.
+    if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();
+  }
+
+  src.on('data', ondata);
+  function ondata(chunk) {
+    debug('ondata');
+    var ret = dest.write(chunk);
+    if (false === ret) {
+      // If the user unpiped during `dest.write()`, it is possible
+      // to get stuck in a permanently paused state if that write
+      // also returned false.
+      if (state.pipesCount === 1 && state.pipes[0] === dest && src.listenerCount('data') === 1 && !cleanedUp) {
+        debug('false write response, pause', src._readableState.awaitDrain);
+        src._readableState.awaitDrain++;
+      }
+      src.pause();
+    }
+  }
+
+  // if the dest has an error, then stop piping into it.
+  // however, don't suppress the throwing behavior for this.
+  function onerror(er) {
+    debug('onerror', er);
+    unpipe();
+    dest.removeListener('error', onerror);
+    if (EElistenerCount(dest, 'error') === 0) dest.emit('error', er);
+  }
+  // This is a brutally ugly hack to make sure that our error handler
+  // is attached before any userland ones.  NEVER DO THIS.
+  if (!dest._events || !dest._events.error) dest.on('error', onerror);else if (isArray(dest._events.error)) dest._events.error.unshift(onerror);else dest._events.error = [onerror, dest._events.error];
+
+  // Both close and finish should trigger unpipe, but only once.
+  function onclose() {
+    dest.removeListener('finish', onfinish);
+    unpipe();
+  }
+  dest.once('close', onclose);
+  function onfinish() {
+    debug('onfinish');
+    dest.removeListener('close', onclose);
+    unpipe();
+  }
+  dest.once('finish', onfinish);
+
+  function unpipe() {
+    debug('unpipe');
+    src.unpipe(dest);
+  }
+
+  // tell the dest that it's being piped to
+  dest.emit('pipe', src);
+
+  // start the flow if it hasn't been started already.
+  if (!state.flowing) {
+    debug('pipe resume');
+    src.resume();
+  }
+
+  return dest;
+};
+
+function pipeOnDrain(src) {
+  return function () {
+    var state = src._readableState;
+    debug('pipeOnDrain', state.awaitDrain);
+    if (state.awaitDrain) state.awaitDrain--;
+    if (state.awaitDrain === 0 && EElistenerCount(src, 'data')) {
+      state.flowing = true;
+      flow(src);
+    }
+  };
+}
+
+Readable.prototype.unpipe = function (dest) {
+  var state = this._readableState;
+
+  // if we're not piping anywhere, then do nothing.
+  if (state.pipesCount === 0) return this;
+
+  // just one destination.  most common case.
+  if (state.pipesCount === 1) {
+    // passed in one, but it's not the right one.
+    if (dest && dest !== state.pipes) return this;
+
+    if (!dest) dest = state.pipes;
+
+    // got a match.
+    state.pipes = null;
+    state.pipesCount = 0;
+    state.flowing = false;
+    if (dest) dest.emit('unpipe', this);
+    return this;
+  }
+
+  // slow case. multiple pipe destinations.
+
+  if (!dest) {
+    // remove all.
+    var dests = state.pipes;
+    var len = state.pipesCount;
+    state.pipes = null;
+    state.pipesCount = 0;
+    state.flowing = false;
+
+    for (var _i = 0; _i < len; _i++) {
+      dests[_i].emit('unpipe', this);
+    }return this;
+  }
+
+  // try to find the right one.
+  var i = indexOf(state.pipes, dest);
+  if (i === -1) return this;
+
+  state.pipes.splice(i, 1);
+  state.pipesCount -= 1;
+  if (state.pipesCount === 1) state.pipes = state.pipes[0];
+
+  dest.emit('unpipe', this);
+
+  return this;
+};
+
+// set up data events if they are asked for
+// Ensure readable listeners eventually get something
+Readable.prototype.on = function (ev, fn) {
+  var res = Stream.prototype.on.call(this, ev, fn);
+
+  // If listening to data, and it has not explicitly been paused,
+  // then call resume to start the flow of data on the next tick.
+  if (ev === 'data' && false !== this._readableState.flowing) {
+    this.resume();
+  }
+
+  if (ev === 'readable' && !this._readableState.endEmitted) {
+    var state = this._readableState;
+    if (!state.readableListening) {
+      state.readableListening = true;
+      state.emittedReadable = false;
+      state.needReadable = true;
+      if (!state.reading) {
+        processNextTick(nReadingNextTick, this);
+      } else if (state.length) {
+        emitReadable(this, state);
+      }
+    }
+  }
+
+  return res;
+};
+Readable.prototype.addListener = Readable.prototype.on;
+
+function nReadingNextTick(self) {
+  debug('readable nexttick read 0');
+  self.read(0);
+}
+
+// pause() and resume() are remnants of the legacy readable stream API
+// If the user uses them, then switch into old mode.
+Readable.prototype.resume = function () {
+  var state = this._readableState;
+  if (!state.flowing) {
+    debug('resume');
+    state.flowing = true;
+    resume(this, state);
+  }
+  return this;
+};
+
+function resume(stream, state) {
+  if (!state.resumeScheduled) {
+    state.resumeScheduled = true;
+    processNextTick(resume_, stream, state);
+  }
+}
+
+function resume_(stream, state) {
+  if (!state.reading) {
+    debug('resume read 0');
+    stream.read(0);
+  }
+
+  state.resumeScheduled = false;
+  stream.emit('resume');
+  flow(stream);
+  if (state.flowing && !state.reading) stream.read(0);
+}
+
+Readable.prototype.pause = function () {
+  debug('call pause flowing=%j', this._readableState.flowing);
+  if (false !== this._readableState.flowing) {
+    debug('pause');
+    this._readableState.flowing = false;
+    this.emit('pause');
+  }
+  return this;
+};
+
+function flow(stream) {
+  var state = stream._readableState;
+  debug('flow', state.flowing);
+  if (state.flowing) {
+    do {
+      var chunk = stream.read();
+    } while (null !== chunk && state.flowing);
+  }
+}
+
+// wrap an old-style stream as the async data source.
+// This is *not* part of the readable stream interface.
+// It is an ugly unfortunate mess of history.
+Readable.prototype.wrap = function (stream) {
+  var state = this._readableState;
+  var paused = false;
+
+  var self = this;
+  stream.on('end', function () {
+    debug('wrapped end');
+    if (state.decoder && !state.ended) {
+      var chunk = state.decoder.end();
+      if (chunk && chunk.length) self.push(chunk);
+    }
+
+    self.push(null);
+  });
+
+  stream.on('data', function (chunk) {
+    debug('wrapped data');
+    if (state.decoder) chunk = state.decoder.write(chunk);
+
+    // don't skip over falsy values in objectMode
+    if (state.objectMode && (chunk === null || chunk === undefined)) return;else if (!state.objectMode && (!chunk || !chunk.length)) return;
+
+    var ret = self.push(chunk);
+    if (!ret) {
+      paused = true;
+      stream.pause();
+    }
+  });
+
+  // proxy all the other methods.
+  // important when wrapping filters and duplexes.
+  for (var i in stream) {
+    if (this[i] === undefined && typeof stream[i] === 'function') {
+      this[i] = function (method) {
+        return function () {
+          return stream[method].apply(stream, arguments);
+        };
+      }(i);
+    }
+  }
+
+  // proxy certain important events.
+  var events = ['error', 'close', 'destroy', 'pause', 'resume'];
+  forEach(events, function (ev) {
+    stream.on(ev, self.emit.bind(self, ev));
+  });
+
+  // when we try to consume some more bytes, simply unpause the
+  // underlying stream.
+  self._read = function (n) {
+    debug('wrapped _read', n);
+    if (paused) {
+      paused = false;
+      stream.resume();
+    }
+  };
+
+  return self;
+};
+
+// exposed for testing purposes only.
+Readable._fromList = fromList;
+
+// Pluck off n bytes from an array of buffers.
+// Length is the combined lengths of all the buffers in the list.
+function fromList(n, state) {
+  var list = state.buffer;
+  var length = state.length;
+  var stringMode = !!state.decoder;
+  var objectMode = !!state.objectMode;
+  var ret;
+
+  // nothing in the list, definitely empty.
+  if (list.length === 0) return null;
+
+  if (length === 0) ret = null;else if (objectMode) ret = list.shift();else if (!n || n >= length) {
+    // read it all, truncate the array.
+    if (stringMode) ret = list.join('');else if (list.length === 1) ret = list[0];else ret = Buffer.concat(list, length);
+    list.length = 0;
+  } else {
+    // read just some of it.
+    if (n < list[0].length) {
+      // just take a part of the first list item.
+      // slice is the same for buffers and strings.
+      var buf = list[0];
+      ret = buf.slice(0, n);
+      list[0] = buf.slice(n);
+    } else if (n === list[0].length) {
+      // first list is a perfect match
+      ret = list.shift();
+    } else {
+      // complex case.
+      // we have enough to cover it, but it spans past the first buffer.
+      if (stringMode) ret = '';else ret = new Buffer(n);
+
+      var c = 0;
+      for (var i = 0, l = list.length; i < l && c < n; i++) {
+        var buf = list[0];
+        var cpy = Math.min(n - c, buf.length);
+
+        if (stringMode) ret += buf.slice(0, cpy);else buf.copy(ret, c, 0, cpy);
+
+        if (cpy < buf.length) list[0] = buf.slice(cpy);else list.shift();
+
+        c += cpy;
+      }
+    }
+  }
+
+  return ret;
+}
+
+function endReadable(stream) {
+  var state = stream._readableState;
+
+  // If we get here before consuming all the bytes, then that is a
+  // bug in node.  Should never happen.
+  if (state.length > 0) throw new Error('endReadable called on non-empty stream');
+
+  if (!state.endEmitted) {
+    state.ended = true;
+    processNextTick(endReadableNT, state, stream);
+  }
+}
+
+function endReadableNT(state, stream) {
+  // Check that we didn't get one last unshift.
+  if (!state.endEmitted && state.length === 0) {
+    state.endEmitted = true;
+    stream.readable = false;
+    stream.emit('end');
+  }
+}
+
+function forEach(xs, f) {
+  for (var i = 0, l = xs.length; i < l; i++) {
+    f(xs[i], i);
+  }
+}
+
+function indexOf(xs, x) {
+  for (var i = 0, l = xs.length; i < l; i++) {
+    if (xs[i] === x) return i;
+  }
+  return -1;
+}
+}).call(this,require('_process'))
+},{"./_stream_duplex":296,"_process":283,"buffer":47,"core-util-is":49,"events":85,"inherits":96,"isarray":98,"process-nextick-args":282,"string_decoder/":342,"util":21}],299:[function(require,module,exports){
+// a transform stream is a readable/writable stream where you do
+// something with the data.  Sometimes it's called a "filter",
+// but that's not a great name for it, since that implies a thing where
+// some bits pass through, and others are simply ignored.  (That would
+// be a valid example of a transform, of course.)
+//
+// While the output is causally related to the input, it's not a
+// necessarily symmetric or synchronous transformation.  For example,
+// a zlib stream might take multiple plain-text writes(), and then
+// emit a single compressed chunk some time in the future.
+//
+// Here's how this works:
+//
+// The Transform stream has all the aspects of the readable and writable
+// stream classes.  When you write(chunk), that calls _write(chunk,cb)
+// internally, and returns false if there's a lot of pending writes
+// buffered up.  When you call read(), that calls _read(n) until
+// there's enough pending readable data buffered up.
+//
+// In a transform stream, the written data is placed in a buffer.  When
+// _read(n) is called, it transforms the queued up data, calling the
+// buffered _write cb's as it consumes chunks.  If consuming a single
+// written chunk would result in multiple output chunks, then the first
+// outputted bit calls the readcb, and subsequent chunks just go into
+// the read buffer, and will cause it to emit 'readable' if necessary.
+//
+// This way, back-pressure is actually determined by the reading side,
+// since _read has to be called to start processing a new chunk.  However,
+// a pathological inflate type of transform can cause excessive buffering
+// here.  For example, imagine a stream where every byte of input is
+// interpreted as an integer from 0-255, and then results in that many
+// bytes of output.  Writing the 4 bytes {ff,ff,ff,ff} would result in
+// 1kb of data being output.  In this case, you could write a very small
+// amount of input, and end up with a very large amount of output.  In
+// such a pathological inflating mechanism, there'd be no way to tell
+// the system to stop doing the transform.  A single 4MB write could
+// cause the system to run out of memory.
+//
+// However, even in such a pathological case, only a single written chunk
+// would be consumed, and then the rest would wait (un-transformed) until
+// the results of the previous transformed chunk were consumed.
+
+'use strict';
+
+module.exports = Transform;
+
+var Duplex = require('./_stream_duplex');
+
+/*<replacement>*/
+var util = require('core-util-is');
+util.inherits = require('inherits');
+/*</replacement>*/
+
+util.inherits(Transform, Duplex);
+
+function TransformState(stream) {
+  this.afterTransform = function (er, data) {
+    return afterTransform(stream, er, data);
+  };
+
+  this.needTransform = false;
+  this.transforming = false;
+  this.writecb = null;
+  this.writechunk = null;
+  this.writeencoding = null;
+}
+
+function afterTransform(stream, er, data) {
+  var ts = stream._transformState;
+  ts.transforming = false;
+
+  var cb = ts.writecb;
+
+  if (!cb) return stream.emit('error', new Error('no writecb in Transform class'));
+
+  ts.writechunk = null;
+  ts.writecb = null;
+
+  if (data !== null && data !== undefined) stream.push(data);
+
+  cb(er);
+
+  var rs = stream._readableState;
+  rs.reading = false;
+  if (rs.needReadable || rs.length < rs.highWaterMark) {
+    stream._read(rs.highWaterMark);
+  }
+}
+
+function Transform(options) {
+  if (!(this instanceof Transform)) return new Transform(options);
+
+  Duplex.call(this, options);
+
+  this._transformState = new TransformState(this);
+
+  // when the writable side finishes, then flush out anything remaining.
+  var stream = this;
+
+  // start out asking for a readable event once data is transformed.
+  this._readableState.needReadable = true;
+
+  // we have implemented the _read method, and done the other things
+  // that Readable wants before the first _read call, so unset the
+  // sync guard flag.
+  this._readableState.sync = false;
+
+  if (options) {
+    if (typeof options.transform === 'function') this._transform = options.transform;
+
+    if (typeof options.flush === 'function') this._flush = options.flush;
+  }
+
+  this.once('prefinish', function () {
+    if (typeof this._flush === 'function') this._flush(function (er) {
+      done(stream, er);
+    });else done(stream);
+  });
+}
+
+Transform.prototype.push = function (chunk, encoding) {
+  this._transformState.needTransform = false;
+  return Duplex.prototype.push.call(this, chunk, encoding);
+};
+
+// This is the part where you do stuff!
+// override this function in implementation classes.
+// 'chunk' is an input chunk.
+//
+// Call `push(newChunk)` to pass along transformed output
+// to the readable side.  You may call 'push' zero or more times.
+//
+// Call `cb(err)` when you are done with this chunk.  If you pass
+// an error, then that'll put the hurt on the whole operation.  If you
+// never call cb(), then you'll never get another chunk.
+Transform.prototype._transform = function (chunk, encoding, cb) {
+  throw new Error('not implemented');
+};
+
+Transform.prototype._write = function (chunk, encoding, cb) {
+  var ts = this._transformState;
+  ts.writecb = cb;
+  ts.writechunk = chunk;
+  ts.writeencoding = encoding;
+  if (!ts.transforming) {
+    var rs = this._readableState;
+    if (ts.needTransform || rs.needReadable || rs.length < rs.highWaterMark) this._read(rs.highWaterMark);
+  }
+};
+
+// Doesn't matter what the args are here.
+// _transform does all the work.
+// That we got here means that the readable side wants more data.
+Transform.prototype._read = function (n) {
+  var ts = this._transformState;
+
+  if (ts.writechunk !== null && ts.writecb && !ts.transforming) {
+    ts.transforming = true;
+    this._transform(ts.writechunk, ts.writeencoding, ts.afterTransform);
+  } else {
+    // mark that we need a transform, so that any data that comes in
+    // will get processed, now that we've asked for it.
+    ts.needTransform = true;
+  }
+};
+
+function done(stream, er) {
+  if (er) return stream.emit('error', er);
+
+  // if there's nothing in the write buffer, then that means
+  // that nothing more will ever be provided
+  var ws = stream._writableState;
+  var ts = stream._transformState;
+
+  if (ws.length) throw new Error('calling transform done when ws.length != 0');
+
+  if (ts.transforming) throw new Error('calling transform done when still transforming');
+
+  return stream.push(null);
+}
+},{"./_stream_duplex":296,"core-util-is":49,"inherits":96}],300:[function(require,module,exports){
+(function (process){
+// A bit simpler than readable streams.
+// Implement an async ._write(chunk, encoding, cb), and it'll handle all
+// the drain event emission and buffering.
+
+'use strict';
+
+module.exports = Writable;
+
+/*<replacement>*/
+var processNextTick = require('process-nextick-args');
+/*</replacement>*/
+
+/*<replacement>*/
+var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : processNextTick;
+/*</replacement>*/
+
+/*<replacement>*/
+var Buffer = require('buffer').Buffer;
+/*</replacement>*/
+
+Writable.WritableState = WritableState;
+
+/*<replacement>*/
+var util = require('core-util-is');
+util.inherits = require('inherits');
+/*</replacement>*/
+
+/*<replacement>*/
+var internalUtil = {
+  deprecate: require('util-deprecate')
+};
+/*</replacement>*/
+
+/*<replacement>*/
+var Stream;
+(function () {
+  try {
+    Stream = require('st' + 'ream');
+  } catch (_) {} finally {
+    if (!Stream) Stream = require('events').EventEmitter;
+  }
+})();
+/*</replacement>*/
+
+var Buffer = require('buffer').Buffer;
+
+util.inherits(Writable, Stream);
+
+function nop() {}
+
+function WriteReq(chunk, encoding, cb) {
+  this.chunk = chunk;
+  this.encoding = encoding;
+  this.callback = cb;
+  this.next = null;
+}
+
+var Duplex;
+function WritableState(options, stream) {
+  Duplex = Duplex || require('./_stream_duplex');
+
+  options = options || {};
+
+  // object stream flag to indicate whether or not this stream
+  // contains buffers or objects.
+  this.objectMode = !!options.objectMode;
+
+  if (stream instanceof Duplex) this.objectMode = this.objectMode || !!options.writableObjectMode;
+
+  // the point at which write() starts returning false
+  // Note: 0 is a valid value, means that we always return false if
+  // the entire buffer is not flushed immediately on write()
+  var hwm = options.highWaterMark;
+  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
+  this.highWaterMark = hwm || hwm === 0 ? hwm : defaultHwm;
+
+  // cast to ints.
+  this.highWaterMark = ~ ~this.highWaterMark;
+
+  this.needDrain = false;
+  // at the start of calling end()
+  this.ending = false;
+  // when end() has been called, and returned
+  this.ended = false;
+  // when 'finish' is emitted
+  this.finished = false;
+
+  // should we decode strings into buffers before passing to _write?
+  // this is here so that some node-core streams can optimize string
+  // handling at a lower level.
+  var noDecode = options.decodeStrings === false;
+  this.decodeStrings = !noDecode;
+
+  // Crypto is kind of old and crusty.  Historically, its default string
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
+
+  // not an actual buffer we keep track of, but a measurement
+  // of how much we're waiting to get pushed to some underlying
+  // socket or file.
+  this.length = 0;
+
+  // a flag to see when we're in the middle of a write.
+  this.writing = false;
+
+  // when true all writes will be buffered until .uncork() call
+  this.corked = 0;
+
+  // a flag to be able to tell if the onwrite cb is called immediately,
+  // or on a later tick.  We set this to true at first, because any
+  // actions that shouldn't happen until "later" should generally also
+  // not happen before the first write call.
+  this.sync = true;
+
+  // a flag to know if we're processing previously buffered items, which
+  // may call the _write() callback in the same tick, so that we don't
+  // end up in an overlapped onwrite situation.
+  this.bufferProcessing = false;
+
+  // the callback that's passed to _write(chunk,cb)
+  this.onwrite = function (er) {
+    onwrite(stream, er);
+  };
+
+  // the callback that the user supplies to write(chunk,encoding,cb)
+  this.writecb = null;
+
+  // the amount that is being written when _write is called.
+  this.writelen = 0;
+
+  this.bufferedRequest = null;
+  this.lastBufferedRequest = null;
+
+  // number of pending user-supplied write callbacks
+  // this must be 0 before 'finish' can be emitted
+  this.pendingcb = 0;
+
+  // emit prefinish if the only thing we're waiting for is _write cbs
+  // This is relevant for synchronous Transform streams
+  this.prefinished = false;
+
+  // True if the error was already emitted and should not be thrown again
+  this.errorEmitted = false;
+
+  // count buffered requests
+  this.bufferedRequestCount = 0;
+
+  // create the two objects needed to store the corked requests
+  // they are not a linked list, as no new elements are inserted in there
+  this.corkedRequestsFree = new CorkedRequest(this);
+  this.corkedRequestsFree.next = new CorkedRequest(this);
+}
+
+WritableState.prototype.getBuffer = function writableStateGetBuffer() {
+  var current = this.bufferedRequest;
+  var out = [];
+  while (current) {
+    out.push(current);
+    current = current.next;
+  }
+  return out;
+};
+
+(function () {
+  try {
+    Object.defineProperty(WritableState.prototype, 'buffer', {
+      get: internalUtil.deprecate(function () {
+        return this.getBuffer();
+      }, '_writableState.buffer is deprecated. Use _writableState.getBuffer ' + 'instead.')
+    });
+  } catch (_) {}
+})();
+
+var Duplex;
+function Writable(options) {
+  Duplex = Duplex || require('./_stream_duplex');
+
+  // Writable ctor is applied to Duplexes, though they're not
+  // instanceof Writable, they're instanceof Readable.
+  if (!(this instanceof Writable) && !(this instanceof Duplex)) return new Writable(options);
+
+  this._writableState = new WritableState(options, this);
+
+  // legacy.
+  this.writable = true;
+
+  if (options) {
+    if (typeof options.write === 'function') this._write = options.write;
+
+    if (typeof options.writev === 'function') this._writev = options.writev;
+  }
+
+  Stream.call(this);
+}
+
+// Otherwise people can pipe Writable streams, which is just wrong.
+Writable.prototype.pipe = function () {
+  this.emit('error', new Error('Cannot pipe. Not readable.'));
+};
+
+function writeAfterEnd(stream, cb) {
+  var er = new Error('write after end');
+  // TODO: defer error events consistently everywhere, not just the cb
+  stream.emit('error', er);
+  processNextTick(cb, er);
+}
+
+// If we get something that is not a buffer, string, null, or undefined,
+// and we're not in objectMode, then that's an error.
+// Otherwise stream chunks are all considered to be of length=1, and the
+// watermarks determine how many objects to keep in the buffer, rather than
+// how many bytes or characters.
+function validChunk(stream, state, chunk, cb) {
+  var valid = true;
+
+  if (!Buffer.isBuffer(chunk) && typeof chunk !== 'string' && chunk !== null && chunk !== undefined && !state.objectMode) {
+    var er = new TypeError('Invalid non-string/buffer chunk');
+    stream.emit('error', er);
+    processNextTick(cb, er);
+    valid = false;
+  }
+  return valid;
+}
+
+Writable.prototype.write = function (chunk, encoding, cb) {
+  var state = this._writableState;
+  var ret = false;
+
+  if (typeof encoding === 'function') {
+    cb = encoding;
+    encoding = null;
+  }
+
+  if (Buffer.isBuffer(chunk)) encoding = 'buffer';else if (!encoding) encoding = state.defaultEncoding;
+
+  if (typeof cb !== 'function') cb = nop;
+
+  if (state.ended) writeAfterEnd(this, cb);else if (validChunk(this, state, chunk, cb)) {
+    state.pendingcb++;
+    ret = writeOrBuffer(this, state, chunk, encoding, cb);
+  }
+
+  return ret;
+};
+
+Writable.prototype.cork = function () {
+  var state = this._writableState;
+
+  state.corked++;
+};
+
+Writable.prototype.uncork = function () {
+  var state = this._writableState;
+
+  if (state.corked) {
+    state.corked--;
+
+    if (!state.writing && !state.corked && !state.finished && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
+  }
+};
+
+Writable.prototype.setDefaultEncoding = function setDefaultEncoding(encoding) {
+  // node::ParseEncoding() requires lower case.
+  if (typeof encoding === 'string') encoding = encoding.toLowerCase();
+  if (!(['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw'].indexOf((encoding + '').toLowerCase()) > -1)) throw new TypeError('Unknown encoding: ' + encoding);
+  this._writableState.defaultEncoding = encoding;
+};
+
+function decodeChunk(state, chunk, encoding) {
+  if (!state.objectMode && state.decodeStrings !== false && typeof chunk === 'string') {
+    chunk = new Buffer(chunk, encoding);
+  }
+  return chunk;
+}
+
+// if we're already writing something, then just put this
+// in the queue, and wait our turn.  Otherwise, call _write
+// If we return false, then we need a drain event, so set that flag.
+function writeOrBuffer(stream, state, chunk, encoding, cb) {
+  chunk = decodeChunk(state, chunk, encoding);
+
+  if (Buffer.isBuffer(chunk)) encoding = 'buffer';
+  var len = state.objectMode ? 1 : chunk.length;
+
+  state.length += len;
+
+  var ret = state.length < state.highWaterMark;
+  // we must ensure that previous needDrain will not be reset to false.
+  if (!ret) state.needDrain = true;
+
+  if (state.writing || state.corked) {
+    var last = state.lastBufferedRequest;
+    state.lastBufferedRequest = new WriteReq(chunk, encoding, cb);
+    if (last) {
+      last.next = state.lastBufferedRequest;
+    } else {
+      state.bufferedRequest = state.lastBufferedRequest;
+    }
+    state.bufferedRequestCount += 1;
+  } else {
+    doWrite(stream, state, false, len, chunk, encoding, cb);
+  }
+
+  return ret;
+}
+
+function doWrite(stream, state, writev, len, chunk, encoding, cb) {
+  state.writelen = len;
+  state.writecb = cb;
+  state.writing = true;
+  state.sync = true;
+  if (writev) stream._writev(chunk, state.onwrite);else stream._write(chunk, encoding, state.onwrite);
+  state.sync = false;
+}
+
+function onwriteError(stream, state, sync, er, cb) {
+  --state.pendingcb;
+  if (sync) processNextTick(cb, er);else cb(er);
+
+  stream._writableState.errorEmitted = true;
+  stream.emit('error', er);
+}
+
+function onwriteStateUpdate(state) {
+  state.writing = false;
+  state.writecb = null;
+  state.length -= state.writelen;
+  state.writelen = 0;
+}
+
+function onwrite(stream, er) {
+  var state = stream._writableState;
+  var sync = state.sync;
+  var cb = state.writecb;
+
+  onwriteStateUpdate(state);
+
+  if (er) onwriteError(stream, state, sync, er, cb);else {
+    // Check if we're actually ready to finish, but don't emit yet
+    var finished = needFinish(state);
+
+    if (!finished && !state.corked && !state.bufferProcessing && state.bufferedRequest) {
+      clearBuffer(stream, state);
+    }
+
+    if (sync) {
+      /*<replacement>*/
+      asyncWrite(afterWrite, stream, state, finished, cb);
+      /*</replacement>*/
+    } else {
+        afterWrite(stream, state, finished, cb);
+      }
+  }
+}
+
+function afterWrite(stream, state, finished, cb) {
+  if (!finished) onwriteDrain(stream, state);
+  state.pendingcb--;
+  cb();
+  finishMaybe(stream, state);
+}
+
+// Must force callback to be called on nextTick, so that we don't
+// emit 'drain' before the write() consumer gets the 'false' return
+// value, and has a chance to attach a 'drain' listener.
+function onwriteDrain(stream, state) {
+  if (state.length === 0 && state.needDrain) {
+    state.needDrain = false;
+    stream.emit('drain');
+  }
+}
+
+// if there's something in the buffer waiting, then process it
+function clearBuffer(stream, state) {
+  state.bufferProcessing = true;
+  var entry = state.bufferedRequest;
+
+  if (stream._writev && entry && entry.next) {
+    // Fast case, write everything using _writev()
+    var l = state.bufferedRequestCount;
+    var buffer = new Array(l);
+    var holder = state.corkedRequestsFree;
+    holder.entry = entry;
+
+    var count = 0;
+    while (entry) {
+      buffer[count] = entry;
+      entry = entry.next;
+      count += 1;
+    }
+
+    doWrite(stream, state, true, state.length, buffer, '', holder.finish);
+
+    // doWrite is always async, defer these to save a bit of time
+    // as the hot path ends with doWrite
+    state.pendingcb++;
+    state.lastBufferedRequest = null;
+    state.corkedRequestsFree = holder.next;
+    holder.next = null;
+  } else {
+    // Slow case, write chunks one-by-one
+    while (entry) {
+      var chunk = entry.chunk;
+      var encoding = entry.encoding;
+      var cb = entry.callback;
+      var len = state.objectMode ? 1 : chunk.length;
+
+      doWrite(stream, state, false, len, chunk, encoding, cb);
+      entry = entry.next;
+      // if we didn't call the onwrite immediately, then
+      // it means that we need to wait until it does.
+      // also, that means that the chunk and cb are currently
+      // being processed, so move the buffer counter past them.
+      if (state.writing) {
+        break;
+      }
+    }
+
+    if (entry === null) state.lastBufferedRequest = null;
+  }
+
+  state.bufferedRequestCount = 0;
+  state.bufferedRequest = entry;
+  state.bufferProcessing = false;
+}
+
+Writable.prototype._write = function (chunk, encoding, cb) {
+  cb(new Error('not implemented'));
+};
+
+Writable.prototype._writev = null;
+
+Writable.prototype.end = function (chunk, encoding, cb) {
+  var state = this._writableState;
+
+  if (typeof chunk === 'function') {
+    cb = chunk;
+    chunk = null;
+    encoding = null;
+  } else if (typeof encoding === 'function') {
+    cb = encoding;
+    encoding = null;
+  }
+
+  if (chunk !== null && chunk !== undefined) this.write(chunk, encoding);
+
+  // .end() fully uncorks
+  if (state.corked) {
+    state.corked = 1;
+    this.uncork();
+  }
+
+  // ignore unnecessary end() calls.
+  if (!state.ending && !state.finished) endWritable(this, state, cb);
+};
+
+function needFinish(state) {
+  return state.ending && state.length === 0 && state.bufferedRequest === null && !state.finished && !state.writing;
+}
+
+function prefinish(stream, state) {
+  if (!state.prefinished) {
+    state.prefinished = true;
+    stream.emit('prefinish');
+  }
+}
+
+function finishMaybe(stream, state) {
+  var need = needFinish(state);
+  if (need) {
+    if (state.pendingcb === 0) {
+      prefinish(stream, state);
+      state.finished = true;
+      stream.emit('finish');
+    } else {
+      prefinish(stream, state);
+    }
+  }
+  return need;
+}
+
+function endWritable(stream, state, cb) {
+  state.ending = true;
+  finishMaybe(stream, state);
+  if (cb) {
+    if (state.finished) processNextTick(cb);else stream.once('finish', cb);
+  }
+  state.ended = true;
+  stream.writable = false;
+}
+
+// It seems a linked list but it is not
+// there will be only 2 of these for each stream
+function CorkedRequest(state) {
+  var _this = this;
+
+  this.next = null;
+  this.entry = null;
+
+  this.finish = function (err) {
+    var entry = _this.entry;
+    _this.entry = null;
+    while (entry) {
+      var cb = entry.callback;
+      state.pendingcb--;
+      cb(err);
+      entry = entry.next;
+    }
+    if (state.corkedRequestsFree) {
+      state.corkedRequestsFree.next = _this;
+    } else {
+      state.corkedRequestsFree = _this;
+    }
+  };
+}
+}).call(this,require('_process'))
+},{"./_stream_duplex":296,"_process":283,"buffer":47,"core-util-is":49,"events":85,"inherits":96,"process-nextick-args":282,"util-deprecate":346}],301:[function(require,module,exports){
+module.exports = require("./lib/_stream_passthrough.js")
+
+},{"./lib/_stream_passthrough.js":297}],302:[function(require,module,exports){
+var Stream = (function (){
+  try {
+    return require('st' + 'ream'); // hack to fix a circular dependency issue when used with browserify
+  } catch(_){}
+}());
+exports = module.exports = require('./lib/_stream_readable.js');
+exports.Stream = Stream || exports;
+exports.Readable = exports;
+exports.Writable = require('./lib/_stream_writable.js');
+exports.Duplex = require('./lib/_stream_duplex.js');
+exports.Transform = require('./lib/_stream_transform.js');
+exports.PassThrough = require('./lib/_stream_passthrough.js');
+
+},{"./lib/_stream_duplex.js":296,"./lib/_stream_passthrough.js":297,"./lib/_stream_readable.js":298,"./lib/_stream_transform.js":299,"./lib/_stream_writable.js":300}],303:[function(require,module,exports){
+module.exports = require("./lib/_stream_transform.js")
+
+},{"./lib/_stream_transform.js":299}],304:[function(require,module,exports){
+module.exports = require("./lib/_stream_writable.js")
+
+},{"./lib/_stream_writable.js":300}],305:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = eachLimit;
+
+var _eachOfLimit = require('./internal/eachOfLimit');
+
+var _eachOfLimit2 = _interopRequireDefault(_eachOfLimit);
+
+var _withoutIndex = require('./internal/withoutIndex');
+
+var _withoutIndex2 = _interopRequireDefault(_withoutIndex);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * The same as [`each`]{@link module:Collections.each} but runs a maximum of `limit` async operations at a time.
+ *
+ * @name eachLimit
+ * @static
+ * @memberOf module:Collections
+ * @method
+ * @see [async.each]{@link module:Collections.each}
+ * @alias forEachLimit
+ * @category Collection
+ * @param {Array|Iterable|Object} coll - A colleciton to iterate over.
+ * @param {number} limit - The maximum number of async operations at a time.
+ * @param {Function} iteratee - A function to apply to each item in `coll`. The
+ * iteratee is passed a `callback(err)` which must be called once it has
+ * completed. If no error has occurred, the `callback` should be run without
+ * arguments or with an explicit `null` argument. The array index is not passed
+ * to the iteratee. Invoked with (item, callback). If you need the index, use
+ * `eachOfLimit`.
+ * @param {Function} [callback] - A callback which is called when all
+ * `iteratee` functions have finished, or an error occurs. Invoked with (err).
+ */
+function eachLimit(coll, limit, iteratee, callback) {
+  (0, _eachOfLimit2.default)(limit)(coll, (0, _withoutIndex2.default)(iteratee), callback);
+}
+module.exports = exports['default'];
+},{"./internal/eachOfLimit":309,"./internal/withoutIndex":316}],306:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _eachLimit = require('./eachLimit');
+
+var _eachLimit2 = _interopRequireDefault(_eachLimit);
+
+var _doLimit = require('./internal/doLimit');
+
+var _doLimit2 = _interopRequireDefault(_doLimit);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * The same as [`each`]{@link module:Collections.each} but runs only a single async operation at a time.
+ *
+ * @name eachSeries
+ * @static
+ * @memberOf module:Collections
+ * @method
+ * @see [async.each]{@link module:Collections.each}
+ * @alias forEachSeries
+ * @category Collection
+ * @param {Array|Iterable|Object} coll - A collection to iterate over.
+ * @param {Function} iteratee - A function to apply to each
+ * item in `coll`. The iteratee is passed a `callback(err)` which must be called
+ * once it has completed. If no error has occurred, the `callback` should be run
+ * without arguments or with an explicit `null` argument. The array index is
+ * not passed to the iteratee. Invoked with (item, callback). If you need the
+ * index, use `eachOfSeries`.
+ * @param {Function} [callback] - A callback which is called when all
+ * `iteratee` functions have finished, or an error occurs. Invoked with (err).
+ */
+exports.default = (0, _doLimit2.default)(_eachLimit2.default, 1);
+module.exports = exports['default'];
+},{"./eachLimit":305,"./internal/doLimit":308}],307:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = DLL;
+// Simple doubly linked list (https://en.wikipedia.org/wiki/Doubly_linked_list) implementation
+// used for queues. This implementation assumes that the node provided by the user can be modified
+// to adjust the next and last properties. We implement only the minimal functionality
+// for queue support.
+function DLL() {
+    this.head = this.tail = null;
+    this.length = 0;
+}
+
+function setInitial(dll, node) {
+    dll.length = 1;
+    dll.head = dll.tail = node;
+}
+
+DLL.prototype.removeLink = function (node) {
+    if (node.prev) node.prev.next = node.next;else this.head = node.next;
+    if (node.next) node.next.prev = node.prev;else this.tail = node.prev;
+
+    node.prev = node.next = null;
+    this.length -= 1;
+    return node;
+};
+
+DLL.prototype.empty = DLL;
+
+DLL.prototype.insertAfter = function (node, newNode) {
+    newNode.prev = node;
+    newNode.next = node.next;
+    if (node.next) node.next.prev = newNode;else this.tail = newNode;
+    node.next = newNode;
+    this.length += 1;
+};
+
+DLL.prototype.insertBefore = function (node, newNode) {
+    newNode.prev = node.prev;
+    newNode.next = node;
+    if (node.prev) node.prev.next = newNode;else this.head = newNode;
+    node.prev = newNode;
+    this.length += 1;
+};
+
+DLL.prototype.unshift = function (node) {
+    if (this.head) this.insertBefore(this.head, node);else setInitial(this, node);
+};
+
+DLL.prototype.push = function (node) {
+    if (this.tail) this.insertAfter(this.tail, node);else setInitial(this, node);
+};
+
+DLL.prototype.shift = function () {
+    return this.head && this.removeLink(this.head);
+};
+
+DLL.prototype.pop = function () {
+    return this.tail && this.removeLink(this.tail);
+};
+module.exports = exports['default'];
+},{}],308:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = doLimit;
+function doLimit(fn, limit) {
+    return function (iterable, iteratee, callback) {
+        return fn(iterable, limit, iteratee, callback);
+    };
+}
+module.exports = exports['default'];
+},{}],309:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = _eachOfLimit;
+
+var _noop = require('lodash/noop');
+
+var _noop2 = _interopRequireDefault(_noop);
+
+var _once = require('./once');
+
+var _once2 = _interopRequireDefault(_once);
+
+var _iterator = require('./iterator');
+
+var _iterator2 = _interopRequireDefault(_iterator);
+
+var _onlyOnce = require('./onlyOnce');
+
+var _onlyOnce2 = _interopRequireDefault(_onlyOnce);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _eachOfLimit(limit) {
+    return function (obj, iteratee, callback) {
+        callback = (0, _once2.default)(callback || _noop2.default);
+        if (limit <= 0 || !obj) {
+            return callback(null);
+        }
+        var nextElem = (0, _iterator2.default)(obj);
+        var done = false;
+        var running = 0;
+
+        function iterateeCallback(err) {
+            running -= 1;
+            if (err) {
+                done = true;
+                callback(err);
+            } else if (done && running <= 0) {
+                return callback(null);
+            } else {
+                replenish();
+            }
+        }
+
+        function replenish() {
+            while (running < limit && !done) {
+                var elem = nextElem();
+                if (elem === null) {
+                    done = true;
+                    if (running <= 0) {
+                        callback(null);
+                    }
+                    return;
+                }
+                running += 1;
+                iteratee(elem.value, elem.key, (0, _onlyOnce2.default)(iterateeCallback));
+            }
+        }
+
+        replenish();
+    };
+}
+module.exports = exports['default'];
+},{"./iterator":311,"./once":312,"./onlyOnce":313,"lodash/noop":120}],310:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (coll) {
+    return iteratorSymbol && coll[iteratorSymbol] && coll[iteratorSymbol]();
+};
+
+var iteratorSymbol = typeof Symbol === 'function' && Symbol.iterator;
+
+module.exports = exports['default'];
+},{}],311:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = iterator;
+
+var _isArrayLike = require('lodash/isArrayLike');
+
+var _isArrayLike2 = _interopRequireDefault(_isArrayLike);
+
+var _getIterator = require('./getIterator');
+
+var _getIterator2 = _interopRequireDefault(_getIterator);
+
+var _keys = require('lodash/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function createArrayIterator(coll) {
+    var i = -1;
+    var len = coll.length;
+    return function next() {
+        return ++i < len ? { value: coll[i], key: i } : null;
+    };
+}
+
+function createES2015Iterator(iterator) {
+    var i = -1;
+    return function next() {
+        var item = iterator.next();
+        if (item.done) return null;
+        i++;
+        return { value: item.value, key: i };
+    };
+}
+
+function createObjectIterator(obj) {
+    var okeys = (0, _keys2.default)(obj);
+    var i = -1;
+    var len = okeys.length;
+    return function next() {
+        var key = okeys[++i];
+        return i < len ? { value: obj[key], key: key } : null;
+    };
+}
+
+function iterator(coll) {
+    if ((0, _isArrayLike2.default)(coll)) {
+        return createArrayIterator(coll);
+    }
+
+    var iterator = (0, _getIterator2.default)(coll);
+    return iterator ? createES2015Iterator(iterator) : createObjectIterator(coll);
+}
+module.exports = exports['default'];
+},{"./getIterator":310,"lodash/isArrayLike":112,"lodash/keys":119}],312:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = once;
+function once(fn) {
+    return function () {
+        if (fn === null) return;
+        var callFn = fn;
+        fn = null;
+        callFn.apply(this, arguments);
+    };
+}
+module.exports = exports['default'];
+},{}],313:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = onlyOnce;
+function onlyOnce(fn) {
+    return function () {
+        if (fn === null) throw new Error("Callback was already called.");
+        var callFn = fn;
+        fn = null;
+        callFn.apply(this, arguments);
+    };
+}
+module.exports = exports['default'];
+},{}],314:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = queue;
+
+var _arrayEach = require('lodash/_arrayEach');
+
+var _arrayEach2 = _interopRequireDefault(_arrayEach);
+
+var _isArray = require('lodash/isArray');
+
+var _isArray2 = _interopRequireDefault(_isArray);
+
+var _noop = require('lodash/noop');
+
+var _noop2 = _interopRequireDefault(_noop);
+
+var _rest = require('lodash/rest');
+
+var _rest2 = _interopRequireDefault(_rest);
+
+var _onlyOnce = require('./onlyOnce');
+
+var _onlyOnce2 = _interopRequireDefault(_onlyOnce);
+
+var _setImmediate = require('./setImmediate');
+
+var _setImmediate2 = _interopRequireDefault(_setImmediate);
+
+var _DoublyLinkedList = require('./DoublyLinkedList');
+
+var _DoublyLinkedList2 = _interopRequireDefault(_DoublyLinkedList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function queue(worker, concurrency, payload) {
+    if (concurrency == null) {
+        concurrency = 1;
+    } else if (concurrency === 0) {
+        throw new Error('Concurrency must not be zero');
+    }
+
+    function _insert(data, insertAtFront, callback) {
+        if (callback != null && typeof callback !== 'function') {
+            throw new Error('task callback must be a function');
+        }
+        q.started = true;
+        if (!(0, _isArray2.default)(data)) {
+            data = [data];
+        }
+        if (data.length === 0 && q.idle()) {
+            // call drain immediately if there are no tasks
+            return (0, _setImmediate2.default)(function () {
+                q.drain();
+            });
+        }
+        (0, _arrayEach2.default)(data, function (task) {
+            var item = {
+                data: task,
+                callback: callback || _noop2.default
+            };
+
+            if (insertAtFront) {
+                q._tasks.unshift(item);
+            } else {
+                q._tasks.push(item);
+            }
+        });
+        (0, _setImmediate2.default)(q.process);
+    }
+
+    function _next(tasks) {
+        return (0, _rest2.default)(function (args) {
+            workers -= 1;
+
+            (0, _arrayEach2.default)(tasks, function (task) {
+                (0, _arrayEach2.default)(workersList, function (worker, index) {
+                    if (worker === task) {
+                        workersList.splice(index, 1);
+                        return false;
+                    }
+                });
+
+                task.callback.apply(task, args);
+
+                if (args[0] != null) {
+                    q.error(args[0], task.data);
+                }
+            });
+
+            if (workers <= q.concurrency - q.buffer) {
+                q.unsaturated();
+            }
+
+            if (q.idle()) {
+                q.drain();
+            }
+            q.process();
+        });
+    }
+
+    var workers = 0;
+    var workersList = [];
+    var q = {
+        _tasks: new _DoublyLinkedList2.default(),
+        concurrency: concurrency,
+        payload: payload,
+        saturated: _noop2.default,
+        unsaturated: _noop2.default,
+        buffer: concurrency / 4,
+        empty: _noop2.default,
+        drain: _noop2.default,
+        error: _noop2.default,
+        started: false,
+        paused: false,
+        push: function (data, callback) {
+            _insert(data, false, callback);
+        },
+        kill: function () {
+            q.drain = _noop2.default;
+            q._tasks.empty();
+        },
+        unshift: function (data, callback) {
+            _insert(data, true, callback);
+        },
+        process: function () {
+            while (!q.paused && workers < q.concurrency && q._tasks.length) {
+                var tasks = [],
+                    data = [];
+                var l = q._tasks.length;
+                if (q.payload) l = Math.min(l, q.payload);
+                for (var i = 0; i < l; i++) {
+                    var node = q._tasks.shift();
+                    tasks.push(node);
+                    data.push(node.data);
+                }
+
+                if (q._tasks.length === 0) {
+                    q.empty();
+                }
+                workers += 1;
+                workersList.push(tasks[0]);
+
+                if (workers === q.concurrency) {
+                    q.saturated();
+                }
+
+                var cb = (0, _onlyOnce2.default)(_next(tasks));
+                worker(data, cb);
+            }
+        },
+        length: function () {
+            return q._tasks.length;
+        },
+        running: function () {
+            return workers;
+        },
+        workersList: function () {
+            return workersList;
+        },
+        idle: function () {
+            return q._tasks.length + workers === 0;
+        },
+        pause: function () {
+            q.paused = true;
+        },
+        resume: function () {
+            if (q.paused === false) {
+                return;
+            }
+            q.paused = false;
+            var resumeCount = Math.min(q.concurrency, q._tasks.length);
+            // Need to call q.process once per concurrent
+            // worker to preserve full concurrency after pause
+            for (var w = 1; w <= resumeCount; w++) {
+                (0, _setImmediate2.default)(q.process);
+            }
+        }
+    };
+    return q;
+}
+module.exports = exports['default'];
+},{"./DoublyLinkedList":307,"./onlyOnce":313,"./setImmediate":315,"lodash/_arrayEach":101,"lodash/isArray":111,"lodash/noop":120,"lodash/rest":121}],315:[function(require,module,exports){
+(function (process){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.hasNextTick = exports.hasSetImmediate = undefined;
+exports.fallback = fallback;
+exports.wrap = wrap;
+
+var _rest = require('lodash/rest');
+
+var _rest2 = _interopRequireDefault(_rest);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var hasSetImmediate = exports.hasSetImmediate = typeof setImmediate === 'function' && setImmediate;
+var hasNextTick = exports.hasNextTick = typeof process === 'object' && typeof process.nextTick === 'function';
+
+function fallback(fn) {
+    setTimeout(fn, 0);
+}
+
+function wrap(defer) {
+    return (0, _rest2.default)(function (fn, args) {
+        defer(function () {
+            fn.apply(null, args);
+        });
+    });
+}
+
+var _defer;
+
+if (hasSetImmediate) {
+    _defer = setImmediate;
+} else if (hasNextTick) {
+    _defer = process.nextTick;
+} else {
+    _defer = fallback;
+}
+
+exports.default = wrap(_defer);
+}).call(this,require('_process'))
+},{"_process":283,"lodash/rest":121}],316:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = _withoutIndex;
+function _withoutIndex(iteratee) {
+    return function (value, index, callback) {
+        return iteratee(value, callback);
+    };
+}
+module.exports = exports['default'];
+},{}],317:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (worker, concurrency) {
+  return (0, _queue2.default)(function (items, cb) {
+    worker(items[0], cb);
+  }, concurrency, 1);
+};
+
+var _queue = require('./internal/queue');
+
+var _queue2 = _interopRequireDefault(_queue);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = exports['default'];
+
+/**
+ * A queue of tasks for the worker function to complete.
+ * @typedef {Object} QueueObject
+ * @memberOf module:ControlFlow
+ * @property {Function} length - a function returning the number of items
+ * waiting to be processed. Invoke with `queue.length()`.
+ * @property {boolean} started - a boolean indicating whether or not any
+ * items have been pushed and processed by the queue.
+ * @property {Function} running - a function returning the number of items
+ * currently being processed. Invoke with `queue.running()`.
+ * @property {Function} workersList - a function returning the array of items
+ * currently being processed. Invoke with `queue.workersList()`.
+ * @property {Function} idle - a function returning false if there are items
+ * waiting or being processed, or true if not. Invoke with `queue.idle()`.
+ * @property {number} concurrency - an integer for determining how many `worker`
+ * functions should be run in parallel. This property can be changed after a
+ * `queue` is created to alter the concurrency on-the-fly.
+ * @property {Function} push - add a new task to the `queue`. Calls `callback`
+ * once the `worker` has finished processing the task. Instead of a single task,
+ * a `tasks` array can be submitted. The respective callback is used for every
+ * task in the list. Invoke with `queue.push(task, [callback])`,
+ * @property {Function} unshift - add a new task to the front of the `queue`.
+ * Invoke with `queue.unshift(task, [callback])`.
+ * @property {Function} saturated - a callback that is called when the number of
+ * running workers hits the `concurrency` limit, and further tasks will be
+ * queued.
+ * @property {Function} unsaturated - a callback that is called when the number
+ * of running workers is less than the `concurrency` & `buffer` limits, and
+ * further tasks will not be queued.
+ * @property {number} buffer - A minimum threshold buffer in order to say that
+ * the `queue` is `unsaturated`.
+ * @property {Function} empty - a callback that is called when the last item
+ * from the `queue` is given to a `worker`.
+ * @property {Function} drain - a callback that is called when the last item
+ * from the `queue` has returned from the `worker`.
+ * @property {Function} error - a callback that is called when a task errors.
+ * Has the signature `function(error, task)`.
+ * @property {boolean} paused - a boolean for determining whether the queue is
+ * in a paused state.
+ * @property {Function} pause - a function that pauses the processing of tasks
+ * until `resume()` is called. Invoke with `queue.pause()`.
+ * @property {Function} resume - a function that resumes the processing of
+ * queued tasks when the queue is paused. Invoke with `queue.resume()`.
+ * @property {Function} kill - a function that removes the `drain` callback and
+ * empties remaining tasks from the queue forcing it to go idle. Invoke with `queue.kill()`.
+ */
+
+/**
+ * Creates a `queue` object with the specified `concurrency`. Tasks added to the
+ * `queue` are processed in parallel (up to the `concurrency` limit). If all
+ * `worker`s are in progress, the task is queued until one becomes available.
+ * Once a `worker` completes a `task`, that `task`'s callback is called.
+ *
+ * @name queue
+ * @static
+ * @memberOf module:ControlFlow
+ * @method
+ * @category Control Flow
+ * @param {Function} worker - An asynchronous function for processing a queued
+ * task, which must call its `callback(err)` argument when finished, with an
+ * optional `error` as an argument.  If you want to handle errors from an
+ * individual task, pass a callback to `q.push()`. Invoked with
+ * (task, callback).
+ * @param {number} [concurrency=1] - An `integer` for determining how many
+ * `worker` functions should be run in parallel.  If omitted, the concurrency
+ * defaults to `1`.  If the concurrency is `0`, an error is thrown.
+ * @returns {module:ControlFlow.QueueObject} A queue object to manage the tasks. Callbacks can
+ * attached as certain properties to listen for specific events during the
+ * lifecycle of the queue.
+ * @example
+ *
+ * // create a queue object with concurrency 2
+ * var q = async.queue(function(task, callback) {
+ *     console.log('hello ' + task.name);
+ *     callback();
+ * }, 2);
+ *
+ * // assign a callback
+ * q.drain = function() {
+ *     console.log('all items have been processed');
+ * };
+ *
+ * // add some items to the queue
+ * q.push({name: 'foo'}, function(err) {
+ *     console.log('finished processing foo');
+ * });
+ * q.push({name: 'bar'}, function (err) {
+ *     console.log('finished processing bar');
+ * });
+ *
+ * // add some items to the queue (batch-wise)
+ * q.push([{name: 'baz'},{name: 'bay'},{name: 'bax'}], function(err) {
+ *     console.log('finished processing item');
+ * });
+ *
+ * // add some items to the front of the queue
+ * q.unshift({name: 'bar'}, function (err) {
+ *     console.log('finished processing bar');
+ * });
+ */
+},{"./internal/queue":314}],318:[function(require,module,exports){
+'use strict';
+
+var asyncQueue      = require('async/queue');
+var asyncEachSeries = require('async/eachSeries');
+var urlParser       = require('url');
+var Resource        = require('./Resource');
+var EventEmitter    = require('eventemitter3');
 
 // some constants
 var DEFAULT_CONCURRENCY = 10;
@@ -52326,7 +50231,7 @@ function Loader(baseUrl, concurrency) {
      * @private
      * @member {Resource[]}
      */
-    this._queue = async.queue(this._boundLoadResource, concurrency);
+    this._queue = asyncQueue(this._boundLoadResource, concurrency);
 
     /**
      * All the resources for this loader keyed by name.
@@ -52641,7 +50546,7 @@ Loader.prototype._loadResource = function (resource, dequeue) {
     resource._dequeue = dequeue;
 
     // run before middleware
-    async.eachSeries(
+    asyncEachSeries(
         this._beforeMiddleware,
         function (fn, next) {
             fn.call(self, resource, function () {
@@ -52689,7 +50594,7 @@ Loader.prototype._onLoad = function (resource) {
     var self = this;
 
     // run middleware, this *must* happen before dequeue so sub-assets get added properly
-    async.eachSeries(
+    asyncEachSeries(
         this._afterMiddleware,
         function (fn, next) {
             fn.call(self, resource, next);
@@ -52724,7 +50629,7 @@ Loader.prototype._onLoad = function (resource) {
 Loader.LOAD_TYPE = Resource.LOAD_TYPE;
 Loader.XHR_RESPONSE_TYPE = Resource.XHR_RESPONSE_TYPE;
 
-},{"./Resource":273,"async":271,"eventemitter3":86,"url":309}],273:[function(require,module,exports){
+},{"./Resource":319,"async/eachSeries":306,"async/queue":317,"eventemitter3":84,"url":344}],319:[function(require,module,exports){
 'use strict';
 
 var EventEmitter    = require('eventemitter3');
@@ -52979,18 +50884,18 @@ module.exports = Resource;
 Resource.prototype.complete = function () {
     // TODO: Clean this up in a wrapper or something...gross....
     if (this.data && this.data.removeEventListener) {
-        this.data.removeEventListener('error', this._boundOnError);
-        this.data.removeEventListener('load', this._boundComplete);
-        this.data.removeEventListener('progress', this._boundOnProgress);
-        this.data.removeEventListener('canplaythrough', this._boundComplete);
+        this.data.removeEventListener('error', this._boundOnError, false);
+        this.data.removeEventListener('load', this._boundComplete, false);
+        this.data.removeEventListener('progress', this._boundOnProgress, false);
+        this.data.removeEventListener('canplaythrough', this._boundComplete, false);
     }
 
     if (this.xhr) {
         if (this.xhr.removeEventListener) {
-            this.xhr.removeEventListener('error', this._boundXhrOnError);
-            this.xhr.removeEventListener('abort', this._boundXhrOnAbort);
-            this.xhr.removeEventListener('progress', this._boundOnProgress);
-            this.xhr.removeEventListener('load', this._boundXhrOnLoad);
+            this.xhr.removeEventListener('error', this._boundXhrOnError, false);
+            this.xhr.removeEventListener('abort', this._boundXhrOnAbort, false);
+            this.xhr.removeEventListener('progress', this._boundOnProgress, false);
+            this.xhr.removeEventListener('load', this._boundXhrOnLoad, false);
         }
         else {
             this.xhr.onerror = null;
@@ -53637,7 +51542,7 @@ function setExtMap(map, extname, val) {
     map[extname] = val;
 }
 
-},{"eventemitter3":86,"url":309}],274:[function(require,module,exports){
+},{"eventemitter3":84,"url":344}],320:[function(require,module,exports){
 /* eslint no-magic-numbers: 0 */
 'use strict';
 
@@ -53707,7 +51612,7 @@ module.exports = {
     }
 };
 
-},{}],275:[function(require,module,exports){
+},{}],321:[function(require,module,exports){
 /* eslint global-require: 0 */
 'use strict';
 
@@ -53723,7 +51628,7 @@ module.exports.middleware = {
 };
 
 
-},{"./Loader":272,"./Resource":273,"./middlewares/caching/memory":276,"./middlewares/parsing/blob":277}],276:[function(require,module,exports){
+},{"./Loader":318,"./Resource":319,"./middlewares/caching/memory":322,"./middlewares/parsing/blob":323}],322:[function(require,module,exports){
 'use strict';
 
 // a simple in-memory cache for resources
@@ -53747,7 +51652,7 @@ module.exports = function () {
     };
 };
 
-},{}],277:[function(require,module,exports){
+},{}],323:[function(require,module,exports){
 'use strict';
 
 var Resource = require('../../Resource');
@@ -53816,7 +51721,7 @@ module.exports = function () {
     };
 };
 
-},{"../../Resource":273,"../../b64":274}],278:[function(require,module,exports){
+},{"../../Resource":319,"../../b64":320}],324:[function(require,module,exports){
 (function (Buffer){
 /*
 CryptoJS v3.1.2
@@ -54030,7 +51935,7 @@ function ripemd160 (message) {
 module.exports = ripemd160
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48}],279:[function(require,module,exports){
+},{"buffer":47}],325:[function(require,module,exports){
 // A library of seedable RNGs implemented in Javascript.
 //
 // Usage:
@@ -54092,7 +51997,7 @@ sr.tychei = tychei;
 
 module.exports = sr;
 
-},{"./lib/alea":280,"./lib/tychei":281,"./lib/xor128":282,"./lib/xor4096":283,"./lib/xorshift7":284,"./lib/xorwow":285,"./seedrandom":286}],280:[function(require,module,exports){
+},{"./lib/alea":326,"./lib/tychei":327,"./lib/xor128":328,"./lib/xor4096":329,"./lib/xorshift7":330,"./lib/xorwow":331,"./seedrandom":332}],326:[function(require,module,exports){
 // A port of an algorithm by Johannes Baagøe <baagoe@baagoe.com>, 2010
 // http://baagoe.com/en/RandomMusings/javascript/
 // https://github.com/nquinlan/better-random-numbers-for-javascript-mirror
@@ -54208,7 +52113,7 @@ if (module && module.exports) {
 
 
 
-},{}],281:[function(require,module,exports){
+},{}],327:[function(require,module,exports){
 // A Javascript implementaion of the "Tyche-i" prng algorithm by
 // Samuel Neves and Filipe Araujo.
 // See https://eden.dei.uc.pt/~sneves/pubs/2011-snfa2.pdf
@@ -54313,7 +52218,7 @@ if (module && module.exports) {
 
 
 
-},{}],282:[function(require,module,exports){
+},{}],328:[function(require,module,exports){
 // A Javascript implementaion of the "xor128" prng algorithm by
 // George Marsaglia.  See http://www.jstatsoft.org/v08/i14/paper
 
@@ -54396,7 +52301,7 @@ if (module && module.exports) {
 
 
 
-},{}],283:[function(require,module,exports){
+},{}],329:[function(require,module,exports){
 // A Javascript implementaion of Richard Brent's Xorgens xor4096 algorithm.
 //
 // This fast non-cryptographic random number generator is designed for
@@ -54544,7 +52449,7 @@ if (module && module.exports) {
   (typeof define) == 'function' && define   // present with an AMD loader
 );
 
-},{}],284:[function(require,module,exports){
+},{}],330:[function(require,module,exports){
 // A Javascript implementaion of the "xorshift7" algorithm by
 // François Panneton and Pierre L'ecuyer:
 // "On the Xorgshift Random Number Generators"
@@ -54643,7 +52548,7 @@ if (module && module.exports) {
 );
 
 
-},{}],285:[function(require,module,exports){
+},{}],331:[function(require,module,exports){
 // A Javascript implementaion of the "xorwow" prng algorithm by
 // George Marsaglia.  See http://www.jstatsoft.org/v08/i14/paper
 
@@ -54731,7 +52636,7 @@ if (module && module.exports) {
 
 
 
-},{}],286:[function(require,module,exports){
+},{}],332:[function(require,module,exports){
 /*
 Copyright 2014 David Bau.
 
@@ -54975,7 +52880,7 @@ if ((typeof module) == 'object' && module.exports) {
   Math    // math: package containing random, pow, and seedrandom
 );
 
-},{"crypto":57}],287:[function(require,module,exports){
+},{"crypto":55}],333:[function(require,module,exports){
 (function (Buffer){
 // prototype class for hash functions
 function Hash (blockSize, finalSize) {
@@ -55048,7 +52953,7 @@ Hash.prototype._update = function () {
 module.exports = Hash
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":48}],288:[function(require,module,exports){
+},{"buffer":47}],334:[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -55065,7 +52970,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":289,"./sha1":290,"./sha224":291,"./sha256":292,"./sha384":293,"./sha512":294}],289:[function(require,module,exports){
+},{"./sha":335,"./sha1":336,"./sha224":337,"./sha256":338,"./sha384":339,"./sha512":340}],335:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -55162,7 +53067,7 @@ Sha.prototype._hash = function () {
 module.exports = Sha
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":287,"buffer":48,"inherits":98}],290:[function(require,module,exports){
+},{"./hash":333,"buffer":47,"inherits":96}],336:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -55264,7 +53169,7 @@ Sha1.prototype._hash = function () {
 module.exports = Sha1
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":287,"buffer":48,"inherits":98}],291:[function(require,module,exports){
+},{"./hash":333,"buffer":47,"inherits":96}],337:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -55320,7 +53225,7 @@ Sha224.prototype._hash = function () {
 module.exports = Sha224
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":287,"./sha256":292,"buffer":48,"inherits":98}],292:[function(require,module,exports){
+},{"./hash":333,"./sha256":338,"buffer":47,"inherits":96}],338:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -55458,7 +53363,7 @@ Sha256.prototype._hash = function () {
 module.exports = Sha256
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":287,"buffer":48,"inherits":98}],293:[function(require,module,exports){
+},{"./hash":333,"buffer":47,"inherits":96}],339:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
@@ -55518,7 +53423,7 @@ Sha384.prototype._hash = function () {
 module.exports = Sha384
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":287,"./sha512":294,"buffer":48,"inherits":98}],294:[function(require,module,exports){
+},{"./hash":333,"./sha512":340,"buffer":47,"inherits":96}],340:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var Hash = require('./hash')
@@ -55781,7 +53686,7 @@ Sha512.prototype._hash = function () {
 module.exports = Sha512
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":287,"buffer":48,"inherits":98}],295:[function(require,module,exports){
+},{"./hash":333,"buffer":47,"inherits":96}],341:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -55910,1750 +53815,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":87,"inherits":98,"readable-stream/duplex.js":297,"readable-stream/passthrough.js":303,"readable-stream/readable.js":304,"readable-stream/transform.js":305,"readable-stream/writable.js":306}],296:[function(require,module,exports){
-arguments[4][49][0].apply(exports,arguments)
-},{"dup":49}],297:[function(require,module,exports){
-module.exports = require("./lib/_stream_duplex.js")
-
-},{"./lib/_stream_duplex.js":298}],298:[function(require,module,exports){
-// a duplex stream is just a stream that is both readable and writable.
-// Since JS doesn't have multiple prototypal inheritance, this class
-// prototypally inherits from Readable, and then parasitically from
-// Writable.
-
-'use strict';
-
-/*<replacement>*/
-
-var objectKeys = Object.keys || function (obj) {
-  var keys = [];
-  for (var key in obj) {
-    keys.push(key);
-  }return keys;
-};
-/*</replacement>*/
-
-module.exports = Duplex;
-
-/*<replacement>*/
-var processNextTick = require('process-nextick-args');
-/*</replacement>*/
-
-/*<replacement>*/
-var util = require('core-util-is');
-util.inherits = require('inherits');
-/*</replacement>*/
-
-var Readable = require('./_stream_readable');
-var Writable = require('./_stream_writable');
-
-util.inherits(Duplex, Readable);
-
-var keys = objectKeys(Writable.prototype);
-for (var v = 0; v < keys.length; v++) {
-  var method = keys[v];
-  if (!Duplex.prototype[method]) Duplex.prototype[method] = Writable.prototype[method];
-}
-
-function Duplex(options) {
-  if (!(this instanceof Duplex)) return new Duplex(options);
-
-  Readable.call(this, options);
-  Writable.call(this, options);
-
-  if (options && options.readable === false) this.readable = false;
-
-  if (options && options.writable === false) this.writable = false;
-
-  this.allowHalfOpen = true;
-  if (options && options.allowHalfOpen === false) this.allowHalfOpen = false;
-
-  this.once('end', onend);
-}
-
-// the no-half-open enforcer
-function onend() {
-  // if we allow half-open state, or if the writable side ended,
-  // then we're ok.
-  if (this.allowHalfOpen || this._writableState.ended) return;
-
-  // no more data can be written.
-  // But allow more writes to happen in this tick.
-  processNextTick(onEndNT, this);
-}
-
-function onEndNT(self) {
-  self.end();
-}
-
-function forEach(xs, f) {
-  for (var i = 0, l = xs.length; i < l; i++) {
-    f(xs[i], i);
-  }
-}
-},{"./_stream_readable":300,"./_stream_writable":302,"core-util-is":51,"inherits":98,"process-nextick-args":258}],299:[function(require,module,exports){
-// a passthrough stream.
-// basically just the most minimal sort of Transform stream.
-// Every written chunk gets output as-is.
-
-'use strict';
-
-module.exports = PassThrough;
-
-var Transform = require('./_stream_transform');
-
-/*<replacement>*/
-var util = require('core-util-is');
-util.inherits = require('inherits');
-/*</replacement>*/
-
-util.inherits(PassThrough, Transform);
-
-function PassThrough(options) {
-  if (!(this instanceof PassThrough)) return new PassThrough(options);
-
-  Transform.call(this, options);
-}
-
-PassThrough.prototype._transform = function (chunk, encoding, cb) {
-  cb(null, chunk);
-};
-},{"./_stream_transform":301,"core-util-is":51,"inherits":98}],300:[function(require,module,exports){
-(function (process){
-'use strict';
-
-module.exports = Readable;
-
-/*<replacement>*/
-var processNextTick = require('process-nextick-args');
-/*</replacement>*/
-
-/*<replacement>*/
-var isArray = require('isarray');
-/*</replacement>*/
-
-Readable.ReadableState = ReadableState;
-
-/*<replacement>*/
-var EE = require('events').EventEmitter;
-
-var EElistenerCount = function (emitter, type) {
-  return emitter.listeners(type).length;
-};
-/*</replacement>*/
-
-/*<replacement>*/
-var Stream;
-(function () {
-  try {
-    Stream = require('st' + 'ream');
-  } catch (_) {} finally {
-    if (!Stream) Stream = require('events').EventEmitter;
-  }
-})();
-/*</replacement>*/
-
-var Buffer = require('buffer').Buffer;
-/*<replacement>*/
-var bufferShim = require('buffer-shims');
-/*</replacement>*/
-
-/*<replacement>*/
-var util = require('core-util-is');
-util.inherits = require('inherits');
-/*</replacement>*/
-
-/*<replacement>*/
-var debugUtil = require('util');
-var debug = void 0;
-if (debugUtil && debugUtil.debuglog) {
-  debug = debugUtil.debuglog('stream');
-} else {
-  debug = function () {};
-}
-/*</replacement>*/
-
-var StringDecoder;
-
-util.inherits(Readable, Stream);
-
-var hasPrependListener = typeof EE.prototype.prependListener === 'function';
-
-function prependListener(emitter, event, fn) {
-  if (hasPrependListener) return emitter.prependListener(event, fn);
-
-  // This is a brutally ugly hack to make sure that our error handler
-  // is attached before any userland ones.  NEVER DO THIS. This is here
-  // only because this code needs to continue to work with older versions
-  // of Node.js that do not include the prependListener() method. The goal
-  // is to eventually remove this hack.
-  if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
-}
-
-var Duplex;
-function ReadableState(options, stream) {
-  Duplex = Duplex || require('./_stream_duplex');
-
-  options = options || {};
-
-  // object stream flag. Used to make read(n) ignore n and to
-  // make all the buffer merging and length checks go away
-  this.objectMode = !!options.objectMode;
-
-  if (stream instanceof Duplex) this.objectMode = this.objectMode || !!options.readableObjectMode;
-
-  // the point at which it stops calling _read() to fill the buffer
-  // Note: 0 is a valid value, means "don't call _read preemptively ever"
-  var hwm = options.highWaterMark;
-  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
-  this.highWaterMark = hwm || hwm === 0 ? hwm : defaultHwm;
-
-  // cast to ints.
-  this.highWaterMark = ~ ~this.highWaterMark;
-
-  this.buffer = [];
-  this.length = 0;
-  this.pipes = null;
-  this.pipesCount = 0;
-  this.flowing = null;
-  this.ended = false;
-  this.endEmitted = false;
-  this.reading = false;
-
-  // a flag to be able to tell if the onwrite cb is called immediately,
-  // or on a later tick.  We set this to true at first, because any
-  // actions that shouldn't happen until "later" should generally also
-  // not happen before the first write call.
-  this.sync = true;
-
-  // whenever we return null, then we set a flag to say
-  // that we're awaiting a 'readable' event emission.
-  this.needReadable = false;
-  this.emittedReadable = false;
-  this.readableListening = false;
-  this.resumeScheduled = false;
-
-  // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is 'binary' so we have to make this configurable.
-  // Everything else in the universe uses 'utf8', though.
-  this.defaultEncoding = options.defaultEncoding || 'utf8';
-
-  // when piping, we only care about 'readable' events that happen
-  // after read()ing all the bytes and not getting any pushback.
-  this.ranOut = false;
-
-  // the number of writers that are awaiting a drain event in .pipe()s
-  this.awaitDrain = 0;
-
-  // if true, a maybeReadMore has been scheduled
-  this.readingMore = false;
-
-  this.decoder = null;
-  this.encoding = null;
-  if (options.encoding) {
-    if (!StringDecoder) StringDecoder = require('string_decoder/').StringDecoder;
-    this.decoder = new StringDecoder(options.encoding);
-    this.encoding = options.encoding;
-  }
-}
-
-var Duplex;
-function Readable(options) {
-  Duplex = Duplex || require('./_stream_duplex');
-
-  if (!(this instanceof Readable)) return new Readable(options);
-
-  this._readableState = new ReadableState(options, this);
-
-  // legacy
-  this.readable = true;
-
-  if (options && typeof options.read === 'function') this._read = options.read;
-
-  Stream.call(this);
-}
-
-// Manually shove something into the read() buffer.
-// This returns true if the highWaterMark has not been hit yet,
-// similar to how Writable.write() returns true if you should
-// write() some more.
-Readable.prototype.push = function (chunk, encoding) {
-  var state = this._readableState;
-
-  if (!state.objectMode && typeof chunk === 'string') {
-    encoding = encoding || state.defaultEncoding;
-    if (encoding !== state.encoding) {
-      chunk = bufferShim.from(chunk, encoding);
-      encoding = '';
-    }
-  }
-
-  return readableAddChunk(this, state, chunk, encoding, false);
-};
-
-// Unshift should *always* be something directly out of read()
-Readable.prototype.unshift = function (chunk) {
-  var state = this._readableState;
-  return readableAddChunk(this, state, chunk, '', true);
-};
-
-Readable.prototype.isPaused = function () {
-  return this._readableState.flowing === false;
-};
-
-function readableAddChunk(stream, state, chunk, encoding, addToFront) {
-  var er = chunkInvalid(state, chunk);
-  if (er) {
-    stream.emit('error', er);
-  } else if (chunk === null) {
-    state.reading = false;
-    onEofChunk(stream, state);
-  } else if (state.objectMode || chunk && chunk.length > 0) {
-    if (state.ended && !addToFront) {
-      var e = new Error('stream.push() after EOF');
-      stream.emit('error', e);
-    } else if (state.endEmitted && addToFront) {
-      var _e = new Error('stream.unshift() after end event');
-      stream.emit('error', _e);
-    } else {
-      var skipAdd;
-      if (state.decoder && !addToFront && !encoding) {
-        chunk = state.decoder.write(chunk);
-        skipAdd = !state.objectMode && chunk.length === 0;
-      }
-
-      if (!addToFront) state.reading = false;
-
-      // Don't add to the buffer if we've decoded to an empty string chunk and
-      // we're not in object mode
-      if (!skipAdd) {
-        // if we want the data now, just emit it.
-        if (state.flowing && state.length === 0 && !state.sync) {
-          stream.emit('data', chunk);
-          stream.read(0);
-        } else {
-          // update the buffer info.
-          state.length += state.objectMode ? 1 : chunk.length;
-          if (addToFront) state.buffer.unshift(chunk);else state.buffer.push(chunk);
-
-          if (state.needReadable) emitReadable(stream);
-        }
-      }
-
-      maybeReadMore(stream, state);
-    }
-  } else if (!addToFront) {
-    state.reading = false;
-  }
-
-  return needMoreData(state);
-}
-
-// if it's past the high water mark, we can push in some more.
-// Also, if we have no data yet, we can stand some
-// more bytes.  This is to work around cases where hwm=0,
-// such as the repl.  Also, if the push() triggered a
-// readable event, and the user called read(largeNumber) such that
-// needReadable was set, then we ought to push more, so that another
-// 'readable' event will be triggered.
-function needMoreData(state) {
-  return !state.ended && (state.needReadable || state.length < state.highWaterMark || state.length === 0);
-}
-
-// backwards compatibility.
-Readable.prototype.setEncoding = function (enc) {
-  if (!StringDecoder) StringDecoder = require('string_decoder/').StringDecoder;
-  this._readableState.decoder = new StringDecoder(enc);
-  this._readableState.encoding = enc;
-  return this;
-};
-
-// Don't raise the hwm > 8MB
-var MAX_HWM = 0x800000;
-function computeNewHighWaterMark(n) {
-  if (n >= MAX_HWM) {
-    n = MAX_HWM;
-  } else {
-    // Get the next highest power of 2
-    n--;
-    n |= n >>> 1;
-    n |= n >>> 2;
-    n |= n >>> 4;
-    n |= n >>> 8;
-    n |= n >>> 16;
-    n++;
-  }
-  return n;
-}
-
-function howMuchToRead(n, state) {
-  if (state.length === 0 && state.ended) return 0;
-
-  if (state.objectMode) return n === 0 ? 0 : 1;
-
-  if (n === null || isNaN(n)) {
-    // only flow one buffer at a time
-    if (state.flowing && state.buffer.length) return state.buffer[0].length;else return state.length;
-  }
-
-  if (n <= 0) return 0;
-
-  // If we're asking for more than the target buffer level,
-  // then raise the water mark.  Bump up to the next highest
-  // power of 2, to prevent increasing it excessively in tiny
-  // amounts.
-  if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);
-
-  // don't have that much.  return null, unless we've ended.
-  if (n > state.length) {
-    if (!state.ended) {
-      state.needReadable = true;
-      return 0;
-    } else {
-      return state.length;
-    }
-  }
-
-  return n;
-}
-
-// you can override either this method, or the async _read(n) below.
-Readable.prototype.read = function (n) {
-  debug('read', n);
-  var state = this._readableState;
-  var nOrig = n;
-
-  if (typeof n !== 'number' || n > 0) state.emittedReadable = false;
-
-  // if we're doing read(0) to trigger a readable event, but we
-  // already have a bunch of data in the buffer, then just trigger
-  // the 'readable' event and move on.
-  if (n === 0 && state.needReadable && (state.length >= state.highWaterMark || state.ended)) {
-    debug('read: emitReadable', state.length, state.ended);
-    if (state.length === 0 && state.ended) endReadable(this);else emitReadable(this);
-    return null;
-  }
-
-  n = howMuchToRead(n, state);
-
-  // if we've ended, and we're now clear, then finish it up.
-  if (n === 0 && state.ended) {
-    if (state.length === 0) endReadable(this);
-    return null;
-  }
-
-  // All the actual chunk generation logic needs to be
-  // *below* the call to _read.  The reason is that in certain
-  // synthetic stream cases, such as passthrough streams, _read
-  // may be a completely synchronous operation which may change
-  // the state of the read buffer, providing enough data when
-  // before there was *not* enough.
-  //
-  // So, the steps are:
-  // 1. Figure out what the state of things will be after we do
-  // a read from the buffer.
-  //
-  // 2. If that resulting state will trigger a _read, then call _read.
-  // Note that this may be asynchronous, or synchronous.  Yes, it is
-  // deeply ugly to write APIs this way, but that still doesn't mean
-  // that the Readable class should behave improperly, as streams are
-  // designed to be sync/async agnostic.
-  // Take note if the _read call is sync or async (ie, if the read call
-  // has returned yet), so that we know whether or not it's safe to emit
-  // 'readable' etc.
-  //
-  // 3. Actually pull the requested chunks out of the buffer and return.
-
-  // if we need a readable event, then we need to do some reading.
-  var doRead = state.needReadable;
-  debug('need readable', doRead);
-
-  // if we currently have less than the highWaterMark, then also read some
-  if (state.length === 0 || state.length - n < state.highWaterMark) {
-    doRead = true;
-    debug('length less than watermark', doRead);
-  }
-
-  // however, if we've ended, then there's no point, and if we're already
-  // reading, then it's unnecessary.
-  if (state.ended || state.reading) {
-    doRead = false;
-    debug('reading or ended', doRead);
-  }
-
-  if (doRead) {
-    debug('do read');
-    state.reading = true;
-    state.sync = true;
-    // if the length is currently zero, then we *need* a readable event.
-    if (state.length === 0) state.needReadable = true;
-    // call internal read method
-    this._read(state.highWaterMark);
-    state.sync = false;
-  }
-
-  // If _read pushed data synchronously, then `reading` will be false,
-  // and we need to re-evaluate how much data we can return to the user.
-  if (doRead && !state.reading) n = howMuchToRead(nOrig, state);
-
-  var ret;
-  if (n > 0) ret = fromList(n, state);else ret = null;
-
-  if (ret === null) {
-    state.needReadable = true;
-    n = 0;
-  }
-
-  state.length -= n;
-
-  // If we have nothing in the buffer, then we want to know
-  // as soon as we *do* get something into the buffer.
-  if (state.length === 0 && !state.ended) state.needReadable = true;
-
-  // If we tried to read() past the EOF, then emit end on the next tick.
-  if (nOrig !== n && state.ended && state.length === 0) endReadable(this);
-
-  if (ret !== null) this.emit('data', ret);
-
-  return ret;
-};
-
-function chunkInvalid(state, chunk) {
-  var er = null;
-  if (!Buffer.isBuffer(chunk) && typeof chunk !== 'string' && chunk !== null && chunk !== undefined && !state.objectMode) {
-    er = new TypeError('Invalid non-string/buffer chunk');
-  }
-  return er;
-}
-
-function onEofChunk(stream, state) {
-  if (state.ended) return;
-  if (state.decoder) {
-    var chunk = state.decoder.end();
-    if (chunk && chunk.length) {
-      state.buffer.push(chunk);
-      state.length += state.objectMode ? 1 : chunk.length;
-    }
-  }
-  state.ended = true;
-
-  // emit 'readable' now to make sure it gets picked up.
-  emitReadable(stream);
-}
-
-// Don't emit readable right away in sync mode, because this can trigger
-// another read() call => stack overflow.  This way, it might trigger
-// a nextTick recursion warning, but that's not so bad.
-function emitReadable(stream) {
-  var state = stream._readableState;
-  state.needReadable = false;
-  if (!state.emittedReadable) {
-    debug('emitReadable', state.flowing);
-    state.emittedReadable = true;
-    if (state.sync) processNextTick(emitReadable_, stream);else emitReadable_(stream);
-  }
-}
-
-function emitReadable_(stream) {
-  debug('emit readable');
-  stream.emit('readable');
-  flow(stream);
-}
-
-// at this point, the user has presumably seen the 'readable' event,
-// and called read() to consume some data.  that may have triggered
-// in turn another _read(n) call, in which case reading = true if
-// it's in progress.
-// However, if we're not ended, or reading, and the length < hwm,
-// then go ahead and try to read some more preemptively.
-function maybeReadMore(stream, state) {
-  if (!state.readingMore) {
-    state.readingMore = true;
-    processNextTick(maybeReadMore_, stream, state);
-  }
-}
-
-function maybeReadMore_(stream, state) {
-  var len = state.length;
-  while (!state.reading && !state.flowing && !state.ended && state.length < state.highWaterMark) {
-    debug('maybeReadMore read 0');
-    stream.read(0);
-    if (len === state.length)
-      // didn't get any data, stop spinning.
-      break;else len = state.length;
-  }
-  state.readingMore = false;
-}
-
-// abstract method.  to be overridden in specific implementation classes.
-// call cb(er, data) where data is <= n in length.
-// for virtual (non-string, non-buffer) streams, "length" is somewhat
-// arbitrary, and perhaps not very meaningful.
-Readable.prototype._read = function (n) {
-  this.emit('error', new Error('not implemented'));
-};
-
-Readable.prototype.pipe = function (dest, pipeOpts) {
-  var src = this;
-  var state = this._readableState;
-
-  switch (state.pipesCount) {
-    case 0:
-      state.pipes = dest;
-      break;
-    case 1:
-      state.pipes = [state.pipes, dest];
-      break;
-    default:
-      state.pipes.push(dest);
-      break;
-  }
-  state.pipesCount += 1;
-  debug('pipe count=%d opts=%j', state.pipesCount, pipeOpts);
-
-  var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
-
-  var endFn = doEnd ? onend : cleanup;
-  if (state.endEmitted) processNextTick(endFn);else src.once('end', endFn);
-
-  dest.on('unpipe', onunpipe);
-  function onunpipe(readable) {
-    debug('onunpipe');
-    if (readable === src) {
-      cleanup();
-    }
-  }
-
-  function onend() {
-    debug('onend');
-    dest.end();
-  }
-
-  // when the dest drains, it reduces the awaitDrain counter
-  // on the source.  This would be more elegant with a .once()
-  // handler in flow(), but adding and removing repeatedly is
-  // too slow.
-  var ondrain = pipeOnDrain(src);
-  dest.on('drain', ondrain);
-
-  var cleanedUp = false;
-  function cleanup() {
-    debug('cleanup');
-    // cleanup event handlers once the pipe is broken
-    dest.removeListener('close', onclose);
-    dest.removeListener('finish', onfinish);
-    dest.removeListener('drain', ondrain);
-    dest.removeListener('error', onerror);
-    dest.removeListener('unpipe', onunpipe);
-    src.removeListener('end', onend);
-    src.removeListener('end', cleanup);
-    src.removeListener('data', ondata);
-
-    cleanedUp = true;
-
-    // if the reader is waiting for a drain event from this
-    // specific writer, then it would cause it to never start
-    // flowing again.
-    // So, if this is awaiting a drain, then we just call it now.
-    // If we don't know, then assume that we are waiting for one.
-    if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();
-  }
-
-  src.on('data', ondata);
-  function ondata(chunk) {
-    debug('ondata');
-    var ret = dest.write(chunk);
-    if (false === ret) {
-      // If the user unpiped during `dest.write()`, it is possible
-      // to get stuck in a permanently paused state if that write
-      // also returned false.
-      // => Check whether `dest` is still a piping destination.
-      if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {
-        debug('false write response, pause', src._readableState.awaitDrain);
-        src._readableState.awaitDrain++;
-      }
-      src.pause();
-    }
-  }
-
-  // if the dest has an error, then stop piping into it.
-  // however, don't suppress the throwing behavior for this.
-  function onerror(er) {
-    debug('onerror', er);
-    unpipe();
-    dest.removeListener('error', onerror);
-    if (EElistenerCount(dest, 'error') === 0) dest.emit('error', er);
-  }
-
-  // Make sure our error handler is attached before userland ones.
-  prependListener(dest, 'error', onerror);
-
-  // Both close and finish should trigger unpipe, but only once.
-  function onclose() {
-    dest.removeListener('finish', onfinish);
-    unpipe();
-  }
-  dest.once('close', onclose);
-  function onfinish() {
-    debug('onfinish');
-    dest.removeListener('close', onclose);
-    unpipe();
-  }
-  dest.once('finish', onfinish);
-
-  function unpipe() {
-    debug('unpipe');
-    src.unpipe(dest);
-  }
-
-  // tell the dest that it's being piped to
-  dest.emit('pipe', src);
-
-  // start the flow if it hasn't been started already.
-  if (!state.flowing) {
-    debug('pipe resume');
-    src.resume();
-  }
-
-  return dest;
-};
-
-function pipeOnDrain(src) {
-  return function () {
-    var state = src._readableState;
-    debug('pipeOnDrain', state.awaitDrain);
-    if (state.awaitDrain) state.awaitDrain--;
-    if (state.awaitDrain === 0 && EElistenerCount(src, 'data')) {
-      state.flowing = true;
-      flow(src);
-    }
-  };
-}
-
-Readable.prototype.unpipe = function (dest) {
-  var state = this._readableState;
-
-  // if we're not piping anywhere, then do nothing.
-  if (state.pipesCount === 0) return this;
-
-  // just one destination.  most common case.
-  if (state.pipesCount === 1) {
-    // passed in one, but it's not the right one.
-    if (dest && dest !== state.pipes) return this;
-
-    if (!dest) dest = state.pipes;
-
-    // got a match.
-    state.pipes = null;
-    state.pipesCount = 0;
-    state.flowing = false;
-    if (dest) dest.emit('unpipe', this);
-    return this;
-  }
-
-  // slow case. multiple pipe destinations.
-
-  if (!dest) {
-    // remove all.
-    var dests = state.pipes;
-    var len = state.pipesCount;
-    state.pipes = null;
-    state.pipesCount = 0;
-    state.flowing = false;
-
-    for (var _i = 0; _i < len; _i++) {
-      dests[_i].emit('unpipe', this);
-    }return this;
-  }
-
-  // try to find the right one.
-  var i = indexOf(state.pipes, dest);
-  if (i === -1) return this;
-
-  state.pipes.splice(i, 1);
-  state.pipesCount -= 1;
-  if (state.pipesCount === 1) state.pipes = state.pipes[0];
-
-  dest.emit('unpipe', this);
-
-  return this;
-};
-
-// set up data events if they are asked for
-// Ensure readable listeners eventually get something
-Readable.prototype.on = function (ev, fn) {
-  var res = Stream.prototype.on.call(this, ev, fn);
-
-  // If listening to data, and it has not explicitly been paused,
-  // then call resume to start the flow of data on the next tick.
-  if (ev === 'data' && false !== this._readableState.flowing) {
-    this.resume();
-  }
-
-  if (ev === 'readable' && !this._readableState.endEmitted) {
-    var state = this._readableState;
-    if (!state.readableListening) {
-      state.readableListening = true;
-      state.emittedReadable = false;
-      state.needReadable = true;
-      if (!state.reading) {
-        processNextTick(nReadingNextTick, this);
-      } else if (state.length) {
-        emitReadable(this, state);
-      }
-    }
-  }
-
-  return res;
-};
-Readable.prototype.addListener = Readable.prototype.on;
-
-function nReadingNextTick(self) {
-  debug('readable nexttick read 0');
-  self.read(0);
-}
-
-// pause() and resume() are remnants of the legacy readable stream API
-// If the user uses them, then switch into old mode.
-Readable.prototype.resume = function () {
-  var state = this._readableState;
-  if (!state.flowing) {
-    debug('resume');
-    state.flowing = true;
-    resume(this, state);
-  }
-  return this;
-};
-
-function resume(stream, state) {
-  if (!state.resumeScheduled) {
-    state.resumeScheduled = true;
-    processNextTick(resume_, stream, state);
-  }
-}
-
-function resume_(stream, state) {
-  if (!state.reading) {
-    debug('resume read 0');
-    stream.read(0);
-  }
-
-  state.resumeScheduled = false;
-  stream.emit('resume');
-  flow(stream);
-  if (state.flowing && !state.reading) stream.read(0);
-}
-
-Readable.prototype.pause = function () {
-  debug('call pause flowing=%j', this._readableState.flowing);
-  if (false !== this._readableState.flowing) {
-    debug('pause');
-    this._readableState.flowing = false;
-    this.emit('pause');
-  }
-  return this;
-};
-
-function flow(stream) {
-  var state = stream._readableState;
-  debug('flow', state.flowing);
-  if (state.flowing) {
-    do {
-      var chunk = stream.read();
-    } while (null !== chunk && state.flowing);
-  }
-}
-
-// wrap an old-style stream as the async data source.
-// This is *not* part of the readable stream interface.
-// It is an ugly unfortunate mess of history.
-Readable.prototype.wrap = function (stream) {
-  var state = this._readableState;
-  var paused = false;
-
-  var self = this;
-  stream.on('end', function () {
-    debug('wrapped end');
-    if (state.decoder && !state.ended) {
-      var chunk = state.decoder.end();
-      if (chunk && chunk.length) self.push(chunk);
-    }
-
-    self.push(null);
-  });
-
-  stream.on('data', function (chunk) {
-    debug('wrapped data');
-    if (state.decoder) chunk = state.decoder.write(chunk);
-
-    // don't skip over falsy values in objectMode
-    if (state.objectMode && (chunk === null || chunk === undefined)) return;else if (!state.objectMode && (!chunk || !chunk.length)) return;
-
-    var ret = self.push(chunk);
-    if (!ret) {
-      paused = true;
-      stream.pause();
-    }
-  });
-
-  // proxy all the other methods.
-  // important when wrapping filters and duplexes.
-  for (var i in stream) {
-    if (this[i] === undefined && typeof stream[i] === 'function') {
-      this[i] = function (method) {
-        return function () {
-          return stream[method].apply(stream, arguments);
-        };
-      }(i);
-    }
-  }
-
-  // proxy certain important events.
-  var events = ['error', 'close', 'destroy', 'pause', 'resume'];
-  forEach(events, function (ev) {
-    stream.on(ev, self.emit.bind(self, ev));
-  });
-
-  // when we try to consume some more bytes, simply unpause the
-  // underlying stream.
-  self._read = function (n) {
-    debug('wrapped _read', n);
-    if (paused) {
-      paused = false;
-      stream.resume();
-    }
-  };
-
-  return self;
-};
-
-// exposed for testing purposes only.
-Readable._fromList = fromList;
-
-// Pluck off n bytes from an array of buffers.
-// Length is the combined lengths of all the buffers in the list.
-function fromList(n, state) {
-  var list = state.buffer;
-  var length = state.length;
-  var stringMode = !!state.decoder;
-  var objectMode = !!state.objectMode;
-  var ret;
-
-  // nothing in the list, definitely empty.
-  if (list.length === 0) return null;
-
-  if (length === 0) ret = null;else if (objectMode) ret = list.shift();else if (!n || n >= length) {
-    // read it all, truncate the array.
-    if (stringMode) ret = list.join('');else if (list.length === 1) ret = list[0];else ret = Buffer.concat(list, length);
-    list.length = 0;
-  } else {
-    // read just some of it.
-    if (n < list[0].length) {
-      // just take a part of the first list item.
-      // slice is the same for buffers and strings.
-      var buf = list[0];
-      ret = buf.slice(0, n);
-      list[0] = buf.slice(n);
-    } else if (n === list[0].length) {
-      // first list is a perfect match
-      ret = list.shift();
-    } else {
-      // complex case.
-      // we have enough to cover it, but it spans past the first buffer.
-      if (stringMode) ret = '';else ret = bufferShim.allocUnsafe(n);
-
-      var c = 0;
-      for (var i = 0, l = list.length; i < l && c < n; i++) {
-        var _buf = list[0];
-        var cpy = Math.min(n - c, _buf.length);
-
-        if (stringMode) ret += _buf.slice(0, cpy);else _buf.copy(ret, c, 0, cpy);
-
-        if (cpy < _buf.length) list[0] = _buf.slice(cpy);else list.shift();
-
-        c += cpy;
-      }
-    }
-  }
-
-  return ret;
-}
-
-function endReadable(stream) {
-  var state = stream._readableState;
-
-  // If we get here before consuming all the bytes, then that is a
-  // bug in node.  Should never happen.
-  if (state.length > 0) throw new Error('"endReadable()" called on non-empty stream');
-
-  if (!state.endEmitted) {
-    state.ended = true;
-    processNextTick(endReadableNT, state, stream);
-  }
-}
-
-function endReadableNT(state, stream) {
-  // Check that we didn't get one last unshift.
-  if (!state.endEmitted && state.length === 0) {
-    state.endEmitted = true;
-    stream.readable = false;
-    stream.emit('end');
-  }
-}
-
-function forEach(xs, f) {
-  for (var i = 0, l = xs.length; i < l; i++) {
-    f(xs[i], i);
-  }
-}
-
-function indexOf(xs, x) {
-  for (var i = 0, l = xs.length; i < l; i++) {
-    if (xs[i] === x) return i;
-  }
-  return -1;
-}
-}).call(this,require('_process'))
-},{"./_stream_duplex":298,"_process":259,"buffer":48,"buffer-shims":46,"core-util-is":51,"events":87,"inherits":98,"isarray":296,"process-nextick-args":258,"string_decoder/":307,"util":21}],301:[function(require,module,exports){
-// a transform stream is a readable/writable stream where you do
-// something with the data.  Sometimes it's called a "filter",
-// but that's not a great name for it, since that implies a thing where
-// some bits pass through, and others are simply ignored.  (That would
-// be a valid example of a transform, of course.)
-//
-// While the output is causally related to the input, it's not a
-// necessarily symmetric or synchronous transformation.  For example,
-// a zlib stream might take multiple plain-text writes(), and then
-// emit a single compressed chunk some time in the future.
-//
-// Here's how this works:
-//
-// The Transform stream has all the aspects of the readable and writable
-// stream classes.  When you write(chunk), that calls _write(chunk,cb)
-// internally, and returns false if there's a lot of pending writes
-// buffered up.  When you call read(), that calls _read(n) until
-// there's enough pending readable data buffered up.
-//
-// In a transform stream, the written data is placed in a buffer.  When
-// _read(n) is called, it transforms the queued up data, calling the
-// buffered _write cb's as it consumes chunks.  If consuming a single
-// written chunk would result in multiple output chunks, then the first
-// outputted bit calls the readcb, and subsequent chunks just go into
-// the read buffer, and will cause it to emit 'readable' if necessary.
-//
-// This way, back-pressure is actually determined by the reading side,
-// since _read has to be called to start processing a new chunk.  However,
-// a pathological inflate type of transform can cause excessive buffering
-// here.  For example, imagine a stream where every byte of input is
-// interpreted as an integer from 0-255, and then results in that many
-// bytes of output.  Writing the 4 bytes {ff,ff,ff,ff} would result in
-// 1kb of data being output.  In this case, you could write a very small
-// amount of input, and end up with a very large amount of output.  In
-// such a pathological inflating mechanism, there'd be no way to tell
-// the system to stop doing the transform.  A single 4MB write could
-// cause the system to run out of memory.
-//
-// However, even in such a pathological case, only a single written chunk
-// would be consumed, and then the rest would wait (un-transformed) until
-// the results of the previous transformed chunk were consumed.
-
-'use strict';
-
-module.exports = Transform;
-
-var Duplex = require('./_stream_duplex');
-
-/*<replacement>*/
-var util = require('core-util-is');
-util.inherits = require('inherits');
-/*</replacement>*/
-
-util.inherits(Transform, Duplex);
-
-function TransformState(stream) {
-  this.afterTransform = function (er, data) {
-    return afterTransform(stream, er, data);
-  };
-
-  this.needTransform = false;
-  this.transforming = false;
-  this.writecb = null;
-  this.writechunk = null;
-  this.writeencoding = null;
-}
-
-function afterTransform(stream, er, data) {
-  var ts = stream._transformState;
-  ts.transforming = false;
-
-  var cb = ts.writecb;
-
-  if (!cb) return stream.emit('error', new Error('no writecb in Transform class'));
-
-  ts.writechunk = null;
-  ts.writecb = null;
-
-  if (data !== null && data !== undefined) stream.push(data);
-
-  cb(er);
-
-  var rs = stream._readableState;
-  rs.reading = false;
-  if (rs.needReadable || rs.length < rs.highWaterMark) {
-    stream._read(rs.highWaterMark);
-  }
-}
-
-function Transform(options) {
-  if (!(this instanceof Transform)) return new Transform(options);
-
-  Duplex.call(this, options);
-
-  this._transformState = new TransformState(this);
-
-  // when the writable side finishes, then flush out anything remaining.
-  var stream = this;
-
-  // start out asking for a readable event once data is transformed.
-  this._readableState.needReadable = true;
-
-  // we have implemented the _read method, and done the other things
-  // that Readable wants before the first _read call, so unset the
-  // sync guard flag.
-  this._readableState.sync = false;
-
-  if (options) {
-    if (typeof options.transform === 'function') this._transform = options.transform;
-
-    if (typeof options.flush === 'function') this._flush = options.flush;
-  }
-
-  this.once('prefinish', function () {
-    if (typeof this._flush === 'function') this._flush(function (er) {
-      done(stream, er);
-    });else done(stream);
-  });
-}
-
-Transform.prototype.push = function (chunk, encoding) {
-  this._transformState.needTransform = false;
-  return Duplex.prototype.push.call(this, chunk, encoding);
-};
-
-// This is the part where you do stuff!
-// override this function in implementation classes.
-// 'chunk' is an input chunk.
-//
-// Call `push(newChunk)` to pass along transformed output
-// to the readable side.  You may call 'push' zero or more times.
-//
-// Call `cb(err)` when you are done with this chunk.  If you pass
-// an error, then that'll put the hurt on the whole operation.  If you
-// never call cb(), then you'll never get another chunk.
-Transform.prototype._transform = function (chunk, encoding, cb) {
-  throw new Error('Not implemented');
-};
-
-Transform.prototype._write = function (chunk, encoding, cb) {
-  var ts = this._transformState;
-  ts.writecb = cb;
-  ts.writechunk = chunk;
-  ts.writeencoding = encoding;
-  if (!ts.transforming) {
-    var rs = this._readableState;
-    if (ts.needTransform || rs.needReadable || rs.length < rs.highWaterMark) this._read(rs.highWaterMark);
-  }
-};
-
-// Doesn't matter what the args are here.
-// _transform does all the work.
-// That we got here means that the readable side wants more data.
-Transform.prototype._read = function (n) {
-  var ts = this._transformState;
-
-  if (ts.writechunk !== null && ts.writecb && !ts.transforming) {
-    ts.transforming = true;
-    this._transform(ts.writechunk, ts.writeencoding, ts.afterTransform);
-  } else {
-    // mark that we need a transform, so that any data that comes in
-    // will get processed, now that we've asked for it.
-    ts.needTransform = true;
-  }
-};
-
-function done(stream, er) {
-  if (er) return stream.emit('error', er);
-
-  // if there's nothing in the write buffer, then that means
-  // that nothing more will ever be provided
-  var ws = stream._writableState;
-  var ts = stream._transformState;
-
-  if (ws.length) throw new Error('Calling transform done when ws.length != 0');
-
-  if (ts.transforming) throw new Error('Calling transform done when still transforming');
-
-  return stream.push(null);
-}
-},{"./_stream_duplex":298,"core-util-is":51,"inherits":98}],302:[function(require,module,exports){
-(function (process){
-// A bit simpler than readable streams.
-// Implement an async ._write(chunk, encoding, cb), and it'll handle all
-// the drain event emission and buffering.
-
-'use strict';
-
-module.exports = Writable;
-
-/*<replacement>*/
-var processNextTick = require('process-nextick-args');
-/*</replacement>*/
-
-/*<replacement>*/
-var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : processNextTick;
-/*</replacement>*/
-
-Writable.WritableState = WritableState;
-
-/*<replacement>*/
-var util = require('core-util-is');
-util.inherits = require('inherits');
-/*</replacement>*/
-
-/*<replacement>*/
-var internalUtil = {
-  deprecate: require('util-deprecate')
-};
-/*</replacement>*/
-
-/*<replacement>*/
-var Stream;
-(function () {
-  try {
-    Stream = require('st' + 'ream');
-  } catch (_) {} finally {
-    if (!Stream) Stream = require('events').EventEmitter;
-  }
-})();
-/*</replacement>*/
-
-var Buffer = require('buffer').Buffer;
-/*<replacement>*/
-var bufferShim = require('buffer-shims');
-/*</replacement>*/
-
-util.inherits(Writable, Stream);
-
-function nop() {}
-
-function WriteReq(chunk, encoding, cb) {
-  this.chunk = chunk;
-  this.encoding = encoding;
-  this.callback = cb;
-  this.next = null;
-}
-
-var Duplex;
-function WritableState(options, stream) {
-  Duplex = Duplex || require('./_stream_duplex');
-
-  options = options || {};
-
-  // object stream flag to indicate whether or not this stream
-  // contains buffers or objects.
-  this.objectMode = !!options.objectMode;
-
-  if (stream instanceof Duplex) this.objectMode = this.objectMode || !!options.writableObjectMode;
-
-  // the point at which write() starts returning false
-  // Note: 0 is a valid value, means that we always return false if
-  // the entire buffer is not flushed immediately on write()
-  var hwm = options.highWaterMark;
-  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
-  this.highWaterMark = hwm || hwm === 0 ? hwm : defaultHwm;
-
-  // cast to ints.
-  this.highWaterMark = ~ ~this.highWaterMark;
-
-  this.needDrain = false;
-  // at the start of calling end()
-  this.ending = false;
-  // when end() has been called, and returned
-  this.ended = false;
-  // when 'finish' is emitted
-  this.finished = false;
-
-  // should we decode strings into buffers before passing to _write?
-  // this is here so that some node-core streams can optimize string
-  // handling at a lower level.
-  var noDecode = options.decodeStrings === false;
-  this.decodeStrings = !noDecode;
-
-  // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is 'binary' so we have to make this configurable.
-  // Everything else in the universe uses 'utf8', though.
-  this.defaultEncoding = options.defaultEncoding || 'utf8';
-
-  // not an actual buffer we keep track of, but a measurement
-  // of how much we're waiting to get pushed to some underlying
-  // socket or file.
-  this.length = 0;
-
-  // a flag to see when we're in the middle of a write.
-  this.writing = false;
-
-  // when true all writes will be buffered until .uncork() call
-  this.corked = 0;
-
-  // a flag to be able to tell if the onwrite cb is called immediately,
-  // or on a later tick.  We set this to true at first, because any
-  // actions that shouldn't happen until "later" should generally also
-  // not happen before the first write call.
-  this.sync = true;
-
-  // a flag to know if we're processing previously buffered items, which
-  // may call the _write() callback in the same tick, so that we don't
-  // end up in an overlapped onwrite situation.
-  this.bufferProcessing = false;
-
-  // the callback that's passed to _write(chunk,cb)
-  this.onwrite = function (er) {
-    onwrite(stream, er);
-  };
-
-  // the callback that the user supplies to write(chunk,encoding,cb)
-  this.writecb = null;
-
-  // the amount that is being written when _write is called.
-  this.writelen = 0;
-
-  this.bufferedRequest = null;
-  this.lastBufferedRequest = null;
-
-  // number of pending user-supplied write callbacks
-  // this must be 0 before 'finish' can be emitted
-  this.pendingcb = 0;
-
-  // emit prefinish if the only thing we're waiting for is _write cbs
-  // This is relevant for synchronous Transform streams
-  this.prefinished = false;
-
-  // True if the error was already emitted and should not be thrown again
-  this.errorEmitted = false;
-
-  // count buffered requests
-  this.bufferedRequestCount = 0;
-
-  // allocate the first CorkedRequest, there is always
-  // one allocated and free to use, and we maintain at most two
-  this.corkedRequestsFree = new CorkedRequest(this);
-}
-
-WritableState.prototype.getBuffer = function writableStateGetBuffer() {
-  var current = this.bufferedRequest;
-  var out = [];
-  while (current) {
-    out.push(current);
-    current = current.next;
-  }
-  return out;
-};
-
-(function () {
-  try {
-    Object.defineProperty(WritableState.prototype, 'buffer', {
-      get: internalUtil.deprecate(function () {
-        return this.getBuffer();
-      }, '_writableState.buffer is deprecated. Use _writableState.getBuffer ' + 'instead.')
-    });
-  } catch (_) {}
-})();
-
-var Duplex;
-function Writable(options) {
-  Duplex = Duplex || require('./_stream_duplex');
-
-  // Writable ctor is applied to Duplexes, though they're not
-  // instanceof Writable, they're instanceof Readable.
-  if (!(this instanceof Writable) && !(this instanceof Duplex)) return new Writable(options);
-
-  this._writableState = new WritableState(options, this);
-
-  // legacy.
-  this.writable = true;
-
-  if (options) {
-    if (typeof options.write === 'function') this._write = options.write;
-
-    if (typeof options.writev === 'function') this._writev = options.writev;
-  }
-
-  Stream.call(this);
-}
-
-// Otherwise people can pipe Writable streams, which is just wrong.
-Writable.prototype.pipe = function () {
-  this.emit('error', new Error('Cannot pipe, not readable'));
-};
-
-function writeAfterEnd(stream, cb) {
-  var er = new Error('write after end');
-  // TODO: defer error events consistently everywhere, not just the cb
-  stream.emit('error', er);
-  processNextTick(cb, er);
-}
-
-// If we get something that is not a buffer, string, null, or undefined,
-// and we're not in objectMode, then that's an error.
-// Otherwise stream chunks are all considered to be of length=1, and the
-// watermarks determine how many objects to keep in the buffer, rather than
-// how many bytes or characters.
-function validChunk(stream, state, chunk, cb) {
-  var valid = true;
-  var er = false;
-  // Always throw error if a null is written
-  // if we are not in object mode then throw
-  // if it is not a buffer, string, or undefined.
-  if (chunk === null) {
-    er = new TypeError('May not write null values to stream');
-  } else if (!Buffer.isBuffer(chunk) && typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
-    er = new TypeError('Invalid non-string/buffer chunk');
-  }
-  if (er) {
-    stream.emit('error', er);
-    processNextTick(cb, er);
-    valid = false;
-  }
-  return valid;
-}
-
-Writable.prototype.write = function (chunk, encoding, cb) {
-  var state = this._writableState;
-  var ret = false;
-
-  if (typeof encoding === 'function') {
-    cb = encoding;
-    encoding = null;
-  }
-
-  if (Buffer.isBuffer(chunk)) encoding = 'buffer';else if (!encoding) encoding = state.defaultEncoding;
-
-  if (typeof cb !== 'function') cb = nop;
-
-  if (state.ended) writeAfterEnd(this, cb);else if (validChunk(this, state, chunk, cb)) {
-    state.pendingcb++;
-    ret = writeOrBuffer(this, state, chunk, encoding, cb);
-  }
-
-  return ret;
-};
-
-Writable.prototype.cork = function () {
-  var state = this._writableState;
-
-  state.corked++;
-};
-
-Writable.prototype.uncork = function () {
-  var state = this._writableState;
-
-  if (state.corked) {
-    state.corked--;
-
-    if (!state.writing && !state.corked && !state.finished && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
-  }
-};
-
-Writable.prototype.setDefaultEncoding = function setDefaultEncoding(encoding) {
-  // node::ParseEncoding() requires lower case.
-  if (typeof encoding === 'string') encoding = encoding.toLowerCase();
-  if (!(['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw'].indexOf((encoding + '').toLowerCase()) > -1)) throw new TypeError('Unknown encoding: ' + encoding);
-  this._writableState.defaultEncoding = encoding;
-  return this;
-};
-
-function decodeChunk(state, chunk, encoding) {
-  if (!state.objectMode && state.decodeStrings !== false && typeof chunk === 'string') {
-    chunk = bufferShim.from(chunk, encoding);
-  }
-  return chunk;
-}
-
-// if we're already writing something, then just put this
-// in the queue, and wait our turn.  Otherwise, call _write
-// If we return false, then we need a drain event, so set that flag.
-function writeOrBuffer(stream, state, chunk, encoding, cb) {
-  chunk = decodeChunk(state, chunk, encoding);
-
-  if (Buffer.isBuffer(chunk)) encoding = 'buffer';
-  var len = state.objectMode ? 1 : chunk.length;
-
-  state.length += len;
-
-  var ret = state.length < state.highWaterMark;
-  // we must ensure that previous needDrain will not be reset to false.
-  if (!ret) state.needDrain = true;
-
-  if (state.writing || state.corked) {
-    var last = state.lastBufferedRequest;
-    state.lastBufferedRequest = new WriteReq(chunk, encoding, cb);
-    if (last) {
-      last.next = state.lastBufferedRequest;
-    } else {
-      state.bufferedRequest = state.lastBufferedRequest;
-    }
-    state.bufferedRequestCount += 1;
-  } else {
-    doWrite(stream, state, false, len, chunk, encoding, cb);
-  }
-
-  return ret;
-}
-
-function doWrite(stream, state, writev, len, chunk, encoding, cb) {
-  state.writelen = len;
-  state.writecb = cb;
-  state.writing = true;
-  state.sync = true;
-  if (writev) stream._writev(chunk, state.onwrite);else stream._write(chunk, encoding, state.onwrite);
-  state.sync = false;
-}
-
-function onwriteError(stream, state, sync, er, cb) {
-  --state.pendingcb;
-  if (sync) processNextTick(cb, er);else cb(er);
-
-  stream._writableState.errorEmitted = true;
-  stream.emit('error', er);
-}
-
-function onwriteStateUpdate(state) {
-  state.writing = false;
-  state.writecb = null;
-  state.length -= state.writelen;
-  state.writelen = 0;
-}
-
-function onwrite(stream, er) {
-  var state = stream._writableState;
-  var sync = state.sync;
-  var cb = state.writecb;
-
-  onwriteStateUpdate(state);
-
-  if (er) onwriteError(stream, state, sync, er, cb);else {
-    // Check if we're actually ready to finish, but don't emit yet
-    var finished = needFinish(state);
-
-    if (!finished && !state.corked && !state.bufferProcessing && state.bufferedRequest) {
-      clearBuffer(stream, state);
-    }
-
-    if (sync) {
-      /*<replacement>*/
-      asyncWrite(afterWrite, stream, state, finished, cb);
-      /*</replacement>*/
-    } else {
-        afterWrite(stream, state, finished, cb);
-      }
-  }
-}
-
-function afterWrite(stream, state, finished, cb) {
-  if (!finished) onwriteDrain(stream, state);
-  state.pendingcb--;
-  cb();
-  finishMaybe(stream, state);
-}
-
-// Must force callback to be called on nextTick, so that we don't
-// emit 'drain' before the write() consumer gets the 'false' return
-// value, and has a chance to attach a 'drain' listener.
-function onwriteDrain(stream, state) {
-  if (state.length === 0 && state.needDrain) {
-    state.needDrain = false;
-    stream.emit('drain');
-  }
-}
-
-// if there's something in the buffer waiting, then process it
-function clearBuffer(stream, state) {
-  state.bufferProcessing = true;
-  var entry = state.bufferedRequest;
-
-  if (stream._writev && entry && entry.next) {
-    // Fast case, write everything using _writev()
-    var l = state.bufferedRequestCount;
-    var buffer = new Array(l);
-    var holder = state.corkedRequestsFree;
-    holder.entry = entry;
-
-    var count = 0;
-    while (entry) {
-      buffer[count] = entry;
-      entry = entry.next;
-      count += 1;
-    }
-
-    doWrite(stream, state, true, state.length, buffer, '', holder.finish);
-
-    // doWrite is almost always async, defer these to save a bit of time
-    // as the hot path ends with doWrite
-    state.pendingcb++;
-    state.lastBufferedRequest = null;
-    if (holder.next) {
-      state.corkedRequestsFree = holder.next;
-      holder.next = null;
-    } else {
-      state.corkedRequestsFree = new CorkedRequest(state);
-    }
-  } else {
-    // Slow case, write chunks one-by-one
-    while (entry) {
-      var chunk = entry.chunk;
-      var encoding = entry.encoding;
-      var cb = entry.callback;
-      var len = state.objectMode ? 1 : chunk.length;
-
-      doWrite(stream, state, false, len, chunk, encoding, cb);
-      entry = entry.next;
-      // if we didn't call the onwrite immediately, then
-      // it means that we need to wait until it does.
-      // also, that means that the chunk and cb are currently
-      // being processed, so move the buffer counter past them.
-      if (state.writing) {
-        break;
-      }
-    }
-
-    if (entry === null) state.lastBufferedRequest = null;
-  }
-
-  state.bufferedRequestCount = 0;
-  state.bufferedRequest = entry;
-  state.bufferProcessing = false;
-}
-
-Writable.prototype._write = function (chunk, encoding, cb) {
-  cb(new Error('not implemented'));
-};
-
-Writable.prototype._writev = null;
-
-Writable.prototype.end = function (chunk, encoding, cb) {
-  var state = this._writableState;
-
-  if (typeof chunk === 'function') {
-    cb = chunk;
-    chunk = null;
-    encoding = null;
-  } else if (typeof encoding === 'function') {
-    cb = encoding;
-    encoding = null;
-  }
-
-  if (chunk !== null && chunk !== undefined) this.write(chunk, encoding);
-
-  // .end() fully uncorks
-  if (state.corked) {
-    state.corked = 1;
-    this.uncork();
-  }
-
-  // ignore unnecessary end() calls.
-  if (!state.ending && !state.finished) endWritable(this, state, cb);
-};
-
-function needFinish(state) {
-  return state.ending && state.length === 0 && state.bufferedRequest === null && !state.finished && !state.writing;
-}
-
-function prefinish(stream, state) {
-  if (!state.prefinished) {
-    state.prefinished = true;
-    stream.emit('prefinish');
-  }
-}
-
-function finishMaybe(stream, state) {
-  var need = needFinish(state);
-  if (need) {
-    if (state.pendingcb === 0) {
-      prefinish(stream, state);
-      state.finished = true;
-      stream.emit('finish');
-    } else {
-      prefinish(stream, state);
-    }
-  }
-  return need;
-}
-
-function endWritable(stream, state, cb) {
-  state.ending = true;
-  finishMaybe(stream, state);
-  if (cb) {
-    if (state.finished) processNextTick(cb);else stream.once('finish', cb);
-  }
-  state.ended = true;
-  stream.writable = false;
-}
-
-// It seems a linked list but it is not
-// there will be only 2 of these for each stream
-function CorkedRequest(state) {
-  var _this = this;
-
-  this.next = null;
-  this.entry = null;
-
-  this.finish = function (err) {
-    var entry = _this.entry;
-    _this.entry = null;
-    while (entry) {
-      var cb = entry.callback;
-      state.pendingcb--;
-      cb(err);
-      entry = entry.next;
-    }
-    if (state.corkedRequestsFree) {
-      state.corkedRequestsFree.next = _this;
-    } else {
-      state.corkedRequestsFree = _this;
-    }
-  };
-}
-}).call(this,require('_process'))
-},{"./_stream_duplex":298,"_process":259,"buffer":48,"buffer-shims":46,"core-util-is":51,"events":87,"inherits":98,"process-nextick-args":258,"util-deprecate":311}],303:[function(require,module,exports){
-module.exports = require("./lib/_stream_passthrough.js")
-
-},{"./lib/_stream_passthrough.js":299}],304:[function(require,module,exports){
-(function (process){
-var Stream = (function (){
-  try {
-    return require('st' + 'ream'); // hack to fix a circular dependency issue when used with browserify
-  } catch(_){}
-}());
-exports = module.exports = require('./lib/_stream_readable.js');
-exports.Stream = Stream || exports;
-exports.Readable = exports;
-exports.Writable = require('./lib/_stream_writable.js');
-exports.Duplex = require('./lib/_stream_duplex.js');
-exports.Transform = require('./lib/_stream_transform.js');
-exports.PassThrough = require('./lib/_stream_passthrough.js');
-
-if (!process.browser && process.env.READABLE_STREAM === 'disable' && Stream) {
-  module.exports = Stream;
-}
-
-}).call(this,require('_process'))
-},{"./lib/_stream_duplex.js":298,"./lib/_stream_passthrough.js":299,"./lib/_stream_readable.js":300,"./lib/_stream_transform.js":301,"./lib/_stream_writable.js":302,"_process":259}],305:[function(require,module,exports){
-module.exports = require("./lib/_stream_transform.js")
-
-},{"./lib/_stream_transform.js":301}],306:[function(require,module,exports){
-module.exports = require("./lib/_stream_writable.js")
-
-},{"./lib/_stream_writable.js":302}],307:[function(require,module,exports){
+},{"events":85,"inherits":96,"readable-stream/duplex.js":295,"readable-stream/passthrough.js":301,"readable-stream/readable.js":302,"readable-stream/transform.js":303,"readable-stream/writable.js":304}],342:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -57876,7 +54038,7 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":48}],308:[function(require,module,exports){
+},{"buffer":47}],343:[function(require,module,exports){
 "use strict";
 
 class Vector2 {
@@ -57982,7 +54144,7 @@ class Vector2 {
 }
 
 module.exports = Vector2;
-},{}],309:[function(require,module,exports){
+},{}],344:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -58716,7 +54878,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":310,"punycode":266,"querystring":269}],310:[function(require,module,exports){
+},{"./util":345,"punycode":290,"querystring":293}],345:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -58734,7 +54896,7 @@ module.exports = {
   }
 };
 
-},{}],311:[function(require,module,exports){
+},{}],346:[function(require,module,exports){
 (function (global){
 
 /**
@@ -58805,7 +54967,7 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],312:[function(require,module,exports){
+},{}],347:[function(require,module,exports){
 var indexOf = require('indexof');
 
 var Object_keys = function (obj) {
@@ -58945,7 +55107,7 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":97}],313:[function(require,module,exports){
+},{"indexof":95}],348:[function(require,module,exports){
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
@@ -59254,7 +55416,7 @@ ECS.uid = _uid2['default'];
 
 exports['default'] = ECS;
 module.exports = exports['default'];
-},{"./entity":314,"./performance":315,"./system":316,"./uid":317,"./utils":318}],314:[function(require,module,exports){
+},{"./entity":349,"./performance":350,"./system":351,"./uid":352,"./utils":353}],349:[function(require,module,exports){
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
@@ -59529,7 +55691,7 @@ var Entity = (function () {
 
 exports['default'] = Entity;
 module.exports = exports['default'];
-},{"./uid":317}],315:[function(require,module,exports){
+},{"./uid":352}],350:[function(require,module,exports){
 (function (global){
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -59555,7 +55717,7 @@ if (!global) {
 exports["default"] = perf;
 module.exports = exports["default"];
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],316:[function(require,module,exports){
+},{}],351:[function(require,module,exports){
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
@@ -59748,7 +55910,7 @@ var System = (function () {
 
 exports['default'] = System;
 module.exports = exports['default'];
-},{"./utils":318}],317:[function(require,module,exports){
+},{"./utils":353}],352:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -59907,7 +56069,7 @@ var UID = {
 
 exports["default"] = UID;
 module.exports = exports["default"];
-},{}],318:[function(require,module,exports){
+},{}],353:[function(require,module,exports){
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -59937,7 +56099,7 @@ function fastSplice(array, startIndex, removeCount) {
 
   array.length = removeLen;
 }
-},{}],319:[function(require,module,exports){
+},{}],354:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -59948,12 +56110,17 @@ var PIXI = require('pixi.js'),
     ECS = require('yagl-ecs'),
 
 
+// Core
+MessageManager = require('./core/messagemanager'),
+
+
 // Systems
 Rendering = require('./system/rendering'),
     WorldGeneration = require('./system/worldgeneration'),
     Gravity = require('./system/gravity'),
     CollisionDetection = require('./system/collisiondetection'),
     Physics = require('./system/physics'),
+    Movement = require('./system/movement'),
     Control = require('./system/control'),
     AI = require('./system/ai'),
 
@@ -59961,7 +56128,7 @@ Rendering = require('./system/rendering'),
 // Components
 Sprite = require('./component/sprite'),
     Position = require('./component/position'),
-    Velocity = require('./component/velocity'),
+    Body = require('./component/body'),
     Collision = require('./component/collision'),
     Camera = require('./component/camera'),
     Input = require('./component/input'),
@@ -59971,8 +56138,7 @@ Sprite = require('./component/sprite'),
 
 
 // Util
-math = require('./util/math'),
-    noise = require('./util/noise');
+math = require('./util/math');
 
 var App = function () {
 	function App() {
@@ -59995,20 +56161,21 @@ var App = function () {
 		// install ECS
 		this.ecs = new ECS();
 
-		var worldGeneration = new WorldGeneration(this.stage, '5ds45ds4');
+		var worldGeneration = new WorldGeneration(this.stage, 'mldjksjkl');
 
-		this.ecs.addSystem(new Control());
-		this.ecs.addSystem(new Rendering(this.stage));
 		this.ecs.addSystem(worldGeneration);
-		this.ecs.addSystem(new AI());
+		this.ecs.addSystem(new CollisionDetection(worldGeneration.world));
 		this.ecs.addSystem(new Gravity());
 		this.ecs.addSystem(new Physics());
-		this.ecs.addSystem(new CollisionDetection(worldGeneration.world));
+		this.ecs.addSystem(new AI());
+		this.ecs.addSystem(new Control());
+		this.ecs.addSystem(new Movement());
+		this.ecs.addSystem(new Rendering(this.stage));
 
-		this.spawnPlayer(math.randBetween(0, 1000000), -20);
+		this.spawnPlayer(0, 0);
 
-		for (var i = 0; i < 2000; i++) {
-			this.spawnNpc(math.randBetween(0, 1000000), -20);
+		for (var i = 0; i < 50; i++) {
+			this.spawnNpc(math.randBetween(0, 10000), -20);
 		}
 
 		this.start();
@@ -60021,7 +56188,7 @@ var App = function () {
 			var y = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 
 
-			var npc = new ECS.Entity('npc', [Sprite, Position, Velocity, Collision, Stats, Behavior]);
+			var npc = new ECS.Entity('npc', [Sprite, Position, Body, Collision, Stats, Behavior]);
 
 			npc.updateComponent('position', { x: x, y: y });
 
@@ -60034,7 +56201,7 @@ var App = function () {
 			var y = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 
 
-			var player = new ECS.Entity('player', [Sprite, Position, Velocity, Collision, Input, Stats, Camera, Debug]);
+			var player = new ECS.Entity('player', [Sprite, Position, Body, Collision, Stats, Input, Camera, Debug]);
 
 			player.updateComponent('position', { x: x, y: y });
 
@@ -60048,7 +56215,7 @@ var App = function () {
 			this.ticker.start();
 
 			this.ticker.add(function (time) {
-
+				MessageManager.process_queue();
 				_this.ecs.update();
 				_this.renderer.render(_this.stage);
 			});
@@ -60060,7 +56227,7 @@ var App = function () {
 
 module.exports = App;
 
-},{"./component/behavior":320,"./component/camera":321,"./component/collision":322,"./component/debug":323,"./component/input":324,"./component/position":325,"./component/sprite":326,"./component/stats":327,"./component/velocity":328,"./system/ai":331,"./system/collisiondetection":332,"./system/control":333,"./system/gravity":334,"./system/physics":335,"./system/rendering":336,"./system/worldgeneration":337,"./util/math":339,"./util/noise":340,"pixi.js":230,"yagl-ecs":313}],320:[function(require,module,exports){
+},{"./component/behavior":355,"./component/body":356,"./component/camera":357,"./component/collision":358,"./component/debug":359,"./component/input":360,"./component/position":361,"./component/sprite":362,"./component/stats":363,"./core/messagemanager":364,"./system/ai":367,"./system/collisiondetection":368,"./system/control":369,"./system/gravity":370,"./system/movement":371,"./system/physics":372,"./system/rendering":373,"./system/worldgeneration":374,"./util/math":376,"pixi.js":254,"yagl-ecs":348}],355:[function(require,module,exports){
 "use strict";
 
 var Behavior = {
@@ -60072,7 +56239,32 @@ var Behavior = {
 
 module.exports = Behavior;
 
-},{}],321:[function(require,module,exports){
+},{}],356:[function(require,module,exports){
+"use strict";
+
+var Vector2 = require('tnt-vec2');
+
+var Body = {
+	name: 'body',
+	defaults: {
+		velocity: new Vector2(0, 0),
+		acceleration: new Vector2(0, 0),
+		mass: 100
+	}
+};
+
+/*
+*     location = vec2(0, 0),
+ velocity = vec2(0, 0),
+ acceleration = vec2(0, 0),
+ force = vec2(0, -0.1),
+ mass = 100,
+
+ * */
+
+module.exports = Body;
+
+},{"tnt-vec2":343}],357:[function(require,module,exports){
 "use strict";
 
 var Camera = {
@@ -60082,7 +56274,7 @@ var Camera = {
 
 module.exports = Camera;
 
-},{}],322:[function(require,module,exports){
+},{}],358:[function(require,module,exports){
 "use strict";
 
 var Collision = {
@@ -60094,7 +56286,7 @@ var Collision = {
 
 module.exports = Collision;
 
-},{}],323:[function(require,module,exports){
+},{}],359:[function(require,module,exports){
 "use strict";
 
 var Debug = {
@@ -60104,22 +56296,22 @@ var Debug = {
 
 module.exports = Debug;
 
-},{}],324:[function(require,module,exports){
+},{}],360:[function(require,module,exports){
 "use strict";
 
 var Input = {
 	name: 'input',
 	defaults: {
 		keyJump: false,
-		keyLeft: false,
-		keyRight: false,
+		keyForward: false,
+		keyBackward: false,
 		keyDown: false
 	}
 };
 
 module.exports = Input;
 
-},{}],325:[function(require,module,exports){
+},{}],361:[function(require,module,exports){
 "use strict";
 
 var Position = {
@@ -60132,7 +56324,7 @@ var Position = {
 
 module.exports = Position;
 
-},{}],326:[function(require,module,exports){
+},{}],362:[function(require,module,exports){
 "use strict";
 
 var Sprite = {
@@ -60145,7 +56337,7 @@ var Sprite = {
 
 module.exports = Sprite;
 
-},{}],327:[function(require,module,exports){
+},{}],363:[function(require,module,exports){
 "use strict";
 
 var Stats = {
@@ -60157,20 +56349,70 @@ var Stats = {
 
 module.exports = Stats;
 
-},{}],328:[function(require,module,exports){
+},{}],364:[function(require,module,exports){
 "use strict";
 
-var Velocity = {
-	name: 'velocity',
-	defaults: {
-		x: 0,
-		y: 0
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var MessageManager = function () {
+	function MessageManager() {
+		_classCallCheck(this, MessageManager);
 	}
-};
 
-module.exports = Velocity;
+	_createClass(MessageManager, null, [{
+		key: "addListener",
+		value: function addListener(id, call) {
 
-},{}],329:[function(require,module,exports){
+			if (!this.listeners) {
+				this.listeners = {};
+			}
+			if (!this.listeners[id]) {
+				this.listeners[id] = [];
+			}
+
+			this.listeners[id].push(call);
+		}
+	}, {
+		key: "trigger",
+		value: function trigger(id, event) {
+			var _this = this;
+
+			if (!this.queue) {
+				this.queue = [];
+			}
+
+			if (!this.listeners || !this.listeners[id]) {
+				return;
+			}
+
+			this.listeners[id].forEach(function (c) {
+				_this.queue.push([c, event]);
+			});
+		}
+	}, {
+		key: "process_queue",
+		value: function process_queue() {
+
+			if (!this.queue) {
+				return;
+			}
+
+			this.queue.forEach(function (q) {
+				q[0](q[1]);
+			});
+
+			this.queue = [];
+		}
+	}]);
+
+	return MessageManager;
+}();
+
+module.exports = MessageManager;
+
+},{}],365:[function(require,module,exports){
 module.exports={
   "water": {
     "color": "0x0c78bb"
@@ -60218,17 +56460,17 @@ module.exports={
     "color": "0x00bf0d"
   }
 }
-},{}],330:[function(require,module,exports){
+},{}],366:[function(require,module,exports){
 "use strict";
 
 var input = {
 
 	_pressed: {},
 
-	LEFT: 37,
-	UP: 38,
-	RIGHT: 39,
-	DOWN: 40,
+	LEFT_ARROW: 37,
+	UP_ARROW: 38,
+	RIGHT_ARROW: 39,
+	DOWN_ARROW: 40,
 	SPACE: 32,
 
 	isDown: function isDown(keyCode) {
@@ -60253,7 +56495,7 @@ window.addEventListener('keydown', function (event) {
 
 module.exports = input;
 
-},{}],331:[function(require,module,exports){
+},{}],367:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60276,21 +56518,25 @@ var AI = function (_ECS$System) {
 	}
 
 	_createClass(AI, [{
-		key: "test",
+		key: 'test',
 		value: function test(entity) {
 			return entity.components.behavior;
 		}
 	}, {
-		key: "enter",
-		value: function enter(entity) {
-			if (entity.components.velocity) {
-				entity.components.velocity.x = .8;
-			}
-		}
-	}, {
-		key: "update",
+		key: 'update',
 		value: function update(entity) {
-			// @TODO
+			var behavior = entity.components.behavior;
+
+
+			if (behavior.state == 'idle') {
+				if (entity.components.sprite) {
+					entity.sprite.alpha = .5;
+				}
+			} else {
+				if (entity.components.sprite) {
+					entity.sprite.alpha = 1;
+				}
+			}
 		}
 	}]);
 
@@ -60299,7 +56545,7 @@ var AI = function (_ECS$System) {
 
 module.exports = AI;
 
-},{"yagl-ecs":313}],332:[function(require,module,exports){
+},{"yagl-ecs":348}],368:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60310,7 +56556,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ECS = require('yagl-ecs');
+var ECS = require('yagl-ecs'),
+    MessageManager = require('../core/messagemanager');
 
 var CollisionDetection = function (_ECS$System) {
 	_inherits(CollisionDetection, _ECS$System);
@@ -60325,39 +56572,41 @@ var CollisionDetection = function (_ECS$System) {
 	}
 
 	_createClass(CollisionDetection, [{
-		key: "test",
+		key: 'test',
 		value: function test(entity) {
 			return entity.components.position;
 		}
 	}, {
-		key: "update",
+		key: 'update',
 		value: function update(entity) {
 			var position = entity.components.position;
 
-
 			var elevation = 0;
-			//let elevation = this.world.getElevationAt( position.x );
 
 			if (position.y >= elevation) {
 
-				position.y = elevation;
+				if (entity.components.collision && !entity.components.collision.bottom) {
 
-				if (entity.components.velocity) {
-					entity.components.velocity.y = 0;
-				}
+					MessageManager.trigger('collision::onGround', {
+						entity: entity
+					});
 
-				if (entity.components.collision) {
 					entity.components.collision.bottom = true;
 				}
 			} else {
 
-				if (entity.components.collision) {
+				if (entity.components.collision && entity.components.collision.bottom) {
+
+					MessageManager.trigger('collision::offGround', {
+						entity: entity
+					});
+
 					entity.components.collision.bottom = false;
 				}
 			}
 		}
 	}, {
-		key: "exit",
+		key: 'exit',
 		value: function exit(entity) {}
 	}]);
 
@@ -60366,7 +56615,7 @@ var CollisionDetection = function (_ECS$System) {
 
 module.exports = CollisionDetection;
 
-},{"yagl-ecs":313}],333:[function(require,module,exports){
+},{"../core/messagemanager":364,"yagl-ecs":348}],369:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60378,6 +56627,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ECS = require('yagl-ecs'),
+    Vector2 = require('tnt-vec2'),
     keys = require('../input');
 
 var Control = function (_ECS$System) {
@@ -60390,59 +56640,34 @@ var Control = function (_ECS$System) {
 	}
 
 	_createClass(Control, [{
-		key: 'enter',
-		value: function enter(entity) {
-			entity.acceleration = .1;
-			entity.maxVelocity = 4;
-		}
-	}, {
 		key: 'test',
 		value: function test(entity) {
-			return entity.components.input && entity.components.position && entity.components.velocity;
+			return entity.components.input && entity.components.position && entity.components.body;
 		}
 	}, {
 		key: 'update',
 		value: function update(entity) {
 			var _entity$components = entity.components;
-			var velocity = _entity$components.velocity;
 			var input = _entity$components.input;
+			var body = _entity$components.body;
 
 
-			if (keys.isDown(keys.RIGHT)) {
+			input.keyJump = keys.isDown(keys.UP_ARROW);
+			input.keyForward = keys.isDown(keys.RIGHT_ARROW);
+			input.keyBackward = keys.isDown(keys.LEFT_ARROW);
+			input.keyDown = keys.isDown(keys.DOWN_ARROW);
 
-				input.keyRight = true;
-				velocity.x = Math.max(velocity.x + entity.acceleration, entity.maxVelocity);
-				console.log('right');
-			} else {
-
-				input.keyRight = false;
+			if (input.keyForward) {
+				body.velocity = body.velocity.add(new Vector2(1, 0));
 			}
 
-			if (keys.isDown(keys.LEFT)) {
-
-				input.keyLeft = true;
-				velocity.x = Math.max(velocity.x - entity.acceleration, -entity.maxVelocity);
-			} else {
-
-				input.keyLeft = false;
+			if (input.keyBackward) {
+				body.velocity = body.velocity.add(new Vector2(-1, 0));
 			}
 
-			if (entity.components.collision) {
-
-				if (entity.components.collision.bottom && keys.isDown(keys.UP)) {
-
-					if (!entity.components.input.keyJump) {
-
-						velocity.y = velocity.y - 10;
-						input.keyJump = true;
-					}
-				} else {
-
-					input.keyJump = false;
-				}
+			if (input.keyJump && entity.components.collision && entity.components.collision.bottom) {
+				body.velocity = body.velocity.add(new Vector2(0, -5));
 			}
-
-			input.keyDown = keys.isDown(keys.DOWN);
 		}
 	}, {
 		key: 'exit',
@@ -60454,7 +56679,7 @@ var Control = function (_ECS$System) {
 
 module.exports = Control;
 
-},{"../input":330,"yagl-ecs":313}],334:[function(require,module,exports){
+},{"../input":366,"tnt-vec2":343,"yagl-ecs":348}],370:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60465,7 +56690,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ECS = require('yagl-ecs');
+var ECS = require('yagl-ecs'),
+    Vector2 = require('tnt-vec2');
 
 var Gravity = function (_ECS$System) {
 	_inherits(Gravity, _ECS$System);
@@ -60477,20 +56703,19 @@ var Gravity = function (_ECS$System) {
 	}
 
 	_createClass(Gravity, [{
-		key: "test",
+		key: 'test',
 		value: function test(entity) {
-			return entity.components.position && entity.components.velocity;
+			return entity.components.position && entity.components.body;
 		}
 	}, {
-		key: "update",
+		key: 'update',
 		value: function update(entity) {
-			var velocity = entity.components.velocity;
+			var body = entity.components.body;
 
-
-			velocity.y += .2;
+			body.velocity = body.velocity.add(new Vector2(0, .2));
 		}
 	}, {
-		key: "exit",
+		key: 'exit',
 		value: function exit(entity) {}
 	}]);
 
@@ -60499,7 +56724,59 @@ var Gravity = function (_ECS$System) {
 
 module.exports = Gravity;
 
-},{"yagl-ecs":313}],335:[function(require,module,exports){
+},{"tnt-vec2":343,"yagl-ecs":348}],371:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ECS = require('yagl-ecs'),
+    Vector2 = require('tnt-vec2');
+
+var Movement = function (_ECS$System) {
+	_inherits(Movement, _ECS$System);
+
+	function Movement() {
+		_classCallCheck(this, Movement);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Movement).apply(this, arguments));
+	}
+
+	_createClass(Movement, [{
+		key: 'test',
+		value: function test(entity) {
+			return entity.components.position && entity.components.body;
+		}
+	}, {
+		key: 'update',
+		value: function update(entity) {
+			var _entity$components = entity.components;
+			var position = _entity$components.position;
+			var body = _entity$components.body;
+
+
+			var positionVec2 = new Vector2(position.x, position.y),
+			    newPositionVec2 = positionVec2.add(body.velocity);
+
+			position.x = newPositionVec2.x;
+			position.y = newPositionVec2.y;
+		}
+	}, {
+		key: 'exit',
+		value: function exit(entity) {}
+	}]);
+
+	return Movement;
+}(ECS.System);
+
+module.exports = Movement;
+
+},{"tnt-vec2":343,"yagl-ecs":348}],372:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60519,29 +56796,26 @@ var Physics = function (_ECS$System) {
 	function Physics() {
 		_classCallCheck(this, Physics);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Physics).apply(this, arguments));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Physics).call(this));
 	}
 
 	_createClass(Physics, [{
 		key: 'test',
 		value: function test(entity) {
-			return entity.components.position && entity.components.velocity;
+			return entity.components.position && entity.components.body;
 		}
 	}, {
 		key: 'update',
 		value: function update(entity) {
 			var _entity$components = entity.components;
 			var position = _entity$components.position;
-			var velocity = _entity$components.velocity;
+			var body = _entity$components.body;
 
 
-			var positionVec2 = new Vector2(position.x, position.y),
-			    velocityVec2 = new Vector2(velocity.x, velocity.y);
-
-			var newPositionVec2 = positionVec2.add(velocityVec2);
-
-			position.x = newPositionVec2.x;
-			position.y = newPositionVec2.y;
+			if (entity.components.collision && entity.components.collision.bottom) {
+				position.y = 0;
+				body.velocity.y = 0;
+			}
 		}
 	}, {
 		key: 'exit',
@@ -60553,7 +56827,7 @@ var Physics = function (_ECS$System) {
 
 module.exports = Physics;
 
-},{"tnt-vec2":308,"yagl-ecs":313}],336:[function(require,module,exports){
+},{"tnt-vec2":343,"yagl-ecs":348}],373:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60615,8 +56889,6 @@ var Rendering = function (_ECS$System) {
 
 			if (entity.components.camera) {
 
-				entity.sprite.alpha = .5;
-
 				this.stage.position.x = -position.x + 800 / 2;
 				this.stage.position.y = -position.y + 600 / 2;
 			}
@@ -60639,7 +56911,7 @@ var Rendering = function (_ECS$System) {
 
 module.exports = Rendering;
 
-},{"pixi.js":230,"yagl-ecs":313}],337:[function(require,module,exports){
+},{"pixi.js":254,"yagl-ecs":348}],374:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60651,7 +56923,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ECS = require('yagl-ecs'),
-    noise = require('../util/noise'),
     input = require('../input'),
     World = require('../world/world');
 
@@ -60691,7 +56962,7 @@ var WorldGeneration = function (_ECS$System) {
 
 module.exports = WorldGeneration;
 
-},{"../input":330,"../util/noise":340,"../world/world":342,"yagl-ecs":313}],338:[function(require,module,exports){
+},{"../input":366,"../world/world":378,"yagl-ecs":348}],375:[function(require,module,exports){
 "use strict";
 
 var curve = {
@@ -60755,7 +57026,7 @@ var curve = {
 
 module.exports = curve;
 
-},{}],339:[function(require,module,exports){
+},{}],376:[function(require,module,exports){
 "use strict";
 
 var math = {
@@ -60766,7 +57037,7 @@ var math = {
 
 module.exports = math;
 
-},{}],340:[function(require,module,exports){
+},{}],377:[function(require,module,exports){
 'use strict';
 
 var FastSimplexNoise = require('fast-simplex-noise'),
@@ -60929,46 +57200,7 @@ var noise = {
 
 module.exports = noise;
 
-},{"../data/biomes.json":329,"./curve":338,"fast-simplex-noise":89,"seedrandom":279}],341:[function(require,module,exports){
-"use strict";
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var noise = require('../util/noise'),
-    biomes = require('../data/biomes.json'),
-    PIXI = require('pixi.js');
-
-var Chunk = function () {
-	function Chunk(world, index) {
-		_classCallCheck(this, Chunk);
-
-		this.world = world;
-		this.index = index;
-	}
-
-	_createClass(Chunk, [{
-		key: 'refresh',
-		value: function refresh() {
-			// load the chunk
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-
-			// render the chunk
-
-			this.world.graphics.beginFill(0xf09222).drawCircle(this.index * this.world.chunkWidth, 50, 10).endFill();
-		}
-	}]);
-
-	return Chunk;
-}();
-
-module.exports = Chunk;
-
-},{"../data/biomes.json":329,"../util/noise":340,"pixi.js":230}],342:[function(require,module,exports){
+},{"../data/biomes.json":365,"./curve":375,"fast-simplex-noise":87,"seedrandom":325}],378:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -60976,8 +57208,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var PIXI = require('pixi.js'),
-    noise = require('../util/noise'),
-    Chunk = require('./chunk');
+    noise = require('../util/noise');
 
 var World = function () {
 	function World(seed, stage, chunkCount, altitude) {
@@ -60993,6 +57224,7 @@ var World = function () {
 		this.stageHeight = 600;
 
 		this.chunkWidth = this.stageWidth / (this.chunkCount - 1);
+		//this.offset = null;
 
 		this.setup();
 	}
@@ -61001,103 +57233,133 @@ var World = function () {
 		key: 'setup',
 		value: function setup() {
 
-			this.graphics = new PIXI.Graphics();
-			this.devLayer = new PIXI.Graphics();
-
-			// Create the terrain
-			this.water = new PIXI.Graphics();
-			this.water.alpha = .98;
-
 			this.terrain = new PIXI.Graphics();
 			this.points = [];
 
 			this.stage.addChild(this.terrain);
-			this.stage.addChild(this.water);
-			this.stage.addChild(this.devLayer);
-			this.stage.addChild(this.graphics);
-
-			// this.chunks = [];
-			//
-			// for( let i = 0; i <= this.chunkCount; i++ )
-			// {
-			// 	// @TODO how far will we generate the terrain?
-			// 	this.chunks.push( new Chunk( this, i ) );
-			// }
 		}
 	}, {
 		key: 'getElevationAt',
 		value: function getElevationAt(x) {
-
-			return this.stageHeight - noise.getElevation(x, 1) * this.altitude;
+			return -noise.getElevation(x, 1) * this.altitude;
 		}
 	}, {
 		key: 'render',
 		value: function render(x, y) {
 
-			var pos = {
-				x: x,
-				y: y
-			};
-
-			var offset = Math.floor(pos.x / this.chunkWidth);
-			//let offset = pos.x;
-
-			this.graphics.clear();
 			this.terrain.clear();
-			this.water.clear();
-			this.devLayer.clear();
+
+			this.generate(x, y);
+
+			this.terrain.beginFill(0x2c2f31).drawPolygon(this.points).endFill();
+		}
+	}, {
+		key: 'generate',
+		value: function generate(x, y) {
+
+			this.points = [];
+			this.points.push(0);
+			this.points.push(this.getElevationAt(0));
+
+			for (var i = 0; i < 10; i++) {
+				this.points.push(i * 80);
+				this.points.push(this.getElevationAt(i));
+			}
+
+			this.points.push(800);
+			this.points.push(this.getElevationAt(10));
+
+			this.points.push(800);
+			this.points.push(0);
+
+			this.points.push(0);
+			this.points.push(0);
+
+			/*
+   this.points = [
+   	x,
+   	this.stageHeight // bottom left
+   ];
+   	for( let i = 0; i <= this.chunkCount; i++ ) {
+   		let pointX = screenX + i * this.chunkWidth;
+   		this.points.push( pointX );
+   	this.points.push( this.getElevationAt( pointX ) );
+   }
+   */
+			/*
+   for( let i = 0; i <= this.chunkCount; i++ )
+   {
+   	let x = i * this.chunkWidth + xRest,
+   		y = this.getElevationAt( i + this.offset )
+   	;
+   		this.points.push( x );
+   	this.points.push( y );
+   }
+   */
+
+			/*
+   this.points.push( x + this.stageWidth ); // bottom right
+   this.points.push( this.stageHeight );
+   */
+
+			//this.graphics.clear();
+			//this.water.clear();
+			//this.devLayer.clear();
 
 			// draw moisture (dev)
 
-			for (var i = 0; i <= this.chunkCount * 2; i++) {
-				var _x = i * this.chunkWidth;
-				var _y = this.stageHeight - noise.getMoisture(i + offset, 1) * this.altitude;
-
-				this.devLayer.beginFill(0xF14000).drawCircle(offset * this.chunkWidth + _x - this.stageWidth / 2, _y, 5).endFill();
-			}
+			/*
+   for( let i = 0; i <= this.chunkCount * 2; i++ )
+   {
+   	let x = i * this.chunkWidth;
+   	let y = this.stageHeight - noise.getMoisture( i + offset, 1 ) * this.altitude;
+   		this.devLayer
+   		.beginFill( 0xF14000 )
+   		.drawCircle( offset * this.chunkWidth + x, y, 5 )
+   		.endFill()
+   	;
+   }
+   */
 
 			// pois
 
-			for (var _i = 0; _i <= this.chunkCount; _i++) {
-				var _x2 = _i * this.chunkWidth;
-				var _y2 = this.stageHeight - noise.getElevation(_i + offset, 1) * this.altitude;
-
-				if (noise.getPoi(_i + offset, 1)) {
-
-					this.graphics.beginFill(0xEA00FF).drawCircle(offset * this.chunkWidth + _x2 - this.stageWidth / 2, _y2, 25).endFill();
-				}
-			}
-
+			/*
+   for( let i = 0; i <= this.chunkCount; i++ )
+   {
+   	let x = i * this.chunkWidth;
+   	let y = this.stageHeight - noise.getElevation( i + offset, 1 ) * this.altitude;
+   		if( noise.getPoi( i + offset, 1 ) ) {
+   			this.graphics
+   			.beginFill( 0xEA00FF )
+   			.drawCircle( offset * this.chunkWidth + x, y, 25 )
+   			.endFill()
+   		;
+   	}
+   }
+   */
 			// terrain
-
-			this.points = [0, this.stageHeight // bottom left
-			];
-
-			for (var _i2 = 0; _i2 <= this.chunkCount; _i2++) {
-				var _x3 = _i2 * this.chunkWidth;
-				var _y3 = this.getElevationAt(_i2 + offset);
-
-				this.points.push(_x3);
-				this.points.push(_y3);
-			}
-
-			this.points.push(this.chunkWidth * this.chunkCount); // bottom right
-			this.points.push(this.stageHeight);
-
-			this.terrain.beginFill(0x2c2f31).drawPolygon(this.points).endFill();
 
 			// water
 
-			this.water.beginFill(0x0d3954).drawPolygon([0, this.stageHeight, // bottom left
-			0, this.stageHeight - 0.1 * this.altitude, // top left
-			this.chunkWidth * this.chunkCount, this.stageHeight - 0.1 * this.altitude, // top right
-			this.chunkWidth * this.chunkCount, this.stageHeight // bottom right
-			]).endFill();
+			/*
+   this.water
+   	.beginFill( 0x0d3954 )
+   	.drawPolygon( [
+   		0, this.stageHeight, // bottom left
+   		0, this.stageHeight - ( 0.1 * this.altitude ), // top left
+   		this.chunkWidth * this.chunkCount, this.stageHeight - ( 0.1 * this.altitude ), // top right
+   		this.chunkWidth * this.chunkCount, this.stageHeight // bottom right
+   	] )
+   	.endFill()
+   ;
+   */
 
 			// keep the terrain in view (fixed)
 
-			this.water.position.x = offset * this.chunkWidth - this.stageWidth / 2;
-			this.terrain.position.x = offset * this.chunkWidth - this.stageWidth / 2;
+			/*
+   this.water.position.x = ( offset * this.chunkWidth - ( this.stageWidth / 2 ) );
+   this.terrain.position.x = ( offset * this.chunkWidth - ( this.stageWidth / 2 ) );
+   */
 			// this.water.position.x = ( offset - ( this.stageWidth / 2 ) );
 			// this.terrain.position.x = ( offset - ( this.stageWidth / 2 ) );
 		}
@@ -61108,4 +57370,4 @@ var World = function () {
 
 module.exports = World;
 
-},{"../util/noise":340,"./chunk":341,"pixi.js":230}]},{},[1]);
+},{"../util/noise":377,"pixi.js":254}]},{},[1]);
