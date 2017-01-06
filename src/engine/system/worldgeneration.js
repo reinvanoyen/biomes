@@ -7,7 +7,7 @@ const ECS = require('yagl-ecs'),
 
 class WorldGeneration extends ECS.System {
 
-	constructor(stage, seed) {
+	constructor(seed, stage) {
 		super();
 		this.stage = stage;
 		this.world = new World(seed, this.stage, 10, 3000);

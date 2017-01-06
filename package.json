@@ -11,7 +11,7 @@
   "dependencies": {
     "alea": "0.0.9",
     "fast-simplex-noise": "^2.2.0",
-    "pixi.js": "^4.0.0-rc3",
+    "pixi.js": "^4.3.1",
     "seedrandom": "^2.4.2",
     "simplex-noise": "^2.2.0",
     "yagl-ecs": "^1.1.0"
@@ -21,6 +21,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.1.0",
     "browserify-versionify": "^1.0.6",
+    "glslify": "^6.0.1",
     "gulp": "^3.9.1",
     "gulp-watch": "^4.3.9",
     "pixi-filters": "^1.0.6",

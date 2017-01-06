@@ -18,16 +18,16 @@ class AI extends ECS.System {
 
 			if( walkingbehavior.state == 'walkingforward' ) {
 
-				body.force = body.force.add(new Vector2( .5, 0 ));
+				body.force = body.force.add(new Vector2( .7, 0 ));
 
 			} else if( walkingbehavior.state == 'walkingbackward' ) {
 
-				body.force = body.force.add(new Vector2( -.5, 0 ));
+				body.force = body.force.add(new Vector2( -.7, 0 ));
 
 			} else {
 
-				let lerpedForce = body.force.lerp( new Vector2( 0, 0 ), .1 );
-				let lerpedVelocity = body.velocity.lerp( new Vector2( 0, 0 ), .1 );
+				let lerpedForce = body.force.lerp( new Vector2( 0, 0 ), .5 );
+				let lerpedVelocity = body.velocity.lerp( new Vector2( 0, 0 ), .5 );
 
 				body.force.x = lerpedForce.x;
 				body.velocity.x = lerpedVelocity.x;

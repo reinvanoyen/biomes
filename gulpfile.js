@@ -1,15 +1,15 @@
 "use strict";
 
-var gulp = require('gulp'),
+const gulp = require('gulp'),
 	browserify = require('browserify'),
 	watch = require('gulp-watch'),
 	source = require('vinyl-source-stream')
 ;
 
 // js
-gulp.task( 'js', function() {
+gulp.task( 'js', () => {
 
-	return browserify('init.js')
+	return browserify('src/init.js')
 		//.transform('babelify', {presets: ['es2015']})
 		.bundle()
 		.pipe(source('bundle.js'))
@@ -18,7 +18,7 @@ gulp.task( 'js', function() {
 } );
 
 // watch
-gulp.task( 'watch', function() {
+gulp.task( 'watch', () => {
 
 	gulp.watch( 'src/**/*.js', ['js'] );
 } );

@@ -11,9 +11,6 @@ class Rendering extends ECS.System {
 
 		super();
 		this.stage = stage;
-		this.filter = new filters.TiltShiftFilter();
-		this.filter.blur = 30;
-		this.stage.filters = [ this.filter, new filters.BloomFilter() ];
 	}
 
 	test(entity) {
@@ -22,7 +19,13 @@ class Rendering extends ECS.System {
 
 	enter(entity) {
 
-		entity.sprite = new PIXI.Sprite( PIXI.Texture.fromImage( entity.components.sprite.src ) );
+		let {sprite} = entity.components;
+
+		entity.sprite = new PIXI.Sprite( PIXI.Texture.fromImage( sprite.src ) );
+		entity.sprite.width = sprite.width;
+		entity.sprite.height = sprite.height;
+		entity.sprite.anchor.x = sprite.anchor.x;
+		entity.sprite.anchor.y = sprite.anchor.y;
 
 		if( entity.components.debug ) {
 

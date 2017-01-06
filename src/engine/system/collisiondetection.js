@@ -1,7 +1,7 @@
 "use strict";
 
 const ECS = require('yagl-ecs'),
-	MessageManager = require('../core/messagemanager')
+	MessageManager = require('../messaging/messagemanager')
 ;
 
 class CollisionDetection extends ECS.System {
