@@ -1,6 +1,8 @@
 "use strict";
 
-const ECS = require('yagl-ecs');
+const ECS = require('yagl-ecs'),
+	Vector2 = require('tnt-vec2')
+;
 
 class AI extends ECS.System {
 
@@ -10,15 +12,33 @@ class AI extends ECS.System {
 
 	update(entity) {
 
-		let {walkingbehavior} = entity.components;
+		let {walkingbehavior, body = false, collision = false} = entity.components;
 
-		if( walkingbehavior.state == 'idle' ) {
+		if( body && collision ) {
 
-			if( entity.components.body ) {
-				entity.components.body.velocity.x = .3;
+			if( walkingbehavior.state == 'walkingforward' ) {
+
+				body.force = body.force.add(new Vector2( .5, 0 ));
+
+			} else if( walkingbehavior.state == 'walkingbackward' ) {
+
+				body.force = body.force.add(new Vector2( -.5, 0 ));
+
+			} else {
+
+				let lerpedForce = body.force.lerp( new Vector2( 0, 0 ), .1 );
+				let lerpedVelocity = body.velocity.lerp( new Vector2( 0, 0 ), .1 );
+
+				body.force.x = lerpedForce.x;
+				body.velocity.x = lerpedVelocity.x;
+			}
+
+			if( walkingbehavior.state == 'jumping' && collision.bottom ) {
+
+				body.force = body.force.add(new Vector2( 0, -4 ));
 			}
 		}
 	}
 }
-//
+
 module.exports = AI;

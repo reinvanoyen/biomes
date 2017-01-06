@@ -1,7 +1,8 @@
 "use strict";
 
 const ECS = require('yagl-ecs'),
-	PIXI = require('pixi.js')
+	PIXI = require('pixi.js'),
+	filters = require('pixi-filters')
 ;
 
 class Rendering extends ECS.System {
@@ -10,6 +11,9 @@ class Rendering extends ECS.System {
 
 		super();
 		this.stage = stage;
+		this.filter = new filters.TiltShiftFilter();
+		this.filter.blur = 30;
+		this.stage.filters = [ this.filter, new filters.BloomFilter() ];
 	}
 
 	test(entity) {

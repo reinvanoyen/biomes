@@ -1,39 +1,40 @@
 "use strict";
 
 const ECS = require('yagl-ecs'),
-	Vector2 = require('tnt-vec2'),
 	keys = require('../input')
 ;
 
 class Control extends ECS.System {
 
 	test(entity) {
-		return entity.components.input && entity.components.position && entity.components.body;
+		return entity.components.input;
 	}
 
 	update(entity) {
 
-		let {input, body} = entity.components;
+		let {input, walkingbehavior = false} = entity.components;
 
 		input.keyJump = keys.isDown(keys.UP_ARROW);
 		input.keyForward = keys.isDown(keys.RIGHT_ARROW);
 		input.keyBackward = keys.isDown(keys.LEFT_ARROW);
 		input.keyDown = keys.isDown(keys.DOWN_ARROW);
+		input.keySpace = keys.isDown(keys.SPACE);
 
-		if( input.keyForward ) {
-			body.velocity = body.velocity.add(new Vector2( 1, 0 ));
-		}
+		if( walkingbehavior ) {
 
-		if( input.keyBackward ) {
-			body.velocity = body.velocity.add(new Vector2( -1, 0 ));
-		}
+			walkingbehavior.state = 'idle';
 
-		if(
-			input.keyJump &&
-			entity.components.collision &&
-			entity.components.collision.bottom
-		) {
-			body.velocity = body.velocity.add(new Vector2( 0, -7 ));
+			if( input.keyForward ) {
+				walkingbehavior.state = 'walkingforward';
+			}
+
+			if( input.keyBackward ) {
+				walkingbehavior.state = 'walkingbackward';
+			}
+
+			if( input.keyJump ) {
+				walkingbehavior.state = 'jumping';
+			}
 		}
 	}
 

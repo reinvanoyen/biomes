@@ -6,18 +6,11 @@ const Body = {
 	name: 'body',
 	defaults: {
 		velocity: new Vector2(0, 0),
-		acceleration: new Vector2(0, 0),
-		mass: 100
+		maxVelocity: new Vector2(15, 15),
+		force: new Vector2(0, 0),
+		bounciness: .1,
+		mass: 50
 	}
 };
-
-/*
-*     location = vec2(0, 0),
- velocity = vec2(0, 0),
- acceleration = vec2(0, 0),
- force = vec2(0, -0.1),
- mass = 100,
-
- * */
 
 module.exports = Body;

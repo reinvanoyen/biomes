@@ -9,7 +9,7 @@ const PIXI = require('pixi.js'),
 	// Systems
 	Rendering = require('./system/rendering'),
 	WorldGeneration = require('./system/worldgeneration'),
-	Gravity = require('./system/gravity'),
+	Force = require('./system/force'),
 	CollisionDetection = require('./system/collisiondetection'),
 	Physics = require('./system/physics'),
 	Movement = require('./system/movement'),
@@ -28,6 +28,7 @@ const PIXI = require('pixi.js'),
 	Debug = require('./component/debug'),
 
 	// Util
+	Vector2 = require('tnt-vec2'),
 	math = require('./util/math')
 ;
 
@@ -54,27 +55,27 @@ class App {
 
 		let worldGeneration = new WorldGeneration(this.stage, 'mldjksjkl');
 
-		this.ecs.addSystem(worldGeneration);
-		this.ecs.addSystem(new CollisionDetection(worldGeneration.world));
-		this.ecs.addSystem(new Gravity());
-		this.ecs.addSystem(new Physics(worldGeneration.world));
-		this.ecs.addSystem(new AI());
-		this.ecs.addSystem(new Control());
-		this.ecs.addSystem(new Movement());
-		this.ecs.addSystem(new Rendering(this.stage));
+		this.ecs.addSystem(worldGeneration); // 1 Generate the world
+		this.ecs.addSystem(new CollisionDetection(worldGeneration.world)); // 2 Check if there's collision
+		this.ecs.addSystem(new Physics(worldGeneration.world)); // 3 Based on collision, apply physics reactions
+		this.ecs.addSystem(new Control()); // 4 Get player input
+		this.ecs.addSystem(new AI()); // 5 Based on player input, change body vectors
+		this.ecs.addSystem(new Force()); // 6 Apply forces
+		this.ecs.addSystem(new Movement()); // 7 Move
+		this.ecs.addSystem(new Rendering(this.stage)); // 8 Render
 
-		this.spawnPlayer(0, -1000);
+		this.spawnPlayer(500, 0);
 
-		for( let i = 0; i < 5000; i++ ) {
-			this.spawnNpc(math.randBetween(0, 100000), math.randBetween(0, -1000));
+		for( let i = 0; i < 100; i++ ) {
+			this.spawnNpc(i, math.randBetween(0, 1000), 0);
 		}
 
 		this.start();
 	}
 
-	spawnNpc(x=0, y=0) {
+	spawnNpc(id, x=0, y=0) {
 
-		let npc = new ECS.Entity('npc', [
+		let npc = new ECS.Entity(id, [
 			Sprite,
 			Position,
 			Body,
@@ -82,8 +83,30 @@ class App {
 			Stats,
 			WalkingBehavior
 		]);
-		npc.components.body.acceleration.x = 2;
+
 		npc.updateComponent('position', { x: x, y: y });
+
+		npc.updateComponent('body', {
+			mass: math.randBetween(10, 100),
+			maxVelocity: new Vector2(math.randBetween(1, 15), 15),
+			bounciness: math.randFloatBetween(0, .5)
+		});
+
+		let rand = math.randBetween(1, 3);
+		if( rand == 1 ) {
+			npc.updateComponent('walkingbehavior', { state: 'walkingforward' });
+		} else if ( rand == 2 ) {
+			npc.updateComponent('walkingbehavior', { state: 'walkingbackward' });
+		} else if ( rand == 3 ) {
+			npc.updateComponent('walkingbehavior', { state: 'jumping' });
+		}
+
+		rand = math.randBetween(1, 3);
+		if( rand == 3 ) {
+			npc.updateComponent('sprite', {
+				src: 'assets/textures/01.png'
+			});
+		}
 
 		this.ecs.addEntity(npc);
 	}
@@ -96,6 +119,7 @@ class App {
 			Body,
 			Collision,
 			Stats,
+			WalkingBehavior,
 
 			Input,
 			Camera

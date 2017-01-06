@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 gulp.task( 'js', function() {
 
 	return browserify('init.js')
-		.transform('babelify', {presets: ['es2015']})
+		//.transform('babelify', {presets: ['es2015']})
 		.bundle()
 		.pipe(source('bundle.js'))
 		.pipe(gulp.dest('build/js'))

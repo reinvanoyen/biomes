@@ -59,15 +59,15 @@ class World {
 		this.points.push( 0 );
 		this.points.push( this.getElevationAt( 0 ) );
 
-		for( let i = 0; i < 10; i++ ) {
+		for( let i = 0; i < 1000; i++ ) {
 			this.points.push( i * 80 );
 			this.points.push( this.getElevationAt( i ) );
 		}
 
-		this.points.push( 800 );
-		this.points.push( this.getElevationAt( 10 ) );
+		this.points.push( 80000 );
+		this.points.push( this.getElevationAt( 1000 ) );
 
-		this.points.push( 800 );
+		this.points.push( 80000 );
 		this.points.push( 0 );
 
 		this.points.push( 0 );

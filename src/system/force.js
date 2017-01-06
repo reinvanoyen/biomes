@@ -4,7 +4,7 @@ const ECS = require('yagl-ecs'),
 	Vector2 = require('tnt-vec2')
 ;
 
-class Gravity extends ECS.System {
+class Force extends ECS.System {
 
 	test(entity) {
 		return entity.components.position && entity.components.body;
@@ -13,10 +13,10 @@ class Gravity extends ECS.System {
 	update(entity) {
 
 		let {body} = entity.components;
-		body.velocity = body.velocity.add(new Vector2(0, .3));
+		body.force = body.force.add(new Vector2(0, .2));
 	}
 
 	exit(entity) {}
 }
 
-module.exports = Gravity;
+module.exports = Force;

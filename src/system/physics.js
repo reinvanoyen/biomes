@@ -1,8 +1,6 @@
 "use strict";
 
-const ECS = require('yagl-ecs'),
-	Vector2 = require('tnt-vec2')
-;
+const ECS = require('yagl-ecs');
 
 class Physics extends ECS.System {
 
@@ -13,16 +11,21 @@ class Physics extends ECS.System {
 	}
 
 	test(entity) {
-		return entity.components.position && entity.components.body;
+		return entity.components.position && entity.components.body && entity.components.collision;
 	}
 
 	update(entity) {
 
-		let {position, body} = entity.components;
+		let {position, collision, body} = entity.components;
 
-		if( entity.components.collision && entity.components.collision.bottom ) {
+		if( collision.bottom ) {
+
 			position.y = this.world.getWorldElevation(position.x);
-			body.velocity.y = 0;
+			body.force.y = 0;
+			body.velocity.y = -body.velocity.y * body.bounciness;
+
+			// @TODO what we should do here is reflect the velocity vector in the normal of the surface the ball has collided with.
+			// @TODO http://www.3dkingdoms.com/weekly/weekly.php?a=2
 		}
 	}
 
