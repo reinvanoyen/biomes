@@ -60113,10 +60113,14 @@ const CoreEngine = require('../engine/core-engine'),
 	CollisionDetection = require('../engine/system/collisiondetection'),
 	Physics = require('../engine/system/physics'),
 	Control = require('../engine/system/control'),
-	AI = require('../engine/system/ai'),
+	Behavior = require('../engine/system/behavior'),
 	Force = require('../engine/system/force'),
 	Movement = require('../engine/system/movement'),
-	Rendering = require('../engine/system/rendering')
+	Rendering = require('../engine/system/rendering'),
+
+	NPC = require('./assemblage/npc'),
+	Player = require('./assemblage/player'),
+	Berry = require('./assemblage/berry')
 ;
 
 class Application {
@@ -60124,31 +60128,231 @@ class Application {
 	constructor() {
 
 		let engine = new CoreEngine();
-
-		let worldGeneration = new WorldGeneration('q6r54tgzqsa', engine.stage);
+		let worldGeneration = new WorldGeneration('ygdsijhhs44451554sd54', engine.stage);
 
 		engine.addSystems([
 			worldGeneration, // 1 Generate the world
 			new CollisionDetection(worldGeneration.world), // 2 Check if there's collision
 			new Physics(worldGeneration.world), // 3 Based on collision, apply physics reactions
 			new Control(), // 4 Get player input
-			new AI(), // 5 Based on player input, change body vectors
+			new Behavior(), // 5 Based on player input, change body vectors
 			new Force(), // 6 Apply forces
 			new Movement(), // 7 Move
-			new Rendering(engine.stage) // 8 Render
+			new Rendering(engine.stage, 1000, 750) // 8 Render
 		]);
+
+		engine.ecs.addEntity(new NPC());
+		engine.ecs.addEntity(new Player());
+
+		for( let i = 0; i < 5000; i++ ) {
+			engine.ecs.addEntity(new Berry());
+		}
 
 		engine.start();
 	}
 }
 
 module.exports = Application;
-},{"../engine/core-engine":326,"../engine/system/ai":330,"../engine/system/collisiondetection":331,"../engine/system/control":332,"../engine/system/force":333,"../engine/system/movement":334,"../engine/system/physics":335,"../engine/system/rendering":336,"../engine/system/worldgeneration":337}],326:[function(require,module,exports){
+},{"../engine/core-engine":336,"../engine/system/behavior":340,"../engine/system/collisiondetection":341,"../engine/system/control":342,"../engine/system/force":343,"../engine/system/movement":344,"../engine/system/physics":345,"../engine/system/rendering":346,"../engine/system/worldgeneration":347,"./assemblage/berry":326,"./assemblage/npc":327,"./assemblage/player":328}],326:[function(require,module,exports){
+"use strict";
+
+const ECS = require('yagl-ecs'),
+	Sprite = require('../../engine/component/sprite'),
+	Position = require('../../engine/component/position'),
+	Collision = require('../../engine/component/collision'),
+	Body = require('../../engine/component/body'),
+	math = require('../../engine/util/math'),
+	Vector2 = require('tnt-vec2')
+;
+
+class Berry extends ECS.Entity {
+
+	constructor() {
+
+		super( 'berry', [
+			Sprite,
+			Position,
+			Body,
+			Collision
+		] );
+
+		this.updateComponent('body', {
+			mass: math.randBetween( 1, 1000 ),
+			bounciness: math.randFloatBetween( 0, 1 )
+		});
+
+		this.updateComponent('sprite', {
+			src: 'assets/textures/01.jpg',
+			width: 20,
+			height: 20
+		});
+
+		this.updateComponent('position', {value: new Vector2(math.randFloatBetween(-50000, 50000), math.randBetween(0, -1000) )});
+	}
+}
+
+module.exports = Berry;
+},{"../../engine/component/body":329,"../../engine/component/collision":331,"../../engine/component/position":333,"../../engine/component/sprite":334,"../../engine/util/math":349,"tnt-vec2":314,"yagl-ecs":319}],327:[function(require,module,exports){
+"use strict";
+
+const ECS = require('yagl-ecs'),
+	Sprite = require('../../engine/component/sprite'),
+	Position = require('../../engine/component/position'),
+	Collision = require('../../engine/component/collision'),
+	Body = require('../../engine/component/body'),
+	WalkingBehavior = require('../../engine/component/walkingbehavior')
+;
+
+class NPC extends ECS.Entity {
+
+	constructor() {
+
+		super( 'npc', [
+			Sprite,
+			Position,
+			Body,
+			Collision,
+			WalkingBehavior
+		] );
+	}
+}
+
+module.exports = NPC;
+},{"../../engine/component/body":329,"../../engine/component/collision":331,"../../engine/component/position":333,"../../engine/component/sprite":334,"../../engine/component/walkingbehavior":335,"yagl-ecs":319}],328:[function(require,module,exports){
+"use strict";
+
+const ECS = require('yagl-ecs'),
+	Sprite = require('../../engine/component/sprite'),
+	Position = require('../../engine/component/position'),
+	Collision = require('../../engine/component/collision'),
+	Body = require('../../engine/component/body'),
+	Camera = require('../../engine/component/camera'),
+	WalkingBehavior = require('../../engine/component/walkingbehavior'),
+	Input = require('../../engine/component/input')
+;
+
+class Player extends ECS.Entity {
+
+	constructor() {
+
+		super( 'player', [
+			Sprite,
+			Position,
+			Camera,
+			Body,
+			Collision,
+			WalkingBehavior,
+			Input
+		] );
+	}
+}
+
+module.exports = Player;
+},{"../../engine/component/body":329,"../../engine/component/camera":330,"../../engine/component/collision":331,"../../engine/component/input":332,"../../engine/component/position":333,"../../engine/component/sprite":334,"../../engine/component/walkingbehavior":335,"yagl-ecs":319}],329:[function(require,module,exports){
+"use strict";
+
+const Vector2 = require('tnt-vec2');
+
+const Body = {
+	name: 'body',
+	defaults: {
+		velocity: new Vector2(0, 0),
+		maxVelocity: new Vector2(10, 15),
+		force: new Vector2(0, 0),
+		bounciness: 0,
+		mass: 50
+	}
+};
+
+module.exports = Body;
+},{"tnt-vec2":314}],330:[function(require,module,exports){
+"use strict";
+
+const Camera = {
+	name: 'camera',
+	defaults: {}
+};
+
+module.exports = Camera;
+},{}],331:[function(require,module,exports){
+"use strict";
+
+const Collision = {
+	name: 'collision',
+	defaults: {
+		bottom: false
+	}
+};
+
+module.exports = Collision;
+},{}],332:[function(require,module,exports){
+"use strict";
+
+const Input = {
+	name: 'input',
+	defaults: {
+		keyJump: false,
+		keyForward: false,
+		keyBackward: false,
+		keyDown: false
+	}
+};
+
+module.exports = Input;
+},{}],333:[function(require,module,exports){
+"use strict";
+
+const Vector2 = require('tnt-vec2');
+
+const Position = {
+	name: 'position',
+	defaults: {
+		value: new Vector2(0, 0)
+	}
+};
+
+module.exports = Position;
+},{"tnt-vec2":314}],334:[function(require,module,exports){
+"use strict";
+
+const Vector2 = require('tnt-vec2');
+
+const Sprite = {
+	name: 'sprite',
+	defaults: {
+		src: 'assets/textures/player.png',
+		sprite: null,
+		width: 78,
+		height: 196,
+		anchor: new Vector2( .5, 1 )
+	}
+};
+
+module.exports = Sprite;
+},{"tnt-vec2":314}],335:[function(require,module,exports){
+"use strict";
+
+const WalkingBehavior = {
+	name: 'walkingbehavior',
+	defaults: {
+		state: 'idle'
+	}
+};
+
+module.exports = WalkingBehavior;
+},{}],336:[function(require,module,exports){
 "use strict";
 
 const PIXI = require('pixi.js'),
 	ECS = require('yagl-ecs'),
-	MessageManager = require('./messaging/messagemanager')
+	MessageManager = require('./messaging/messagemanager'),
+	Position = require('./component/position'),
+	Sprite = require('./component/sprite'),
+	Camera = require('./component/camera'),
+	Input = require('./component/input'),
+	WalkingBehavior = require('./component/walkingbehavior'),
+	Collision = require('./component/collision'),
+	Body = require('./component/body')
 ;
 
 class CoreEngine {
@@ -60156,8 +60360,8 @@ class CoreEngine {
 	constructor() {
 
 		// install renderer // @TODO move to rendering system
-		this.renderer = new PIXI.WebGLRenderer(800, 600);
-		this.renderer.backgroundColor = 0x605050;
+		this.renderer = new PIXI.WebGLRenderer(1000, 750);
+		this.renderer.backgroundColor = 0x999999;
 		document.body.appendChild(this.renderer.view);
 
 		// install stage
@@ -60179,6 +60383,7 @@ class CoreEngine {
 	}
 
 	start() {
+
 		this.ticker.start();
 		this.ticker.add(time => {
 			MessageManager.process_queue();
@@ -60189,7 +60394,7 @@ class CoreEngine {
 }
 
 module.exports = CoreEngine;
-},{"./messaging/messagemanager":329,"pixi.js":233,"yagl-ecs":319}],327:[function(require,module,exports){
+},{"./component/body":329,"./component/camera":330,"./component/collision":331,"./component/input":332,"./component/position":333,"./component/sprite":334,"./component/walkingbehavior":335,"./messaging/messagemanager":339,"pixi.js":233,"yagl-ecs":319}],337:[function(require,module,exports){
 module.exports={
   "water": {
     "color": "0x0c78bb"
@@ -60237,7 +60442,7 @@ module.exports={
     "color": "0x00bf0d"
   }
 }
-},{}],328:[function(require,module,exports){
+},{}],338:[function(require,module,exports){
 "use strict";
 
 const input = {
@@ -60267,7 +60472,7 @@ window.addEventListener('keyup', function(event) { input.onKeyup(event); }, fals
 window.addEventListener('keydown', function(event) { input.onKeydown(event); }, false);
 
 module.exports = input;
-},{}],329:[function(require,module,exports){
+},{}],339:[function(require,module,exports){
 "use strict";
 
 class MessageManager {
@@ -60314,14 +60519,14 @@ class MessageManager {
 }
 
 module.exports = MessageManager;
-},{}],330:[function(require,module,exports){
+},{}],340:[function(require,module,exports){
 "use strict";
 
 const ECS = require('yagl-ecs'),
 	Vector2 = require('tnt-vec2')
 ;
 
-class AI extends ECS.System {
+class Behavior extends ECS.System {
 
 	test(entity) {
 		return entity.components.walkingbehavior;
@@ -60351,15 +60556,14 @@ class AI extends ECS.System {
 			}
 
 			if( walkingbehavior.state == 'jumping' && collision.bottom ) {
-
-				body.force = body.force.add(new Vector2( 0, -4 ));
+				body.force = body.force.add(new Vector2( 0, -5 ));
 			}
 		}
 	}
 }
 
-module.exports = AI;
-},{"tnt-vec2":314,"yagl-ecs":319}],331:[function(require,module,exports){
+module.exports = Behavior;
+},{"tnt-vec2":314,"yagl-ecs":319}],341:[function(require,module,exports){
 "use strict";
 
 const ECS = require('yagl-ecs'),
@@ -60381,9 +60585,9 @@ class CollisionDetection extends ECS.System {
 	update(entity) {
 
 		let {position} = entity.components;
-		let elevation = this.world.getWorldElevation(position.x);
+		let elevation = this.world.getWorldElevation(position.value.x);
 
-		if( position.y >= elevation ) {
+		if( position.value.y >= elevation ) {
 
 			if(entity.components.collision && ! entity.components.collision.bottom) {
 
@@ -60411,7 +60615,7 @@ class CollisionDetection extends ECS.System {
 }
 
 module.exports = CollisionDetection;
-},{"../messaging/messagemanager":329,"yagl-ecs":319}],332:[function(require,module,exports){
+},{"../messaging/messagemanager":339,"yagl-ecs":319}],342:[function(require,module,exports){
 "use strict";
 
 const ECS = require('yagl-ecs'),
@@ -60456,7 +60660,7 @@ class Control extends ECS.System {
 }
 
 module.exports = Control;
-},{"../input":328,"yagl-ecs":319}],333:[function(require,module,exports){
+},{"../input":338,"yagl-ecs":319}],343:[function(require,module,exports){
 "use strict";
 
 const ECS = require('yagl-ecs'),
@@ -60466,20 +60670,20 @@ const ECS = require('yagl-ecs'),
 class Force extends ECS.System {
 
 	test(entity) {
-		return entity.components.position && entity.components.body;
+		return entity.components.body;
 	}
 
 	update(entity) {
 
 		let {body} = entity.components;
-		body.force = body.force.add(new Vector2(0, .2));
+		body.force = body.force.add(new Vector2(0, .6));
 	}
 
 	exit(entity) {}
 }
 
 module.exports = Force;
-},{"tnt-vec2":314,"yagl-ecs":319}],334:[function(require,module,exports){
+},{"tnt-vec2":314,"yagl-ecs":319}],344:[function(require,module,exports){
 "use strict";
 
 const ECS = require('yagl-ecs'),
@@ -60496,7 +60700,7 @@ class Movement extends ECS.System {
 	update(entity) {
 
 		let {position, body} = entity.components;
-		let positionVec2 = new Vector2(position.x, position.y);
+
 		let acceleration = body.force.div(body.mass / 10);
 
 		body.velocity = math.vector2Clamp(
@@ -60505,17 +60709,14 @@ class Movement extends ECS.System {
 			new Vector2( body.maxVelocity.x, body.maxVelocity.y )
 		);
 
-		let newPositionVec2 = positionVec2.add(body.velocity);
-
-		position.x = newPositionVec2.x;
-		position.y = newPositionVec2.y;
+		position.value = position.value.add(body.velocity);
 	}
 
 	exit(entity) {}
 }
 
 module.exports = Movement;
-},{"../util/math":339,"tnt-vec2":314,"yagl-ecs":319}],335:[function(require,module,exports){
+},{"../util/math":349,"tnt-vec2":314,"yagl-ecs":319}],345:[function(require,module,exports){
 "use strict";
 
 const ECS = require('yagl-ecs');
@@ -60538,7 +60739,7 @@ class Physics extends ECS.System {
 
 		if( collision.bottom ) {
 
-			position.y = this.world.getWorldElevation(position.x);
+			position.value.y = this.world.getWorldElevation(position.value.x);
 			body.force.y = 0;
 			body.velocity.y = -body.velocity.y * body.bounciness;
 
@@ -60551,7 +60752,7 @@ class Physics extends ECS.System {
 }
 
 module.exports = Physics;
-},{"yagl-ecs":319}],336:[function(require,module,exports){
+},{"yagl-ecs":319}],346:[function(require,module,exports){
 "use strict";
 
 const ECS = require('yagl-ecs'),
@@ -60561,10 +60762,11 @@ const ECS = require('yagl-ecs'),
 
 class Rendering extends ECS.System {
 
-	constructor(stage) {
-
+	constructor(stage, width, height) {
 		super();
 		this.stage = stage;
+		this.width = width;
+		this.height = height;
 	}
 
 	test(entity) {
@@ -60597,24 +60799,24 @@ class Rendering extends ECS.System {
 	}
 
 	update(entity) {
-		
+
 		let {position} = entity.components;
 
-		entity.sprite.position.x = position.x;
-		entity.sprite.position.y = position.y;
+		entity.sprite.position.x = position.value.x;
+		entity.sprite.position.y = position.value.y;
 
 		if( entity.components.camera ) {
 
-			this.stage.position.x = -position.x + ( 800 / 2 );
-			this.stage.position.y = -position.y + ( 600 / 2 );
+			this.stage.position.x = -position.value.x + ( this.width / 2 );
+			this.stage.position.y = -position.value.y + ( this.height / 2 );
 		}
 
 		if( entity.components.debug ) {
 
-			entity.debugText.text = 'x: ' + parseInt(position.x) + ', y: ' + parseInt(position.y);
+			entity.debugText.text = 'x: ' + parseInt(position.value.x) + ', y: ' + parseInt(position.value.y);
 
-			entity.debugText.position.x = position.x;
-			entity.debugText.position.y = position.y;
+			entity.debugText.position.x = position.value.x;
+			entity.debugText.position.y = position.value.y;
 		}
 	}
 
@@ -60622,7 +60824,7 @@ class Rendering extends ECS.System {
 }
 
 module.exports = Rendering;
-},{"pixi-filters":109,"pixi.js":233,"yagl-ecs":319}],337:[function(require,module,exports){
+},{"pixi-filters":109,"pixi.js":233,"yagl-ecs":319}],347:[function(require,module,exports){
 "use strict";
 
 const ECS = require('yagl-ecs'),
@@ -60635,7 +60837,7 @@ class WorldGeneration extends ECS.System {
 	constructor(seed, stage) {
 		super();
 		this.stage = stage;
-		this.world = new World(seed, this.stage, 10, 3000);
+		this.world = new World(seed, this.stage);
 	}
 
 	test(entity) {
@@ -60645,15 +60847,14 @@ class WorldGeneration extends ECS.System {
 	update(entity) {
 
 		let {position} = entity.components;
-
-		this.world.render(position.x, position.y);
+		this.world.render(position.value);
 	}
 
 	exit(entity) {}
 }
 
 module.exports = WorldGeneration;
-},{"../input":328,"../world/world":341,"yagl-ecs":319}],338:[function(require,module,exports){
+},{"../input":338,"../world/world":351,"yagl-ecs":319}],348:[function(require,module,exports){
 "use strict";
 
 const curve = {
@@ -60690,7 +60891,7 @@ const curve = {
 };
 
 module.exports = curve;
-},{}],339:[function(require,module,exports){
+},{}],349:[function(require,module,exports){
 "use strict";
 
 const Vector2 = require('tnt-vec2');
@@ -60714,7 +60915,7 @@ const math = {
 };
 
 module.exports = math;
-},{"tnt-vec2":314}],340:[function(require,module,exports){
+},{"tnt-vec2":314}],350:[function(require,module,exports){
 const FastSimplexNoise = require('fast-simplex-noise'),
 	seedrandom = require('seedrandom'),
 	curve = require('./curve'),
@@ -60875,7 +61076,7 @@ const noise = {
 };
 
 module.exports = noise;
-},{"../data/biomes.json":327,"./curve":338,"fast-simplex-noise":85,"seedrandom":296}],341:[function(require,module,exports){
+},{"../data/biomes.json":337,"./curve":348,"fast-simplex-noise":85,"seedrandom":296}],351:[function(require,module,exports){
 "use strict";
 
 const PIXI = require('pixi.js'),
@@ -60884,18 +61085,17 @@ const PIXI = require('pixi.js'),
 
 class World {
 
-	constructor( seed, stage, chunkCount, altitude ) {
+	constructor(seed, stage) {
 
 		noise.setSeed( seed );
 
 		this.stage = stage;
-		this.chunkCount = chunkCount;
-		this.altitude = altitude;
 
-		this.stageWidth = 800;
-		this.stageHeight = 600;
+		this.tileSize = 80;
+		this.generateTileCount = 20;
 
-		this.chunkWidth = this.stageWidth / ( this.chunkCount - 1 );
+		this.currentTile = 0;
+		this.points = [];
 
 		this.setup();
 	}
@@ -60903,25 +61103,29 @@ class World {
 	setup() {
 
 		this.terrain = new PIXI.Graphics();
-		this.points = [];
-
+		this.generate();
 		this.stage.addChild( this.terrain );
 	}
 
-	getWorldElevation( x ) {
-		x = x / 80;
+	getWorldElevation(x) {
+		x = x / this.tileSize;
 		return this.getElevationAt(x);
 	}
 
-	getElevationAt( x ) {
-		return -noise.getElevation( x, 1 ) * this.altitude;
+	getElevationAt(x) {
+		return -noise.getElevation( x, 1 ) * 3000;
 	}
 
-	render( x, y ) {
+	render(position) {
 
 		this.terrain.clear();
 
-		this.generate(x, y);
+		let currentTile = Math.floor(position.x / this.tileSize);
+
+		if( this.currentTile != currentTile ) {
+			this.generate();
+			this.currentTile = currentTile;
+		}
 
 		this.terrain
 			.beginFill( 0x2c2f31 )
@@ -60930,33 +61134,37 @@ class World {
 		;
 	}
 
-	generate( x, y ) {
+	generate() {
+
+		let startTile = this.currentTile - this.generateTileCount / 2,
+			endTile = this.currentTile + this.generateTileCount / 2
+		;
 
 		this.points = [];
-		this.points.push( 0 );
-		this.points.push( this.getElevationAt( 0 ) );
+		this.points.push(startTile * this.tileSize);
+		this.points.push(this.getElevationAt(startTile));
 
-		for( let i = 0; i < 1000; i++ ) {
-			this.points.push( i * 80 );
-			this.points.push( this.getElevationAt( i ) );
+		for (let i = startTile; i < endTile; i++) {
+			this.points.push(i * this.tileSize);
+			this.points.push(this.getElevationAt(i));
 		}
 
-		this.points.push( 80000 );
-		this.points.push( this.getElevationAt( 1000 ) );
+		this.points.push(endTile * this.tileSize);
+		this.points.push(this.getElevationAt(endTile));
 
-		this.points.push( 80000 );
-		this.points.push( 0 );
+		this.points.push(endTile * this.tileSize);
+		this.points.push(0);
 
-		this.points.push( 0 );
-		this.points.push( 0 );
+		this.points.push(startTile * this.tileSize);
+		this.points.push(0);
 	}
 }
 
 module.exports = World;
-},{"../util/noise":340,"pixi.js":233}],342:[function(require,module,exports){
+},{"../util/noise":350,"pixi.js":233}],352:[function(require,module,exports){
 "use strict";
 
 const Application = require('./app/app');
 
 new Application();
-},{"./app/app":325}]},{},[342]);
+},{"./app/app":325}]},{},[352]);

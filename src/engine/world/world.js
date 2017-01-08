@@ -6,18 +6,17 @@ const PIXI = require('pixi.js'),
 
 class World {
 
-	constructor( seed, stage, chunkCount, altitude ) {
+	constructor(seed, stage) {
 
 		noise.setSeed( seed );
 
 		this.stage = stage;
-		this.chunkCount = chunkCount;
-		this.altitude = altitude;
 
-		this.stageWidth = 800;
-		this.stageHeight = 600;
+		this.tileSize = 80;
+		this.generateTileCount = 20;
 
-		this.chunkWidth = this.stageWidth / ( this.chunkCount - 1 );
+		this.currentTile = 0;
+		this.points = [];
 
 		this.setup();
 	}
@@ -25,25 +24,29 @@ class World {
 	setup() {
 
 		this.terrain = new PIXI.Graphics();
-		this.points = [];
-
+		this.generate();
 		this.stage.addChild( this.terrain );
 	}
 
-	getWorldElevation( x ) {
-		x = x / 80;
+	getWorldElevation(x) {
+		x = x / this.tileSize;
 		return this.getElevationAt(x);
 	}
 
-	getElevationAt( x ) {
-		return -noise.getElevation( x, 1 ) * this.altitude;
+	getElevationAt(x) {
+		return -noise.getElevation( x, 1 ) * 3000;
 	}
 
-	render( x, y ) {
+	render(position) {
 
 		this.terrain.clear();
 
-		this.generate(x, y);
+		let currentTile = Math.floor(position.x / this.tileSize);
+
+		if( this.currentTile != currentTile ) {
+			this.generate();
+			this.currentTile = currentTile;
+		}
 
 		this.terrain
 			.beginFill( 0x2c2f31 )
@@ -52,25 +55,29 @@ class World {
 		;
 	}
 
-	generate( x, y ) {
+	generate() {
+
+		let startTile = this.currentTile - this.generateTileCount / 2,
+			endTile = this.currentTile + this.generateTileCount / 2
+		;
 
 		this.points = [];
-		this.points.push( 0 );
-		this.points.push( this.getElevationAt( 0 ) );
+		this.points.push(startTile * this.tileSize);
+		this.points.push(this.getElevationAt(startTile));
 
-		for( let i = 0; i < 1000; i++ ) {
-			this.points.push( i * 80 );
-			this.points.push( this.getElevationAt( i ) );
+		for (let i = startTile; i < endTile; i++) {
+			this.points.push(i * this.tileSize);
+			this.points.push(this.getElevationAt(i));
 		}
 
-		this.points.push( 80000 );
-		this.points.push( this.getElevationAt( 1000 ) );
+		this.points.push(endTile * this.tileSize);
+		this.points.push(this.getElevationAt(endTile));
 
-		this.points.push( 80000 );
-		this.points.push( 0 );
+		this.points.push(endTile * this.tileSize);
+		this.points.push(0);
 
-		this.points.push( 0 );
-		this.points.push( 0 );
+		this.points.push(startTile * this.tileSize);
+		this.points.push(0);
 	}
 }
 

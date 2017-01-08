@@ -4,7 +4,7 @@ const ECS = require('yagl-ecs'),
 	Vector2 = require('tnt-vec2')
 ;
 
-class AI extends ECS.System {
+class Behavior extends ECS.System {
 
 	test(entity) {
 		return entity.components.walkingbehavior;
@@ -34,11 +34,10 @@ class AI extends ECS.System {
 			}
 
 			if( walkingbehavior.state == 'jumping' && collision.bottom ) {
-
-				body.force = body.force.add(new Vector2( 0, -4 ));
+				body.force = body.force.add(new Vector2( 0, -5 ));
 			}
 		}
 	}
 }
 
-module.exports = AI;
+module.exports = Behavior;

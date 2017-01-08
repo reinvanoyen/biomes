@@ -10,7 +10,7 @@ class WorldGeneration extends ECS.System {
 	constructor(seed, stage) {
 		super();
 		this.stage = stage;
-		this.world = new World(seed, this.stage, 10, 3000);
+		this.world = new World(seed, this.stage);
 	}
 
 	test(entity) {
@@ -20,8 +20,7 @@ class WorldGeneration extends ECS.System {
 	update(entity) {
 
 		let {position} = entity.components;
-
-		this.world.render(position.x, position.y);
+		this.world.render(position.value);
 	}
 
 	exit(entity) {}

@@ -20,7 +20,7 @@ class Physics extends ECS.System {
 
 		if( collision.bottom ) {
 
-			position.y = this.world.getWorldElevation(position.x);
+			position.value.y = this.world.getWorldElevation(position.value.x);
 			body.force.y = 0;
 			body.velocity.y = -body.velocity.y * body.bounciness;
 

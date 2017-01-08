@@ -7,10 +7,11 @@ const ECS = require('yagl-ecs'),
 
 class Rendering extends ECS.System {
 
-	constructor(stage) {
-
+	constructor(stage, width, height) {
 		super();
 		this.stage = stage;
+		this.width = width;
+		this.height = height;
 	}
 
 	test(entity) {
@@ -43,24 +44,24 @@ class Rendering extends ECS.System {
 	}
 
 	update(entity) {
-		
+
 		let {position} = entity.components;
 
-		entity.sprite.position.x = position.x;
-		entity.sprite.position.y = position.y;
+		entity.sprite.position.x = position.value.x;
+		entity.sprite.position.y = position.value.y;
 
 		if( entity.components.camera ) {
 
-			this.stage.position.x = -position.x + ( 800 / 2 );
-			this.stage.position.y = -position.y + ( 600 / 2 );
+			this.stage.position.x = -position.value.x + ( this.width / 2 );
+			this.stage.position.y = -position.value.y + ( this.height / 2 );
 		}
 
 		if( entity.components.debug ) {
 
-			entity.debugText.text = 'x: ' + parseInt(position.x) + ', y: ' + parseInt(position.y);
+			entity.debugText.text = 'x: ' + parseInt(position.value.x) + ', y: ' + parseInt(position.value.y);
 
-			entity.debugText.position.x = position.x;
-			entity.debugText.position.y = position.y;
+			entity.debugText.position.x = position.value.x;
+			entity.debugText.position.y = position.value.y;
 		}
 	}
 

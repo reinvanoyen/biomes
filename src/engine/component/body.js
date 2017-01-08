@@ -6,9 +6,9 @@ const Body = {
 	name: 'body',
 	defaults: {
 		velocity: new Vector2(0, 0),
-		maxVelocity: new Vector2(5, 15),
+		maxVelocity: new Vector2(10, 15),
 		force: new Vector2(0, 0),
-		bounciness: .1,
+		bounciness: 0,
 		mass: 50
 	}
 };

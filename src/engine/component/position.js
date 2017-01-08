@@ -1,10 +1,11 @@
 "use strict";
 
+const Vector2 = require('tnt-vec2');
+
 const Position = {
 	name: 'position',
 	defaults: {
-		x: 0,
-		y: 0
+		value: new Vector2(0, 0)
 	}
 };
 

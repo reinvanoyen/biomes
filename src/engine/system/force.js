@@ -7,13 +7,13 @@ const ECS = require('yagl-ecs'),
 class Force extends ECS.System {
 
 	test(entity) {
-		return entity.components.position && entity.components.body;
+		return entity.components.body;
 	}
 
 	update(entity) {
 
 		let {body} = entity.components;
-		body.force = body.force.add(new Vector2(0, .2));
+		body.force = body.force.add(new Vector2(0, .6));
 	}
 
 	exit(entity) {}
