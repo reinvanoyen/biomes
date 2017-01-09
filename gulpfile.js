@@ -2,23 +2,33 @@
 
 const gulp = require('gulp'),
 	browserify = require('browserify'),
-	watch = require('gulp-watch'),
-	source = require('vinyl-source-stream')
+	source = require('vinyl-source-stream'),
+	buffer = require('vinyl-buffer'),
+	watchify = require('watchify'),
+	assign = require('lodash.assign'),
+	gutil = require('gutil')
 ;
 
-// js
-gulp.task( 'js', () => {
+let customOpts = {
+	entries: ['./src/init.js'],
+	debug: true
+};
 
-	return browserify('src/init.js')
-		//.transform('babelify', {presets: ['es2015']})
-		.bundle()
+let opts = assign({}, watchify.args, customOpts),
+	watch = watchify(browserify(opts))
+;
+
+gulp.task('dev', bundle);
+watch.on('update', bundle);
+watch.on('log', gutil.log);
+
+gulp.task('default', ['dev']);
+
+function bundle() {
+
+	return watch.bundle()
+		.on('error', gutil.log.bind(gutil, 'Browserify Error'))
 		.pipe(source('bundle.js'))
-		.pipe(gulp.dest('build/js'))
+		.pipe(gulp.dest('./build/js'))
 	;
-} );
-
-// watch
-gulp.task( 'watch', () => {
-
-	gulp.watch( 'src/**/*.js', ['js'] );
-} );
+}
