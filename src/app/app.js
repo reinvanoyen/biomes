@@ -9,6 +9,7 @@ const CoreEngine = require('../engine/core-engine'),
 	Force = require('../engine/system/force'),
 	Movement = require('../engine/system/movement'),
 	Rendering = require('../engine/system/rendering'),
+	AIProcessing = require('../engine/system/aiprocessing'),
 
 	NPC = require('./assemblage/npc'),
 	Player = require('./assemblage/player'),
@@ -26,6 +27,7 @@ class Application {
 			worldGeneration, // 1 Generate the world
 			new CollisionDetection(worldGeneration.world), // 2 Check if there's collision
 			new Physics(worldGeneration.world), // 3 Based on collision, apply physics reactions
+			new AIProcessing(), // @TODO assign number
 			new Control(), // 4 Get player input
 			new Behavior(), // 5 Based on player input, change body vectors
 			new Force(), // 6 Apply forces

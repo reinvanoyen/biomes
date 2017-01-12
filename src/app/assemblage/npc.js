@@ -5,7 +5,11 @@ const ECS = require('yagl-ecs'),
 	Position = require('../../engine/component/position'),
 	Collision = require('../../engine/component/collision'),
 	Body = require('../../engine/component/body'),
-	WalkingBehavior = require('../../engine/component/walkingbehavior')
+	WalkingBehavior = require('../../engine/component/walkingbehavior'),
+	Camera = require('../../engine/component/camera'),
+	AI = require('../../engine/component/ai'),
+	Vector2 = require('tnt-vec2'),
+	math = require('../../engine/util/math')
 ;
 
 class NPC extends ECS.Entity {
@@ -17,8 +21,12 @@ class NPC extends ECS.Entity {
 			Position,
 			Body,
 			Collision,
-			WalkingBehavior
+			WalkingBehavior,
+			AI,
+			Camera
 		] );
+
+		this.updateComponent('body', {maxVelocity: new Vector2(math.randBetween(5, 15), 15)})
 	}
 }
 

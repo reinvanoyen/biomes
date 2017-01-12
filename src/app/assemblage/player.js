@@ -17,7 +17,7 @@ class Player extends ECS.Entity {
 		super( 'player', [
 			Sprite,
 			Position,
-			Camera,
+			//Camera,
 			Body,
 			Collision,
 			WalkingBehavior,

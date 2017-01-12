@@ -23,6 +23,7 @@
     "seedrandom": "^2.4.2",
     "simplex-noise": "^2.2.0",
     "tnt-vec2": "0.0.2",
+    "tree-tractor": "0.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.8.0",
