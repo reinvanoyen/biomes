@@ -14,7 +14,7 @@ let customOpts = {
 	debug: true
 };
 
-let opts = assign({}, watchify.args, customOpts),
+let opts = assign({ transform: ['brfs'] }, watchify.args, customOpts),
 	watch = watchify(browserify(opts))
 ;
 

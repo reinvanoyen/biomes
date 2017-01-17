@@ -2,7 +2,9 @@
 
 const ECS = require('yagl-ecs'),
 	PIXI = require('pixi.js'),
-	filters = require('pixi-filters')
+	filters = require('pixi-filters'),
+	Ambient = require('../rendering/filter/ambient'),
+	math = require('../util/math')
 ;
 
 class Rendering extends ECS.System {
@@ -10,6 +12,8 @@ class Rendering extends ECS.System {
 	constructor(stage, width, height) {
 		super();
 		this.stage = stage;
+		this.ambient = new Ambient();
+		this.stage.filters = [ this.ambient ];
 		this.width = width;
 		this.height = height;
 	}
@@ -44,6 +48,15 @@ class Rendering extends ECS.System {
 	}
 
 	update(entity) {
+
+		// @TODO implement weather / atmospherical effects
+		let color = this.ambient.ambientColor[0];
+		color += 0.01;
+		if( color >= 1 ) {
+			color = 0;
+		}
+
+		this.ambient.ambientColor = [ color, color, color / 2, 1 ];
 
 		let {position} = entity.components;
 
