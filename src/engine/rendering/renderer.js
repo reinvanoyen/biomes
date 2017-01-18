@@ -3,16 +3,17 @@
 const ECS = require('yagl-ecs'),
 	PIXI = require('pixi.js'),
 	filters = require('pixi-filters'),
-	Ambient = require('../rendering/filter/ambient'),
-	math = require('../util/math')
+	Ambient = require('./filter/ambient'),
+	WorldTime = require('../world/world-time')
 ;
 
-class Rendering extends ECS.System {
+class Renderer extends ECS.System {
 
 	constructor(stage, width, height) {
 		super();
 		this.stage = stage;
 		this.ambient = new Ambient();
+		this.worldTime = new WorldTime();
 		this.stage.filters = [ this.ambient ];
 		this.width = width;
 		this.height = height;
@@ -29,8 +30,8 @@ class Rendering extends ECS.System {
 		entity.sprite = new PIXI.Sprite( PIXI.Texture.fromImage( sprite.src ) );
 		entity.sprite.width = sprite.width;
 		entity.sprite.height = sprite.height;
-		entity.sprite.anchor.x = sprite.anchor.x;
-		entity.sprite.anchor.y = sprite.anchor.y;
+		entity.sprite.anchor.x = sprite.anchor[0];
+		entity.sprite.anchor.y = sprite.anchor[1];
 
 		if( entity.components.debug ) {
 
@@ -47,38 +48,34 @@ class Rendering extends ECS.System {
 		this.stage.addChild( entity.sprite );
 	}
 
+	postUpdate() {
+		this.worldTime.tick();
+		this.ambient.ambientColor = this.worldTime.getDayAmbientColor();
+	}
+
 	update(entity) {
-
-		// @TODO implement weather / atmospherical effects
-		let color = this.ambient.ambientColor[0];
-		color += 0.01;
-		if( color >= 1 ) {
-			color = 0;
-		}
-
-		this.ambient.ambientColor = [ color, color, color / 2, 1 ];
 
 		let {position} = entity.components;
 
-		entity.sprite.position.x = position.value.x;
-		entity.sprite.position.y = position.value.y;
+		entity.sprite.position.x = position.value[0];
+		entity.sprite.position.y = position.value[1];
 
 		if( entity.components.camera ) {
 
-			this.stage.position.x = -position.value.x + ( this.width / 2 );
-			this.stage.position.y = -position.value.y + ( this.height / 2 );
+			this.stage.position.x = -position.value[0] + ( this.width / 2 );
+			this.stage.position.y = -position.value[1] + ( this.height / 2 );
 		}
 
 		if( entity.components.debug ) {
 
-			entity.debugText.text = 'x: ' + parseInt(position.value.x) + ', y: ' + parseInt(position.value.y);
+			entity.debugText.text = 'x: ' + parseInt(position.value[0]) + ', y: ' + parseInt(position.value[1]);
 
-			entity.debugText.position.x = position.value.x;
-			entity.debugText.position.y = position.value.y;
+			entity.debugText.position.x = position.value[0];
+			entity.debugText.position.y = position.value[1];
 		}
 	}
 
 	exit(entity) {}
 }
 
-module.exports = Rendering;
+module.exports = Renderer;

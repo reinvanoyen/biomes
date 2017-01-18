@@ -8,8 +8,11 @@ const CoreEngine = require('../engine/core-engine'),
 	Behavior = require('../engine/system/behavior'),
 	Force = require('../engine/system/force'),
 	Movement = require('../engine/system/movement'),
-	Rendering = require('../engine/system/rendering'),
 	AIProcessing = require('../engine/system/aiprocessing'),
+
+	Vector2 = require('gl-matrix').vec2,
+
+	Renderer = require('../engine/rendering/renderer'),
 
 	NPC = require('./assemblage/npc'),
 	Player = require('./assemblage/player'),
@@ -32,15 +35,18 @@ class Application {
 			new Behavior(), // 5 Based on player input, change body vectors
 			new Force(), // 6 Apply forces
 			new Movement(), // 7 Move
-			new Rendering(engine.stage, 1000, 750) // 8 Render
+			new Renderer(engine.stage, 1000, 750) // 8 Render
 		]);
 
-		engine.ecs.addEntity(new NPC());
 		engine.ecs.addEntity(new Player());
 
+		engine.ecs.addEntity(new Berry(Vector2.fromValues( 0, -1000 )));
+		engine.ecs.addEntity(new Berry(Vector2.fromValues( 50, -500 )));
+
+		/*
 		for( let i = 0; i < 5000; i++ ) {
 			engine.ecs.addEntity(new Berry());
-		}
+		}*/
 
 		engine.start();
 	}

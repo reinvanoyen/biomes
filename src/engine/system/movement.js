@@ -1,8 +1,7 @@
 "use strict";
 
 const ECS = require('yagl-ecs'),
-	Vector2 = require('tnt-vec2'),
-	math = require('../util/math')
+	Vector2 = require('gl-matrix').vec2
 ;
 
 class Movement extends ECS.System {
@@ -15,15 +14,24 @@ class Movement extends ECS.System {
 
 		let {position, body} = entity.components;
 
-		let acceleration = body.force.div(body.mass / 10);
+		let acceleration = Vector2.fromValues(0, 0);
 
-		body.velocity = math.vector2Clamp(
-			body.velocity.add(acceleration),
-			new Vector2( -body.maxVelocity.x, -body.maxVelocity.y ),
-			new Vector2( body.maxVelocity.x, body.maxVelocity.y )
-		);
+		Vector2.divide( acceleration, body.force, body.mass );
+		Vector2.add( body.velocity, body.velocity, acceleration );
 
-		position.value = position.value.add(body.velocity);
+		// Clamp velocity
+		//Vector2.min( body.velocity, body.velocity, body.maxVelocity );
+
+		/*
+		let reversedMaxVelocity = Vector2.create();
+		Vector2.negate( reversedMaxVelocity, body.maxVelocity );
+
+		Vector2.max( body.velocity, body.velocity, reversedMaxVelocity );
+		Vector2.min( body.velocity, body.velocity, body.maxVelocity );
+		*/
+
+		// Apply velocity
+		Vector2.add( position.value, position.value, body.velocity );
 	}
 
 	exit(entity) {}

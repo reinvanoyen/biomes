@@ -4,7 +4,7 @@ const PIXI = require('pixi.js'),
 	fs = require('fs')
 ;
 
-class Atmosphere extends PIXI.Filter {
+class Ambient extends PIXI.Filter {
 
 	constructor() {
 		super(
@@ -28,4 +28,4 @@ class Atmosphere extends PIXI.Filter {
 	}
 }
 
-module.exports = Atmosphere;
+module.exports = Ambient;

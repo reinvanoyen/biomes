@@ -1,6 +1,6 @@
 "use strict";
 
-const Vector2 = require('tnt-vec2');
+const Vector2 = require('gl-matrix').vec2;
 
 const Sprite = {
 	name: 'sprite',
@@ -9,7 +9,7 @@ const Sprite = {
 		sprite: null,
 		width: 78,
 		height: 196,
-		anchor: new Vector2( .5, 1 )
+		anchor: Vector2.fromValues( .5, 1 )
 	}
 };
 

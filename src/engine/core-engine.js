@@ -2,14 +2,7 @@
 
 const PIXI = require('pixi.js'),
 	ECS = require('yagl-ecs'),
-	MessageManager = require('./messaging/messagemanager'),
-	Position = require('./component/position'),
-	Sprite = require('./component/sprite'),
-	Camera = require('./component/camera'),
-	Input = require('./component/input'),
-	WalkingBehavior = require('./component/walkingbehavior'),
-	Collision = require('./component/collision'),
-	Body = require('./component/body')
+	MessageManager = require('./messaging/messagemanager')
 ;
 
 class CoreEngine {
@@ -34,14 +27,13 @@ class CoreEngine {
 	}
 
 	addSystems(systems) {
-		systems.forEach( s => {
-			this.ecs.addSystem(s);
-		} );
+		systems.forEach( s => this.ecs.addSystem( s ) );
 	}
 
 	start() {
 
 		this.ticker.start();
+
 		this.ticker.add(time => {
 			MessageManager.process_queue();
 			this.ecs.update();

@@ -41,7 +41,7 @@ class World {
 
 		this.terrain.clear();
 
-		let currentTile = Math.floor(position.x / this.tileSize);
+		let currentTile = Math.floor(position[0] / this.tileSize);
 
 		if( this.currentTile != currentTile ) {
 			this.generate();
@@ -49,7 +49,7 @@ class World {
 		}
 
 		this.terrain
-			.beginFill( 0x2c2f31 )
+			.beginFill( 0xffffff )
 			.drawPolygon( this.points )
 			.endFill()
 		;

@@ -20,7 +20,7 @@ class WorldGeneration extends ECS.System {
 	update(entity) {
 
 		let {position} = entity.components;
-		this.world.render(position.value);
+		this.world.render( position.value );
 	}
 
 	exit(entity) {}

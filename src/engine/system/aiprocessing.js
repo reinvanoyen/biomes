@@ -1,7 +1,6 @@
 "use strict";
 
 const ECS = require('yagl-ecs'),
-	Vector2 = require('tnt-vec2'),
 	tractor = require('tree-tractor'),
 	WalkForward = require('../../app/btnode/walkforward'),
 	WalkBackward = require('../../app/btnode/walkbackward'),

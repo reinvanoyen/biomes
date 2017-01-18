@@ -1,11 +1,11 @@
 "use strict";
 
-const Vector2 = require('tnt-vec2');
+const Vector2 = require('gl-matrix').vec2;
 
 const Position = {
 	name: 'position',
 	defaults: {
-		value: new Vector2(0, 0)
+		value: Vector2.fromValues(0, 0)
 	}
 };
 

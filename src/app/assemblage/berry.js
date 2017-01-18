@@ -6,12 +6,15 @@ const ECS = require('yagl-ecs'),
 	Collision = require('../../engine/component/collision'),
 	Body = require('../../engine/component/body'),
 	math = require('../../engine/util/math'),
-	Vector2 = require('tnt-vec2')
+	WalkingBehavior = require('../../engine/component/walkingbehavior'),
+	Input = require('../../engine/component/input'),
+	Camera = require('../../engine/component/camera'),
+	Vector2 = require('gl-matrix').vec2
 ;
 
 class Berry extends ECS.Entity {
 
-	constructor() {
+	constructor( vec2 ) {
 
 		super( 'berry', [
 			Sprite,
@@ -21,7 +24,6 @@ class Berry extends ECS.Entity {
 		] );
 
 		this.updateComponent('body', {
-			mass: math.randBetween( 1, 1000 ),
 			bounciness: math.randFloatBetween( 0, 1 )
 		});
 
@@ -31,7 +33,7 @@ class Berry extends ECS.Entity {
 			height: 20
 		});
 
-		this.updateComponent('position', {value: new Vector2(math.randFloatBetween(-50000, 50000), math.randBetween(0, -1000) )});
+		this.updateComponent( 'position', { value: vec2 } );
 	}
 }
 

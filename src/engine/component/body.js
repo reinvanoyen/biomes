@@ -1,15 +1,15 @@
 "use strict";
 
-const Vector2 = require('tnt-vec2');
+const Vector2 = require('gl-matrix').vec2;
 
 const Body = {
 	name: 'body',
 	defaults: {
-		velocity: new Vector2(0, 0),
-		maxVelocity: new Vector2(10, 15),
-		force: new Vector2(0, 0),
+		velocity: Vector2.fromValues(0, 0),
+		maxVelocity: Vector2.fromValues(10, 15),
+		force: Vector2.fromValues(0, 0),
 		bounciness: 0,
-		mass: 50
+		mass: Vector2.fromValues(5, 5)
 	}
 };
 

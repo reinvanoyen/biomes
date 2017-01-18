@@ -13,15 +13,16 @@ class CollisionDetection extends ECS.System {
 	}
 
 	test(entity) {
-		return entity.components.position;
+		return entity.components.position && entity.components.collision;
 	}
 
 	update(entity) {
 
 		let {position} = entity.components;
-		let elevation = this.world.getWorldElevation(position.value.x);
 
-		if( position.value.y >= elevation ) {
+		let elevation = this.world.getWorldElevation(position.value[0]);
+
+		if( position.value[1] >= elevation ) {
 
 			if(entity.components.collision && ! entity.components.collision.bottom) {
 
