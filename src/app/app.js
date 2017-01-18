@@ -10,8 +10,6 @@ const CoreEngine = require('../engine/core-engine'),
 	Movement = require('../engine/system/movement'),
 	AIProcessing = require('../engine/system/aiprocessing'),
 
-	Vector2 = require('gl-matrix').vec2,
-
 	Renderer = require('../engine/rendering/renderer'),
 
 	NPC = require('./assemblage/npc'),
@@ -38,10 +36,18 @@ class Application {
 			new Renderer(engine.stage, 1000, 750) // 8 Render
 		]);
 
-		engine.ecs.addEntity(new Player());
+		engine.ecs.addEntity(new Berry());
+		engine.ecs.addEntity(new Berry());
 
+		/*
+		engine.ecs.addEntity(new Player());
+		engine.ecs.addEntity(new NPC());
+		*/
+
+		/*
 		engine.ecs.addEntity(new Berry(Vector2.fromValues( 0, -1000 )));
 		engine.ecs.addEntity(new Berry(Vector2.fromValues( 50, -500 )));
+		*/
 
 		/*
 		for( let i = 0; i < 5000; i++ ) {

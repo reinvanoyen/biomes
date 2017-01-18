@@ -1,15 +1,16 @@
 "use strict";
 
-const Vector2 = require('gl-matrix').vec2;
+const glMatrix = require('gl-matrix');
 
 const Body = {
 	name: 'body',
 	defaults: {
-		velocity: Vector2.fromValues(0, 0),
-		maxVelocity: Vector2.fromValues(10, 15),
-		force: Vector2.fromValues(0, 0),
-		bounciness: 0,
-		mass: Vector2.fromValues(5, 5)
+		velocity: glMatrix.vec2.fromValues(0.0, 0.0),
+		maxVelocity: glMatrix.vec2.fromValues(10.0, 15.0),
+		force: glMatrix.vec2.fromValues(0.0, 0.0),
+		acceleration: glMatrix.vec2.fromValues(0, 0),
+		mass: glMatrix.vec2.fromValues(5.0, 5.0),
+		bounciness: 0
 	}
 };
 

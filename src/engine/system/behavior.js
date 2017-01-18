@@ -19,7 +19,6 @@ class Behavior extends ECS.System {
 			if( walkingbehavior.state == 'walkingforward' ) {
 
 				Vector2.add( body.force, body.force, Vector2.fromValues( .7, 0 ) );
-				//body.force = body.force.add(Vector2.fromValues( .7, 0 ));
 
 			} else if( walkingbehavior.state == 'walkingbackward' ) {
 

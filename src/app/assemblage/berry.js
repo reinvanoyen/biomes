@@ -14,7 +14,7 @@ const ECS = require('yagl-ecs'),
 
 class Berry extends ECS.Entity {
 
-	constructor( vec2 ) {
+	constructor() {
 
 		super( 'berry', [
 			Sprite,
@@ -23,9 +23,11 @@ class Berry extends ECS.Entity {
 			Collision
 		] );
 
+		/*
 		this.updateComponent('body', {
 			bounciness: math.randFloatBetween( 0, 1 )
 		});
+		*/
 
 		this.updateComponent('sprite', {
 			src: 'assets/textures/01.jpg',
@@ -33,7 +35,7 @@ class Berry extends ECS.Entity {
 			height: 20
 		});
 
-		this.updateComponent( 'position', { value: vec2 } );
+		this.updateComponent( 'position', { value: Vector2.fromValues( 0, -1000 ) } );
 	}
 }
 

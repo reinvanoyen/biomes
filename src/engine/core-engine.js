@@ -35,7 +35,7 @@ class CoreEngine {
 		this.ticker.start();
 
 		this.ticker.add(time => {
-			MessageManager.process_queue();
+			//MessageManager.process_queue();
 			this.ecs.update();
 			this.renderer.render(this.stage);
 		} );
