@@ -18,14 +18,12 @@ class Movement extends ECS.System {
 		Vector2.add( body.velocity, body.velocity, body.acceleration );
 
 		// Clamp velocity
-		//Vector2.min( body.velocity, body.velocity, body.maxVelocity );
+		Vector2.min( body.velocity, body.velocity, body.maxVelocity );
 
-		/*
-		 let reversedMaxVelocity = Vector2.create();
-		 Vector2.negate( reversedMaxVelocity, body.maxVelocity );
-		 Vector2.max( body.velocity, body.velocity, reversedMaxVelocity );
-		 Vector2.min( body.velocity, body.velocity, body.maxVelocity );
-		 */
+		let reversedMaxVelocity = Vector2.create();
+		Vector2.negate( reversedMaxVelocity, body.maxVelocity );
+		Vector2.max( body.velocity, body.velocity, reversedMaxVelocity );
+		Vector2.min( body.velocity, body.velocity, body.maxVelocity );
 
 		// Apply velocity
 		Vector2.add( position.value, position.value, body.velocity );

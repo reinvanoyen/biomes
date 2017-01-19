@@ -22,7 +22,7 @@ class Application {
 	constructor() {
 
 		let engine = new CoreEngine();
-		let worldGeneration = new WorldGeneration('ygdsijhhs44451554sd54', engine.stage);
+		let worldGeneration = new WorldGeneration('ygdsijhhs44451554sd54', engine.root);
 
 		engine.addSystems([
 			worldGeneration, // 1 Generate the world
@@ -33,27 +33,15 @@ class Application {
 			new Behavior(), // 5 Based on player input, change body vectors
 			new Force(), // 6 Apply forces
 			new Movement(), // 7 Move
-			new Renderer(engine.stage, 1000, 750) // 8 Render
+			new Renderer(engine.stage, engine.root, 1000, 750) // 8 Render
 		]);
 
-		engine.ecs.addEntity(new Berry());
-		engine.ecs.addEntity(new Berry());
 		engine.ecs.addEntity(new Player());
 
-		/*
-		engine.ecs.addEntity(new Player());
-		engine.ecs.addEntity(new NPC());
-		*/
-
-		/*
-		engine.ecs.addEntity(new Berry(Vector2.fromValues( 0, -1000 )));
-		engine.ecs.addEntity(new Berry(Vector2.fromValues( 50, -500 )));
-		*/
-
-		/*
-		for( let i = 0; i < 5000; i++ ) {
+		for( let i = 0; i < 50; i++ ) {
+			engine.ecs.addEntity(new NPC());
 			engine.ecs.addEntity(new Berry());
-		}*/
+		}
 
 		engine.start();
 	}

@@ -9,14 +9,24 @@ const ECS = require('yagl-ecs'),
 
 class Renderer extends ECS.System {
 
-	constructor(stage, width, height) {
+	constructor(stage, root, width, height) {
 		super();
 		this.stage = stage;
+		this.root = root;
 		this.ambient = new Ambient();
 		this.worldTime = new WorldTime();
 		this.stage.filters = [ this.ambient ];
 		this.width = width;
 		this.height = height;
+
+		this.clock = new PIXI.Text( '', {
+			fontSize: '13px',
+			fontFamily: 'Monospace',
+			fill : 0xf14000,
+			align : 'left'
+		} );
+
+		this.stage.addChild( this.clock );
 	}
 
 	test(entity) {
@@ -44,15 +54,17 @@ class Renderer extends ECS.System {
 				align : 'left'
 			} );
 
-			this.stage.addChild( entity.debugText );
+			this.root.addChild( entity.debugText );
 		}
 
-		this.stage.addChild( entity.sprite );
+		this.root.addChild( entity.sprite );
 	}
 
 	postUpdate() {
+
 		this.worldTime.tick();
 		this.ambient.ambientColor = this.worldTime.getDayAmbientColor();
+		this.clock.text = 'day: ' + this.worldTime.getDay() + ' hour:' + parseInt( this.worldTime.getTime() );
 	}
 
 	update(entity) {
@@ -64,8 +76,8 @@ class Renderer extends ECS.System {
 
 		if( entity.components.camera ) {
 
-			this.stage.position.x = -position.value[0] + ( this.width / 2 );
-			this.stage.position.y = -position.value[1] + ( this.height / 2 );
+			this.root.position.x = -position.value[0] + ( this.width / 2 );
+			this.root.position.y = -position.value[1] + ( this.height / 2 );
 		}
 
 		if( entity.components.debug ) {

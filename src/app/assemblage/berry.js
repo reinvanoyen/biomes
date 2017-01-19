@@ -16,21 +16,26 @@ class Berry extends ECS.Entity {
 
 	constructor() {
 
-		super( 'lol', [
+		super( null, [
 			Sprite,
 			Position,
 			Body,
 			Collision
 		] );
 
-		// this.updateComponent('sprite', {
-		// 	src: 'assets/textures/01.jpg',
-		// 	width: 20,
-		// 	height: 20,
-		// 	anchor: Vector2.fromValues( .5, 1 )
-		// });
+		this.updateComponent('sprite', {
+			src: 'assets/textures/01.jpg',
+			width: 20,
+			height: 20,
+			anchor: Vector2.fromValues( .5, 1 )
+		});
 
-		this.updateComponent( 'position', { value: Vector2.fromValues( 0, -1000 ) } );
+		this.updateComponent( 'body', {
+			bounciness: math.randFloatBetween(0, .5),
+			mass: Vector2.fromValues( math.randFloatBetween(0, 10), math.randFloatBetween(0, 10) )
+		} );
+
+		this.updateComponent( 'position', { value: Vector2.fromValues( math.randFloatBetween(-1000, 1000), -1000 ) } );
 	}
 }
 

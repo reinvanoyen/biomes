@@ -16,14 +16,14 @@ class Player extends ECS.Entity {
 
 	constructor() {
 
-		super( 'lol', [
-			Camera,
+		super( null, [
 			Sprite,
 			Position,
 			Body,
 			Collision,
 			WalkingBehavior,
 			Input,
+			Camera,
 			Debug
 		] );
 

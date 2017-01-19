@@ -16,7 +16,7 @@ class NPC extends ECS.Entity {
 
 	constructor() {
 
-		super( [
+		super( null, [
 			Sprite,
 			Position,
 			Body,
@@ -25,7 +25,11 @@ class NPC extends ECS.Entity {
 			AI
 		] );
 
-		this.updateComponent( 'position', { value: Vector2.fromValues( 0, -1000 ) } );
+		this.updateComponent( 'body', {
+			maxVelocity: Vector2.fromValues( math.randFloatBetween(1, 10), 15 )
+		} );
+
+		this.updateComponent( 'position', { value: Vector2.fromValues( math.randFloatBetween(-1000, 1000), math.randFloatBetween(-1000, 0) ) } );
 	}
 }
 
