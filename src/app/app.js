@@ -38,6 +38,7 @@ class Application {
 
 		engine.ecs.addEntity(new Berry());
 		engine.ecs.addEntity(new Berry());
+		engine.ecs.addEntity(new Player());
 
 		/*
 		engine.ecs.addEntity(new Player());

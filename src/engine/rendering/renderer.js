@@ -28,8 +28,10 @@ class Renderer extends ECS.System {
 		let {sprite} = entity.components;
 
 		entity.sprite = new PIXI.Sprite( PIXI.Texture.fromImage( sprite.src ) );
+
 		entity.sprite.width = sprite.width;
 		entity.sprite.height = sprite.height;
+
 		entity.sprite.anchor.x = sprite.anchor[0];
 		entity.sprite.anchor.y = sprite.anchor[1];
 

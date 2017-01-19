@@ -9,7 +9,7 @@ const Sprite = {
 		sprite: null,
 		width: 78,
 		height: 196,
-		anchor: Vector2.fromValues( .5, 1.0 )
+		anchor: Vector2.fromValues( .5, 1 )
 	}
 };
 

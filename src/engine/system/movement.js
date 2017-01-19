@@ -14,8 +14,6 @@ class Movement extends ECS.System {
 
 		let {position, body} = entity.components;
 
-		debugger;
-
 		Vector2.divide( body.acceleration, body.force, body.mass );
 		Vector2.add( body.velocity, body.velocity, body.acceleration );
 

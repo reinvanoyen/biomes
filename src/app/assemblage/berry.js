@@ -1,6 +1,6 @@
 "use strict";
 
-const ECS = require('yagl-ecs'),
+let ECS = require('yagl-ecs'),
 	Sprite = require('../../engine/component/sprite'),
 	Position = require('../../engine/component/position'),
 	Collision = require('../../engine/component/collision'),
@@ -16,24 +16,19 @@ class Berry extends ECS.Entity {
 
 	constructor() {
 
-		super( 'berry', [
+		super( 'lol', [
 			Sprite,
 			Position,
 			Body,
 			Collision
 		] );
 
-		/*
-		this.updateComponent('body', {
-			bounciness: math.randFloatBetween( 0, 1 )
-		});
-		*/
-
-		this.updateComponent('sprite', {
-			src: 'assets/textures/01.jpg',
-			width: 20,
-			height: 20
-		});
+		// this.updateComponent('sprite', {
+		// 	src: 'assets/textures/01.jpg',
+		// 	width: 20,
+		// 	height: 20,
+		// 	anchor: Vector2.fromValues( .5, 1 )
+		// });
 
 		this.updateComponent( 'position', { value: Vector2.fromValues( 0, -1000 ) } );
 	}

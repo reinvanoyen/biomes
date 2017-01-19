@@ -16,7 +16,7 @@ class NPC extends ECS.Entity {
 
 	constructor() {
 
-		super( 'npc', [
+		super( [
 			Sprite,
 			Position,
 			Body,

@@ -16,7 +16,7 @@ class Player extends ECS.Entity {
 
 	constructor() {
 
-		super( 'player', [
+		super( 'lol', [
 			Camera,
 			Sprite,
 			Position,
