@@ -13,7 +13,7 @@ class Time extends ECS.System {
 
 		this.stage = stage;
 
-		this.worldTime = new WorldTime(10, 28);
+		this.worldTime = new WorldTime(19, 250);
 
 		this.timeAmbientColorFilter = new Ambient();
 		this.dayAmbientColorFilter = new Ambient();

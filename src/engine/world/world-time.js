@@ -2,9 +2,9 @@
 
 const Vector4 = require('gl-matrix').vec4;
 
-let DARK_COLOR = Vector4.fromValues( 0, .1, .15, 1 );
+let DARK_COLOR = Vector4.fromValues( .05, .15, .2, 1 );
 let DAWN_COLOR = Vector4.fromValues( .6, .5, .6, 1 );
-let LIGHT_COLOR = Vector4.fromValues( 1, 1, .9, 1 );
+let LIGHT_COLOR = Vector4.fromValues( 1, 1, .95, 1 );
 let DUSK_COLOR = Vector4.fromValues( 0.7, .5, .5, 1 );
 
 let NIGHT_TIME = 23;
@@ -22,10 +22,10 @@ let SPRING = 60; let SPRING_TO_SUMMER_DAYS = 30;
 let SUMMER = 150; let SUMMER_TO_FALL_DAYS = 30;
 let FALL = 240; let FALL_TO_WINTER_DAYS = 30;
 
-let WINTER_COLOR = Vector4.fromValues( .5, .6, 1, 1 );
-let SPRING_COLOR = Vector4.fromValues( .9, 1, .8, .8 );
+let WINTER_COLOR = Vector4.fromValues( .3, .3, 1, 1 );
+let SPRING_COLOR = Vector4.fromValues( 1, 1, .8, 1 );
 let SUMMER_COLOR = Vector4.fromValues( 1, 1, .8, 1 );
-let FALL_COLOR = Vector4.fromValues( 0.9, .7, .6, 1 );
+let FALL_COLOR = Vector4.fromValues( .9, .7, .6, 1 );
 
 class WorldTime {
 
@@ -134,7 +134,7 @@ class WorldTime {
 			if( this.day >= ( SPRING - WINTER_TO_SPRING_DAYS ) ) {
 
 				lerpColor = Vector4.clone( SPRING_COLOR );
-				factor = ( this.day - ( SPRING - WINTER_TO_SPRING_DAYS ) / WINTER_TO_SPRING_DAYS );
+				factor = ( this.day - ( SPRING - WINTER_TO_SPRING_DAYS ) ) / WINTER_TO_SPRING_DAYS;
 			}
 
 		} else if( ( this.day >= SPRING ) && ( this.day < SUMMER ) ) {
