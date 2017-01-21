@@ -1,10 +1,7 @@
 "use strict";
 
 const ECS = require('yagl-ecs'),
-	PIXI = require('pixi.js'),
-	filters = require('pixi-filters'),
-	Ambient = require('./filter/ambient'),
-	WorldTime = require('../world/world-time')
+	PIXI = require('pixi.js')
 ;
 
 class Renderer extends ECS.System {
@@ -13,20 +10,8 @@ class Renderer extends ECS.System {
 		super();
 		this.stage = stage;
 		this.root = root;
-		this.ambient = new Ambient();
-		this.worldTime = new WorldTime();
-		this.stage.filters = [ this.ambient ];
 		this.width = width;
 		this.height = height;
-
-		this.clock = new PIXI.Text( '', {
-			fontSize: '13px',
-			fontFamily: 'Monospace',
-			fill : 0xf14000,
-			align : 'left'
-		} );
-
-		this.stage.addChild( this.clock );
 	}
 
 	test(entity) {
@@ -58,13 +43,6 @@ class Renderer extends ECS.System {
 		}
 
 		this.root.addChild( entity.sprite );
-	}
-
-	postUpdate() {
-
-		this.worldTime.tick();
-		this.ambient.ambientColor = this.worldTime.getDayAmbientColor();
-		this.clock.text = 'day: ' + this.worldTime.getDay() + ' hour:' + parseInt( this.worldTime.getTime() );
 	}
 
 	update(entity) {

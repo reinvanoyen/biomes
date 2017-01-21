@@ -23,8 +23,8 @@ class Player extends ECS.Entity {
 			Collision,
 			WalkingBehavior,
 			Input,
-			Camera,
-			Debug
+			Debug,
+			Camera
 		] );
 
 		this.updateComponent( 'position', { value: Vector2.fromValues( 0, -1000 ) } );

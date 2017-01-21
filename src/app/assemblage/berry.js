@@ -20,7 +20,9 @@ class Berry extends ECS.Entity {
 			Sprite,
 			Position,
 			Body,
-			Collision
+			Collision,
+			WalkingBehavior,
+			Input,
 		] );
 
 		this.updateComponent('sprite', {

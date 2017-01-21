@@ -49,7 +49,7 @@ class World {
 		}
 
 		this.terrain
-			.beginFill( 0x238242 )
+			.beginFill( 0xcccccc )
 			.drawPolygon( this.points )
 			.endFill()
 		;

@@ -24,7 +24,7 @@ class Behavior extends ECS.System {
 
 				Vector2.add( body.force, body.force, Vector2.fromValues( -.7, 0 ) );
 
-			} else {
+			} else if ( collision.bottom ) {
 
 				// Lerp to make movement stop
 				let lerpedForce = Vector2.clone( body.force );
@@ -38,7 +38,8 @@ class Behavior extends ECS.System {
 			}
 
 			if( walkingbehavior.state == 'jumping' && collision.bottom ) {
-				Vector2.add( body.force, body.force, Vector2.fromValues( 0, -5 ) );
+
+				Vector2.add( body.force, body.force, Vector2.fromValues( 0, -8 ) );
 			}
 		}
 	}

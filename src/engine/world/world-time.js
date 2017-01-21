@@ -17,13 +17,25 @@ let DAWN_TO_LIGHT_TIME = 2.15;
 let LIGHT_TO_DUSK_TIME = 1.5;
 let DUSK_TO_DARK_TIME = 2.0;
 
+let WINTER = 335; let WINTER_TO_SPRING_DAYS = 30;
+let SPRING = 60; let SPRING_TO_SUMMER_DAYS = 30;
+let SUMMER = 150; let SUMMER_TO_FALL_DAYS = 30;
+let FALL = 240; let FALL_TO_WINTER_DAYS = 30;
+
+let WINTER_COLOR = Vector4.fromValues( .5, .6, 1, 1 );
+let SPRING_COLOR = Vector4.fromValues( .9, 1, .8, .8 );
+let SUMMER_COLOR = Vector4.fromValues( 1, 1, .8, 1 );
+let FALL_COLOR = Vector4.fromValues( 0.9, .7, .6, 1 );
+
 class WorldTime {
 
-	constructor() {
+	constructor(time, day) {
 
-		this.time = 12;
-		this.day = 0;
-		this.ambientColor = Vector4.create();
+		this.time = time;
+		this.day = day;
+
+		this.timeColor = Vector4.create();
+		this.dayColor = Vector4.create();
 	}
 
 	tick() {
@@ -38,7 +50,13 @@ class WorldTime {
 			}
 		}
 
-		// Calculate ambient color
+		this.calculateTimeColor();
+		this.calculateDayColor();
+	}
+
+	calculateTimeColor() {
+
+		// Calculate time ambient color
 		let outputColor = Vector4.create();
 		let lerpColor = null;
 		let factor = 0;
@@ -91,15 +109,73 @@ class WorldTime {
 		}
 
 		// Apply the calculated colors
-		this.ambientColor = Vector4.clone( outputColor );
+		this.timeColor = Vector4.clone( outputColor );
 
 		if( lerpColor != null ) {
-			Vector4.lerp( this.ambientColor, this.ambientColor, lerpColor, factor );
+			Vector4.lerp( this.timeColor, this.timeColor, lerpColor, factor );
 		}
 	}
 
-	getSeasonAmbientColor() {
-		return [ 1, 1, 1, 1 ];
+	calculateDayColor() {
+
+		// Calculate day ambient color
+		let outputColor = Vector4.create();
+		let lerpColor = null;
+		let factor = 0;
+
+		if( this.day >= WINTER ) {
+
+			outputColor = Vector4.clone( WINTER_COLOR );
+
+		} else if( this.day <= SPRING ) {
+
+			outputColor = Vector4.clone( WINTER_COLOR );
+
+			if( this.day >= ( SPRING - WINTER_TO_SPRING_DAYS ) ) {
+
+				lerpColor = Vector4.clone( SPRING_COLOR );
+				factor = ( this.day - ( SPRING - WINTER_TO_SPRING_DAYS ) / WINTER_TO_SPRING_DAYS );
+			}
+
+		} else if( ( this.day >= SPRING ) && ( this.day < SUMMER ) ) {
+
+			outputColor = Vector4.clone( SPRING_COLOR );
+
+			// if in transition to day
+			if ( this.day >= ( SUMMER - SPRING_TO_SUMMER_DAYS ) ) {
+
+				lerpColor = Vector4.clone( SUMMER_COLOR );
+				factor = ( this.day - ( SUMMER - SPRING_TO_SUMMER_DAYS ) ) / SPRING_TO_SUMMER_DAYS;
+			}
+
+		} else if( ( this.day >= SUMMER ) && ( this.day < FALL ) ) {
+
+			outputColor = Vector4.clone( SUMMER_COLOR );
+
+			// if in transition to dusk
+			if( this.day >= ( FALL - SUMMER_TO_FALL_DAYS ) ) {
+
+				lerpColor = Vector4.clone( FALL_COLOR );
+				factor = ( this.day - ( FALL - SUMMER_TO_FALL_DAYS ) ) / SUMMER_TO_FALL_DAYS;
+			}
+
+		} else if( ( this.day >= FALL ) && ( this.day < WINTER ) ) {
+
+			outputColor = Vector4.clone( FALL_COLOR );
+
+			if( this.day >= ( WINTER - FALL_TO_WINTER_DAYS ) ) {
+
+				lerpColor = Vector4.clone( WINTER_COLOR );
+				factor = ( this.day - ( WINTER - FALL_TO_WINTER_DAYS ) ) / FALL_TO_WINTER_DAYS;
+			}
+		}
+
+		// Apply the calculated colors
+		this.dayColor = Vector4.clone( outputColor );
+
+		if( lerpColor != null ) {
+			Vector4.lerp( this.dayColor, this.dayColor, lerpColor, factor );
+		}
 	}
 
 	getTime() {
@@ -110,8 +186,16 @@ class WorldTime {
 		return this.day;
 	}
 
+	getTimeAmbientColor() {
+		return [ this.timeColor[0], this.timeColor[1], this.timeColor[2], this.timeColor[3] ];
+	}
+
 	getDayAmbientColor() {
-		return [ this.ambientColor[0], this.ambientColor[1], this.ambientColor[2], this.ambientColor[3] ];
+		return [ this.dayColor[0], this.dayColor[1], this.dayColor[2], this.dayColor[3] ];
+	}
+
+	getTimeString() {
+		return 'hour: ' + this.getTime().toFixed(2) + ' - day: ' + this.getDay();
 	}
 }
 
