@@ -26,6 +26,7 @@ class NPC extends ECS.Entity {
 		] );
 
 		this.updateComponent( 'body', {
+			bounciness: .5,
 			maxVelocity: Vector2.fromValues( math.randFloatBetween(1, 10), 15 )
 		} );
 

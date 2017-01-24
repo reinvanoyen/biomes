@@ -20,9 +20,17 @@ class Behavior extends ECS.System {
 
 				Vector2.add( body.force, body.force, Vector2.fromValues( .7, 0 ) );
 
+				if( entity.components.sprite ) {
+					entity.sprite.scale.x = 1;
+				}
+
 			} else if( walkingbehavior.state == 'walkingbackward' ) {
 
 				Vector2.add( body.force, body.force, Vector2.fromValues( -.7, 0 ) );
+
+				if( entity.components.sprite ) {
+					entity.sprite.scale.x = -1;
+				}
 
 			} else if ( collision.bottom ) {
 

@@ -22,7 +22,7 @@ let SPRING = 60; let SPRING_TO_SUMMER_DAYS = 30;
 let SUMMER = 150; let SUMMER_TO_FALL_DAYS = 30;
 let FALL = 240; let FALL_TO_WINTER_DAYS = 30;
 
-let WINTER_COLOR = Vector4.fromValues( .3, .3, 1, 1 );
+let WINTER_COLOR = Vector4.fromValues( .6, .6, 1, 1 );
 let SPRING_COLOR = Vector4.fromValues( 1, 1, .8, 1 );
 let SUMMER_COLOR = Vector4.fromValues( 1, 1, .8, 1 );
 let FALL_COLOR = Vector4.fromValues( .9, .7, .6, 1 );

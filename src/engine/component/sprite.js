@@ -6,10 +6,10 @@ const Sprite = {
 	name: 'sprite',
 	getDefaults: function() {
 		return {
-			src: 'assets/textures/player.png',
+			src: 'assets/textures/fox.png',
 			sprite: null,
-			width: 78,
-			height: 196,
+			width: 400,
+			height: 176,
 			anchor: Vector2.fromValues(.5, 1)
 		};
 	}

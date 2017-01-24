@@ -35,12 +35,16 @@ class Application {
 			new Force(), // 6 Apply forces
 			new Movement(), // 7 Move
 			new Renderer(engine.stage, engine.root, 1000, 750), // 8 Render
-			new Time(engine.stage, 50) // @TODO number
+			new Time(engine.stage, 0) // @TODO number
 		]);
 
 		engine.ecs.addEntity(new Player());
-		engine.ecs.addEntity(new NPC());
 		engine.ecs.addEntity(new Berry());
+
+		for( let i = 0; i < 10; i++ ) {
+			engine.ecs.addEntity(new NPC());
+		}
+
 
 		/*
 		for( let i = 0; i < 50; i++ )

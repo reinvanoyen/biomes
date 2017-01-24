@@ -1,7 +1,9 @@
 "use strict";
 
 const PIXI = require('pixi.js'),
-	noise = require('../util/noise')
+	noise = require('../util/noise'),
+	math = require('../util/math'),
+	Vector2 = require('gl-matrix').vec2
 ;
 
 class World {
@@ -18,14 +20,24 @@ class World {
 		this.currentTile = 0;
 		this.points = [];
 
+		this.verticesX = 20;
+		this.verticesY = 4;
+
+		this.isGenerated = false;
+
 		this.setup();
 	}
 
 	setup() {
 
-		this.terrain = new PIXI.Graphics();
-		this.generate();
-		this.stage.addChild( this.terrain );
+		//this.mesh = new PIXI.mesh.Rope( PIXI.Texture.fromImage( 'assets/textures/base.jpg' ), this.points );
+		this.mesh = new PIXI.mesh.Plane( PIXI.Texture.fromImage( 'assets/textures/base.jpg' ), this.verticesX, this.verticesY );
+		this.mesh.x = 0;
+		this.mesh.y = 0;
+		this.stage.addChild( this.mesh );
+
+		this.debug = new PIXI.Graphics();
+		this.stage.addChild(this.debug);
 	}
 
 	getWorldElevation(x) {
@@ -39,45 +51,52 @@ class World {
 
 	render(position) {
 
-		this.terrain.clear();
-
 		let currentTile = Math.floor(position[0] / this.tileSize);
 
-		if( this.currentTile != currentTile ) {
-			this.generate();
+		if( ! this.isGenerated ) {
+			this.generateMesh();
 			this.currentTile = currentTile;
 		}
 
-		this.terrain
-			.beginFill( 0x9faf8e )
-			.drawPolygon( this.points )
-			.endFill()
-		;
+		if( this.currentTile != currentTile ) {
+			this.generateMesh();
+			this.currentTile = currentTile;
+		}
 	}
 
-	generate() {
+	generateMesh() {
+
+		this.points = [];
+		this.debug.clear();
 
 		let startTile = this.currentTile - this.generateTileCount / 2,
 			endTile = this.currentTile + this.generateTileCount / 2
 		;
 
-		this.points = [];
-		this.points.push(startTile * this.tileSize);
-		this.points.push(this.getElevationAt(startTile));
+		for( let y = 0; y < this.verticesY; y++ ) {
 
-		for (let i = startTile; i < endTile; i++) {
-			this.points.push(i * this.tileSize);
-			this.points.push(this.getElevationAt(i));
+			for( let x = startTile; x < endTile; x++ ) {
+
+				let height = this.getElevationAt(x) + ( y * this.tileSize );
+
+				this.points.push( Vector2.fromValues( x * this.tileSize, height ) );
+			}
 		}
 
-		this.points.push(endTile * this.tileSize);
-		this.points.push(this.getElevationAt(endTile));
+		// Copy the points over to the mesh
+		this.points.forEach( ( v, i ) => {
 
-		this.points.push(endTile * this.tileSize);
-		this.points.push(0);
+			i *= 2;
 
-		this.points.push(startTile * this.tileSize);
-		this.points.push(0);
+			this.mesh.vertices[ i ] = v[0];
+			this.mesh.vertices[ i + 1 ] = v[1];
+
+			this.debug.beginFill(0xff0022);
+			this.debug.drawCircle( v[0], v[1], 5 );
+			this.debug.endFill();
+		} );
+
+		this.isGenerated = true;
 	}
 }
 
