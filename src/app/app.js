@@ -9,13 +9,12 @@ const CoreEngine = require('../engine/core-engine'),
 	Force = require('../engine/system/force'),
 	Movement = require('../engine/system/movement'),
 	AIProcessing = require('../engine/system/aiprocessing'),
+	Spawner = require('../engine/system/spawner'),
 	Time = require('../engine/system/time'),
 
 	Renderer = require('../engine/rendering/renderer'),
 
-	NPC = require('./assemblage/npc'),
-	Player = require('./assemblage/player'),
-	Berry = require('./assemblage/berry')
+	Player = require('./assemblage/player')
 ;
 
 class Application {
@@ -34,25 +33,12 @@ class Application {
 			new Behavior(), // 5 Based on player input, change body vectors
 			new Force(), // 6 Apply forces
 			new Movement(), // 7 Move
-			new Renderer(engine.stage, engine.root, 1000, 750), // 8 Render
-			new Time(engine.stage, 0) // @TODO number
+			new Renderer(engine.stage, engine.root, 1280, 900), // 8 Render
+			new Time(engine.stage, 0), // 9 Process time
+			new Spawner(engine.ecs)
 		]);
 
 		engine.ecs.addEntity(new Player());
-		engine.ecs.addEntity(new Berry());
-
-		for( let i = 0; i < 10; i++ ) {
-			engine.ecs.addEntity(new NPC());
-		}
-
-
-		/*
-		for( let i = 0; i < 50; i++ )
-		{
-			engine.ecs.addEntity(new NPC());
-			engine.ecs.addEntity(new Berry());
-		}
-		*/
 
 		engine.start();
 	}

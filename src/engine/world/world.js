@@ -3,7 +3,8 @@
 const PIXI = require('pixi.js'),
 	noise = require('../util/noise'),
 	math = require('../util/math'),
-	Vector2 = require('gl-matrix').vec2
+	Vector2 = require('gl-matrix').vec2,
+	MessageManager = require('../messaging/messagemanager')
 ;
 
 class World {
@@ -54,14 +55,19 @@ class World {
 		let currentTile = Math.floor(position[0] / this.tileSize);
 
 		if( ! this.isGenerated ) {
-			this.generateMesh();
+			this.generate();
 			this.currentTile = currentTile;
 		}
 
 		if( this.currentTile != currentTile ) {
-			this.generateMesh();
+			this.generate();
 			this.currentTile = currentTile;
 		}
+	}
+
+	generate() {
+		this.generateMesh();
+		this.spawnProps();
 	}
 
 	generateMesh() {
@@ -74,11 +80,8 @@ class World {
 		;
 
 		for( let y = 0; y < this.verticesY; y++ ) {
-
 			for( let x = startTile; x < endTile; x++ ) {
-
 				let height = this.getElevationAt(x) + ( y * this.tileSize );
-
 				this.points.push( Vector2.fromValues( x * this.tileSize, height ) );
 			}
 		}
@@ -97,6 +100,23 @@ class World {
 		} );
 
 		this.isGenerated = true;
+	}
+
+	spawnProps() {
+
+		let generateTile = this.currentTile;
+		let worldX = generateTile * this.tileSize;
+		let e = this.getWorldElevation( worldX );
+
+		console.log(e);
+
+		if( e > -500 ) {
+			MessageManager.trigger('spawner::spawnEntity', {
+				type: 'tree',
+				x: worldX,
+				y: 0
+			});
+		}
 	}
 }
 

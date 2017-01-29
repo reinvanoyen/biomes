@@ -10,7 +10,7 @@ class CoreEngine {
 	constructor() {
 
 		// install renderer // @TODO move to rendering system
-		this.renderer = new PIXI.WebGLRenderer(1000, 750);
+		this.renderer = new PIXI.WebGLRenderer(1280, 900);
 		this.renderer.backgroundColor = 0x999999;
 		document.body.appendChild(this.renderer.view);
 
@@ -48,7 +48,7 @@ class CoreEngine {
 		this.ticker.start();
 
 		this.ticker.add(time => {
-			//MessageManager.process_queue();
+			MessageManager.process_queue();
 			this.ecs.update();
 			this.renderer.render(this.stage);
 		} );

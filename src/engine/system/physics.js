@@ -1,6 +1,8 @@
 "use strict";
 
-const ECS = require('yagl-ecs');
+const ECS = require('yagl-ecs'),
+	MessageManager = require('../messaging/messagemanager')
+;
 
 class Physics extends ECS.System {
 

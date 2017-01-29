@@ -55,7 +55,7 @@ class Renderer extends ECS.System {
 		if( entity.components.camera ) {
 
 			this.root.position.x = -position.value[0] + ( this.width / 2 );
-			this.root.position.y = -position.value[1] + ( this.height / 2 );
+			this.root.position.y = -position.value[1] + ( this.height / 2 ) + 200;
 		}
 
 		if( entity.components.debug ) {
