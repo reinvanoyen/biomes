@@ -80,7 +80,7 @@ class Renderer extends ECS.System {
 			for( let depth in this.layers ) {
 				let depthFactor = 1 + depth / 5;
 				this.layers[depth].position.x = -position.value[0] * depthFactor + ( this.width / 2 );
-				this.layers[depth].position.y = -position.value[1] * depthFactor + ( this.height / 2 ) + 200;
+				this.layers[depth].position.y = -position.value[1] * depthFactor + ( this.height / 2 ) + 300;
 			}
 		}
 
