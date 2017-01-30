@@ -16,19 +16,6 @@ class CoreEngine {
 
 		// install stage
 		this.stage = new PIXI.Container();
-		this.root = new PIXI.Container();
-
-		// background, temp solution
-		let texture = PIXI.Texture.fromImage('assets/textures/bg.jpg');
-		this.bg = new PIXI.Sprite(texture);
-
-		this.bg.anchor.x = 0;
-		this.bg.anchor.y = 0;
-		this.bg.position.x = 0;
-		this.bg.position.y = 0;
-
-		this.stage.addChild(this.bg);
-		this.stage.addChild(this.root);
 
 		// install ticker
 		this.ticker = PIXI.ticker.shared;

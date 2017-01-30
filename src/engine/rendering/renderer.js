@@ -6,10 +6,11 @@ const ECS = require('yagl-ecs'),
 
 class Renderer extends ECS.System {
 
-	constructor(stage, root, width, height) {
+	constructor(stage, width, height) {
+
 		super();
 		this.stage = stage;
-		this.root = root;
+		this.layers = {};
 		this.width = width;
 		this.height = height;
 	}
@@ -30,6 +31,30 @@ class Renderer extends ECS.System {
 		entity.sprite.anchor.x = sprite.anchor[0];
 		entity.sprite.anchor.y = sprite.anchor[1];
 
+		// If it's a skybox, add it to the back on the stage
+		if( entity.components.skybox ) {
+			entity.sprite.zIndex = -20;
+			this.stage.addChild( entity.sprite );
+			return;
+		}
+
+		// Determine depth
+		let depth = 0;
+		if (entity.components.depth) {
+			depth = entity.components.depth.value;
+		}
+
+		if( ! this.layers[ depth ] ) {
+			// Create depth layer
+			this.layers[ depth ] = new PIXI.Container();
+			this.layers[ depth ].zIndex = depth;
+			this.stage.addChild(this.layers[ depth ]);
+			this.stage.children.sort( ( a, b ) => a.zIndex - b.zIndex );
+		}
+
+		// Add entity to depth layer
+		this.layers[ depth ].addChild( entity.sprite );
+
 		if( entity.components.debug ) {
 
 			entity.debugText = new PIXI.Text( '', {
@@ -39,10 +64,8 @@ class Renderer extends ECS.System {
 				align : 'left'
 			} );
 
-			this.root.addChild( entity.debugText );
+			this.layers[ depth ].addChild( entity.debugText );
 		}
-
-		this.root.addChild( entity.sprite );
 	}
 
 	update(entity) {
@@ -53,9 +76,12 @@ class Renderer extends ECS.System {
 		entity.sprite.position.y = position.value[1];
 
 		if( entity.components.camera ) {
-
-			this.root.position.x = -position.value[0] + ( this.width / 2 );
-			this.root.position.y = -position.value[1] + ( this.height / 2 ) + 200;
+			// Render layers
+			for( let depth in this.layers ) {
+				let depthFactor = 1 + depth / 5;
+				this.layers[depth].position.x = -position.value[0] * depthFactor + ( this.width / 2 );
+				this.layers[depth].position.y = -position.value[1] * depthFactor + ( this.height / 2 ) + 200;
+			}
 		}
 
 		if( entity.components.debug ) {

@@ -14,7 +14,9 @@ const CoreEngine = require('../engine/core-engine'),
 
 	Renderer = require('../engine/rendering/renderer'),
 
-	Player = require('./assemblage/player')
+	Player = require('./assemblage/player'),
+	Tree = require('./assemblage/tree'),
+	Background = require('./assemblage/background')
 ;
 
 class Application {
@@ -22,7 +24,7 @@ class Application {
 	constructor() {
 
 		let engine = new CoreEngine();
-		let worldGeneration = new WorldGeneration('ygdsijhhs44451554sd54', engine.root);
+		let worldGeneration = new WorldGeneration( 'ygdsijhhs44451554sd54', engine.stage );
 
 		engine.addSystems([
 			worldGeneration, // 1 Generate the world
@@ -33,12 +35,24 @@ class Application {
 			new Behavior(), // 5 Based on player input, change body vectors
 			new Force(), // 6 Apply forces
 			new Movement(), // 7 Move
-			new Renderer(engine.stage, engine.root, 1280, 900), // 8 Render
+			new Renderer(engine.stage, 1280, 900), // 8 Render
 			new Time(engine.stage, 0), // 9 Process time
 			new Spawner(engine.ecs)
 		]);
 
+		engine.ecs.addEntity(new Background());
 		engine.ecs.addEntity(new Player());
+		for( let i = 0; i < 10; i++ ) {
+			engine.ecs.addEntity(new Tree(-7));
+			engine.ecs.addEntity(new Tree(-6));
+			engine.ecs.addEntity(new Tree(-5));
+			engine.ecs.addEntity(new Tree(-4));
+			engine.ecs.addEntity(new Tree(-3));
+			engine.ecs.addEntity(new Tree(-2));
+			engine.ecs.addEntity(new Tree(-1));
+			engine.ecs.addEntity(new Tree(0));
+			engine.ecs.addEntity(new Tree(1));
+		}
 
 		engine.start();
 	}

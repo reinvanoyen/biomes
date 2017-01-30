@@ -38,7 +38,7 @@ class World {
 		this.stage.addChild( this.mesh );
 
 		this.debug = new PIXI.Graphics();
-		this.stage.addChild(this.debug);
+		this.stage.addChild( this.debug );
 	}
 
 	getWorldElevation(x) {
@@ -52,7 +52,7 @@ class World {
 
 	render(position) {
 
-		let currentTile = Math.floor(position[0] / this.tileSize);
+		let currentTile = Math.floor( position[0] / this.tileSize );
 
 		if( ! this.isGenerated ) {
 			this.generate();
@@ -108,15 +108,13 @@ class World {
 		let worldX = generateTile * this.tileSize;
 		let e = this.getWorldElevation( worldX );
 
-		console.log(e);
-
-		if( e > -500 ) {
-			MessageManager.trigger('spawner::spawnEntity', {
-				type: 'tree',
-				x: worldX,
-				y: 0
-			});
-		}
+		/*
+		MessageManager.trigger('spawner::spawnEntity', {
+			type: 'tree',
+			x: worldX,
+			y: 0
+		});
+		*/
 	}
 }
 
