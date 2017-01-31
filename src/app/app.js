@@ -15,6 +15,7 @@ const CoreEngine = require('../engine/core-engine'),
 	Renderer = require('../engine/rendering/renderer'),
 
 	Player = require('./assemblage/player'),
+	NPC = require('./assemblage/npc'),
 	Tree = require('./assemblage/tree'),
 	Background = require('./assemblage/background')
 ;
@@ -42,6 +43,9 @@ class Application {
 
 		engine.ecs.addEntity(new Background());
 		engine.ecs.addEntity(new Player());
+		engine.ecs.addEntity(new NPC());
+		engine.ecs.addEntity(new NPC());
+
 		for( let i = 0; i < 10; i++ ) {
 			engine.ecs.addEntity(new Tree(-7));
 			engine.ecs.addEntity(new Tree(-6));
@@ -52,6 +56,12 @@ class Application {
 			engine.ecs.addEntity(new Tree(-1));
 			engine.ecs.addEntity(new Tree(0));
 			engine.ecs.addEntity(new Tree(1));
+			engine.ecs.addEntity(new Tree(2));
+			engine.ecs.addEntity(new Tree(3));
+			engine.ecs.addEntity(new Tree(4));
+			engine.ecs.addEntity(new Tree(5));
+			engine.ecs.addEntity(new Tree(6));
+			engine.ecs.addEntity(new Tree(7));
 		}
 
 		engine.start();

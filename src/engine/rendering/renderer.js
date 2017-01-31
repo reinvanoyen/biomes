@@ -78,9 +78,16 @@ class Renderer extends ECS.System {
 		if( entity.components.camera ) {
 			// Render layers
 			for( let depth in this.layers ) {
-				let depthFactor = 1 + depth / 5;
+
+				let depthFactor = 1 + depth / 10;
+				depthFactor = Math.max( 0.1, depthFactor );
+
+				// @TODO implement depth scaling
+				// this.layers[depth].scale.x = depthFactor;
+				// this.layers[depth].scale.y = depthFactor;
+
 				this.layers[depth].position.x = -position.value[0] * depthFactor + ( this.width / 2 );
-				this.layers[depth].position.y = -position.value[1] * depthFactor + ( this.height / 2 ) + 300;
+				this.layers[depth].position.y = -position.value[1] + depth * 10 + ( this.height / 2 );
 			}
 		}
 

@@ -1,9 +1,7 @@
 "use strict";
 
 const ECS = require('yagl-ecs'),
-	MessageManager = require('../messaging/messagemanager'),
-	//Tree = require('../../app/assemblage/tree'),
-	Vector2 = require('gl-matrix').vec2
+	MessageManager = require('../messaging/messagemanager')
 ;
 
 class Spawner extends ECS.System {

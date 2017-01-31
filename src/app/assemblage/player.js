@@ -9,6 +9,7 @@ const ECS = require('yagl-ecs'),
 	Debug = require('../../engine/component/debug'),
 	WalkingBehavior = require('../../engine/component/walkingbehavior'),
 	Input = require('../../engine/component/input'),
+	Depth = require('../../engine/component/depth'),
 	Vector2 = require('gl-matrix').vec2
 ;
 
@@ -24,10 +25,12 @@ class Player extends ECS.Entity {
 			WalkingBehavior,
 			Input,
 			Debug,
-			Camera
+			Camera,
+			Depth
 		] );
 
-		this.updateComponent( 'position', { value: Vector2.fromValues( 0, -1000 ) } );
+		this.updateComponent( 'depth', { value: 0 } );
+		this.updateComponent( 'position', { value: Vector2.fromValues( 0, 0 ) } );
 	}
 }
 

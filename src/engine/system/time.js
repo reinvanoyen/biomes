@@ -19,15 +19,6 @@ class Time extends ECS.System {
 		this.dayAmbientColorFilter = new Ambient();
 
 		this.stage.filters = [ this.timeAmbientColorFilter, this.dayAmbientColorFilter ];
-
-		this.clock = new PIXI.Text( '', {
-			fontSize: '18px',
-			fontFamily: 'Monospace',
-			fill : 0xffffff,
-			align : 'left'
-		} );
-
-		this.stage.addChild( this.clock );
 	}
 
 	test(entity) {
@@ -40,8 +31,6 @@ class Time extends ECS.System {
 
 		this.timeAmbientColorFilter.ambientColor = this.worldTime.getTimeAmbientColor();
 		this.dayAmbientColorFilter.ambientColor = this.worldTime.getDayAmbientColor();
-
-		this.clock.text = this.worldTime.getTimeString();
 	}
 
 	exit(entity) {}

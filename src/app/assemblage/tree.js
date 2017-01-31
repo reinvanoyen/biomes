@@ -6,9 +6,6 @@ let ECS = require('yagl-ecs'),
 	Collision = require('../../engine/component/collision'),
 	Body = require('../../engine/component/body'),
 	math = require('../../engine/util/math'),
-	WalkingBehavior = require('../../engine/component/walkingbehavior'),
-	Input = require('../../engine/component/input'),
-	Camera = require('../../engine/component/camera'),
 	Depth = require('../../engine/component/depth'),
 	Vector2 = require('gl-matrix').vec2
 ;
@@ -27,7 +24,6 @@ class Tree extends ECS.Entity {
 
 		this.updateComponent('depth', { value: depth } );
 		this.updateComponent('position', { value: Vector2.fromValues( math.randFloatBetween( -5000, 5000 ), 0 ) } );
-
 		this.updateComponent('sprite', {
 			src: 'assets/textures/tree0' + math.randBetween( 1, 3 ) + '.png',
 			width: 216,

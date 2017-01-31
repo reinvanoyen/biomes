@@ -9,7 +9,8 @@ const ECS = require('yagl-ecs'),
 	Camera = require('../../engine/component/camera'),
 	AI = require('../../engine/component/ai'),
 	math = require('../../engine/util/math'),
-	Vector2 = require('gl-matrix').vec2
+	Vector2 = require('gl-matrix').vec2,
+	Depth = require('../../engine/component/depth')
 ;
 
 class NPC extends ECS.Entity {
@@ -22,8 +23,11 @@ class NPC extends ECS.Entity {
 			Body,
 			Collision,
 			WalkingBehavior,
-			AI
+			AI,
+			Depth
 		] );
+
+		this.updateComponent( 'depth', { value: -3 } );
 
 		this.updateComponent( 'body', {
 			bounciness: .5,
