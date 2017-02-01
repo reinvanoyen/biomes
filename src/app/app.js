@@ -17,6 +17,7 @@ const CoreEngine = require('../engine/core-engine'),
 	Player = require('./assemblage/player'),
 	NPC = require('./assemblage/npc'),
 	Tree = require('./assemblage/tree'),
+	Rock = require('./assemblage/rock'),
 	Background = require('./assemblage/background')
 ;
 
@@ -47,6 +48,11 @@ class Application {
 		engine.ecs.addEntity(new NPC());
 
 		for( let i = 0; i < 10; i++ ) {
+
+			engine.ecs.addEntity(new Rock(-3));
+			engine.ecs.addEntity(new Rock(-1));
+			engine.ecs.addEntity(new Rock(7));
+
 			engine.ecs.addEntity(new Tree(-7));
 			engine.ecs.addEntity(new Tree(-6));
 			engine.ecs.addEntity(new Tree(-5));

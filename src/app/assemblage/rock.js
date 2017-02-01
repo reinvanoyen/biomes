@@ -10,7 +10,7 @@ let ECS = require('yagl-ecs'),
 	Vector2 = require('gl-matrix').vec2
 ;
 
-class Tree extends ECS.Entity {
+class Rock extends ECS.Entity {
 
 	constructor(depth) {
 
@@ -25,12 +25,12 @@ class Tree extends ECS.Entity {
 		this.updateComponent('depth', { value: depth } );
 		this.updateComponent('position', { value: Vector2.fromValues( math.randFloatBetween( -5000, 5000 ), 0 ) } );
 		this.updateComponent('sprite', {
-			src: 'assets/textures/tree0' + math.randBetween( 1, 4 ) + '.png',
-			width: null,
-			height: null,
+			src: 'assets/textures/rock01.png',
+			width: 100,
+			height: 106,
 			anchor: Vector2.fromValues(.5, 1)
 		});
 	}
 }
 
-module.exports = Tree;
+module.exports = Rock;
