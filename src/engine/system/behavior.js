@@ -29,7 +29,9 @@ class Behavior extends ECS.System {
 				Vector2.add( body.force, body.force, Vector2.fromValues( -.7, 0 ) );
 
 				if( entity.components.sprite ) {
-					entity.sprite.scale.x = -1;
+					if( entity.sprite.scale.x > 0 ) {
+						entity.sprite.scale.x = -entity.sprite.scale.x;
+					}
 				}
 
 			} else if ( collision.bottom ) {

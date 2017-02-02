@@ -33,6 +33,14 @@ class Renderer extends ECS.System {
 		entity.sprite.anchor.x = sprite.anchor[0];
 		entity.sprite.anchor.y = sprite.anchor[1];
 
+		if( entity.components.depth ) {
+
+			let scalingDepthFactor = Math.min( 1, 0.5 + Math.max( 0.1, entity.components.depth.value / 10 ) );
+
+			entity.sprite.scale.x = scalingDepthFactor;
+			entity.sprite.scale.y = scalingDepthFactor;
+		}
+
 		// If it's a skybox, add it to the back on the stage
 		if( entity.components.skybox ) {
 			entity.sprite.zIndex = -20;

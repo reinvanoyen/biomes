@@ -27,7 +27,7 @@ class Rock extends ECS.Entity {
 		this.updateComponent('sprite', {
 			src: 'assets/textures/rock01.png',
 			width: 100,
-			height: 106,
+			height: 100,
 			anchor: Vector2.fromValues(.5, 1)
 		});
 	}
