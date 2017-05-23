@@ -8,10 +8,17 @@ const ECS = require('yagl-ecs'),
 
 class Renderer extends ECS.System {
 
-	constructor(stage, width, height) {
+	constructor( width, height) {
 
 		super();
-		this.stage = stage;
+
+		this.renderer = new PIXI.WebGLRenderer(width, height);
+		this.renderer.backgroundColor = 0x999999;
+		document.body.appendChild(this.renderer.view);
+
+		// install stage
+		this.stage = new PIXI.Container();
+
 		this.layers = {};
 		this.depths = [];
 		this.fixedEntities = [];
@@ -99,6 +106,10 @@ class Renderer extends ECS.System {
 
 		entity.sprite.position.x = position.value[0];
 		entity.sprite.position.y = position.value[1];
+	}
+
+	postUpdate() {
+		this.renderer.render(this.stage);
 	}
 }
 

@@ -30,9 +30,9 @@ class Application {
 	constructor() {
 
 		let engine = new CoreEngine();
-		let worldGeneration = new WorldGeneration( 'ygdsijhhs44451554sd54', engine.stage );
-		let time = new Time(engine.stage, 0); // 9 Process time
-		let renderer = new Renderer(engine.stage, 1280, 900);
+		let renderer = new Renderer(1280, 900);
+		let worldGeneration = new WorldGeneration( 'ygdsijhhs44451554sd54' );
+		let time = new Time(renderer.stage, 0); // 9 Process time
 
 		engine.addSystems([
 			worldGeneration, // 1 Generate the world
@@ -53,27 +53,6 @@ class Application {
 		engine.ecs.addEntity(new Background());
 		engine.ecs.addEntity(new Sun());
 		engine.ecs.addEntity(new Player());
-
-		for( let i = 0; i < 10; i++ ) {
-			engine.ecs.addEntity(new Rock(-3));
-			engine.ecs.addEntity(new Rock(-1));
-			engine.ecs.addEntity(new Rock(7));
-			engine.ecs.addEntity(new Tree(-7));
-			engine.ecs.addEntity(new Tree(-6));
-			engine.ecs.addEntity(new Tree(-5));
-			engine.ecs.addEntity(new Tree(-4));
-			engine.ecs.addEntity(new Tree(-3));
-			engine.ecs.addEntity(new Tree(-2));
-			engine.ecs.addEntity(new Tree(-1));
-			engine.ecs.addEntity(new Tree(0));
-			engine.ecs.addEntity(new Tree(1));
-			engine.ecs.addEntity(new Tree(2));
-			engine.ecs.addEntity(new Tree(3));
-			engine.ecs.addEntity(new Tree(4));
-			engine.ecs.addEntity(new Tree(5));
-			engine.ecs.addEntity(new Tree(6));
-			engine.ecs.addEntity(new Tree(7));
-		}
 
 		engine.start();
 	}

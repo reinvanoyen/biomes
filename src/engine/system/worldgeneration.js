@@ -7,10 +7,9 @@ const ECS = require('yagl-ecs'),
 
 class WorldGeneration extends ECS.System {
 
-	constructor(seed, stage) {
+	constructor(seed) {
 		super();
-		this.stage = stage;
-		this.world = new World(seed, this.stage);
+		this.world = new World(seed);
 	}
 
 	test(entity) {
@@ -18,8 +17,7 @@ class WorldGeneration extends ECS.System {
 	}
 
 	update(entity) {
-		let {position} = entity.components;
-		this.world.render( position.value );
+		this.world.render( entity.components.position.value );
 	}
 
 	exit(entity) {}

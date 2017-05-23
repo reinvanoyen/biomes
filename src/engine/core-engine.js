@@ -9,14 +9,6 @@ class CoreEngine {
 
 	constructor() {
 
-		// install renderer // @TODO move to rendering system
-		this.renderer = new PIXI.WebGLRenderer(1280, 900);
-		this.renderer.backgroundColor = 0x999999;
-		document.body.appendChild(this.renderer.view);
-
-		// install stage
-		this.stage = new PIXI.Container();
-
 		// install ticker
 		this.ticker = PIXI.ticker.shared;
 		this.ticker.autoStart = false;
@@ -34,10 +26,9 @@ class CoreEngine {
 
 		this.ticker.start();
 
-		this.ticker.add(time => {
+		this.ticker.add( time => {
 			MessageManager.process_queue();
 			this.ecs.update();
-			this.renderer.render(this.stage);
 		} );
 	}
 }
