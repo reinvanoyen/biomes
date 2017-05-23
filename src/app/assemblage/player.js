@@ -29,7 +29,6 @@ class Player extends ECS.Entity {
 			Depth
 		] );
 
-		this.updateComponent( 'depth', { value: 0 } );
 		this.updateComponent( 'position', { value: Vector2.fromValues( 0, 0 ) } );
 	}
 }

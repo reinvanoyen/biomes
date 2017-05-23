@@ -31,6 +31,7 @@ class WorldTime {
 
 	constructor(time, day) {
 
+		this.timestamp = 0;
 		this.time = time;
 		this.day = day;
 
@@ -40,6 +41,7 @@ class WorldTime {
 
 	tick() {
 
+		this.timestamp += 0.01;
 		this.time += 0.01;
 
 		if( this.time > 24 ) {
@@ -176,6 +178,10 @@ class WorldTime {
 		if( lerpColor != null ) {
 			Vector4.lerp( this.dayColor, this.dayColor, lerpColor, factor );
 		}
+	}
+
+	getTimestamp() {
+		return this.timestamp;
 	}
 
 	getTime() {

@@ -1,7 +1,9 @@
 "use strict";
 
 const ECS = require('yagl-ecs'),
-	PIXI = require('pixi.js')
+	PIXI = require('pixi.js'),
+	math = require('../util/math'),
+	MessageManager = require('../messaging/messagemanager')
 ;
 
 class Renderer extends ECS.System {
@@ -11,12 +13,18 @@ class Renderer extends ECS.System {
 		super();
 		this.stage = stage;
 		this.layers = {};
+		this.depths = [];
+		this.fixedEntities = [];
 		this.width = width;
 		this.height = height;
 	}
 
+	depthSort() {
+		this.stage.children.sort( ( a, b ) => a.zIndex - b.zIndex );
+	}
+
 	test(entity) {
-		return entity.components.position && entity.components.sprite;
+		return entity.components.sprite && entity.components.position;
 	}
 
 	enter(entity) {
@@ -33,49 +41,56 @@ class Renderer extends ECS.System {
 		entity.sprite.anchor.x = sprite.anchor[0];
 		entity.sprite.anchor.y = sprite.anchor[1];
 
-		if( entity.components.depth ) {
-
-			let scalingDepthFactor = Math.min( 1, 0.5 + Math.max( 0.1, entity.components.depth.value / 10 ) );
-
-			entity.sprite.scale.x = scalingDepthFactor;
-			entity.sprite.scale.y = scalingDepthFactor;
-		}
-
 		// If it's a skybox, add it to the back on the stage
 		if( entity.components.skybox ) {
 			entity.sprite.zIndex = -20;
+			this.fixedEntities.push( entity );
 			this.stage.addChild( entity.sprite );
+			this.depthSort();
+			return;
+		}
+
+		// If it's fixed
+		if( entity.components.positionfixed ) {
+			if( entity.components.depth ) {
+				entity.sprite.zIndex = entity.components.depth.value;
+			} else {
+				entity.sprite.zIndex = 0;
+			}
+			this.stage.addChild( entity.sprite );
+			this.depthSort();
 			return;
 		}
 
 		// Determine depth
 		let depth = 0;
+
 		if (entity.components.depth) {
+
 			depth = entity.components.depth.value;
+
+			let minDepth = -20,
+				maxDepth = 7,
+				scalingDepthFactor = (depth - minDepth ) / ( maxDepth - minDepth ); // Normalize to a value between 0 and 1
+
+			entity.sprite.scale.x = scalingDepthFactor;
+			entity.sprite.scale.y = scalingDepthFactor;
 		}
 
 		if( ! this.layers[ depth ] ) {
+
 			// Create depth layer
+			this.depths.push( depth );
+
 			this.layers[ depth ] = new PIXI.Container();
 			this.layers[ depth ].zIndex = depth;
+
 			this.stage.addChild(this.layers[ depth ]);
-			this.stage.children.sort( ( a, b ) => a.zIndex - b.zIndex );
+			this.depthSort();
 		}
 
 		// Add entity to depth layer
 		this.layers[ depth ].addChild( entity.sprite );
-
-		if( entity.components.debug ) {
-
-			entity.debugText = new PIXI.Text( '', {
-				fontSize: '11px',
-				fontFamily: 'Monospace',
-				fill : 0xff1010,
-				align : 'left'
-			} );
-
-			this.layers[ depth ].addChild( entity.debugText );
-		}
 	}
 
 	update(entity) {
@@ -84,33 +99,7 @@ class Renderer extends ECS.System {
 
 		entity.sprite.position.x = position.value[0];
 		entity.sprite.position.y = position.value[1];
-
-		if( entity.components.camera ) {
-			// Render layers
-			for( let depth in this.layers ) {
-
-				let depthFactor = 1 + depth / 10;
-				depthFactor = Math.max( 0.1, depthFactor );
-
-				// @TODO implement depth scaling
-				// this.layers[depth].scale.x = depthFactor;
-				// this.layers[depth].scale.y = depthFactor;
-
-				this.layers[depth].position.x = -position.value[0] * depthFactor + ( this.width / 2 );
-				this.layers[depth].position.y = -position.value[1] + depth * 10 + ( this.height / 2 );
-			}
-		}
-
-		if( entity.components.debug ) {
-
-			entity.debugText.text = 'x: ' + parseInt(position.value[0]) + ', y: ' + parseInt(position.value[1]);
-
-			entity.debugText.position.x = position.value[0];
-			entity.debugText.position.y = position.value[1];
-		}
 	}
-
-	exit(entity) {}
 }
 
 module.exports = Renderer;

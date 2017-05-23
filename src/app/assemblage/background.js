@@ -21,7 +21,7 @@ class Background extends ECS.Entity {
 			src: 'assets/textures/bg.jpg',
 			width: 3133,
 			height: 2374,
-			anchor: Vector2.fromValues(0, 0)
+			anchor: Vector2.fromValues(0.5, 0.5)
 		});
 	}
 }

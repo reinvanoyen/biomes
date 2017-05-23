@@ -11,14 +11,18 @@ const CoreEngine = require('../engine/core-engine'),
 	AIProcessing = require('../engine/system/aiprocessing'),
 	Spawner = require('../engine/system/spawner'),
 	Time = require('../engine/system/time'),
+	SkyObjectOrbitting = require('../engine/system/skyobjectorbitting'),
 
 	Renderer = require('../engine/rendering/renderer'),
+	CameraSystem = require('../engine/rendering/camerasystem'),
 
 	Player = require('./assemblage/player'),
 	NPC = require('./assemblage/npc'),
 	Tree = require('./assemblage/tree'),
 	Rock = require('./assemblage/rock'),
-	Background = require('./assemblage/background')
+	Sun = require('./assemblage/sun'),
+	Background = require('./assemblage/background'),
+	Camera = require('./assemblage/camera')
 ;
 
 class Application {
@@ -27,6 +31,8 @@ class Application {
 
 		let engine = new CoreEngine();
 		let worldGeneration = new WorldGeneration( 'ygdsijhhs44451554sd54', engine.stage );
+		let time = new Time(engine.stage, 0); // 9 Process time
+		let renderer = new Renderer(engine.stage, 1280, 900);
 
 		engine.addSystems([
 			worldGeneration, // 1 Generate the world
@@ -37,22 +43,21 @@ class Application {
 			new Behavior(), // 5 Based on player input, change body vectors
 			new Force(), // 6 Apply forces
 			new Movement(), // 7 Move
-			new Renderer(engine.stage, 1280, 900), // 8 Render
-			new Time(engine.stage, 0), // 9 Process time
+			renderer, // 8 Render
+			new CameraSystem( renderer ),
+			time,
+			new SkyObjectOrbitting( time.worldTime ),
 			new Spawner(engine.ecs)
 		]);
 
 		engine.ecs.addEntity(new Background());
+		engine.ecs.addEntity(new Sun());
 		engine.ecs.addEntity(new Player());
-		engine.ecs.addEntity(new NPC());
-		engine.ecs.addEntity(new NPC());
 
 		for( let i = 0; i < 10; i++ ) {
-
 			engine.ecs.addEntity(new Rock(-3));
 			engine.ecs.addEntity(new Rock(-1));
 			engine.ecs.addEntity(new Rock(7));
-
 			engine.ecs.addEntity(new Tree(-7));
 			engine.ecs.addEntity(new Tree(-6));
 			engine.ecs.addEntity(new Tree(-5));

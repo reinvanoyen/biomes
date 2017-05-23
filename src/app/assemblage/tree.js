@@ -23,7 +23,7 @@ class Tree extends ECS.Entity {
 		] );
 
 		this.updateComponent('depth', { value: depth } );
-		this.updateComponent('position', { value: Vector2.fromValues( math.randFloatBetween( -5000, 5000 ), 0 ) } );
+		this.updateComponent('position', { value: Vector2.fromValues( math.randFloatBetween( -5000, 5000 ), -1000 ) } );
 		this.updateComponent('sprite', {
 			src: 'assets/textures/tree0' + math.randBetween( 1, 4 ) + '.png',
 			width: null,

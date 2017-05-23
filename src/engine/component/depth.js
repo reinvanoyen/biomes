@@ -3,7 +3,7 @@
 const Depth = {
 	name: 'depth',
 	defaults: {
-		value: 1
+		value: 0
 	}
 };
 
