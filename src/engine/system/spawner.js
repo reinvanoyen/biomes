@@ -3,7 +3,8 @@
 const ECS = require('yagl-ecs'),
 	MessageManager = require('../messaging/messagemanager'),
 	Tree = require('../../app/assemblage/tree'),
-	Vector2 = require('gl-matrix').vec2
+	Vector2 = require('gl-matrix').vec2,
+	math = require('../util/math')
 ;
 
 class Spawner extends ECS.System {
@@ -19,6 +20,10 @@ class Spawner extends ECS.System {
 
 			entity.updateComponent('position', {
 				value: e.position
+			} );
+
+			entity.updateComponent('depth', {
+				value: math.randBetween( -3, 5 )
 			} );
 
 			this.ecs.addEntity(entity);

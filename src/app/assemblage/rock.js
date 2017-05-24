@@ -7,6 +7,7 @@ let ECS = require('yagl-ecs'),
 	Body = require('../../engine/component/body'),
 	math = require('../../engine/util/math'),
 	Depth = require('../../engine/component/depth'),
+	Camera = require('../../engine/component/camera'),
 	Vector2 = require('gl-matrix').vec2
 ;
 
@@ -18,12 +19,11 @@ class Rock extends ECS.Entity {
 			Sprite,
 			Position,
 			Body,
-			Collision,
-			Depth
+			Collision
 		] );
 
-		this.updateComponent('depth', { value: depth } );
-		this.updateComponent('position', { value: Vector2.fromValues( math.randFloatBetween( -5000, 5000 ), 0 ) } );
+		//this.updateComponent('depth', { value: depth } );
+		this.updateComponent('position', { value: Vector2.fromValues( 0, 0 ) } );
 		this.updateComponent('sprite', {
 			src: 'assets/textures/rock01.png',
 			width: 100,

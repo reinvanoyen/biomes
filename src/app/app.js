@@ -21,8 +21,7 @@ const CoreEngine = require('../engine/core-engine'),
 	Tree = require('./assemblage/tree'),
 	Rock = require('./assemblage/rock'),
 	Sun = require('./assemblage/sun'),
-	Background = require('./assemblage/background'),
-	Camera = require('./assemblage/camera')
+	Background = require('./assemblage/background')
 ;
 
 class Application {
@@ -31,7 +30,7 @@ class Application {
 
 		let engine = new CoreEngine();
 		let renderer = new Renderer(1280, 900);
-		let worldGeneration = new WorldGeneration( 'ygdsijhhs44451554sd54' );
+		let worldGeneration = new WorldGeneration( '4f5d45' );
 		let time = new Time(renderer.stage, 0); // 9 Process time
 
 		engine.addSystems([
@@ -53,6 +52,14 @@ class Application {
 		engine.ecs.addEntity(new Background());
 		engine.ecs.addEntity(new Sun());
 		engine.ecs.addEntity(new Player());
+		engine.ecs.addEntity(new NPC());
+		engine.ecs.addEntity(new NPC());
+		engine.ecs.addEntity(new NPC());
+		engine.ecs.addEntity(new NPC());
+		engine.ecs.addEntity(new NPC());
+		engine.ecs.addEntity(new NPC());
+		engine.ecs.addEntity(new NPC());
+		engine.ecs.addEntity(new Rock());
 
 		engine.start();
 	}
