@@ -1,8 +1,7 @@
 "use strict";
 
-const ECS = require('yagl-ecs'),
-	keys = require('../input')
-;
+const ECS = require('yagl-ecs');
+const keys = require('../input');
 
 class Control extends ECS.System {
 
@@ -20,19 +19,19 @@ class Control extends ECS.System {
 		input.keyDown = keys.isDown(keys.DOWN_ARROW);
 		input.keySpace = keys.isDown(keys.SPACE);
 
-		if( walkingbehavior ) {
+		if (walkingbehavior) {
 
 			walkingbehavior.state = 'idle';
 
-			if( input.keyForward ) {
+			if (input.keyForward) {
 				walkingbehavior.state = 'walkingforward';
 			}
 
-			if( input.keyBackward ) {
+			if (input.keyBackward) {
 				walkingbehavior.state = 'walkingbackward';
 			}
 
-			if( input.keyJump ) {
+			if (input.keyJump) {
 				walkingbehavior.state = 'jumping';
 			}
 		}

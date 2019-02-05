@@ -16,18 +16,18 @@ class Spawner extends ECS.System {
 
 		MessageManager.addListener( 'world::spawnEntity', e => {
 
-			let entity = new Tree( -1 );
+			let entity = new Tree(-1);
 
 			entity.updateComponent('position', {
 				value: e.position
-			} );
+			});
 
 			entity.updateComponent('depth', {
 				value: math.randBetween( -3, 5 )
-			} );
+			});
 
 			this.ecs.addEntity(entity);
-		} );
+		});
 	}
 
 	test(entity) {

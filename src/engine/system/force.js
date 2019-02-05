@@ -1,8 +1,7 @@
 "use strict";
 
-const ECS = require('yagl-ecs'),
-	Vector2 = require('gl-matrix').vec2
-;
+const ECS = require('yagl-ecs');
+const Vector2 = require('gl-matrix').vec2;
 
 class Force extends ECS.System {
 
@@ -14,7 +13,7 @@ class Force extends ECS.System {
 
 		let {body} = entity.components;
 
-		Vector2.add( body.force, body.force, Vector2.fromValues( 0, .6 ) );
+		Vector2.add(body.force, body.force, Vector2.fromValues(0, .6));
 	}
 
 	exit(entity) {}

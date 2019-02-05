@@ -1,9 +1,8 @@
 "use strict";
 
-const ECS = require('yagl-ecs'),
-	Ambient = require('../rendering/filter/ambient'),
-	WorldTime = require('../world/world-time')
-;
+const ECS = require('yagl-ecs');
+const Ambient = require('../rendering/filter/ambient');
+const WorldTime = require('../world/world-time');
 
 class Time extends ECS.System {
 
@@ -13,7 +12,7 @@ class Time extends ECS.System {
 
 		this.stage = stage;
 
-		this.worldTime = new WorldTime(10, 250);
+		this.worldTime = new WorldTime(12, 260);
 
 		this.timeAmbientColorFilter = new Ambient();
 		this.dayAmbientColorFilter = new Ambient();

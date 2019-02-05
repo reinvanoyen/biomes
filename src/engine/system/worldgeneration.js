@@ -1,9 +1,7 @@
 "use strict";
 
-const ECS = require('yagl-ecs'),
-	input = require('../input'),
-	World = require('../world/world')
-;
+const ECS = require('yagl-ecs');
+const World = require('../world/world');
 
 class WorldGeneration extends ECS.System {
 
@@ -17,7 +15,7 @@ class WorldGeneration extends ECS.System {
 	}
 
 	update(entity) {
-		this.world.render( entity.components.position.value );
+		this.world.render(entity.components.position.value);
 	}
 
 	exit(entity) {}

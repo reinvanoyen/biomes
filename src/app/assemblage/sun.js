@@ -16,26 +16,28 @@ class Sun extends ECS.Entity {
 
 	constructor() {
 
-		super( null, [
+		super(null, [
 			Sprite,
 			Position,
 			PositionFixed,
 			SkyObject,
 			Depth
-		] );
+		]);
 
 		this.updateComponent('depth', {
 			value: -19
-		} );
+		});
 
-		this.updateComponent('position', { value: Vector2.fromValues( 500, 500 ) } );
+		this.updateComponent('position', {
+		  value: Vector2.fromValues(500, 500)
+		});
 
 		this.updateComponent('sprite', {
 			src: 'assets/textures/sun.png',
 			width: 200,
 			height: 200,
 			anchor: Vector2.fromValues(.5, .5)
-		} );
+		});
 	}
 }
 

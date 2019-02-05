@@ -34,6 +34,7 @@ class World {
 	}
 
 	getElevationAt(x) {
+	  return 50;
 		return -noise.getElevation( x, 1 ) * 3000;
 	}
 
@@ -101,9 +102,9 @@ class World {
 			let height = this.getElevationAt( x );
 
 			if( height < 50 ) {
-				MessageManager.trigger( 'world::spawnEntity', {
+				MessageManager.trigger('world::spawnEntity', {
 					position: Vector2.fromValues( x * this.tileSize, 0 )
-				} );
+				});
 			}
 		}
 

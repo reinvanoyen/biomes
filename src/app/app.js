@@ -30,7 +30,7 @@ class Application {
 
 		let engine = new CoreEngine();
 		let renderer = new Renderer(1280, 900);
-		let worldGeneration = new WorldGeneration( '4f5d45' );
+		let worldGeneration = new WorldGeneration( 'ds24d5s' );
 		let time = new Time(renderer.stage, 0); // 9 Process time
 
 		engine.addSystems([
@@ -45,8 +45,7 @@ class Application {
 			renderer, // 8 Render
 			new CameraSystem( renderer ),
 			time,
-			new SkyObjectOrbitting( time.worldTime ),
-			new Spawner(engine.ecs)
+			new SkyObjectOrbitting(time.worldTime)
 		]);
 
 		engine.ecs.addEntity(new Background());

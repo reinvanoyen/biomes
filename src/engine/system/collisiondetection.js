@@ -1,8 +1,6 @@
 "use strict";
 
-const ECS = require('yagl-ecs'),
-	MessageManager = require('../messaging/messagemanager')
-;
+const ECS = require('yagl-ecs');
 
 class CollisionDetection extends ECS.System {
 
@@ -22,28 +20,11 @@ class CollisionDetection extends ECS.System {
 
 		let elevation = this.world.getWorldElevation(position.value[0]);
 
-		if( position.value[1] >= elevation ) {
-
-			if(entity.components.collision && ! entity.components.collision.bottom) {
-
-				MessageManager.trigger('collision::onGround', {
-					entity: entity
-				});
-
-				entity.components.collision.bottom = true;
-			}
-
-		} else {
-
-			if(entity.components.collision && entity.components.collision.bottom) {
-
-				MessageManager.trigger('collision::offGround', {
-					entity: entity
-				});
-
-				entity.components.collision.bottom = false;
-			}
-		}
+    if (position.value[1] >= elevation) {
+      entity.components.collision.bottom = true;
+    } else {
+      entity.components.collision.bottom = false;
+    }
 	}
 
 	exit(entity) {}
