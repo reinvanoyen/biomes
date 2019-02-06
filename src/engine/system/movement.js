@@ -1,8 +1,7 @@
 "use strict";
 
-const ECS = require('yagl-ecs'),
-	Vector2 = require('gl-matrix').vec2
-;
+const ECS = require('yagl-ecs');
+const Vector2 = require('gl-matrix').vec2;
 
 class Movement extends ECS.System {
 

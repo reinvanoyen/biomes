@@ -20,14 +20,15 @@ class Renderer extends ECS.System {
 		this.stage = new PIXI.Container();
 
 		this.layers = {};
-		this.depths = [];
 		this.fixedEntities = [];
 		this.width = width;
 		this.height = height;
 	}
 
 	depthSort() {
-		this.stage.children.sort( ( a, b ) => a.zIndex - b.zIndex );
+		this.stage.children.sort((a, b) => {
+			return a.zIndex - b.zIndex;
+		});
 	}
 
 	test(entity) {
@@ -40,7 +41,7 @@ class Renderer extends ECS.System {
 
 		entity.sprite = new PIXI.Sprite( PIXI.Texture.fromImage( sprite.src ) );
 
-		if( sprite.width && sprite.height ) {
+		if (sprite.width && sprite.height) {
 			entity.sprite.width = sprite.width;
 			entity.sprite.height = sprite.height;
 		}
@@ -49,7 +50,8 @@ class Renderer extends ECS.System {
 		entity.sprite.anchor.y = sprite.anchor[1];
 
 		// If it's a skybox, add it to the back on the stage
-		if( entity.components.skybox ) {
+		if (entity.components.skybox) {
+
 			entity.sprite.zIndex = -20;
 			this.fixedEntities.push( entity );
 			this.stage.addChild( entity.sprite );
@@ -59,11 +61,7 @@ class Renderer extends ECS.System {
 
 		// If it's fixed
 		if( entity.components.positionfixed ) {
-			if( entity.components.depth ) {
-				entity.sprite.zIndex = entity.components.depth.value;
-			} else {
-				entity.sprite.zIndex = 0;
-			}
+
 			this.stage.addChild( entity.sprite );
 			this.depthSort();
 			return;
@@ -84,13 +82,11 @@ class Renderer extends ECS.System {
 			entity.sprite.scale.y = scalingDepthFactor;
 		}
 
-		if( ! this.layers[ depth ] ) {
+		if( ! this.layers[depth] ) {
 
 			// Create depth layer
-			this.depths.push( depth );
-
-			this.layers[ depth ] = new PIXI.Container();
-			this.layers[ depth ].zIndex = depth;
+			this.layers[depth] = new PIXI.Container();
+			this.layers[depth].zIndex = depth;
 
 			this.stage.addChild(this.layers[ depth ]);
 			this.depthSort();

@@ -8,8 +8,8 @@ const Sprite = {
 		return {
 			src: 'assets/textures/fox.png',
 			sprite: null,
-			width: 400,
-			height: 176,
+			width: 45,
+			height: 90,
 			anchor: Vector2.fromValues(.5, 1)
 		};
 	}
