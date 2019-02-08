@@ -2,6 +2,7 @@
 
 const CoreEngine = require('../engine/core-engine'),
   WorldGeneration = require('../engine/system/worldgeneration'),
+  SpatialHashingSystem = require('../engine/system/spatial-hashing-system'),
   CollisionDetection = require('../engine/system/collisiondetection'),
   Physics = require('../engine/system/physics'),
   Control = require('../engine/system/control'),
@@ -34,6 +35,7 @@ class Application {
 
     engine.addSystems([
       worldGeneration, // 1 Generate the world
+      new SpatialHashingSystem(),
       new CollisionDetection(worldGeneration.world), // 2 Check if there's collision
       new Physics(worldGeneration.world), // 3 Based on collision, apply physics reactions
       new AIProcessing(), // @TODO assign number

@@ -1,14 +1,12 @@
 "use strict";
 
 let ECS = require('yagl-ecs'),
+  SpatialAwareness = require('../../engine/component/spatial-awareness'),
 	Sprite = require('../../engine/component/sprite'),
 	Position = require('../../engine/component/position'),
 	Collision = require('../../engine/component/collision'),
 	Body = require('../../engine/component/body'),
 	math = require('../../engine/util/math'),
-	WalkingBehavior = require('../../engine/component/walkingbehavior'),
-	Input = require('../../engine/component/input'),
-	Camera = require('../../engine/component/camera'),
 	Vector2 = require('gl-matrix').vec2
 ;
 
@@ -17,6 +15,7 @@ class Berry extends ECS.Entity {
 	constructor() {
 
 		super( null, [
+      SpatialAwareness,
 			Sprite,
 			Position,
 			Body,

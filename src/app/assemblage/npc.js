@@ -1,6 +1,7 @@
 "use strict";
 
 const ECS = require('yagl-ecs'),
+  SpatialAwareness = require('../../engine/component/spatial-awareness'),
   Sprite = require('../../engine/component/sprite'),
   Position = require('../../engine/component/position'),
   Collision = require('../../engine/component/collision'),
@@ -19,6 +20,7 @@ class NPC extends ECS.Entity {
   constructor() {
 
     super(null, [
+      SpatialAwareness,
       Sprite,
       Position,
       Body,

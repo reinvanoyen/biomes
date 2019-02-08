@@ -1,6 +1,7 @@
 "use strict";
 
 let ECS = require('yagl-ecs'),
+  SpatialAwareness = require('../../engine/component/spatial-awareness'),
   Sprite = require('../../engine/component/sprite'),
   Position = require('../../engine/component/position'),
   Collision = require('../../engine/component/collision'),
@@ -8,13 +9,14 @@ let ECS = require('yagl-ecs'),
   math = require('../../engine/util/math'),
   Depth = require('../../engine/component/depth'),
   Vector2 = require('gl-matrix').vec2
-  ;
+;
 
 class Tree extends ECS.Entity {
 
   constructor() {
 
     super( null, [
+      SpatialAwareness,
       Sprite,
       Position,
       Body,
@@ -31,7 +33,7 @@ class Tree extends ECS.Entity {
     });
 
     this.updateComponent('sprite', {
-      src: 'assets/textures/tree0' + math.randBetween( 1, 4 ) + '.png',
+      src: 'assets/textures/tree0' + math.randBetween(1, 4) + '.png',
       width: null,
       height: null,
       anchor: Vector2.fromValues(.5, 1)
