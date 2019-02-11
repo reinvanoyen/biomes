@@ -13,7 +13,7 @@ const ECS = require('yagl-ecs'),
   Vector2 = require('gl-matrix').vec2,
   Depth = require('../../engine/component/depth'),
   Input = require('../../engine/component/input')
-  ;
+;
 
 class NPC extends ECS.Entity {
 
@@ -25,13 +25,9 @@ class NPC extends ECS.Entity {
       Position,
       Body,
       Collision,
-      WalkingBehavior,
-      AI
+      WalkingBehavior
+      // AI
     ]);
-
-    this.updateComponent('depth', {
-      value: -3
-    });
 
     this.updateComponent('body', {
       bounciness: 0.0,
@@ -39,7 +35,7 @@ class NPC extends ECS.Entity {
     });
 
     this.updateComponent('position', {
-      value: Vector2.fromValues( math.randFloatBetween(-1000, 1000), math.randFloatBetween(-1000, 0) )
+      value: Vector2.fromValues( math.randFloatBetween(-1000, 1000), 0 )
     });
   }
 }

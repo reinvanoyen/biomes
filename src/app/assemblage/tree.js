@@ -32,8 +32,13 @@ class Tree extends ECS.Entity {
       value: Vector2.fromValues( 500, 0 )
     });
 
+    this.updateComponent('collision', {
+      boxWidth: 216,
+      boxHeight: 1500
+    });
+
     this.updateComponent('sprite', {
-      src: 'assets/textures/tree0' + math.randBetween(1, 4) + '.png',
+      src: 'assets/textures/tree01.png',
       width: null,
       height: null,
       anchor: Vector2.fromValues(.5, 1)

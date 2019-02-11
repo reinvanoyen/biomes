@@ -14,7 +14,7 @@ class AIProcessing extends ECS.System {
 	enter(entity) {
 		let tree = new tractor.Tree();
 
-		tree.setRoot( new tractor.Selector(
+		tree.setRoot(new tractor.Selector(
 			new tractor.Sequence(
 				new IsTired(),
 				new Idle()
@@ -23,7 +23,7 @@ class AIProcessing extends ECS.System {
 				new IsRested(),
 				new WalkForward()
 			)
-		) );
+		));
 
 		entity.bt = tree;
 		entity.blackboard = new tractor.Blackboard();

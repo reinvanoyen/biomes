@@ -29,7 +29,7 @@ class Player extends ECS.Entity {
 
     this.updateComponent('body', {
       bounciness: 0.0,
-      maxVelocity: Vector2.fromValues(15, 15)
+      maxVelocity: Vector2.fromValues(15, 30)
     });
 
     this.updateComponent('position', {

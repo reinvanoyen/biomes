@@ -3,7 +3,7 @@
 const CoreEngine = require('../engine/core-engine'),
   WorldGeneration = require('../engine/system/worldgeneration'),
   SpatialHashingSystem = require('../engine/system/spatial-hashing-system'),
-  CollisionDetection = require('../engine/system/collisiondetection'),
+  CollisionDetection = require('../engine/system/collision-detection'),
   Physics = require('../engine/system/physics'),
   Control = require('../engine/system/control'),
   Behavior = require('../engine/system/behavior'),
@@ -14,7 +14,7 @@ const CoreEngine = require('../engine/core-engine'),
   SkyObjectOrbitting = require('../engine/system/skyobjectorbitting'),
 
   Renderer = require('../engine/system/renderer'),
-  CameraSystem = require('../engine/system/camerasystem'),
+  CameraSystem = require('../engine/system/camera-system'),
 
   Player = require('./assemblage/player'),
   NPC = require('./assemblage/npc'),
@@ -30,13 +30,14 @@ class Application {
 
     let engine = new CoreEngine();
     let renderer = new Renderer(1280, 900);
-    let worldGeneration = new WorldGeneration( 'ds24d5s' );
+    let worldGeneration = new WorldGeneration( 'dS5ud2q4ta3f9q1PQ4z' );
+    let spatialHashing = new SpatialHashingSystem();
     let time = new Time(renderer.stage, 0); // 9 Process time
 
     engine.addSystems([
       worldGeneration, // 1 Generate the world
-      new SpatialHashingSystem(),
-      new CollisionDetection(worldGeneration.world), // 2 Check if there's collision
+      spatialHashing,
+      new CollisionDetection(spatialHashing, worldGeneration.world), // 2 Check if there's collision
       new Physics(worldGeneration.world), // 3 Based on collision, apply physics reactions
       new AIProcessing(), // @TODO assign number
       new Control(), // 4 Get player input
@@ -55,12 +56,26 @@ class Application {
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+
+    /*
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new Tree());
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new Rock());
+    */
 
     engine.start();
   }
