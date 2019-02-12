@@ -4,6 +4,7 @@ const CoreEngine = require('../engine/core-engine'),
   WorldGeneration = require('../engine/system/worldgeneration'),
   SpatialHashingSystem = require('../engine/system/spatial-hashing-system'),
   CollisionDetection = require('../engine/system/collision-detection'),
+  CollisionResponseHandler = require('../engine/system/collision-response-handler'),
   Physics = require('../engine/system/physics'),
   Control = require('../engine/system/control'),
   Behavior = require('../engine/system/behavior'),
@@ -39,6 +40,7 @@ class Application {
       new AIProcessing(), // @TODO assign number
       spatialHashing,
       new CollisionDetection(spatialHashing, worldGeneration.world), // 2 Check if there's collision
+      new CollisionResponseHandler(),
       new Physics(worldGeneration.world), // 3 Based on collision, apply physics reactions
       new Control(), // 4 Get player input
       new Behavior(), // 5 Based on player input, change body vectors
@@ -54,12 +56,6 @@ class Application {
     engine.ecs.addEntity(new Sun());
     engine.ecs.addEntity(new Player());
     engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-
     /*
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());

@@ -18,7 +18,7 @@ class Physics extends ECS.System {
 
     let {position, collision, body} = entity.components;
 
-    if (collision.bottom || collision.top) {
+    if (collision.bottom) {
 
       position.value[1] = this.world.getWorldElevation(position.value[0]);
 
@@ -27,12 +27,6 @@ class Physics extends ECS.System {
 
       // @TODO what we should do here is reflect the velocity vector in the normal of the surface the ball has collided with.
       // @TODO http://www.3dkingdoms.com/weekly/weekly.php?a=2
-    }
-
-    if (collision.left || collision.right) {
-
-      body.force[0] = 0;
-      body.velocity[0] = -body.velocity[0] * body.bounciness;
     }
   }
 

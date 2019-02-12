@@ -10,10 +10,10 @@ class CameraE extends ECS.Entity {
 
 	constructor() {
 
-		super( null, [
+		super(null, [
 			Position,
 			Camera
-		] );
+		]);
 
 		this.updateComponent('position', { value: Vector2.fromValues( -200, 0 ) } );
 	}

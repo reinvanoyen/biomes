@@ -25,28 +25,28 @@ class NPC extends ECS.Entity {
       Position,
       Body,
       Collision,
-      WalkingBehavior,
-      AI
+      WalkingBehavior
+      // AI
     ]);
 
     this.updateComponent('sprite', {
       src: 'assets/textures/werner.png',
-      width: 172,
-      height: 283
+      width: 55,
+      height: 90
     });
 
     this.updateComponent('collision', {
-      boxWidth: 150,
-      boxHeight: 250
+      boxWidth: 55,
+      boxHeight: 90
     });
 
     this.updateComponent('body', {
-      bounciness: 0.0,
-      maxVelocity: Vector2.fromValues( math.randFloatBetween(1, 5), 15 )
+      bounciness: 0.25,
+      maxVelocity: Vector2.fromValues(math.randFloatBetween(1, 5), 20)
     });
 
     this.updateComponent('position', {
-      value: Vector2.fromValues( math.randFloatBetween(-5000, 5000), -1000 )
+      value: Vector2.fromValues(200, -500)
     });
   }
 }
