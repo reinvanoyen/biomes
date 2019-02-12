@@ -38,33 +38,30 @@ class CollisionDetection extends ECS.System {
       entities = entities.concat(this.spatialHashingSystem.buckets[hash]);
     });
 
-    entity.components.collision.left = false;
-    entity.components.collision.right = false;
-    entity.components.collision.top = false;
-    entity.components.collision.bottom = false;
+    entity.components.collision.entityCollision = false;
 
     entities.forEach((otherEntity) => {
 
-      // We're finally doing our basic AABB collision detection.
+      // AABB collision detection
       if (
         entity.id !== otherEntity.id &&
-        collision.boxTopRight[0] > otherEntity.components.collision.boxTopLeft[0] &&
-        collision.boxTopLeft[0] < otherEntity.components.collision.boxTopRight[0] &&
-        collision.boxBottomLeft[1] > otherEntity.components.collision.boxTopLeft[1] &&
-        collision.boxTopLeft[1] < otherEntity.components.collision.boxBottomLeft[1]
+        collision.boxTopRight[0] >= otherEntity.components.collision.boxTopLeft[0] &&
+        collision.boxTopLeft[0] <= otherEntity.components.collision.boxTopRight[0] &&
+        collision.boxBottomLeft[1] >= otherEntity.components.collision.boxTopLeft[1] &&
+        collision.boxTopLeft[1] <= otherEntity.components.collision.boxBottomLeft[1]
       ) {
-
-        entity.components.collision.left = true;
-        entity.components.collision.right = true;
-        entity.components.collision.top = true;
-        entity.components.collision.bottom = true;
+        entity.components.collision.entityCollision = true;
       }
     });
 
     // Check for ground collision
     let elevation = this.world.getWorldElevation(position.value[0]);
 
-    collision.bottom = (position.value[1] >= elevation);
+    entity.components.collision.groundCollision = (position.value[1] >= elevation);
+
+    if (! entity.components.collision.entityCollision) {
+      entity.components.collision.lastNonCollidingPosition = entity.components.position.value;
+    }
   }
 
   exit(entity) {}

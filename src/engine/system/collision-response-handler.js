@@ -14,22 +14,22 @@ class CollisionReponseHandler extends ECS.System {
 
     let { collision, collisionResponse } = entity.components;
 
-    if (
-      collision.top ||
-      collision.right ||
-      collision.left
-    ) {
+    if (collision.entityCollision) {
 
       if (collisionResponse.type === CollisionResponseTypes.COLLISION_RESPONSE_BOUNCE) {
 
         if (entity.components.body) {
 
-          // Let's reverse the force being applied to the body
-
           if (entity.components.position) {
-            entity.components.position.value[0] = entity.components.position.value[0] - 1;
+            // @TODO this fails
+            // We try to set it to the last non colliding position
+            entity.components.position.value = Vector2.fromValues(
+              entity.components.collision.lastNonCollidingPosition[0] - 10,
+              entity.components.collision.lastNonCollidingPosition[1] - 10
+            );
           }
-
+//
+          // Let's reverse the force being applied to the body
           entity.components.body.velocity = Vector2.fromValues(
             -entity.components.body.velocity[0] * entity.components.body.bounciness,
             -entity.components.body.velocity[1] * entity.components.body.bounciness

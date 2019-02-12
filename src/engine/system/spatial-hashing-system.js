@@ -84,18 +84,7 @@ class SpatialHashingSystem extends ECS.System {
 
   update(entity) {
 
-    let {position, collision, spatialAwareness} = entity.components;
-
-    // Update the collision box
-    let [ x, y ] = position.value;
-    let [ anchorX, anchorY ] = collision.boxAnchor;
-    let width = collision.boxWidth;
-    let height = collision.boxHeight;
-
-    entity.components.collision.boxTopLeft = Vector2.fromValues(x - (width * anchorX), y - (height * anchorY));
-    entity.components.collision.boxTopRight = Vector2.fromValues(x - (width * anchorX) + width, y - (height * anchorY));
-    entity.components.collision.boxBottomRight = Vector2.fromValues(x - (width * anchorX) + width, y - (height * anchorY) + height);
-    entity.components.collision.boxBottomLeft = Vector2.fromValues(x - (width * anchorX), y - (height * anchorY) + height);
+    let {spatialAwareness} = entity.components;
 
     // Generate hashes
     let hashes = this.generateSpatialHashes(entity);

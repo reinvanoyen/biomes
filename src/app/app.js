@@ -10,6 +10,7 @@ const CoreEngine = require('../engine/core-engine'),
   Behavior = require('../engine/system/behavior'),
   Force = require('../engine/system/force'),
   Movement = require('../engine/system/movement'),
+  Acceleration = require('../engine/system/acceleration'),
   AIProcessing = require('../engine/system/aiprocessing'),
   Time = require('../engine/system/time'),
   SkyObjectOrbitting = require('../engine/system/skyobjectorbitting'),
@@ -37,15 +38,16 @@ class Application {
 
     engine.addSystems([
       worldGeneration, // 1 Generate the world
-      new AIProcessing(), // @TODO assign number
+      // new AIProcessing(), // @TODO assign number
+      new Control(), // 4 Get player input
+      new Force(), // Gravity
+      new Physics(worldGeneration.world), // 3 Based on collision, apply physics reactions
+      new Behavior(), // 5 Based on player input, change body vectors
+      new Acceleration(), //
+      new Movement(), // 7 Move
       spatialHashing,
       new CollisionDetection(spatialHashing, worldGeneration.world), // 2 Check if there's collision
       new CollisionResponseHandler(),
-      new Physics(worldGeneration.world), // 3 Based on collision, apply physics reactions
-      new Control(), // 4 Get player input
-      new Behavior(), // 5 Based on player input, change body vectors
-      new Force(), // 6 Apply forces
-      new Movement(), // 7 Move
       renderer, // 8 Render
       new CameraSystem( renderer ),
       time,

@@ -12,10 +12,9 @@ const Collision = {
     boxTopRight: Vector2.fromValues(0.0, 0.0),
     boxBottomRight: Vector2.fromValues(0.0, 0.0),
     boxBottomLeft: Vector2.fromValues(0.0, 0.0),
-    top: false,
-    right: false,
-    bottom: false,
-    left: false
+    lastNonCollidingPosition: Vector2.fromValues(0.0, 0.0),
+    entityCollision: false,
+    groundCollision: false
   }
 };
 

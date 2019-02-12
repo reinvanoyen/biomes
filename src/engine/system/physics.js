@@ -18,7 +18,7 @@ class Physics extends ECS.System {
 
     let {position, collision, body} = entity.components;
 
-    if (collision.bottom) {
+    if (collision.groundCollision) {
 
       position.value[1] = this.world.getWorldElevation(position.value[0]);
 

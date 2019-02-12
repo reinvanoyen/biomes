@@ -36,12 +36,12 @@ class NPC extends ECS.Entity {
     });
 
     this.updateComponent('collision', {
-      boxWidth: 55,
+      boxWidth: 90,
       boxHeight: 90
     });
 
     this.updateComponent('body', {
-      bounciness: 0.25,
+      bounciness: 0,
       maxVelocity: Vector2.fromValues(math.randFloatBetween(1, 5), 20)
     });
 
