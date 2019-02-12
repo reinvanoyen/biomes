@@ -38,6 +38,13 @@ class CollisionDetection extends ECS.System {
       entities = entities.concat(this.spatialHashingSystem.buckets[hash]);
     });
 
+    entity.components.sprite.alpha = 1;
+
+    entity.components.collision.left = false;
+    entity.components.collision.right = false;
+    entity.components.collision.top = false;
+    entity.components.collision.bottom = false;
+
     entities.forEach((otherEntity) => {
 
       // We're finally doing our basic AABB collision detection.
@@ -48,20 +55,13 @@ class CollisionDetection extends ECS.System {
         collision.boxBottomLeft[1] > otherEntity.components.collision.boxTopLeft[1] &&
         collision.boxTopLeft[1] < otherEntity.components.collision.boxBottomLeft[1]
       ) {
-        otherEntity.components.sprite.alpha = .25;
+        entity.components.sprite.alpha = .25;
 
         entity.components.collision.left = true;
         entity.components.collision.right = true;
         entity.components.collision.top = true;
         entity.components.collision.bottom = true;
 
-      } else {
-        otherEntity.components.sprite.alpha = 1;
-
-        entity.components.collision.left = false;
-        entity.components.collision.right = false;
-        entity.components.collision.top = false;
-        entity.components.collision.bottom = false;
       }
     });
 

@@ -18,7 +18,7 @@ class Physics extends ECS.System {
 
     let {position, collision, body} = entity.components;
 
-    if (collision.bottom) {
+    if (collision.bottom || collision.top) {
 
       position.value[1] = this.world.getWorldElevation(position.value[0]);
 
@@ -29,7 +29,8 @@ class Physics extends ECS.System {
       // @TODO http://www.3dkingdoms.com/weekly/weekly.php?a=2
     }
 
-    if (collision.left) {
+    if (collision.left || collision.right) {
+
       body.force[0] = 0;
       body.velocity[0] = -body.velocity[0] * body.bounciness;
     }

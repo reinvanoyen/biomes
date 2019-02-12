@@ -11,7 +11,7 @@ class Force extends ECS.System {
 
 	update(entity) {
 
-		let {body} = entity.components;
+		let { body } = entity.components;
 
 		Vector2.add(body.force, body.force, Vector2.fromValues(0, .6));
 	}

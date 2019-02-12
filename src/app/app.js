@@ -36,10 +36,10 @@ class Application {
 
     engine.addSystems([
       worldGeneration, // 1 Generate the world
+      new AIProcessing(), // @TODO assign number
       spatialHashing,
       new CollisionDetection(spatialHashing, worldGeneration.world), // 2 Check if there's collision
       new Physics(worldGeneration.world), // 3 Based on collision, apply physics reactions
-      new AIProcessing(), // @TODO assign number
       new Control(), // 4 Get player input
       new Behavior(), // 5 Based on player input, change body vectors
       new Force(), // 6 Apply forces
@@ -53,12 +53,6 @@ class Application {
     engine.ecs.addEntity(new Background());
     engine.ecs.addEntity(new Sun());
     engine.ecs.addEntity(new Player());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
