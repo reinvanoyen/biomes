@@ -70,6 +70,23 @@ class Application {
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
 
     /*
     engine.ecs.addEntity(new NPC());

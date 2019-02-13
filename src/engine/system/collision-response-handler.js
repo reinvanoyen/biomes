@@ -20,10 +20,6 @@ class CollisionReponseHandler extends ECS.System {
 
     let { collision, collisionResponse } = entity.components;
 
-    if (collision.groundCollision && entity.components.position) {
-      entity.components.position.value[1] = this.world.getWorldElevation(entity.components.position.value[0]);
-    }
-    
     if (collision.entityCollision) {
 
       if (collisionResponse.type === CollisionResponseTypes.COLLISION_RESPONSE_BOUNCE) {
@@ -45,10 +41,15 @@ class CollisionReponseHandler extends ECS.System {
             -entity.components.body.velocity[1] * entity.components.body.bounciness
           );
 
-          entity.components.body.force = Vector2.fromValues(0, 0);
+          // entity.components.body.force = Vector2.fromValues(0, 0);
           entity.components.body.acceleration = Vector2.fromValues(0, 0);
+          entity.components.body.force = Vector2.fromValues(0, 0);
         }
       }
+    }
+
+    if (collision.groundCollision && entity.components.position) {
+      entity.components.position.value[1] = this.world.getWorldElevation(entity.components.position.value[0]);
     }
   }
 

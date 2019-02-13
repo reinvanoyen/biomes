@@ -34,17 +34,17 @@ class NPC extends ECS.Entity {
     });
 
     this.updateComponent('collision', {
-      boxWidth: 90,
+      boxWidth: 55,
       boxHeight: 90
     });
 
     this.updateComponent('body', {
-      bounciness: 0.1,
-      maxVelocity: Vector2.fromValues(10, 15)
+      bounciness: .5,
+      maxVelocity: Vector2.fromValues(math.randFloatBetween(1, 15), math.randFloatBetween(10, 30))
     });
 
     this.updateComponent('position', {
-      value: Vector2.fromValues(math.randFloatBetween(-300, 300), -150)
+      value: Vector2.fromValues(math.randFloatBetween(-1000, 1000), math.randFloatBetween(-1000, -500))
     });
   }
 }

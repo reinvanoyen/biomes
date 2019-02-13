@@ -30,7 +30,7 @@ class Player extends ECS.Entity {
     ]);
 
     this.updateComponent('body', {
-      bounciness: 0.1,
+      bounciness: .5,
       maxVelocity: Vector2.fromValues(10, 15)
     });
 
