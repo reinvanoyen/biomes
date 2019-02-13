@@ -1,19 +1,16 @@
 "use strict";
 
-const ECS = require('yagl-ecs'),
-  SpatialAwareness = require('../../engine/component/spatial-awareness'),
-  Sprite = require('../../engine/component/sprite'),
-  Position = require('../../engine/component/position'),
-  Collision = require('../../engine/component/collision'),
-  Body = require('../../engine/component/body'),
-  WalkingBehavior = require('../../engine/component/walkingbehavior'),
-  Camera = require('../../engine/component/camera'),
-  AI = require('../../engine/component/ai'),
-  math = require('../../engine/util/math'),
-  Vector2 = require('gl-matrix').vec2,
-  Depth = require('../../engine/component/depth'),
-  Input = require('../../engine/component/input')
-;
+const ECS = require('yagl-ecs');
+const SpatialAwareness = require('../../engine/component/spatial-awareness');
+const Sprite = require('../../engine/component/sprite');
+const Position = require('../../engine/component/position');
+const Collision = require('../../engine/component/collision');
+const CollisionResponse = require('../../engine/component/collision-response');
+const Body = require('../../engine/component/body');
+const WalkingBehavior = require('../../engine/component/walkingbehavior');
+const AI = require('../../engine/component/ai');
+const math = require('../../engine/util/math');
+const Vector2 = require('gl-matrix').vec2;
 
 class NPC extends ECS.Entity {
 
@@ -25,6 +22,7 @@ class NPC extends ECS.Entity {
       Position,
       Body,
       Collision,
+      CollisionResponse,
       WalkingBehavior
       // AI
     ]);
@@ -41,12 +39,12 @@ class NPC extends ECS.Entity {
     });
 
     this.updateComponent('body', {
-      bounciness: 0,
-      maxVelocity: Vector2.fromValues(math.randFloatBetween(1, 5), 20)
+      bounciness: 0.1,
+      maxVelocity: Vector2.fromValues(10, 15)
     });
 
     this.updateComponent('position', {
-      value: Vector2.fromValues(200, -500)
+      value: Vector2.fromValues(math.randFloatBetween(-300, 300), -150)
     });
   }
 }

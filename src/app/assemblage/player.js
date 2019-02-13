@@ -30,12 +30,12 @@ class Player extends ECS.Entity {
     ]);
 
     this.updateComponent('body', {
-      bounciness: 0.01,
-      maxVelocity: Vector2.fromValues(15, 30)
+      bounciness: 0.1,
+      maxVelocity: Vector2.fromValues(10, 15)
     });
 
     this.updateComponent('position', {
-      value: Vector2.fromValues(0, 0)
+      value: Vector2.fromValues(0, -500)
     });
   }
 }

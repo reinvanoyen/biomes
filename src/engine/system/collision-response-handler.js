@@ -6,6 +6,12 @@ const Vector2 = require('gl-matrix').vec2;
 
 class CollisionReponseHandler extends ECS.System {
 
+  constructor(world) {
+
+    super();
+    this.world = world;
+  }
+
   test(entity) {
     return entity.components.collision && entity.components.collisionResponse;
   }
@@ -14,6 +20,10 @@ class CollisionReponseHandler extends ECS.System {
 
     let { collision, collisionResponse } = entity.components;
 
+    if (collision.groundCollision && entity.components.position) {
+      entity.components.position.value[1] = this.world.getWorldElevation(entity.components.position.value[0]);
+    }
+    
     if (collision.entityCollision) {
 
       if (collisionResponse.type === CollisionResponseTypes.COLLISION_RESPONSE_BOUNCE) {
@@ -21,14 +31,14 @@ class CollisionReponseHandler extends ECS.System {
         if (entity.components.body) {
 
           if (entity.components.position) {
-            // @TODO this fails
+
             // We try to set it to the last non colliding position
             entity.components.position.value = Vector2.fromValues(
-              entity.components.collision.lastNonCollidingPosition[0] - 10,
-              entity.components.collision.lastNonCollidingPosition[1] - 10
+              Math.round(entity.components.collision.lastNonCollidingPosition[0]),
+              Math.round(entity.components.collision.lastNonCollidingPosition[1])
             );
           }
-//
+
           // Let's reverse the force being applied to the body
           entity.components.body.velocity = Vector2.fromValues(
             -entity.components.body.velocity[0] * entity.components.body.bounciness,

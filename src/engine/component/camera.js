@@ -6,7 +6,7 @@ const Camera = {
 	name: 'camera',
 	getDefaults: function() {
 		return {
-			offset: Vector2.fromValues(0.0, 300.0)
+			offset: Vector2.fromValues(0.0, 50.0)
 		};
 	}
 };

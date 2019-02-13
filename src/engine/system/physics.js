@@ -1,5 +1,7 @@
 "use strict";
 
+// @TODO deprecate this system
+
 const ECS = require('yagl-ecs');
 
 class Physics extends ECS.System {

@@ -31,33 +31,46 @@ class Application {
   constructor() {
 
     let engine = new CoreEngine();
-    let renderer = new Renderer(1280, 900);
+    let renderer = new Renderer(1200, 600);
     let worldGeneration = new WorldGeneration( 'dS5ud2q4ta3f9q1PQ4z' );
     let spatialHashing = new SpatialHashingSystem();
     let time = new Time(renderer.stage, 0); // 9 Process time
 
     engine.addSystems([
       worldGeneration, // 1 Generate the world
-      // new AIProcessing(), // @TODO assign number
-      new Control(), // 4 Get player input
-      new Force(), // Gravity
-      new Physics(worldGeneration.world), // 3 Based on collision, apply physics reactions
-      new Behavior(), // 5 Based on player input, change body vectors
-      new Acceleration(), //
-      new Movement(), // 7 Move
-      spatialHashing,
-      new CollisionDetection(spatialHashing, worldGeneration.world), // 2 Check if there's collision
-      new CollisionResponseHandler(),
-      renderer, // 8 Render
-      new CameraSystem( renderer ),
-      time,
-      new SkyObjectOrbitting(time.worldTime)
+
+      new AIProcessing(),
+
+      new Control(), // Processes input
+      new Behavior(), // Processes behavior state
+      new Force(), // Apply forces like gravity
+      new SkyObjectOrbitting(time.worldTime),
+
+      new CollisionResponseHandler(worldGeneration.world),
+
+      new Acceleration(), // Update velocity with force / acceleration / mass
+      new Movement(), // Update position with velocity
+
+      spatialHashing, // Divide all entities into spatial hashing buckets based on their collision box
+      new CollisionDetection(spatialHashing, worldGeneration.world), // Checks if there's collision
+
+      new CameraSystem(renderer), // Move then world based on the camera position
+      renderer, // Render everything
+      time, // Move time forward
     ]);
 
     engine.ecs.addEntity(new Background());
     engine.ecs.addEntity(new Sun());
     engine.ecs.addEntity(new Player());
     engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+
     /*
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());

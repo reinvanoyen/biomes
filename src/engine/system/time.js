@@ -6,33 +6,33 @@ const WorldTime = require('../world/world-time');
 
 class Time extends ECS.System {
 
-	constructor(stage, frequency=15) {
+  constructor(stage, frequency=15) {
 
-		super(frequency);
+    super(frequency);
 
-		this.stage = stage;
+    this.stage = stage;
 
-		this.worldTime = new WorldTime(12, 100);
+    this.worldTime = new WorldTime(12, 100);
 
-		this.timeAmbientColorFilter = new Ambient();
-		this.dayAmbientColorFilter = new Ambient();
+    this.timeAmbientColorFilter = new Ambient();
+    this.dayAmbientColorFilter = new Ambient();
 
-		this.stage.filters = [ this.timeAmbientColorFilter, this.dayAmbientColorFilter ];
-	}
+    this.stage.filters = [ this.timeAmbientColorFilter, this.dayAmbientColorFilter ];
+  }
 
-	test(entity) {
-		return false;
-	}
+  test(entity) {
+    return false;
+  }
 
-	postUpdate() {
+  postUpdate() {
 
-		this.worldTime.tick();
+    this.worldTime.tick();
 
-		this.timeAmbientColorFilter.ambientColor = this.worldTime.getTimeAmbientColor();
-		this.dayAmbientColorFilter.ambientColor = this.worldTime.getDayAmbientColor();
-	}
+    this.timeAmbientColorFilter.ambientColor = this.worldTime.getTimeAmbientColor();
+    this.dayAmbientColorFilter.ambientColor = this.worldTime.getDayAmbientColor();
+  }
 
-	exit(entity) {}
+  exit(entity) {}
 }
 
 module.exports = Time;

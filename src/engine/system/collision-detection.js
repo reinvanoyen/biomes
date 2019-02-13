@@ -1,6 +1,7 @@
 "use strict";
 
 const ECS = require('yagl-ecs');
+const Vector2 = require('gl-matrix').vec2;
 
 class CollisionDetection extends ECS.System {
 
@@ -20,17 +21,13 @@ class CollisionDetection extends ECS.System {
     let {spatialAwareness, position, collision} = entity.components;
 
     // Check spatial hash buckets for collisions with other entities
-
+    // Filter out double hashes
     let hashes = [
       spatialAwareness.topLeft,
       spatialAwareness.topRight,
       spatialAwareness.bottomRight,
       spatialAwareness.bottomLeft
-    ].filter((value, index, array) => {
-
-      // Only keep unique buckets
-      return array.indexOf(value) === index;
-    });
+    ].filter((value, index, array) => array.indexOf(value) === index);
 
     let entities = [];
 
@@ -50,6 +47,8 @@ class CollisionDetection extends ECS.System {
         collision.boxBottomLeft[1] >= otherEntity.components.collision.boxTopLeft[1] &&
         collision.boxTopLeft[1] <= otherEntity.components.collision.boxBottomLeft[1]
       ) {
+
+        // The entity collided with another entity
         entity.components.collision.entityCollision = true;
       }
     });
@@ -57,10 +56,16 @@ class CollisionDetection extends ECS.System {
     // Check for ground collision
     let elevation = this.world.getWorldElevation(position.value[0]);
 
+    // Set if there's ground collision
     entity.components.collision.groundCollision = (position.value[1] >= elevation);
 
+    // If there's no collision, we store the current position for later use
     if (! entity.components.collision.entityCollision) {
-      entity.components.collision.lastNonCollidingPosition = entity.components.position.value;
+
+      entity.components.collision.lastNonCollidingPosition = Vector2.fromValues(
+        entity.components.position.value[0],
+        entity.components.position.value[1]
+      );
     }
   }
 
