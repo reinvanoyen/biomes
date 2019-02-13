@@ -44,7 +44,7 @@ class NPC extends ECS.Entity {
     });
 
     this.updateComponent('position', {
-      value: Vector2.fromValues(math.randFloatBetween(-1000, 1000), math.randFloatBetween(-1000, -500))
+      value: Vector2.fromValues(math.randFloatBetween(-500, 500), -500)
     });
   }
 }

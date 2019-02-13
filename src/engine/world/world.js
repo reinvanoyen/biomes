@@ -34,7 +34,7 @@ class World {
 	}
 
 	getElevationAt(x) {
-	  return 50;
+	  return 0;
 		return -noise.getElevation( x, 1 ) * 3000;
 	}
 

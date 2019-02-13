@@ -16,7 +16,11 @@ class Behavior extends ECS.System {
 
     if (body && collision) {
 
-      if (walkingbehavior.state == 'walkingforward') {
+      if (walkingbehavior.state === 'jumping' && collision.groundCollision) {
+
+        Vector2.add(body.force, body.force, Vector2.fromValues(0, -5));
+
+      } else if (walkingbehavior.state === 'walkingforward' && collision.groundCollision) {
 
         Vector2.add(body.force, body.force, Vector2.fromValues(.7, 0));
 
@@ -24,7 +28,7 @@ class Behavior extends ECS.System {
           entity.sprite.scale.x = 1;
         }
 
-      } else if (walkingbehavior.state == 'walkingbackward') {
+      } else if (walkingbehavior.state === 'walkingbackward' && collision.groundCollision) {
 
         Vector2.add(body.force, body.force, Vector2.fromValues(-.7, 0));
 
@@ -40,15 +44,11 @@ class Behavior extends ECS.System {
         let lerpedForce = Vector2.clone(body.force);
         let lerpedVelocity = Vector2.clone(body.velocity);
 
-        Vector2.lerp( lerpedForce, lerpedForce, Vector2.fromValues( 0, 0 ), 1 );
-        Vector2.lerp( lerpedVelocity, lerpedVelocity, Vector2.fromValues( 0, 0 ), 1 );
+        Vector2.lerp(lerpedForce, lerpedForce, Vector2.fromValues(0, 0), 1);
+        Vector2.lerp(lerpedVelocity, lerpedVelocity, Vector2.fromValues(0, 0), 1);
 
         body.force[0] = lerpedForce[0];
         body.velocity[0] = lerpedVelocity[0];
-      }
-
-      if (walkingbehavior.state == 'jumping' && collision.groundCollision) {
-        Vector2.add(body.force, body.force, Vector2.fromValues(0, -8));
       }
     }
   }

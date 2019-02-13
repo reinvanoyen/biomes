@@ -49,7 +49,11 @@ class CollisionReponseHandler extends ECS.System {
     }
 
     if (collision.groundCollision && entity.components.position) {
+
       entity.components.position.value[1] = this.world.getWorldElevation(entity.components.position.value[0]);
+      entity.components.body.velocity[1] = 0;
+      entity.components.body.acceleration = Vector2.fromValues(0, 0);
+      entity.components.body.force = Vector2.fromValues(0, 0);
     }
   }
 

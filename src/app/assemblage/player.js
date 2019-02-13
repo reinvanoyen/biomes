@@ -35,7 +35,7 @@ class Player extends ECS.Entity {
     });
 
     this.updateComponent('position', {
-      value: Vector2.fromValues(0, -500)
+      value: Vector2.fromValues(0, 0)
     });
   }
 }

@@ -17,19 +17,18 @@ class Rock extends ECS.Entity {
   constructor(depth) {
 
     super(null, [
-      SpatialAwareness,
       Sprite,
-      Position,
-      Body,
-      Collision
+      Position
     ]);
 
-    //this.updateComponent('depth', { value: depth } );
-    this.updateComponent('position', { value: Vector2.fromValues( 0, 0 ) } );
+    this.updateComponent('position', {
+      value: Vector2.fromValues(math.randFloatBetween(-500, 500), 0)
+    });
+
     this.updateComponent('sprite', {
       src: 'assets/textures/rock01.png',
-      width: 100,
-      height: 100,
+      width: 200,
+      height: 212,
       anchor: Vector2.fromValues(.5, 1)
     });
   }
