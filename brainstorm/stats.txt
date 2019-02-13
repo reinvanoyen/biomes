@@ -1,0 +1,19 @@
+Physical:
+
+	Agility (Behendigheid)
+	Dexterity (Behendigheid)
+	Endurance (Uithoudingsvermogen)
+	Speed (Snelheid)
+	Strength (Kracht)
+	Vitality (Vitaliteit)
+
+Mental:
+
+	Intelligence (Intelligentie)
+	Knowledge (Kennis)
+	Willpower (Wilskracht)
+
+Mixed:
+
+	Charisma (Charisma)
+	Luck (Geluk)
