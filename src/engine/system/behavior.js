@@ -18,7 +18,7 @@ class Behavior extends ECS.System {
 
       if (walkingbehavior.state === 'jumping' && collision.groundCollision) {
 
-        Vector2.add(body.force, body.force, Vector2.fromValues(0, -5));
+        Vector2.add(body.force, body.force, Vector2.fromValues(0, -8));
 
       } else if (walkingbehavior.state === 'walkingforward' && collision.groundCollision) {
 

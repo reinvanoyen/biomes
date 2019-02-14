@@ -42,18 +42,17 @@ class Application {
       new AIProcessing(),
       new Control(), // Processes input
 
-      // new Force(), // Apply forces like gravity
+      new Force(), // Apply forces like gravity
       new SkyObjectOrbitting(time.worldTime),
-
 
       new CollisionResponseHandler(worldGeneration.world),
 
+      new Behavior(), // Processes behavior state
+      new Acceleration(), // Update velocity with force / acceleration / mass
       new Movement(), // Update position with velocity
 
-      new Behavior(), // Processes behavior state
       spatialHashing, // Divide all entities into spatial hashing buckets based on their collision box
       new CollisionDetection(spatialHashing, worldGeneration.world), // Checks if there's collision
-      new Acceleration(), // Update velocity with force / acceleration / mass
 
       new CameraSystem(renderer), // Move then world based on the camera position
       renderer, // Render everything
@@ -84,7 +83,32 @@ class Application {
     engine.ecs.addEntity(new Rock());
 
     engine.ecs.addEntity(new Player());
-
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
 

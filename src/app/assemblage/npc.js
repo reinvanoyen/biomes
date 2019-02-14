@@ -40,11 +40,11 @@ class NPC extends ECS.Entity {
 
     this.updateComponent('body', {
       bounciness: .5,
-      maxVelocity: Vector2.fromValues(math.randFloatBetween(1, 15), math.randFloatBetween(10, 30))
+      maxVelocity: Vector2.fromValues(10, 15)
     });
 
     this.updateComponent('position', {
-      value: Vector2.fromValues(math.randFloatBetween(-500, 500), -500)
+      value: Vector2.fromValues(math.randFloatBetween(-1000, 1000), math.randFloatBetween(-1000, 1000))
     });
   }
 }
