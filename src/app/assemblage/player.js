@@ -13,6 +13,8 @@ const ECS = require('yagl-ecs'),
   Vector2 = require('gl-matrix').vec2
 ;
 
+const AI = require('../../engine/component/ai');
+
 class Player extends ECS.Entity {
 
   constructor() {
@@ -30,12 +32,16 @@ class Player extends ECS.Entity {
     ]);
 
     this.updateComponent('body', {
-      bounciness: .5,
+      bounciness: .1,
       maxVelocity: Vector2.fromValues(10, 15)
     });
 
     this.updateComponent('position', {
       value: Vector2.fromValues(0, 0)
+    });
+
+    this.updateComponent('camera', {
+      offset: Vector2.fromValues(0, 250)
     });
   }
 }

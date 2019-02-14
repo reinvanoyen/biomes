@@ -39,12 +39,12 @@ class AIProcessing extends ECS.System {
 		
 		if( entity.components.walkingbehavior ) {
 			if(
-				entity.components.walkingbehavior.state == 'walkingforward' ||
-				entity.components.walkingbehavior.state == 'walkingbackward'
+				entity.components.walkingbehavior.state === 'walkingforward' ||
+				entity.components.walkingbehavior.state === 'walkingbackward'
 			)
 			{
 				entity.components.ai.fatigue++;
-			} else if( entity.components.walkingbehavior.state == 'idle' ) {
+			} else if( entity.components.walkingbehavior.state === 'idle' ) {
 				entity.components.ai.fatigue -= 1;
 			}
 		}

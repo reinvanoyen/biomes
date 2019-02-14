@@ -17,21 +17,6 @@ class Movement extends ECS.System {
 
     // Apply velocity
     Vector2.add(position.value, position.value, body.velocity);
-
-    // Update the collision box
-
-    if (entity.components.collision) {
-
-      let [ x, y ] = position.value;
-      let [ anchorX, anchorY ] = entity.components.collision.boxAnchor;
-      let width = entity.components.collision.boxWidth;
-      let height = entity.components.collision.boxHeight;
-
-      entity.components.collision.boxTopLeft = Vector2.fromValues(x - (width * anchorX), y - (height * anchorY));
-      entity.components.collision.boxTopRight = Vector2.fromValues(x - (width * anchorX) + width, y - (height * anchorY));
-      entity.components.collision.boxBottomRight = Vector2.fromValues(x - (width * anchorX) + width, y - (height * anchorY) + height);
-      entity.components.collision.boxBottomLeft = Vector2.fromValues(x - (width * anchorX), y - (height * anchorY) + height);
-    }
   }
 
   exit(entity) {}

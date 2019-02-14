@@ -4,6 +4,7 @@ const CoreEngine = require('../engine/core-engine'),
   WorldGeneration = require('../engine/system/worldgeneration'),
   SpatialHashingSystem = require('../engine/system/spatial-hashing-system'),
   CollisionDetection = require('../engine/system/collision-detection'),
+  CollisionBoxMovement = require('../engine/system/collision-box-movement'),
   CollisionResponseHandler = require('../engine/system/collision-response-handler'),
   Physics = require('../engine/system/physics'),
   Control = require('../engine/system/control'),
@@ -19,6 +20,7 @@ const CoreEngine = require('../engine/core-engine'),
   CameraSystem = require('../engine/system/camera-system'),
 
   Player = require('./assemblage/player'),
+  ForceField = require('./assemblage/force-field'),
   NPC = require('./assemblage/npc'),
   Tree = require('./assemblage/tree'),
   Rock = require('./assemblage/rock'),
@@ -51,6 +53,7 @@ class Application {
       new Acceleration(), // Update velocity with force / acceleration / mass
       new Movement(), // Update position with velocity
 
+      new CollisionBoxMovement(),
       spatialHashing, // Divide all entities into spatial hashing buckets based on their collision box
       new CollisionDetection(spatialHashing, worldGeneration.world), // Checks if there's collision
 
@@ -91,26 +94,8 @@ class Application {
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
     engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
+
+    engine.ecs.addEntity(new ForceField());
 
 
     /*
