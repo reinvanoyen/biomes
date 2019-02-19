@@ -5,7 +5,7 @@ const Vector2 = require('gl-matrix').vec2;
 const OnCollisionApplyForce = {
   name: 'onCollisionApplyForce',
   defaults: {
-    force: Vector2.fromValues(1, 0)
+    force: Vector2.fromValues(0, -.75)
   }
 };
 

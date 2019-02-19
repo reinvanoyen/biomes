@@ -5,7 +5,7 @@ const ECS = require('yagl-ecs'),
   Sprite = require('../../engine/component/sprite'),
   Position = require('../../engine/component/position'),
   Collision = require('../../engine/component/collision'),
-  CollisionResponse = require('../../engine/component/collision-response'),
+  OnCollisionBounce = require('../../engine/component/on-collision-bounce'),
   Body = require('../../engine/component/body'),
   Camera = require('../../engine/component/camera'),
   WalkingBehavior = require('../../engine/component/walkingbehavior'),
@@ -22,7 +22,7 @@ class Player extends ECS.Entity {
     super(null, [
       SpatialAwareness,
       Collision,
-      CollisionResponse,
+      OnCollisionBounce,
       Sprite,
       Position,
       Body,
@@ -32,8 +32,8 @@ class Player extends ECS.Entity {
     ]);
 
     this.updateComponent('body', {
-      bounciness: .1,
-      maxVelocity: Vector2.fromValues(10, 15)
+      bounciness: 0.25,
+      maxVelocity: Vector2.fromValues(100, 15)
     });
 
     this.updateComponent('position', {

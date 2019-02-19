@@ -1,7 +1,6 @@
 "use strict";
 
 const ECS = require('yagl-ecs');
-const CollisionResponseTypes = require('../collision-response-types');
 const Vector2 = require('gl-matrix').vec2;
 
 class CollisionReponseHandler extends ECS.System {
@@ -13,16 +12,19 @@ class CollisionReponseHandler extends ECS.System {
   }
 
   test(entity) {
-    return entity.components.collision && entity.components.collisionResponse;
+    return entity.components.collision && (
+      entity.components.onCollisionBounce ||
+      entity.components.onCollisionApplyForce
+    );
   }
 
   update(entity) {
 
-    let { collision, collisionResponse } = entity.components;
+    let { collision } = entity.components;
 
     if (collision.entityCollision) {
 
-      if (collisionResponse.type === CollisionResponseTypes.COLLISION_RESPONSE_BOUNCE) {
+      if (entity.components.onCollisionBounce && collision.entityCollision.components.onCollisionBounce) {
 
         if (entity.components.body) {
 
@@ -41,17 +43,33 @@ class CollisionReponseHandler extends ECS.System {
             -entity.components.body.velocity[1] * entity.components.body.bounciness
           );
 
-          // entity.components.body.force = Vector2.fromValues(0, 0);
+          //Vector2.add(entity.components.body.force, entity.components.body.force, collision.entityCollision.components.body.force);
+          Vector2.sub(entity.components.body.velocity, entity.components.body.velocity, collision.entityCollision.components.body.velocity);
+
           entity.components.body.acceleration = Vector2.fromValues(0, 0);
           entity.components.body.force = Vector2.fromValues(0, 0);
         }
       }
+
+      if (entity.components.onCollisionApplyForce) {
+
+        if (collision.entityCollision.components.body) {
+
+          // Apply force
+          Vector2.add(
+            collision.entityCollision.components.body.force,
+            collision.entityCollision.components.body.force,
+            entity.components.onCollisionApplyForce.force
+          );
+        }
+      }
     }
 
-    if (collision.groundCollision && entity.components.position) {
+    if (collision.groundCollision && entity.components.position && entity.components.body) {
 
+      // @TODO bounce?
       entity.components.position.value[1] = this.world.getWorldElevation(entity.components.position.value[0]);
-      entity.components.body.velocity[1] = 0;
+      entity.components.body.velocity[1] = -entity.components.body.velocity[1] * entity.components.body.bounciness;
       entity.components.body.acceleration = Vector2.fromValues(0, 0);
       entity.components.body.force = Vector2.fromValues(0, 0);
     }

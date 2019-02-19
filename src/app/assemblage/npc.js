@@ -5,17 +5,17 @@ const SpatialAwareness = require('../../engine/component/spatial-awareness');
 const Sprite = require('../../engine/component/sprite');
 const Position = require('../../engine/component/position');
 const Collision = require('../../engine/component/collision');
-const CollisionResponse = require('../../engine/component/collision-response');
 const Body = require('../../engine/component/body');
 const WalkingBehavior = require('../../engine/component/walkingbehavior');
 const math = require('../../engine/util/math');
 const Vector2 = require('gl-matrix').vec2;
 const Input = require('../../engine/component/input');
 const AI = require('../../engine/component/ai');
+const OnCollisionBounce = require('../../engine/component/on-collision-bounce');
 
-class NPC extends ECS.Entity {
+  class NPC extends ECS.Entity {
 
-  constructor() {
+  constructor(x = 0, y = 0) {
 
     super(null, [
       SpatialAwareness,
@@ -23,9 +23,9 @@ class NPC extends ECS.Entity {
       Position,
       Body,
       Collision,
-      CollisionResponse,
-      AI,
-      WalkingBehavior
+      OnCollisionBounce
+      // AI,
+      // WalkingBehavior
     ]);
 
     this.updateComponent('sprite', {
@@ -45,7 +45,7 @@ class NPC extends ECS.Entity {
     });
 
     this.updateComponent('position', {
-      value: Vector2.fromValues(math.randFloatBetween(-250, 250), math.randFloatBetween(-1000, -10000))
+      value: Vector2.fromValues(x, y)
     });
 
     /*

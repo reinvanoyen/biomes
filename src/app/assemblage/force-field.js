@@ -5,17 +5,13 @@ const SpatialAwareness = require('../../engine/component/spatial-awareness');
 const Sprite = require('../../engine/component/sprite');
 const Position = require('../../engine/component/position');
 const Collision = require('../../engine/component/collision');
-const Body = require('../../engine/component/body');
-const WalkingBehavior = require('../../engine/component/walkingbehavior');
-const AI = require('../../engine/component/ai');
-const math = require('../../engine/util/math');
 const Vector2 = require('gl-matrix').vec2;
 
 const OnCollisionApplyForce = require('../../engine/component/on-collision-apply-force');
 
 class ForceField extends ECS.Entity {
 
-  constructor() {
+  constructor(x = 0, y = 0) {
 
     super(null, [
       Sprite,
@@ -37,7 +33,7 @@ class ForceField extends ECS.Entity {
     });
 
     this.updateComponent('position', {
-      value: Vector2.fromValues(500, 0)
+      value: Vector2.fromValues(x, y)
     });
   }
 }

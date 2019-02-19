@@ -49,7 +49,7 @@ class CollisionDetection extends ECS.System {
       ) {
 
         // The entity collided with another entity
-        entity.components.collision.entityCollision = true;
+        entity.components.collision.entityCollision = otherEntity;
       }
     });
 

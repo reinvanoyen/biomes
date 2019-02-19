@@ -86,17 +86,18 @@ class Application {
     engine.ecs.addEntity(new Rock());
 
     engine.ecs.addEntity(new Player());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
-    engine.ecs.addEntity(new NPC());
+    engine.ecs.addEntity(new NPC(-500));
+    engine.ecs.addEntity(new NPC(-650));
 
-    engine.ecs.addEntity(new ForceField());
-
+    engine.ecs.addEntity(new ForceField(200, 0));
+    engine.ecs.addEntity(new ForceField(300, -100));
+    engine.ecs.addEntity(new ForceField(400, -200));
+    engine.ecs.addEntity(new ForceField(500, -300));
+    engine.ecs.addEntity(new ForceField(600, -400));
+    engine.ecs.addEntity(new ForceField(700, -500));
+    engine.ecs.addEntity(new ForceField(800, -600));
+    engine.ecs.addEntity(new ForceField(900, 700));
+    engine.ecs.addEntity(new ForceField(1500, 0));
 
     /*
     engine.ecs.addEntity(new NPC());
