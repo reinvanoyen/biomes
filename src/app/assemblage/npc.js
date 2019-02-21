@@ -39,20 +39,9 @@ const OnCollisionBounce = require('../../engine/component/on-collision-bounce');
       boxHeight: 90
     });
 
-    this.updateComponent('body', {
-      bounciness: .25,
-      maxVelocity: Vector2.fromValues(20, 30)
-    });
-
     this.updateComponent('position', {
       value: Vector2.fromValues(x, y)
     });
-
-    /*
-    this.updateComponent('position', {
-      value: Vector2.fromValues(math.randFloatBetween(-1000, 1000), math.randFloatBetween(-1000, 1000))
-    });
-    */
   }
 }
 

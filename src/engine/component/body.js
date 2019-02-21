@@ -7,10 +7,10 @@ const Body = {
 	getDefaults: function() {
 		return {
 			velocity: Vector2.fromValues(0.0, 0.0),
-			maxVelocity: Vector2.fromValues(10.0, 15.0),
+			maxVelocity: Vector2.fromValues(15.0, 15.0),
 			force: Vector2.fromValues(0.0, 0.0),
 			acceleration: Vector2.fromValues(0, 0),
-			mass: Vector2.fromValues(1.0, 1.0),
+			mass: Vector2.fromValues(0.5, 0.5),
 			bounciness: 0
 		};
 	}

@@ -9,6 +9,7 @@ const CoreEngine = require('../engine/core-engine'),
   Physics = require('../engine/system/physics'),
   Control = require('../engine/system/control'),
   Behavior = require('../engine/system/behavior'),
+  Grounded = require('../engine/system/grounded'),
   Force = require('../engine/system/force'),
   Movement = require('../engine/system/movement'),
   Acceleration = require('../engine/system/acceleration'),
@@ -43,6 +44,7 @@ class Application {
 
       new AIProcessing(),
       new Control(), // Processes input
+      new Grounded(),
 
       new Force(), // Apply forces like gravity
       new SkyObjectOrbitting(time.worldTime),
@@ -50,6 +52,7 @@ class Application {
       new CollisionResponseHandler(worldGeneration.world),
 
       new Behavior(), // Processes behavior state
+
       new Acceleration(), // Update velocity with force / acceleration / mass
       new Movement(), // Update position with velocity
 
@@ -65,6 +68,17 @@ class Application {
     engine.ecs.addEntity(new Background());
     engine.ecs.addEntity(new Sun());
 
+    engine.ecs.addEntity(new Rock());
+    engine.ecs.addEntity(new Rock());
+    engine.ecs.addEntity(new Rock());
+    engine.ecs.addEntity(new Rock());
+    engine.ecs.addEntity(new Rock());
+    engine.ecs.addEntity(new Rock());
+    engine.ecs.addEntity(new Rock());
+    engine.ecs.addEntity(new Rock());
+    engine.ecs.addEntity(new Rock());
+    engine.ecs.addEntity(new Rock());
+    engine.ecs.addEntity(new Rock());
     engine.ecs.addEntity(new Rock());
     engine.ecs.addEntity(new Rock());
     engine.ecs.addEntity(new Rock());

@@ -31,11 +31,6 @@ class Player extends ECS.Entity {
       Camera
     ]);
 
-    this.updateComponent('body', {
-      bounciness: 0.25,
-      maxVelocity: Vector2.fromValues(100, 15)
-    });
-
     this.updateComponent('position', {
       value: Vector2.fromValues(0, 0)
     });

@@ -22,7 +22,7 @@ class Rock extends ECS.Entity {
     ]);
 
     this.updateComponent('position', {
-      value: Vector2.fromValues(math.randFloatBetween(-500, 500), 0)
+      value: Vector2.fromValues(math.randFloatBetween(-1000, 1000), 0)
     });
 
     this.updateComponent('sprite', {

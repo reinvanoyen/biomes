@@ -22,7 +22,7 @@ class Behavior extends ECS.System {
 
       } else if (walkingbehavior.state === 'walkingforward' && collision.groundCollision) {
 
-        Vector2.add(body.force, body.force, Vector2.fromValues(.7, 0));
+        Vector2.add(body.force, body.force, Vector2.fromValues(4, 0));
 
         if (entity.components.sprite) {
           entity.sprite.scale.x = 1;
@@ -30,7 +30,7 @@ class Behavior extends ECS.System {
 
       } else if (walkingbehavior.state === 'walkingbackward' && collision.groundCollision) {
 
-        Vector2.add(body.force, body.force, Vector2.fromValues(-.7, 0));
+        Vector2.add(body.force, body.force, Vector2.fromValues(-4, 0));
 
         if (entity.components.sprite) {
           if (entity.sprite.scale.x > 0) {
@@ -40,15 +40,14 @@ class Behavior extends ECS.System {
 
       } else if (collision.groundCollision) {
 
-        // Lerp to make movement stop
-        let lerpedForce = Vector2.clone(body.force);
-        let lerpedVelocity = Vector2.clone(body.velocity);
-
-        Vector2.lerp(lerpedForce, lerpedForce, Vector2.fromValues(0, 0), 1);
-        Vector2.lerp(lerpedVelocity, lerpedVelocity, Vector2.fromValues(0, 0), 1);
-
-        body.force[0] = lerpedForce[0];
-        body.velocity[0] = lerpedVelocity[0];
+        // let lerpedForce = Vector2.clone(body.force);
+        // let lerpedVelocity = Vector2.clone(body.velocity);
+        //
+        // Vector2.lerp(lerpedForce, lerpedForce, Vector2.fromValues(0, 0), 1);
+        // Vector2.lerp(lerpedVelocity, lerpedVelocity, Vector2.fromValues(0, 0), 1);
+        //
+        // body.force[0] = lerpedForce[0];
+        // body.velocity[0] = lerpedVelocity[0];
       }
     }
   }
