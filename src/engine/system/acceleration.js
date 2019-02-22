@@ -13,7 +13,7 @@ class Acceleration extends ECS.System {
 
     let {body} = entity.components;
 
-    Vector2.divide(body.acceleration, body.force, body.mass);
+    Vector2.scale(body.acceleration, body.force, body.mass);
     Vector2.add(body.velocity, body.velocity, body.acceleration);
 
     // Clamp velocity

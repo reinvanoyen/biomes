@@ -31,10 +31,7 @@ class CollisionReponseHandler extends ECS.System {
           if (entity.components.position) {
 
             // We try to set it to the last non colliding position
-            entity.components.position.value = Vector2.fromValues(
-              Math.round(entity.components.collision.lastNonCollidingPosition[0]),
-              Math.round(entity.components.collision.lastNonCollidingPosition[1])
-            );
+            entity.components.position.value = Vector2.clone(entity.components.collision.lastNonCollidingPosition);
           }
 
           // Let's reverse the force being applied to the body
@@ -47,15 +44,8 @@ class CollisionReponseHandler extends ECS.System {
             entity.components.body.force,
             entity.components.body.force,
             collision.entityCollision.components.body.force,
-            collision.entityCollision.components.body.bounciness
+            entity.components.body.mass
           );
-
-          // Vector2.sub(entity.components.body.velocity, entity.components.body.velocity, collision.entityCollision.components.body.velocity);
-
-          /*
-          entity.components.body.acceleration = Vector2.fromValues(0, 0);
-          entity.components.body.force = Vector2.fromValues(0, 0);
-          */
         }
       }
 

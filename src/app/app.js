@@ -44,13 +44,13 @@ class Application {
 
       new AIProcessing(),
       new Control(), // Processes input
-      new Grounded(),
 
       new Force(), // Apply forces like gravity
       new SkyObjectOrbitting(time.worldTime),
 
       new CollisionResponseHandler(worldGeneration.world),
 
+      new Grounded(),
       new Behavior(), // Processes behavior state
 
       new Acceleration(), // Update velocity with force / acceleration / mass
@@ -101,7 +101,8 @@ class Application {
 
     engine.ecs.addEntity(new Player());
     engine.ecs.addEntity(new NPC(-500));
-    engine.ecs.addEntity(new NPC(-650));
+    engine.ecs.addEntity(new NPC(-600));
+    engine.ecs.addEntity(new NPC(-700));
 
     engine.ecs.addEntity(new ForceField(200, 0));
     engine.ecs.addEntity(new ForceField(300, -100));

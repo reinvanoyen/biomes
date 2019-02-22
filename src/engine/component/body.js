@@ -10,8 +10,8 @@ const Body = {
 			maxVelocity: Vector2.fromValues(15.0, 15.0),
 			force: Vector2.fromValues(0.0, 0.0),
 			acceleration: Vector2.fromValues(0, 0),
-			mass: Vector2.fromValues(0.5, 0.5),
-			bounciness: 0
+			mass: .5,
+			bounciness: .5
 		};
 	}
 };
