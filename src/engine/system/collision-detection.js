@@ -36,6 +36,7 @@ class CollisionDetection extends ECS.System {
     });
 
     entity.components.collision.entityCollision = false;
+    entity.components.collision.collidingEntities = [];
 
     entities.forEach((otherEntity) => {
 
@@ -49,7 +50,7 @@ class CollisionDetection extends ECS.System {
       ) {
 
         // The entity collided with another entity
-        entity.components.collision.entityCollision = otherEntity;
+        entity.components.collision.collidingEntities.push(otherEntity);
       }
     });
 

@@ -22,45 +22,52 @@ class CollisionReponseHandler extends ECS.System {
 
     let { collision } = entity.components;
 
-    if (collision.entityCollision) {
+    if (collision.collidingEntities.length) {
 
-      if (entity.components.onCollisionBounce && collision.entityCollision.components.onCollisionBounce) {
+      collision.collidingEntities.forEach(collidingEntity => {
 
-        if (entity.components.body) {
+        if (entity.components.onCollisionBounce && collidingEntity.components.onCollisionBounce) {
 
-          if (entity.components.position) {
+          if (entity.components.body) {
 
-            // We try to set it to the last non colliding position
-            entity.components.position.value = Vector2.clone(entity.components.collision.lastNonCollidingPosition);
+            if (entity.components.position) {
+
+              // We try to set it to the last non colliding position
+              entity.components.position.value = Vector2.clone(entity.components.collision.lastNonCollidingPosition);
+            }
+
+            // @TODO fix this double reaction shit
+            Vector2.scaleAndAdd(
+              collidingEntity.components.body.force,
+              collidingEntity.components.body.force,
+              entity.components.body.force,
+              collidingEntity.components.body.mass
+            );
+
+            /*
+            Vector2.scaleAndAdd(
+              entity.components.body.force,
+              entity.components.body.force,
+              collidingEntity.components.body.force,
+              entity.components.body.mass
+            );
+            */
           }
-
-          // Let's reverse the force being applied to the body
-          entity.components.body.velocity = Vector2.fromValues(
-            -entity.components.body.velocity[0] * entity.components.body.bounciness,
-            -entity.components.body.velocity[1] * entity.components.body.bounciness
-          );
-
-          Vector2.scaleAndAdd(
-            entity.components.body.force,
-            entity.components.body.force,
-            collision.entityCollision.components.body.force,
-            entity.components.body.mass
-          );
         }
-      }
 
-      if (entity.components.onCollisionApplyForce) {
+        if (entity.components.onCollisionApplyForce) {
 
-        if (collision.entityCollision.components.body) {
+          if (collidingEntity.components.body) {
 
-          // Apply force
-          Vector2.add(
-            collision.entityCollision.components.body.force,
-            collision.entityCollision.components.body.force,
-            entity.components.onCollisionApplyForce.force
-          );
+            // Apply force
+            Vector2.add(
+              collidingEntity.components.body.force,
+              collidingEntity.components.body.force,
+              entity.components.onCollisionApplyForce.force
+            );
+          }
         }
-      }
+      });
     }
 
     if (collision.groundCollision && entity.components.position && entity.components.body) {

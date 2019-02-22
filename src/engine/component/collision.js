@@ -14,6 +14,7 @@ const Collision = {
     boxBottomLeft: Vector2.fromValues(0.0, 0.0),
     lastNonCollidingPosition: Vector2.fromValues(0.0, 0.0),
     entityCollision: false,
+    collidingEntities: [],
     groundCollision: false
   }
 };
