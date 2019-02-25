@@ -101,8 +101,6 @@ class Application {
 
     engine.ecs.addEntity(new Player());
     engine.ecs.addEntity(new NPC(-500));
-    engine.ecs.addEntity(new NPC(-750));
-    engine.ecs.addEntity(new NPC(-950));
 
     engine.ecs.addEntity(new ForceField(200, 0));
     engine.ecs.addEntity(new ForceField(300, -100));

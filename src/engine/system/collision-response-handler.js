@@ -26,6 +26,7 @@ class CollisionReponseHandler extends ECS.System {
 
       collision.collidingEntities.forEach(collidingEntity => {
 
+        // COLLISION BOUNCE
         if (entity.components.onCollisionBounce && collidingEntity.components.onCollisionBounce) {
 
           if (entity.components.body) {
@@ -36,25 +37,16 @@ class CollisionReponseHandler extends ECS.System {
               entity.components.position.value = Vector2.clone(entity.components.collision.lastNonCollidingPosition);
             }
 
-            // @TODO fix this double reaction shit
             Vector2.scaleAndAdd(
-              collidingEntity.components.body.force,
-              collidingEntity.components.body.force,
+              collidingEntity.components.body.velocity,
+              collidingEntity.components.body.velocity,
               entity.components.body.force,
-              collidingEntity.components.body.mass
+              entity.components.body.bounciness
             );
-
-            /*
-            Vector2.scaleAndAdd(
-              entity.components.body.force,
-              entity.components.body.force,
-              collidingEntity.components.body.force,
-              entity.components.body.mass
-            );
-            */
           }
         }
 
+        // APPLY FORCE
         if (entity.components.onCollisionApplyForce) {
 
           if (collidingEntity.components.body) {

@@ -19,7 +19,7 @@ class CoreEngine {
   }
 
   addSystems(systems) {
-    systems.forEach( s => this.ecs.addSystem( s ) );
+    systems.forEach(s => this.ecs.addSystem(s));
   }
 
   start() {

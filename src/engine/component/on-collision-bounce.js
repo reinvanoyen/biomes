@@ -2,7 +2,9 @@
 
 const OnCollisionBounce = {
   name: 'onCollisionBounce',
-  defaults: {}
+  defaults: {
+    isProcessed: false
+  }
 };
 
 module.exports = OnCollisionBounce;
